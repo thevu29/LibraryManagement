@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="" />
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Add database, mysql connector.">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library/mysql-connector-j-8.0.32/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library/mysql-connector-j-8.0.32/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql_query/Database Creation.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sql_query/Drop Database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LibraryManagementGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagementGUI.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Le1oJSK1qPzKaexLDfeooWkN1D" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -13,14 +41,66 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Programming/JetBrainProjects/LibraryManagementGUI&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ],
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
+    ]
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.CardLayoutDemo">
+    <configuration name="CardLayoutDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CardLayoutDemo" />
+      <module name="LibraryManagementGUI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="LibraryManagementGUI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.CardLayoutDemo" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -29,8 +109,82 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1676216910792</updated>
-      <workItem from="1676216912021" duration="1000" />
+      <workItem from="1676216912021" duration="64000" />
+      <workItem from="1676217078793" duration="389000" />
+      <workItem from="1676217485823" duration="428000" />
+      <workItem from="1676230303482" duration="73000" />
+      <workItem from="1676267286041" duration="8654000" />
+      <workItem from="1676284824932" duration="2075000" />
+      <workItem from="1676293962304" duration="3175000" />
+      <workItem from="1676369691347" duration="983000" />
+      <workItem from="1676448921483" duration="605000" />
+      <workItem from="1676449885090" duration="1644000" />
+      <workItem from="1676458390874" duration="487000" />
+      <workItem from="1676535471738" duration="715000" />
+      <workItem from="1676594835761" duration="64000" />
+      <workItem from="1676599522988" duration="838000" />
+      <workItem from="1676648375887" duration="431000" />
+      <workItem from="1676693404521" duration="78000" />
+      <workItem from="1676693507665" duration="50000" />
+      <workItem from="1676791203425" duration="3914000" />
+      <workItem from="1676800178677" duration="980000" />
+      <workItem from="1676802297254" duration="206000" />
+      <workItem from="1676810856207" duration="90000" />
+      <workItem from="1676815859359" duration="10000" />
+      <workItem from="1676819127154" duration="99000" />
+      <workItem from="1676851970004" duration="1602000" />
+      <workItem from="1676853614977" duration="261000" />
+      <workItem from="1676853901489" duration="886000" />
+      <workItem from="1676858547384" duration="2493000" />
+      <workItem from="1676889990152" duration="616000" />
+      <workItem from="1677140673664" duration="3495000" />
+      <workItem from="1677154455331" duration="606000" />
+      <workItem from="1677165439188" duration="104000" />
+      <workItem from="1677167654806" duration="634000" />
+      <workItem from="1677204002130" duration="126000" />
+      <workItem from="1677304956787" duration="1033000" />
+      <workItem from="1677348571452" duration="373000" />
+      <workItem from="1677404489777" duration="213000" />
+      <workItem from="1677456910378" duration="4781000" />
+      <workItem from="1677466137600" duration="1102000" />
+      <workItem from="1677893831349" duration="802000" />
+      <workItem from="1678064921814" duration="708000" />
+      <workItem from="1678070523119" duration="1675000" />
+      <workItem from="1678381081544" duration="25000" />
+      <workItem from="1678544046235" duration="820000" />
+      <workItem from="1678883055296" duration="130000" />
     </task>
+    <task id="LOCAL-00001" summary="First Init">
+      <created>1676216964949</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676216964949</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Init" />
+    <MESSAGE value="Add database, mysql connector." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add database, mysql connector." />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
