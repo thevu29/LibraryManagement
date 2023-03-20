@@ -7,9 +7,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
+
+
     private final String[] cols = {"Mã Sách", "Tên Sách", "Tác Giả", "Nhà Phát Hành", "Thể Loại", "Vị Trí", "Giá", "Tình Trạng"};
 
     private boolean isEditable = true;
+
+
+    public BookDataTableModel(boolean isEditable) {
+        this();
+        this.isEditable = isEditable;
+
+    }
 
     public BookDataTableModel() {
         super();

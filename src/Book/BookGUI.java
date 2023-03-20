@@ -4,9 +4,11 @@ import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Iterator;
 
 public class BookGUI {
     private JTabbedPane tabbedPane1;
@@ -32,6 +34,9 @@ public class BookGUI {
     private JButton priceDelBtn;
     private JComboBox<String> statusCB;
     private JButton statusDelBtn;
+    private JButton thêmSáchButton;
+    private JButton xóaSáchButton;
+    private JButton chỉnhSửaSáchButton;
 
     private JTextField bookIDTF;
 
@@ -74,6 +79,17 @@ public class BookGUI {
         var priceTF = AutoSuggestComboBox.createWithDelete(priceCB, 6,  bookDataModel::getColumnValueToString, priceDelBtn);
         var statusField = AutoSuggestComboBox.createWithDelete(statusCB, 7, bookDataModel::getColumnValueToString, statusDelBtn);
 
+        bookDeleteAllButton.addActionListener(e -> {
+            bookIDTF.setText("");
+            bookNameTF.setText("");
+            authorTF.setText("");
+            publisherTF.setText("");
+            genreTF.setText("");
+            locationTF.setText("");
+            priceTF.setText("");
+            statusField.setText("");
+        });
+
         bookDataModel.setFilterField(0, bookIDTF);
         bookDataModel.setFilterField(1, bookNameTF);
         bookDataModel.setFilterField(2, authorTF);
@@ -83,13 +99,19 @@ public class BookGUI {
         bookDataModel.setFilterField(6, priceTF);
         bookDataModel.setFilterField(7, statusField);
 
-        bookFilterButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                TableUtils.filter(bookTable);
-                System.out.println(bookDataModel.getRowCount());
-            }
+        for (Iterator<TableColumn> it = bookTable.getColumnModel().getColumns().asIterator(); it.hasNext(); ) {
+            var column = it.next();
+            column.setMinWidth(100);
+        }
+
+
+        bookFilterButton.addActionListener(e -> {
+            TableUtils.filter(bookTable);
         });
+    }
+
+    public JPanel getPanel1() {
+        return panel1;
     }
 
     public static void main(String[] args) {

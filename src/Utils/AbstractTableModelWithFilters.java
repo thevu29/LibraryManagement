@@ -1,6 +1,5 @@
 package Utils;
 
-import com.mysql.cj.result.Row;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;

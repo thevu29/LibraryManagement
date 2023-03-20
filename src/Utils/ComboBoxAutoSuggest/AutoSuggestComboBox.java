@@ -82,8 +82,8 @@ public class AutoSuggestComboBox {
     }
 
 
-    static public JTextField createWithDelete(JComboBox<String> comboBox, int col, Function<Integer,
-            List<String>> function, JButton deleteButton) {
+    static public JTextField createWithDelete(JComboBox<String> comboBox, int col,
+                                              Function<Integer, List<String>> function, JButton deleteButton) {
         var textField = create(comboBox, col, function);
 
         deleteButton.addActionListener(e -> {

@@ -100,7 +100,7 @@ public class Book {
         publisher.add("Tune");
 
         ArrayList<String> genre = new ArrayList<>();
-        genre.add("Hello");
+        genre.add("Xin chàp");
         genre.add("Wp");
 
         return new Book(String.valueOf(priceCounter), "HelloA"+priceCounter, authors, publisher, genre, "Nep", priceCounter++, EBookStatus.AVAILABLE);

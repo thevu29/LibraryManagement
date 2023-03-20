@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Add database, mysql connector.">
-      <change afterPath="$PROJECT_DIR$/src/Book/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/BookEditorDialog.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/BookEditorDialog.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/BookGUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/BookGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/EBookStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/TableUtils.java" afterDir="false" />
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Add book">
+      <change afterPath="$PROJECT_DIR$/src/MainGUI/MainWindow.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainGUI/MainWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookEditorDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookEditorDialog.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookEditorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookEditorDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,14 +25,35 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Nhân-Viên" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;CLOSED&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;CLOSED&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="11b30dac-d392-4d61-bc83-e83a066e91f5" />
+        <option name="url" value="https://github.com/Neptune27/LibraryManagementGUI" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -48,6 +69,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;321&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Programming/JetBrainProjects/LibraryManagementGUI&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -75,7 +97,20 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BookGUI">
+  <component name="RunManager" selected="Application.BookEditorDialog">
+    <configuration name="BookEditorDialog" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Book.BookEditorDialog" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Book.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Book.BookGUI" />
       <module name="LibraryManagementGUI" />
@@ -103,6 +138,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainGUI.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainGUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -111,9 +159,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BookEditorDialog" />
+        <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.BookGUI" />
-        <item itemvalue="Application.CardLayoutDemo" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.CardLayoutDemo" />
       </list>
     </recent_temporary>
   </component>
@@ -168,16 +218,10 @@
       <workItem from="1678070523119" duration="1675000" />
       <workItem from="1678381081544" duration="25000" />
       <workItem from="1678544046235" duration="820000" />
-      <workItem from="1678883055296" duration="633000" />
-      <workItem from="1678888616079" duration="41000" />
-      <workItem from="1678947348412" duration="4942000" />
-      <workItem from="1678955158432" duration="4340000" />
-      <workItem from="1678972596843" duration="3737000" />
-      <workItem from="1678977380764" duration="3584000" />
-      <workItem from="1679013189239" duration="3156000" />
-      <workItem from="1679066721508" duration="5943000" />
-      <workItem from="1679148464131" duration="7512000" />
-      <workItem from="1679196365389" duration="7742000" />
+      <workItem from="1678883055296" duration="130000" />
+      <workItem from="1679239886974" duration="4226000" />
+      <workItem from="1679250727977" duration="1626000" />
+      <workItem from="1679271626937" duration="2192000" />
     </task>
     <task id="LOCAL-00001" summary="First Init">
       <created>1676216964949</created>
@@ -186,14 +230,7 @@
       <option name="project" value="LOCAL" />
       <updated>1676216964949</updated>
     </task>
-    <task id="LOCAL-00002" summary="Add database, mysql connector.">
-      <created>1678883196223</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1678883196223</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
