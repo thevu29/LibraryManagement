@@ -1,3 +1,4 @@
+package NhanVien.arraylistNV;
 
 public enum Workplace {
 	CSC,
