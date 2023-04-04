@@ -4,20 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_20_2023_7_21_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_20_2023_7_21_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_20_2023_7_22_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_20_2023_7_22_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="Add database, mysql connector.">
+      <change afterPath="$PROJECT_DIR$/src/BookFault/BookFaultModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BookFault/BookFaultUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BookFault/BookFaultUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BookFault/BorrowBookFaultModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arraylistNV/ArraylistNhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/ArraylistNhanVien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arraylistNV/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Gender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arraylistNV/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arraylistNV/Shift.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Shift.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arraylistNV/Workplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Workplace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arraylistNV/nhanVienC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/nhanVienC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/form/NhanVienC.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/form/NhanVienC.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/form/NhanVienC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/form/NhanVienC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/form/adminNhanVien.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/form/adminNhanVien.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/form/adminNhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/form/adminNhanVien.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +24,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
@@ -38,6 +36,15 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/BookFault/BookFaultUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/Borrow.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetail.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowUI.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -54,7 +61,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Programming/JetBrainProjects/IDEA/LibraryManagementGUI/src/MainGUI",
+    "last_opened_file_path": "D:/Workspace/2_HK2/Java/LibraryManagementGUI",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,13 +95,58 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NhanVienC">
-    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainGUI.MainWindow" />
+  <component name="RunManager" selected="Application.BookFaultUI">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration name="BookFaultUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BookFault.BookFaultUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MainGUI.*" />
+          <option name="PATTERN" value="BookFault.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Book.BookGUI" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Book.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BorrowDetailUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.BorrowDetailUI" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Borrow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BorrowUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.BorrowUI" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Borrow.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,59 +167,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NhanVien.form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="form.adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BookFaultUI" />
+        <item itemvalue="Application.BorrowDetailUI" />
+        <item itemvalue="Application.BorrowUI" />
+        <item itemvalue="Application.BookGUI" />
         <item itemvalue="Application.NhanVienC" />
-        <item itemvalue="Application.NhanVien.form.adminNhanVien" />
-        <item itemvalue="Application.form.adminNhanVien" />
-        <item itemvalue="Application.adminNhanVien" />
-        <item itemvalue="Application.MainWindow" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="" />
+      <changelist id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="" />
       <created>1676216910792</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

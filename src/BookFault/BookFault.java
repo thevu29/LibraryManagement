@@ -1,0 +1,37 @@
+package BookFault;
+
+public class BookFault {
+    private String id;
+    private String tenLoi;
+    private double heSo;
+
+    public BookFault(String id, String tenLoi, double heSo) {
+        this.id = id;
+        this.tenLoi = tenLoi;
+        this.heSo = heSo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTenLoi() {
+        return tenLoi;
+    }
+
+    public void setTenLoi(String tenLoi) {
+        this.tenLoi = tenLoi;
+    }
+
+    public double getHeSo() {
+        return heSo;
+    }
+
+    public void setHeSo(double heSo) {
+        this.heSo = heSo;
+    }
+}
