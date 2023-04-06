@@ -1,5 +1,6 @@
 package customer.ui;
 
+import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import customer.model.Customer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -16,6 +17,7 @@ public class CustomerForm {
         initTable();
         renderToTable();
         initComboBox();
+        createFilterTextField();
 
         btnAdd.addActionListener(new ActionListener() {
             @Override
@@ -78,7 +80,9 @@ public class CustomerForm {
     }
 
     public void createFilterTextField() {
-
+        JTextField txtId = AutoSuggestComboBox.createTextField(cbxCustomerId, btnDeleteId);
+        JTextField txtName = AutoSuggestComboBox.createTextField(cbxCustomerName, btnDeleteName);
+        JTextField txtEmail = AutoSuggestComboBox.createTextField(cbxCustomerEmail, btnDeleteEmail);
     }
 
     public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone, String btnText) {

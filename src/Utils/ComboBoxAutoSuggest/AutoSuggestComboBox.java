@@ -5,6 +5,7 @@ import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.function.Function;
@@ -23,7 +24,6 @@ public class AutoSuggestComboBox {
         }
         return model;
     }
-
 
     public static JTextField create(JComboBox<String> comboBox, List<String> list) {
         return create(comboBox, 0, (i)-> list);
@@ -61,7 +61,6 @@ public class AutoSuggestComboBox {
     }
 
     private static void autoSuggestBoxEventHandler(KeyEvent e, JComboBox<String> comboBox, List<String> list) {
-
         switch (e.getKeyCode()) {
             case KeyEvent.VK_DOWN, KeyEvent.VK_UP, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> {
                 return;
@@ -81,12 +80,26 @@ public class AutoSuggestComboBox {
         }
     }
 
-
     static public JTextField createWithDelete(JComboBox<String> comboBox, int col,
                                               Function<Integer, List<String>> function, JButton deleteButton) {
         var textField = create(comboBox, col, function);
 
         deleteButton.addActionListener(e -> {
+            textField.setText("");
+        });
+
+        return textField;
+    }
+
+    static public JTextField createTextField(JComboBox<String> comboBox, JButton btnDelete) {
+        ArrayList<String> suggestion = new ArrayList<>();
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            suggestion.add(comboBox.getItemAt(i).toString());
+        }
+
+        JTextField textField = create(comboBox, suggestion);
+
+        btnDelete.addActionListener(e -> {
             textField.setText("");
         });
 
