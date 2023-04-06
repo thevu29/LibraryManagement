@@ -48,8 +48,7 @@ public class BookGUI {
         bookDataModel.addTestData();
 //        table2.setModel(test);
         bookTable.setModel(bookDataModel);
-        TableRowSorter<BookDataTableModel> sorter
-                = new TableRowSorter<>(bookDataModel);
+        TableRowSorter<BookDataTableModel> sorter = new TableRowSorter<>(bookDataModel);
         bookTable.setRowSorter(sorter);
         bookTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         bookTable.getTableHeader().setBackground(Color.WHITE);
@@ -69,14 +68,13 @@ public class BookGUI {
         });
         bookTable.getTableHeader().setReorderingAllowed(false);
 
-
         var bookIDTF = AutoSuggestComboBox.createWithDelete(bookIDComboBox, 0 ,bookDataModel::getColumnValueToString, bookIDDelBtn);
-        var bookNameTF = AutoSuggestComboBox.createWithDelete(bookNameCB, 1,  bookDataModel::getColumnValueToString, bookNameDelBtn);
-        var authorTF = AutoSuggestComboBox.createWithDelete(authorCB, 2,  bookDataModel::getColumnValueToString, authorDelBtn);
-        var publisherTF = AutoSuggestComboBox.createWithDelete(publisherCB, 3,  bookDataModel::getColumnValueToString, publisherDelBtn);
-        var genreTF = AutoSuggestComboBox.createWithDelete(genreCB, 4,  bookDataModel::getColumnValueToString, genreDelBtn);
-        var locationTF = AutoSuggestComboBox.createWithDelete(locationCB, 5,  bookDataModel::getColumnValueToString, locationDelBtn);
-        var priceTF = AutoSuggestComboBox.createWithDelete(priceCB, 6,  bookDataModel::getColumnValueToString, priceDelBtn);
+        var bookNameTF = AutoSuggestComboBox.createWithDelete(bookNameCB, 1, bookDataModel::getColumnValueToString, bookNameDelBtn);
+        var authorTF = AutoSuggestComboBox.createWithDelete(authorCB, 2, bookDataModel::getColumnValueToString, authorDelBtn);
+        var publisherTF = AutoSuggestComboBox.createWithDelete(publisherCB, 3, bookDataModel::getColumnValueToString, publisherDelBtn);
+        var genreTF = AutoSuggestComboBox.createWithDelete(genreCB, 4, bookDataModel::getColumnValueToString, genreDelBtn);
+        var locationTF = AutoSuggestComboBox.createWithDelete(locationCB, 5, bookDataModel::getColumnValueToString, locationDelBtn);
+        var priceTF = AutoSuggestComboBox.createWithDelete(priceCB, 6, bookDataModel::getColumnValueToString, priceDelBtn);
         var statusField = AutoSuggestComboBox.createWithDelete(statusCB, 7, bookDataModel::getColumnValueToString, statusDelBtn);
 
         bookDeleteAllButton.addActionListener(e -> {

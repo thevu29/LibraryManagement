@@ -76,7 +76,7 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
 
     }
 
-    public Object translateValue(Book book,int columnIndex) {
+    public Object translateValue(Book book, int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
                 return book.getId();

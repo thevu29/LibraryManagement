@@ -1,5 +1,7 @@
 package Utils.ComboBoxAutoSuggest;
 
+import customer.model.Customer;
+
 import javax.swing.*;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
@@ -93,10 +95,16 @@ public class AutoSuggestComboBox {
         return textField;
     }
 
-    static public JTextField createWithDelete(JComboBox<String> comboBox, JButton btnDelete) {
+    static public JTextField createWithDelete(JComboBox<String> comboBox, int col, ArrayList<Customer> customerList, JButton btnDelete) {
         ArrayList<String> suggestion = new ArrayList<>();
-        for (int i = 0; i < comboBox.getItemCount(); i++) {
-            suggestion.add(comboBox.getItemAt(i).toString());
+        for (Customer customer : customerList) {
+            if (col == 0) {
+                suggestion.add(customer.getCustomerId());
+            } else if (col == 1) {
+                suggestion.add(customer.getCustomerName());
+            } else if (col == 2) {
+                suggestion.add(customer.getCustomerEmail());
+            }
         }
 
         JTextField textField = create(comboBox, suggestion);

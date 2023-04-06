@@ -21,12 +21,19 @@ public class CustomerForm {
     public CustomerForm() {
         initTable();
         renderToTable();
-        initComboBox();
+//        initComboBox();
+//        createFilterTextField();
 
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showCustomerInfo("", "", "", "", "", "", "", "Thêm khách hàng");
+//                showCustomerInfo("", "", "", "", "", "", "", "Thêm khách hàng");
+                Customer customer = new Customer("CUS011", "Minh Nam", "Nam", "29-08-2003", "HCM", "bbb@gmail.com", "0123456789");
+                customerList.add(customer);
+
+                JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
+                renderToTable();
+                txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, customerList, btnDeleteId);
             }
         });
 
@@ -82,7 +89,12 @@ public class CustomerForm {
             }
         });
 
-        createFilterTextField();
+        if (txtId == null) {
+            txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, customerList, btnDeleteId);
+        }
+        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, 1, customerList, btnDeleteName);
+        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, 2, customerList, btnDeleteEmail);
+
         btnFilter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,21 +110,15 @@ public class CustomerForm {
         if (text.length() == 0) {
             sorter.setRowFilter(null);
         } else {
-            sorter.setRowFilter(RowFilter.regexFilter(text));
+            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
         }
     }
 
-    public void createFilterTextField() {
-        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, btnDeleteId);
-        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, btnDeleteName);
-        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, btnDeleteEmail);
-    }
-
-    public void createFilterTextField(JTextField txtId, JTextField txtName, JTextField txtEmail) {
-        this.txtId = txtId;
-        this.txtName = txtName;
-        this.txtEmail = txtEmail;
-    }
+//    public void createFilterTextField() {
+//        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, btnDeleteId);
+//        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, btnDeleteName);
+//        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, btnDeleteEmail);
+//    }
 
     public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone, String btnText) {
         CustomerInfoForm customerInfoForm = new CustomerInfoForm(this, id, name, dob, gender, address, email, phone, btnText);
@@ -175,32 +181,12 @@ public class CustomerForm {
         tblCustomers.repaint();
     }
 
+    public void setTxtId(JTextField txtId) {
+        this.txtId = txtId;
+    }
+
     public ArrayList<Customer> getCustomerList() {
         return customerList;
-    }
-
-    public JComboBox getCbxCustomerId() {
-        return cbxCustomerId;
-    }
-
-    public JButton getBtnDeleteId() {
-        return btnDeleteId;
-    }
-
-    public JComboBox getCbxCustomerName() {
-        return cbxCustomerName;
-    }
-
-    public JButton getBtnDeleteName() {
-        return btnDeleteName;
-    }
-
-    public JComboBox getCbxCustomerEmail() {
-        return cbxCustomerEmail;
-    }
-
-    public JButton getBtnDeleteEmail() {
-        return btnDeleteEmail;
     }
 
     public static void main(String[] args) {

@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f1b343d-4f3d-44d4-a21c-33bd267be649" name="Changes" comment="add, delete, edit info, auto suggest">
+    <list default="true" id="7f1b343d-4f3d-44d4-a21c-33bd267be649" name="Changes" comment="add nhưng không thêm vào auto suggesst">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/ui/CustomerForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/ui/CustomerInfoForm.java" afterDir="false" />
@@ -76,6 +78,19 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="BookGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Book.BookGUI" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Book.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
@@ -115,19 +130,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerForm (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
@@ -144,10 +146,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.CustomerForm (5)" />
-        <item itemvalue="Application.CustomerForm (1)" />
         <item itemvalue="Application.CustomerForm (4)" />
+        <item itemvalue="Application.CustomerForm (1)" />
         <item itemvalue="Application.CustomerForm (3)" />
+        <item itemvalue="Application.BookGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680744297319</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add nhưng không thêm vào auto suggesst">
+      <created>1680745476106</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680745476106</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,7 +268,8 @@
     <MESSAGE value="First Init" />
     <MESSAGE value="Add database, mysql connector." />
     <MESSAGE value="add, delete, edit info, auto suggest" />
-    <option name="LAST_COMMIT_MESSAGE" value="add, delete, edit info, auto suggest" />
+    <MESSAGE value="add nhưng không thêm vào auto suggesst" />
+    <option name="LAST_COMMIT_MESSAGE" value="add nhưng không thêm vào auto suggesst" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
