@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f1b343d-4f3d-44d4-a21c-33bd267be649" name="Changes" comment="add nhưng không thêm vào auto suggesst">
+    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="add nhưng không thêm vào auto suggesst">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/ui/CustomerForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/ui/CustomerForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,14 +68,14 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerForm (5)">
+  <component name="RunManager" selected="Application.CustomerForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -88,7 +88,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -142,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CustomerForm (5)" />
         <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.CustomerForm (3)" />
+        <item itemvalue="Application.CustomerForm (5)" />
         <item itemvalue="Application.CustomerForm (2)" />
         <item itemvalue="Application.CustomerForm (4)" />
-        <item itemvalue="Application.CustomerForm (1)" />
       </list>
     </recent_temporary>
   </component>

@@ -21,19 +21,11 @@ public class CustomerForm {
     public CustomerForm() {
         initTable();
         renderToTable();
-//        initComboBox();
-//        createFilterTextField();
 
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                showCustomerInfo("", "", "", "", "", "", "", "Thêm khách hàng");
-                Customer customer = new Customer("CUS011", "Minh Nam", "Nam", "29-08-2003", "HCM", "bbb@gmail.com", "0123456789");
-                customerList.add(customer);
-
-                JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
-                renderToTable();
-//                txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, customerList, btnDeleteId);
+                showCustomerInfo("", "", "", "", "", "", "", "Thêm khách hàng");
             }
         });
 
@@ -89,9 +81,9 @@ public class CustomerForm {
             }
         });
 
-        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, this::init, btnDeleteId);
-        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, 1, customerList, btnDeleteName);
-        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, 2, customerList, btnDeleteEmail);
+        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, this::initSuggestion, btnDeleteId);
+        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, 1, this::initSuggestion, btnDeleteName);
+        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, 2, this::initSuggestion, btnDeleteEmail);
 
         btnFilter.addActionListener(new ActionListener() {
             @Override
@@ -101,7 +93,7 @@ public class CustomerForm {
         });
     }
 
-    public ArrayList<String> init(int col) {
+    public ArrayList<String> initSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
             for (Customer customer : customerList) {
             if (col == 0) {
@@ -185,10 +177,6 @@ public class CustomerForm {
 
         tblModel.fireTableDataChanged();
         tblCustomers.repaint();
-    }
-
-    public void setTxtId(JTextField txtId) {
-        this.txtId = txtId;
     }
 
     public ArrayList<Customer> getCustomerList() {
