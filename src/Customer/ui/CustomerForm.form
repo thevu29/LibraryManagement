@@ -152,6 +152,35 @@
                               </component>
                             </children>
                           </grid>
+                          <grid id="6dce4" layout-manager="GridBagLayout">
+                            <constraints>
+                              <tabbedpane title="Loại thành viên"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="f4ba0" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="1.0" weighty="1.0"/>
+                                </constraints>
+                                <properties>
+                                  <editable value="true"/>
+                                </properties>
+                              </component>
+                              <component id="35b57" class="javax.swing.JButton" binding="btnDeleteCusMembership">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag top="0" left="8" bottom="0" right="10" weightx="0.0" weighty="1.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-11107086"/>
+                                  <foreground color="-1"/>
+                                  <text value="Xóa"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
                         </children>
                       </tabbedpane>
                       <grid id="1d447" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

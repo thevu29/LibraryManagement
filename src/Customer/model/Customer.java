@@ -13,12 +13,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String customerId, String customerName, String customerGender, String customerDOB, String customerAddress,
+    public Customer(String customerId, String customerName, String customerDOB, String customerGender, String customerAddress,
                     String customerEmail, String customerPhone, String membership) {
         this.customerId = customerId;
         this.customerName = customerName;
-        this.customerGender = customerGender;
         this.customerDOB = customerDOB;
+        this.customerGender = customerGender;
         this.customerAddress = customerAddress;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;

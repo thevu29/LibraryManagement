@@ -1,5 +1,7 @@
 package Customer.ui;
 
+import Customer.model.CustomerList;
+import Customer.model.Membership;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Customer.model.Customer;
 import javax.swing.*;
@@ -12,17 +14,36 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class CustomerForm {
-    private ArrayList<Customer> customerList;
-    private DefaultTableModel tblModel;
-    private TableRowSorter<DefaultTableModel> sorter;
-    private JTextField txtId;
-    private JTextField txtName;
-    private JTextField txtEmail;
+    private CustomerList customerList = new CustomerList();
+    private DefaultTableModel tblCustomerModel;
+    private TableRowSorter<DefaultTableModel> customerSorter;
+    private JTextField txtCusId;
+    private JTextField txtCusName;
+    private JTextField txtCusEmail;
+
+    private ArrayList<Membership> membershipList;
+    private DefaultTableModel tblMembershipModel;
+    private TableRowSorter<DefaultTableModel> membershipSorter;
+    private JTextField txtMemberId;
+    private JTextField txtMemberName;
+    private JTextField txtMemberEmail;
 
     public CustomerForm() {
-        initCusTempData();
+        handleCustomer();
+    }
+
+    public void handleMembership() {
+
+    }
+
+    public void initMembershipTable() {
+        tblMembershipModel = new DefaultTableModel();
+
+    }
+
+    public void handleCustomer() {
         initCustomerTable();
-        renderToCustomerTable();
+        customerList.renderToCustomerTable(tblCustomerModel);
 
         btnAddCustomer.addActionListener(new ActionListener() {
             @Override
@@ -46,11 +67,11 @@ public class CustomerForm {
                 }
 
                 String id = tblCustomers.getValueAt(selectedRow, 0).toString();
-                for (Customer customer : customerList) {
+                for (Customer customer : customerList.getCustomerList()) {
                     if (customer.getCustomerId().equals(id)) {
-                        customerList.remove(customer);
+                        customerList.deleteCustomer(customer.getCustomerId());
                         JOptionPane.showMessageDialog(null, "Xóa khách hàng thành công");
-                        renderToCustomerTable();
+                        customerList.renderToCustomerTable(tblCustomerModel);
                         return;
                     }
                 }
@@ -67,7 +88,7 @@ public class CustomerForm {
                 }
 
                 String id = tblCustomers.getValueAt(selectedRow, 0).toString();
-                for (Customer customer : customerList) {
+                for (Customer customer : customerList.getCustomerList()) {
                     if (customer.getCustomerId().equals(id)) {
                         String name = customer.getCustomerName();
                         String dob = customer.getCustomerDOB();
@@ -84,9 +105,9 @@ public class CustomerForm {
             }
         });
 
-        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, this::initCustomerSuggestion, btnDeleteCusId);
-        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, 1, this::initCustomerSuggestion, btnDeleteCusName);
-        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, 2, this::initCustomerSuggestion, btnDeleteCusEmail);
+        txtCusId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, this::initCustomerSuggestion, btnDeleteCusId);
+        txtCusName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, 1, this::initCustomerSuggestion, btnDeleteCusName);
+        txtCusEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, 2, this::initCustomerSuggestion, btnDeleteCusEmail);
 
         btnFilterCustomer.addActionListener(new ActionListener() {
             @Override
@@ -98,17 +119,17 @@ public class CustomerForm {
         btnResetCustomer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                txtId.setText("");
-                txtName.setText("");
-                txtEmail.setText("");
-                sorter.setRowFilter(null);
+                txtCusId.setText("");
+                txtCusName.setText("");
+                txtCusEmail.setText("");
+                customerSorter.setRowFilter(null);
             }
         });
     }
 
     public ArrayList<String> initCustomerSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
-            for (Customer customer : customerList) {
+            for (Customer customer : customerList.getCustomerList()) {
             if (col == 0) {
                 suggestion.add(customer.getCustomerId());
             } else if (col == 1) {
@@ -121,12 +142,12 @@ public class CustomerForm {
     }
 
     public void filterCustomer() {
-        sorter = new TableRowSorter<DefaultTableModel>(tblModel);
-        tblCustomers.setRowSorter(sorter);
+        customerSorter = new TableRowSorter<DefaultTableModel>(tblCustomerModel);
+        tblCustomers.setRowSorter(customerSorter);
 
-        String id = txtId.getText();
-        String name = txtName.getText();
-        String email = txtEmail.getText();
+        String id = txtCusId.getText();
+        String name = txtCusName.getText();
+        String email = txtCusEmail.getText();
 
         RowFilter<TableModel, Object> filter = new RowFilter<TableModel, Object>() {
             public boolean include(Entry<? extends TableModel, ? extends Object> entry) {
@@ -139,7 +160,7 @@ public class CustomerForm {
             }
         };
 
-        sorter.setRowFilter(filter);
+        customerSorter.setRowFilter(filter);
     }
 
     public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone,
@@ -152,24 +173,8 @@ public class CustomerForm {
         customerInfoForm.setVisible(true);
     }
 
-    public void initComboBox() {
-        cbxCustomerId.removeAllItems();
-        cbxCustomerName.removeAllItems();
-        cbxCustomerEmail.removeAllItems();
-
-        for (Customer customer : customerList) {
-            cbxCustomerId.addItem(customer.getCustomerId());
-            cbxCustomerName.addItem(customer.getCustomerName());
-            cbxCustomerEmail.addItem(customer.getCustomerEmail());
-        }
-
-        cbxCustomerId.setSelectedIndex(-1);
-        cbxCustomerName.setSelectedIndex(-1);
-        cbxCustomerEmail.setSelectedIndex(-1);
-    }
-
     public void initCustomerTable() {
-        tblModel = new DefaultTableModel() {
+        tblCustomerModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -177,9 +182,9 @@ public class CustomerForm {
         };
 
         String[] columns = new String[]{"Mã khách hàng", "Tên khách hàng", "Email", "Loại thành viên"};
-        tblModel.setColumnIdentifiers(columns);
+        tblCustomerModel.setColumnIdentifiers(columns);
 
-        tblCustomers.setModel(tblModel);
+        tblCustomers.setModel(tblCustomerModel);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -188,28 +193,24 @@ public class CustomerForm {
         }
     }
 
-    public void initCusTempData() {
-        customerList = new ArrayList<>();
-        for (int i = 1; i <= 5; i++) {
-            String tmp = "CUS00" + i;
-            customerList.add((new Customer(tmp, "Thế Vũ", "Nam", "29-08-2003", "HCM", "aaa@gmail.com", "0123456789", "Bình thường")));
-        }
-    }
+//    public void renderToCustomerTable() {
+//        tblCustomerModel.setRowCount(0);
+//
+//        for (Customer customer : customerList.getCustomerList()) {
+//            tblCustomerModel.addRow(new Object[]{customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerEmail(),
+//                    customer.getMembership()});
+//        }
+//
+//        tblCustomerModel.fireTableDataChanged();
+//        tblCustomers.repaint();
+//    }
 
-    public void renderToCustomerTable() {
-        tblModel.setRowCount(0);
-
-        for (Customer customer : customerList) {
-            tblModel.addRow(new Object[]{customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerEmail(),
-                    customer.getMembership()});
-        }
-
-        tblModel.fireTableDataChanged();
-        tblCustomers.repaint();
-    }
-
-    public ArrayList<Customer> getCustomerList() {
+    public CustomerList getCustomerListInstance() {
         return customerList;
+    }
+
+    public DefaultTableModel getTblCustomerModel() {
+        return tblCustomerModel;
     }
 
     public static void main(String[] args) {
@@ -248,4 +249,6 @@ public class CustomerForm {
     private JButton btnDeleteMemId;
     private JComboBox comboBox2;
     private JButton btnDeleteMemName;
+    private JComboBox comboBox3;
+    private JButton btnDeleteCusMembership;
 }

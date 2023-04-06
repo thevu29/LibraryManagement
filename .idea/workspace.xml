@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="xong filter, reset">
+    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="giao diện membership">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/mysql-connector-j-8.0.32/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/library/mysql-connector-j-8.0.32/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/icons/add_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/icons/add_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/icons/edit.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/icons/edit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/icons/edit_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/icons/edit_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/icons/search_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/icons/search_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/model/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/model/Membership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/model/Membership.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/model/MembershipType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/model/MembershipType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/icons/add_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/icons/edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/icons/edit_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/icons/search_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/model/Membership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/model/Membership.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/model/MembershipType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,25 +76,12 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerForm (4)">
+  <component name="RunManager" selected="Application.CustomerForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
-    </configuration>
-    <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
@@ -126,6 +110,19 @@
       </method>
     </configuration>
     <configuration name="CustomerForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerForm (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -179,18 +176,18 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.CustomerForm (5)" />
         <item itemvalue="Application.CustomerForm (4)" />
         <item itemvalue="Application.CustomerForm (3)" />
-        <item itemvalue="Application.CustomerForm" />
         <item itemvalue="Application.CustomerForm (2)" />
-        <item itemvalue="Application.CustomerForm (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7f1b343d-4f3d-44d4-a21c-33bd267be649" name="Changes" comment="add nhưng không thêm vào auto suggesst" />
+      <changelist id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="giao diện membership" />
       <created>1676216910792</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -290,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680764941505</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="giao diện membership">
+      <created>1680767480134</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1680767480134</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +330,8 @@
     <MESSAGE value="add nhưng không thêm vào auto suggesst" />
     <MESSAGE value="xong phần suggest" />
     <MESSAGE value="xong filter, reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="xong filter, reset" />
+    <MESSAGE value="giao diện membership" />
+    <option name="LAST_COMMIT_MESSAGE" value="giao diện membership" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -334,6 +339,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="3" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,7 +1,6 @@
 package Customer.ui;
 
 import Customer.model.Customer;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,34 +33,33 @@ public class CustomerInfoForm extends JFrame {
     }
 
         public void addCustomer() {
-    //        if (!validateEmpty()) {
-    //            return;
-    //        }
-    //
-    //        String id = txtCustomerId.getText();
-    //
-    //        for (Customer customer : customerForm.getCustomerList()) {
-    //            if (customer.getCustomerId().equals(id)) {
-    //                JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-    //                return;
-    //            }
-    //        }
-    //
-    //        String name = txtCustomerName.getText();
-    //        String dob = txtCustomerDOB.getText();
-    //        String address = txtCustomerAddress.getText();
-    //        String email = txtCustomerEmail.getText();
-    //        String phone = txtCustomerPhone.getText();
-    //        String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
+            if (!validateEmpty()) {
+                return;
+            }
 
-    //        Customer customer = new Customer(id, name, dob, gender, address, email, phone);
-            Customer customer = new Customer("CUS006", "Minh Nam", "Nam", "29-08-2003", "HCM", "bbb@gmail.com", "0123456789", "Bạc");
-            customerForm.getCustomerList().add(customer);
+            String id = txtCustomerId.getText();
+
+            for (Customer customer : customerForm.getCustomerListInstance().getCustomerList()) {
+                if (customer.getCustomerId().equals(id)) {
+                    JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+            }
+
+            String name = txtCustomerName.getText();
+            String dob = txtCustomerDOB.getText();
+            String address = txtCustomerAddress.getText();
+            String email = txtCustomerEmail.getText();
+            String phone = txtCustomerPhone.getText();
+            String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
+            String membership = cbxMembership.getItemAt(cbxMembership.getSelectedIndex()).toString();
+
+            Customer customer = new Customer(id, name, dob, gender, address, email, phone, membership);
+            customerForm.getCustomerListInstance().getCustomerList().add(customer);
 
             JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
             dispose();
-            customerForm.renderToCustomerTable();
-            customerForm.initComboBox();
+            customerForm.getCustomerListInstance().renderToCustomerTable(customerForm.getTblCustomerModel());
         }
 
     public void editCustomerInfo() {
@@ -76,22 +74,14 @@ public class CustomerInfoForm extends JFrame {
         String email = txtCustomerEmail.getText();
         String phone = txtCustomerPhone.getText();
         String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
+        String membership = cbxMembership.getItemAt(cbxMembership.getSelectedIndex()).toString();
 
-        for (Customer customer : customerForm.getCustomerList()) {
-            if (customer.getCustomerId().equals(id)) {
-                customer.setCustomerName(name);
-                customer.setCustomerDOB(dob);
-                customer.setCustomerAddress(address);
-                customer.setCustomerEmail(email);
-                customer.setCustomerPhone(phone);
-                customer.setCustomerGender(gender);
+        Customer cus = new Customer(id, name, dob, address, email, phone, gender, membership);
+        customerForm.getCustomerListInstance().editCustomer(cus);
 
-                JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
-                dispose();
-                customerForm.renderToCustomerTable();
-                return;
-            }
-        }
+        JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
+        dispose();
+        customerForm.getCustomerListInstance().renderToCustomerTable(customerForm.getTblCustomerModel());
     }
 
     public boolean validateEmpty() {
@@ -135,7 +125,6 @@ public class CustomerInfoForm extends JFrame {
 
     public void setInfo(String id, String name, String dob, String gender, String address, String email, String phone, String membership,
                         String btnText) {
-
         txtCustomerId.setText(id);
         txtCustomerName.setText(name);
         txtCustomerDOB.setText(dob);

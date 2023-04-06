@@ -1,18 +1,20 @@
 package Customer.model;
 public class Membership {
     private String membershipId;
+    private String membershipName;
     private String registrationDate;
     private String expirationDate;
-    private MembershipType type;
+    private float discount;
 
     public Membership() {
     }
 
-    public Membership(String membershipId, String registrationDate, String expirationDate, MembershipType type) {
+    public Membership(String membershipId, String membershipName, String registrationDate, String expirationDate, float discount) {
         this.membershipId = membershipId;
+        this.membershipName = membershipName;
         this.registrationDate = registrationDate;
         this.expirationDate = expirationDate;
-        this.type = type;
+        this.discount = discount;
     }
 
     public String getMembershipId() {
@@ -21,6 +23,14 @@ public class Membership {
 
     public void setMembershipId(String membershipId) {
         this.membershipId = membershipId;
+    }
+
+    public String getMembershipName() {
+        return membershipName;
+    }
+
+    public void setMembershipName(String membershipName) {
+        this.membershipName = membershipName;
     }
 
     public String registrationDate() {
@@ -39,11 +49,11 @@ public class Membership {
         this.expirationDate = expirationDate;
     }
 
-    public MembershipType getType() {
-        return type;
+    public float getDiscount() {
+        return discount;
     }
 
-    public void setType(MembershipType type) {
-        this.type = type;
+    public void setDiscount(float discount) {
+        this.discount = discount;
     }
 }
