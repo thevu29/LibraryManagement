@@ -21,11 +21,9 @@ public class AutoSuggestComboBox {
 
         for (String s : sortedList) {
             if (s.toLowerCase().contains(text.toLowerCase())) {
-                System.out.print(s + " ");
                 model.addElement(s);
             }
         }
-        System.out.println();
         return model;
     }
 

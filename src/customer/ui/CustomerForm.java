@@ -33,7 +33,7 @@ public class CustomerForm {
 
                 JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
                 renderToTable();
-                txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, customerList, btnDeleteId);
+//                txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, customerList, btnDeleteId);
             }
         });
 
@@ -89,9 +89,7 @@ public class CustomerForm {
             }
         });
 
-        if (txtId == null) {
-            txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, customerList, btnDeleteId);
-        }
+        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, this::init, btnDeleteId);
         txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, 1, customerList, btnDeleteName);
         txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, 2, customerList, btnDeleteEmail);
 
@@ -101,6 +99,20 @@ public class CustomerForm {
                 filter(txtId.getText());
             }
         });
+    }
+
+    public ArrayList<String> init(int col) {
+        ArrayList<String> suggestion = new ArrayList<>();
+            for (Customer customer : customerList) {
+            if (col == 0) {
+                suggestion.add(customer.getCustomerId());
+            } else if (col == 1) {
+                suggestion.add(customer.getCustomerName());
+            } else if (col == 2) {
+                suggestion.add(customer.getCustomerEmail());
+            }
+        }
+        return suggestion;
     }
 
     public void filter(String text) {
@@ -113,12 +125,6 @@ public class CustomerForm {
             sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
         }
     }
-
-//    public void createFilterTextField() {
-//        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, btnDeleteId);
-//        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, btnDeleteName);
-//        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, btnDeleteEmail);
-//    }
 
     public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone, String btnText) {
         CustomerInfoForm customerInfoForm = new CustomerInfoForm(this, id, name, dob, gender, address, email, phone, btnText);
