@@ -85,14 +85,6 @@
               <text value="Giới tính:"/>
             </properties>
           </component>
-          <component id="68cdf" class="javax.swing.JTextField" binding="txtCustomerGender">
-            <constraints>
-              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
           <component id="ecb60" class="javax.swing.JLabel">
             <constraints>
               <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
@@ -116,7 +108,7 @@
             </constraints>
             <properties>
               <font size="14"/>
-              <text value="Email"/>
+              <text value="Email:"/>
             </properties>
           </component>
           <component id="a8b81" class="javax.swing.JTextField" binding="txtCustomerEmail">
@@ -144,6 +136,12 @@
             </constraints>
             <properties/>
           </component>
+          <component id="66fe5" class="javax.swing.JComboBox" binding="cbxGender">
+            <constraints>
+              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
         </children>
       </grid>
       <grid id="9f1c8" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -157,20 +155,26 @@
           <component id="6d72e" class="javax.swing.JButton" binding="btnSave">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="120" height="-1"/>
+                <preferred-size width="120" height="30"/>
               </grid>
             </constraints>
             <properties>
+              <background color="-11107086"/>
+              <enabled value="true"/>
+              <foreground color="-1"/>
               <text value="Lưu thông tin"/>
             </properties>
           </component>
           <component id="47086" class="javax.swing.JButton" binding="btnReset">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <preferred-size width="120" height="-1"/>
+                <preferred-size width="120" height="30"/>
               </grid>
             </constraints>
             <properties>
+              <background color="-11107086"/>
+              <enabled value="true"/>
+              <foreground color="-1"/>
               <text value="Reset"/>
             </properties>
           </component>
