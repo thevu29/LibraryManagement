@@ -5,13 +5,14 @@ import customer.model.Customer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class CustomerForm {
-    private ArrayList<Customer> customerList = new ArrayList<>();
+    private ArrayList<Customer> customerList;
     private DefaultTableModel tblModel;
     private TableRowSorter<DefaultTableModel> sorter;
     private JTextField txtId;
@@ -19,6 +20,7 @@ public class CustomerForm {
     private JTextField txtEmail;
 
     public CustomerForm() {
+        initTempData();
         initTable();
         renderToTable();
 
@@ -88,7 +90,17 @@ public class CustomerForm {
         btnFilter.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                filter(txtId.getText());
+                filter();
+            }
+        });
+
+        btnReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtId.setText("");
+                txtName.setText("");
+                txtEmail.setText("");
+                sorter.setRowFilter(null);
             }
         });
     }
@@ -107,15 +119,26 @@ public class CustomerForm {
         return suggestion;
     }
 
-    public void filter(String text) {
+    public void filter() {
         sorter = new TableRowSorter<DefaultTableModel>(tblModel);
         tblCustomers.setRowSorter(sorter);
 
-        if (text.length() == 0) {
-            sorter.setRowFilter(null);
-        } else {
-            sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-        }
+        String id = txtId.getText();
+        String name = txtName.getText();
+        String email = txtEmail.getText();
+
+        RowFilter<TableModel, Object> filter = new RowFilter<TableModel, Object>() {
+            public boolean include(Entry<? extends TableModel, ? extends Object> entry) {
+                String rowId = entry.getStringValue(0);
+                String rowName = entry.getStringValue(1);
+                String rowEmail = entry.getStringValue(2);
+
+                return rowId.toLowerCase().contains(id.toLowerCase()) && rowName.toLowerCase().contains(name.toLowerCase())
+                        && rowEmail.toLowerCase().contains(email.toLowerCase());
+            }
+        };
+
+        sorter.setRowFilter(filter);
     }
 
     public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone, String btnText) {
@@ -161,7 +184,10 @@ public class CustomerForm {
         for (int i = 0; i < columns.length; i++) {
             tblCustomers.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+    }
 
+    public void initTempData() {
+        customerList = new ArrayList<>();
         for (int i = 1; i <= 10; i++) {
             String tmp = "CUS00" + i;
             customerList.add((new Customer(tmp, "Thế Vũ", "Nam", "29-08-2003", "HCM", "aaa@gmail.com", "0123456789")));

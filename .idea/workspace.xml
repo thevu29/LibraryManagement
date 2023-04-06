@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="add nhưng không thêm vào auto suggesst">
+    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="xong phần suggest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/ui/CustomerForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/customer/ui/CustomerForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,53 +67,27 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerForm">
+  <component name="RunManager" selected="Application.CustomerForm (2)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="customer.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -140,13 +113,39 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="customer.ui.test" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="customer.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="customer.ui.test" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="customer.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.CustomerForm (3)" />
-        <item itemvalue="Application.CustomerForm (5)" />
         <item itemvalue="Application.CustomerForm (2)" />
-        <item itemvalue="Application.CustomerForm (4)" />
+        <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.CustomerForm (1)" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.test (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -239,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680756704417</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="xong phần suggest">
+      <created>1680760785455</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680760785455</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,7 +279,8 @@
     <MESSAGE value="Add database, mysql connector." />
     <MESSAGE value="add, delete, edit info, auto suggest" />
     <MESSAGE value="add nhưng không thêm vào auto suggesst" />
-    <option name="LAST_COMMIT_MESSAGE" value="add nhưng không thêm vào auto suggesst" />
+    <MESSAGE value="xong phần suggest" />
+    <option name="LAST_COMMIT_MESSAGE" value="xong phần suggest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
