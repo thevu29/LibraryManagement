@@ -5,6 +5,7 @@ import customer.model.Customer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,12 +13,15 @@ import java.util.ArrayList;
 public class CustomerForm {
     private ArrayList<Customer> customerList = new ArrayList<>();
     private DefaultTableModel tblModel;
+    private TableRowSorter<DefaultTableModel> sorter;
+    private JTextField txtId;
+    private JTextField txtName;
+    private JTextField txtEmail;
 
     public CustomerForm() {
         initTable();
         renderToTable();
         initComboBox();
-        createFilterTextField();
 
         btnAdd.addActionListener(new ActionListener() {
             @Override
@@ -77,12 +81,37 @@ public class CustomerForm {
                 }
             }
         });
+
+        createFilterTextField();
+        btnFilter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filter(txtId.getText());
+            }
+        });
+    }
+
+    public void filter(String text) {
+        sorter = new TableRowSorter<DefaultTableModel>(tblModel);
+        tblCustomers.setRowSorter(sorter);
+
+        if (text.length() == 0) {
+            sorter.setRowFilter(null);
+        } else {
+            sorter.setRowFilter(RowFilter.regexFilter(text));
+        }
     }
 
     public void createFilterTextField() {
-        JTextField txtId = AutoSuggestComboBox.createTextField(cbxCustomerId, btnDeleteId);
-        JTextField txtName = AutoSuggestComboBox.createTextField(cbxCustomerName, btnDeleteName);
-        JTextField txtEmail = AutoSuggestComboBox.createTextField(cbxCustomerEmail, btnDeleteEmail);
+        txtId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, btnDeleteId);
+        txtName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, btnDeleteName);
+        txtEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, btnDeleteEmail);
+    }
+
+    public void createFilterTextField(JTextField txtId, JTextField txtName, JTextField txtEmail) {
+        this.txtId = txtId;
+        this.txtName = txtName;
+        this.txtEmail = txtEmail;
     }
 
     public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone, String btnText) {
@@ -150,8 +179,28 @@ public class CustomerForm {
         return customerList;
     }
 
-    public void setCustomerList(ArrayList<Customer> customerList) {
-        this.customerList = customerList;
+    public JComboBox getCbxCustomerId() {
+        return cbxCustomerId;
+    }
+
+    public JButton getBtnDeleteId() {
+        return btnDeleteId;
+    }
+
+    public JComboBox getCbxCustomerName() {
+        return cbxCustomerName;
+    }
+
+    public JButton getBtnDeleteName() {
+        return btnDeleteName;
+    }
+
+    public JComboBox getCbxCustomerEmail() {
+        return cbxCustomerEmail;
+    }
+
+    public JButton getBtnDeleteEmail() {
+        return btnDeleteEmail;
     }
 
     public static void main(String[] args) {

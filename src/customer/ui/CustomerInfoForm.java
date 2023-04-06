@@ -1,5 +1,6 @@
 package customer.ui;
 
+import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import customer.model.Customer;
 
 import javax.swing.*;
@@ -31,32 +32,35 @@ public class CustomerInfoForm extends JFrame {
     }
 
     public void addCustomer() {
-        if (!validateEmpty()) {
-            return;
-        }
+//        if (!validateEmpty()) {
+//            return;
+//        }
+//
+//        String id = txtCustomerId.getText();
+//
+//        for (Customer customer : customerForm.getCustomerList()) {
+//            if (customer.getCustomerId().equals(id)) {
+//                JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
+//                return;
+//            }
+//        }
+//
+//        String name = txtCustomerName.getText();
+//        String dob = txtCustomerDOB.getText();
+//        String address = txtCustomerAddress.getText();
+//        String email = txtCustomerEmail.getText();
+//        String phone = txtCustomerPhone.getText();
+//        String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
 
-        String id = txtCustomerId.getText();
-
-        for (Customer customer : customerForm.getCustomerList()) {
-            if (customer.getCustomerId().equals(id)) {
-                JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-        }
-
-        String name = txtCustomerName.getText();
-        String dob = txtCustomerDOB.getText();
-        String address = txtCustomerAddress.getText();
-        String email = txtCustomerEmail.getText();
-        String phone = txtCustomerPhone.getText();
-        String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
-
-        Customer customer = new Customer(id, name, dob, gender, address, email, phone);
+//        Customer customer = new Customer(id, name, dob, gender, address, email, phone);
+        Customer customer = new Customer("CUS011", "Minh Nam", "Nam", "29-08-2003", "HCM", "bbb@gmail.com", "0123456789");
         customerForm.getCustomerList().add(customer);
 
         JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
         dispose();
         customerForm.renderToTable();
+        customerForm.initComboBox();
+        resetFilterTextField();
     }
 
     public void editCustomerInfo() {
@@ -87,6 +91,14 @@ public class CustomerInfoForm extends JFrame {
                 return;
             }
         }
+    }
+
+    public void resetFilterTextField() {
+        JTextField txtId = AutoSuggestComboBox.createWithDelete(customerForm.getCbxCustomerId(), customerForm.getBtnDeleteId());
+        JTextField txtName = AutoSuggestComboBox.createWithDelete(customerForm.getCbxCustomerName(), customerForm.getBtnDeleteName());
+        JTextField txtEmail = AutoSuggestComboBox.createWithDelete(customerForm.getCbxCustomerEmail(), customerForm.getBtnDeleteEmail());
+
+        customerForm.createFilterTextField(txtId, txtName, txtEmail);
     }
 
     public boolean validateEmpty() {

@@ -19,9 +19,11 @@ public class AutoSuggestComboBox {
 
         for (String s : sortedList) {
             if (s.toLowerCase().contains(text.toLowerCase())) {
+                System.out.print(s + " ");
                 model.addElement(s);
             }
         }
+        System.out.println();
         return model;
     }
 
@@ -91,7 +93,7 @@ public class AutoSuggestComboBox {
         return textField;
     }
 
-    static public JTextField createTextField(JComboBox<String> comboBox, JButton btnDelete) {
+    static public JTextField createWithDelete(JComboBox<String> comboBox, JButton btnDelete) {
         ArrayList<String> suggestion = new ArrayList<>();
         for (int i = 0; i < comboBox.getItemCount(); i++) {
             suggestion.add(comboBox.getItemAt(i).toString());
