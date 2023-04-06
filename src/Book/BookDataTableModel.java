@@ -9,7 +9,7 @@ import java.util.Objects;
 public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
 
 
-    private final String[] cols = {"Mã Sách", "Tên Sách", "Tác Giả", "Nhà Phát Hành", "Thể Loại", "Vị Trí", "Giá", "Tình Trạng"};
+    private final String[] cols = {"Mã Sách", "Tên Sách", "Tác Giả", "Nhà Phát Hành", "Thể Loại", "Vị Trí", "Giá", "Tình Trạng", "Ngôn ngữ"};
 
     private boolean isEditable = true;
 
@@ -53,7 +53,7 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
 
     @Override
     public String getColumnName(int column) { return cols[column]; }
-    public boolean isCellEditable(int row, int column) { return isEditable;}
+    public boolean isCellEditable(int row, int column) { return false;}
     public void setValueAt(Object value, int row, int col) {
 //        rows.get(row).set(col, (String) value);
         fireTableCellUpdated(row, col);
@@ -101,6 +101,9 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
             }
             case 7 -> {
                 return book.getBookStatus().toString();
+            }
+            case 8 -> {
+                return book.getLanguage();
             }
         }
         return null;

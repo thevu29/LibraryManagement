@@ -13,14 +13,15 @@ public class AutoSuggestComboBox {
     public static DefaultComboBoxModel<String> getSuggestedModel(List<String> list, String text) {
         DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
         var sortedList = new TreeSet<>(list.stream().map(String::strip).sorted().toList());
-        model.addElement(text);
-        sortedList.remove(text);
+//        model.addElement(text);
+//        sortedList.remove(text);
 
         for (String s : sortedList) {
             if (s.toLowerCase().contains(text.toLowerCase())) {
                 model.addElement(s);
             }
         }
+
         return model;
     }
 
@@ -81,9 +82,8 @@ public class AutoSuggestComboBox {
         }
     }
 
-
-    static public JTextField createWithDelete(JComboBox<String> comboBox, int col,
-                                              Function<Integer, List<String>> function, JButton deleteButton) {
+    static public JTextField createWithDeleteBtn(JComboBox<String> comboBox, int col,
+                                                 Function<Integer, List<String>> function, JButton deleteButton) {
         var textField = create(comboBox, col, function);
 
         deleteButton.addActionListener(e -> {

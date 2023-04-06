@@ -1,9 +1,8 @@
 package Book;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Book {
+public class Book implements Cloneable {
 
     static int priceCounter = 0;
     private String id;
@@ -14,6 +13,8 @@ public class Book {
     private String location;
     private long price;
     private EBookStatus bookStatus;
+    private String language;
+
 
     public String getId() {
         return id;
@@ -79,7 +80,23 @@ public class Book {
         this.bookStatus = bookStatus;
     }
 
-    public Book(String id, String name, ArrayList<String> authors, ArrayList<String> publisher, ArrayList<String> genre, String location, long price, EBookStatus bookStatus) {
+    public static int getPriceCounter() {
+        return priceCounter;
+    }
+
+    public static void setPriceCounter(int priceCounter) {
+        Book.priceCounter = priceCounter;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Book(String id, String name, ArrayList<String> authors, ArrayList<String> publisher, ArrayList<String> genre, String location, long price, EBookStatus bookStatus, String language) {
         this.id = id;
         this.name = name;
         this.authors = authors;
@@ -88,7 +105,9 @@ public class Book {
         this.location = location;
         this.price = price;
         this.bookStatus = bookStatus;
+        this.language = language;
     }
+
 
     public static Book createTestBook() {
         ArrayList<String> authors = new ArrayList<>();
@@ -103,6 +122,43 @@ public class Book {
         genre.add("Xin chàp");
         genre.add("Wp");
 
-        return new Book(String.valueOf(priceCounter), "HelloA"+priceCounter, authors, publisher, genre, "Nep", priceCounter++, EBookStatus.AVAILABLE);
+        return new Book(String.valueOf(priceCounter), "HelloA"+priceCounter, authors, publisher, genre, "Nep", priceCounter++, EBookStatus.AVAILABLE, "English");
+    }
+
+
+    @Override
+    public Book clone() {
+        try {
+            Book clone = (Book) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+    public void cloneFrom(Book book) {
+        this.id = book.id;
+        this.name = book.name;
+        this.authors = book.authors;
+        this.publisher = book.publisher;
+        this.genre = book.genre;
+        this.location = book.location;
+        this.price = book.price;
+        this.bookStatus = book.bookStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", authors=" + authors +
+                ", publisher=" + publisher +
+                ", genre=" + genre +
+                ", location='" + location + '\'' +
+                ", price=" + price +
+                ", bookStatus=" + bookStatus +
+                '}';
     }
 }

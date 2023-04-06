@@ -20,6 +20,10 @@ public abstract class AbstractTableModelWithFilters<T> extends AbstractTableMode
         filterFields.remove(column);
     }
 
+    public T get(int row) {
+        return rows.get(row);
+    }
+
     public void resetFilter() {
         filterFields.clear();
     }
