@@ -1,4 +1,4 @@
-package customer.model;
+package Customer.model;
 public class Membership {
     private String membershipId;
     private String registrationDate;

@@ -1,4 +1,4 @@
-package customer.model;
+package Customer.model;
 public class MembershipType {
     private String typeName;
     private double discount;

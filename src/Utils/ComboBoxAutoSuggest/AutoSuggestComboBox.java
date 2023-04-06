@@ -1,6 +1,6 @@
 package Utils.ComboBoxAutoSuggest;
 
-import customer.model.Customer;
+import Customer.model.Customer;
 
 import javax.swing.*;
 import javax.swing.event.PopupMenuEvent;

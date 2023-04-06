@@ -1,7 +1,6 @@
-package customer.ui;
+package Customer.ui;
 
-import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
-import customer.model.Customer;
+import Customer.model.Customer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,12 +11,15 @@ public class CustomerInfoForm extends JFrame {
     private CustomerForm customerForm;
     private boolean isEditMode;
 
-    public CustomerInfoForm(CustomerForm customerForm, String id, String name, String dob, String gender, String address, String email, String phone, String btnText) {
+    public CustomerInfoForm(CustomerForm customerForm, String id, String name, String dob, String gender, String address, String email,
+                                String phone, String membership, String btnText) {
+
         this.customerForm = customerForm;
         isEditMode = btnText.equals("Lưu thông tin") ? true : false;
         initGenderValues();
+        initMembershipValues();
         setInset();
-        setInfo(id, name, dob, gender, address, email, phone, btnText);
+        setInfo(id, name, dob, gender, address, email, phone, membership, btnText);
 
         btnSave.addActionListener(new ActionListener() {
             @Override
@@ -53,12 +55,12 @@ public class CustomerInfoForm extends JFrame {
     //        String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
 
     //        Customer customer = new Customer(id, name, dob, gender, address, email, phone);
-            Customer customer = new Customer("CUS011", "Minh Nam", "Nam", "29-08-2003", "HCM", "bbb@gmail.com", "0123456789");
+            Customer customer = new Customer("CUS006", "Minh Nam", "Nam", "29-08-2003", "HCM", "bbb@gmail.com", "0123456789", "Bạc");
             customerForm.getCustomerList().add(customer);
 
             JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
             dispose();
-            customerForm.renderToTable();
+            customerForm.renderToCustomerTable();
             customerForm.initComboBox();
         }
 
@@ -86,7 +88,7 @@ public class CustomerInfoForm extends JFrame {
 
                 JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
                 dispose();
-                customerForm.renderToTable();
+                customerForm.renderToCustomerTable();
                 return;
             }
         }
@@ -131,7 +133,9 @@ public class CustomerInfoForm extends JFrame {
         txtCustomerPhone.setMargin(inset);
     }
 
-    public void setInfo(String id, String name, String dob, String gender, String address, String email, String phone, String btnText) {
+    public void setInfo(String id, String name, String dob, String gender, String address, String email, String phone, String membership,
+                        String btnText) {
+
         txtCustomerId.setText(id);
         txtCustomerName.setText(name);
         txtCustomerDOB.setText(dob);
@@ -139,11 +143,24 @@ public class CustomerInfoForm extends JFrame {
         txtCustomerEmail.setText(email);
         txtCustomerPhone.setText(phone);
 
-        int i = gender.equals("Nữ") ? 1 : 0;
-        cbxGender.setSelectedIndex(i);
+        int index = gender.equals("Nữ") ? 1 : 0;
+        cbxGender.setSelectedIndex(index);
+
+        for (int i = 0; i < cbxMembership.getItemCount(); i++) {
+            if (cbxMembership.getItemAt(i).equals(membership)) {
+                cbxMembership.setSelectedIndex(i);
+                break;
+            }
+        }
 
         btnSave.setText(btnText);
         txtCustomerId.setEnabled(!isEditMode);
+    }
+
+    public void initMembershipValues() {
+        cbxMembership.addItem("Bình thường");
+        cbxMembership.addItem("Bạc");
+        cbxMembership.addItem("Vàng");
     }
 
     public void initGenderValues() {
@@ -165,4 +182,5 @@ public class CustomerInfoForm extends JFrame {
     private JButton btnSave;
     private JButton btnReset;
     private JComboBox cbxGender;
+    private JComboBox cbxMembership;
 }

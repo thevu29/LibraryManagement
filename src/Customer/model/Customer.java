@@ -1,4 +1,4 @@
-package customer.model;
+package Customer.model;
 
 public class Customer {
     private String customerId;
@@ -8,13 +8,13 @@ public class Customer {
     private String customerAddress;
     private String customerEmail;
     private String customerPhone;
-    private Membership membership;
+    private String membership;
 
     public Customer() {
     }
 
     public Customer(String customerId, String customerName, String customerGender, String customerDOB, String customerAddress,
-                    String customerEmail, String customerPhone) {
+                    String customerEmail, String customerPhone, String membership) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerGender = customerGender;
@@ -22,6 +22,7 @@ public class Customer {
         this.customerAddress = customerAddress;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;
+        this.membership = membership;
     }
 
     public String getCustomerId() {
@@ -78,5 +79,13 @@ public class Customer {
 
     public void setCustomerPhone(String customerPhone) {
         this.customerPhone = customerPhone;
+    }
+
+    public String getMembership() {
+        return membership;
+    }
+
+    public void setMembership(String membership) {
+        this.membership = membership;
     }
 }
