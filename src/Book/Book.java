@@ -14,6 +14,7 @@ public class Book implements Cloneable {
     private long price;
     private EBookStatus bookStatus;
     private String language;
+    private String description;
 
 
     public String getId() {
@@ -72,12 +73,34 @@ public class Book implements Cloneable {
         this.price = price;
     }
 
+    public void setPrice(String price) {
+        this.price = Long.parseLong(price);
+    }
+
     public EBookStatus getBookStatus() {
         return bookStatus;
     }
 
     public void setBookStatus(EBookStatus bookStatus) {
         this.bookStatus = bookStatus;
+    }
+
+    public void setBookStatus(String bookStatus) {
+        if (bookStatus.equals(String.valueOf(EBookStatus.SOLD))) {
+            this.bookStatus = EBookStatus.SOLD;
+        }
+        else if (bookStatus.equals(String.valueOf(EBookStatus.MISSING))) {
+            this.bookStatus = EBookStatus.MISSING;
+        }
+        else if (bookStatus.equals(String.valueOf(EBookStatus.IN_USE))) {
+            this.bookStatus = EBookStatus.IN_USE;
+        }
+        else if (bookStatus.equals(String.valueOf(EBookStatus.BORROWED))) {
+            this.bookStatus = EBookStatus.BORROWED;
+        }
+        else if (bookStatus.equals(String.valueOf(EBookStatus.AVAILABLE))) {
+            this.bookStatus = EBookStatus.AVAILABLE;
+        }
     }
 
     public static int getPriceCounter() {
@@ -146,6 +169,7 @@ public class Book implements Cloneable {
         this.location = book.location;
         this.price = book.price;
         this.bookStatus = book.bookStatus;
+        this.description = book.description;
     }
 
     @Override
@@ -160,5 +184,14 @@ public class Book implements Cloneable {
                 ", price=" + price +
                 ", bookStatus=" + bookStatus +
                 '}';
+    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

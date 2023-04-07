@@ -5,25 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="Add database, mysql connector.">
-      <change afterPath="$PROJECT_DIR$/src/Book/BookFormBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/AbstractConnectionModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/BaseModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/DefaultConnectionModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/IAbstractModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/BindingListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/a.jfd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LibraryManagementGUI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/LibraryManagementGUI.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Book/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Book/BookEditorDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookEditorDialog.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Book/BookEditorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookEditorDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainGUI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainGUI/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/EBookStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/EBookStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/BindingListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/BindingListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ComboBoxAutoSuggest/AutoSuggestComboBox.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +32,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -61,7 +49,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Nep&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Programming/JetBrainProjects/IDEA/LibraryManagementGUI/src/MainGUI&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -137,12 +125,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerInfoForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="customer.ui.CustomerInfoForm" />
+    <configuration name="NhanVienC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienC" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="customer.ui.*" />
+          <option name="PATTERN" value="NhanVien.form.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -150,8 +138,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NhanVienC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienC" />
+    <configuration name="adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NhanVien.form.adminNhanVien" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
@@ -172,10 +160,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BookGUI" />
-        <item itemvalue="Application.BookEditorDialog" />
+        <item itemvalue="Application.adminNhanVien" />
         <item itemvalue="Application.NhanVienC" />
-        <item itemvalue="Application.CustomerInfoForm" />
         <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.BookEditorDialog" />
       </list>
     </recent_temporary>
   </component>
@@ -249,6 +237,11 @@
       <workItem from="1680481447018" duration="5322000" />
       <workItem from="1680687452764" duration="189000" />
       <workItem from="1680706057001" duration="781000" />
+      <workItem from="1680775260210" duration="421000" />
+      <workItem from="1680783421174" duration="8000" />
+      <workItem from="1680788388397" duration="145000" />
+      <workItem from="1680796817235" duration="5978000" />
+      <workItem from="1680838553924" duration="67000" />
     </task>
     <task id="LOCAL-00001" summary="First Init">
       <created>1676216964949</created>
@@ -302,6 +295,11 @@
           <url>file://$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java</url>
           <line>33</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Book/Book.java</url>
+          <line>171</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
