@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="xong add, delete, edit, reset membership">
+    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="xong filter membership">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainGUI/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainGUI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,65 +71,13 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerForm">
+  <component name="RunManager" selected="Application.MainWindow (3)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
@@ -154,12 +104,64 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
+    <configuration name="MainWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Customer.ui.*" />
+          <option name="PATTERN" value="MainForm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainWindow (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainForm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainWindow (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainForm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainWindow (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainForm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.CustomerForm (2)" />
-        <item itemvalue="Application.CustomerForm (1)" />
-        <item itemvalue="Application.CustomerForm (4)" />
-        <item itemvalue="Application.CustomerForm (5)" />
+        <item itemvalue="Application.MainWindow (3)" />
+        <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.MainWindow (2)" />
+        <item itemvalue="Application.MainWindow (5)" />
+        <item itemvalue="Application.MainWindow (4)" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680847329388</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="xong filter membership">
+      <created>1680848218799</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1680848218799</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +327,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="customer" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -340,7 +349,8 @@
     <MESSAGE value="giao diện membership" />
     <MESSAGE value="add file CustomerList và chuyển những hàm add, delete, edit sang để sau này dễ dàng cho phần DAO" />
     <MESSAGE value="xong add, delete, edit, reset membership" />
-    <option name="LAST_COMMIT_MESSAGE" value="xong add, delete, edit, reset membership" />
+    <MESSAGE value="xong filter membership" />
+    <option name="LAST_COMMIT_MESSAGE" value="xong filter membership" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

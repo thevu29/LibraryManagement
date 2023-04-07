@@ -332,6 +332,10 @@ public class CustomerForm {
         return tblCustomerModel;
     }
 
+    public JPanel getContentPanel() {
+        return mainPanel;
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("CustomerForm");
         frame.setContentPane(new CustomerForm().mainPanel);
