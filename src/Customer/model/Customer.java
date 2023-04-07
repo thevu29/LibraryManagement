@@ -9,6 +9,8 @@ public class Customer {
     private String customerEmail;
     private String customerPhone;
     private String membership;
+    private String registrationDate;
+    private String expirationDate;
 
     public Customer() {
     }
@@ -87,5 +89,21 @@ public class Customer {
 
     public void setMembership(String membership) {
         this.membership = membership;
+    }
+
+    public String getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(String registrationDate) {
+        this.registrationDate = registrationDate;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
     }
 }

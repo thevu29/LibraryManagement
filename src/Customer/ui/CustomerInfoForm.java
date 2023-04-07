@@ -1,6 +1,7 @@
 package Customer.ui;
 
 import Customer.model.Customer;
+import Customer.model.Membership;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -19,6 +20,7 @@ public class CustomerInfoForm extends JFrame {
         initMembershipValues();
         setInset();
         setInfo(id, name, dob, gender, address, email, phone, membership, btnText);
+        hideRegisAndExpireDate();
 
         btnSave.addActionListener(new ActionListener() {
             @Override
@@ -30,37 +32,64 @@ public class CustomerInfoForm extends JFrame {
                 }
             }
         });
-    }
 
-        public void addCustomer() {
-            if (!validateEmpty()) {
-                return;
+        btnReset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!isEditMode) {
+                    txtCustomerId.setText("");
+                }
+                txtCustomerName.setText("");
+                txtCustomerDOB.setText("");
+                cbxGender.setSelectedIndex(0);
+                txtCustomerAddress.setText("");
+                txtCustomerEmail.setText("");
+                txtCustomerPhone.setText("");
+                cbxMembership.setSelectedIndex(0);
             }
+        });
 
-            String id = txtCustomerId.getText();
-
-            for (Customer customer : customerForm.getCustomerListInstance().getCustomerList()) {
-                if (customer.getCustomerId().equals(id)) {
-                    JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
+        cbxMembership.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedItem = cbxMembership.getSelectedItem().toString();
+                if (selectedItem.equals("Bình thường")) {
+                    hideRegisAndExpireDate();
+                } else {
+                    showRegisAndExpireDate();
                 }
             }
+        });
+    }
 
-            String name = txtCustomerName.getText();
-            String dob = txtCustomerDOB.getText();
-            String address = txtCustomerAddress.getText();
-            String email = txtCustomerEmail.getText();
-            String phone = txtCustomerPhone.getText();
-            String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
-            String membership = cbxMembership.getItemAt(cbxMembership.getSelectedIndex()).toString();
-
-            Customer customer = new Customer(id, name, dob, gender, address, email, phone, membership);
-            customerForm.getCustomerListInstance().getCustomerList().add(customer);
-
-            JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
-            dispose();
-            customerForm.getCustomerListInstance().renderToCustomerTable(customerForm.getTblCustomerModel());
+    public void addCustomer() {
+        if (!validateEmpty()) {
+            return;
         }
+
+        String id = txtCustomerId.getText();
+        for (Customer customer : customerForm.getCustomerListInstance().getCustomerList()) {
+            if (customer.getCustomerId().equals(id)) {
+                JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        }
+
+        String name = txtCustomerName.getText();
+        String dob = txtCustomerDOB.getText();
+        String address = txtCustomerAddress.getText();
+        String email = txtCustomerEmail.getText();
+        String phone = txtCustomerPhone.getText();
+        String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
+        String membership = cbxMembership.getItemAt(cbxMembership.getSelectedIndex()).toString();
+
+        Customer customer = new Customer(id, name, dob, gender, address, email, phone, membership);
+        customerForm.getCustomerListInstance().addCustomer(customer);
+
+        JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
+        dispose();
+        customerForm.getCustomerListInstance().renderToTable(customerForm.getTblCustomerModel());
+    }
 
     public void editCustomerInfo() {
         if (!validateEmpty()) {
@@ -81,7 +110,7 @@ public class CustomerInfoForm extends JFrame {
 
         JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
         dispose();
-        customerForm.getCustomerListInstance().renderToCustomerTable(customerForm.getTblCustomerModel());
+        customerForm.getCustomerListInstance().renderToTable(customerForm.getTblCustomerModel());
     }
 
     public boolean validateEmpty() {
@@ -113,6 +142,20 @@ public class CustomerInfoForm extends JFrame {
         return true;
     }
 
+    public void showRegisAndExpireDate() {
+        lblRegisDate.setVisible(true);
+        lblExpireDate.setVisible(true);
+        txtRegisDate.setVisible(true);
+        txtExpireDate.setVisible(true);
+    }
+
+    public void hideRegisAndExpireDate() {
+        lblRegisDate.setVisible(false);
+        lblExpireDate.setVisible(false);
+        txtRegisDate.setVisible(false);
+        txtExpireDate.setVisible(false);
+    }
+
     public void setInset() {
         Insets inset = new Insets(4, 10, 4, 10);
         txtCustomerId.setMargin(inset);
@@ -121,6 +164,8 @@ public class CustomerInfoForm extends JFrame {
         txtCustomerAddress.setMargin(inset);
         txtCustomerEmail.setMargin(inset);
         txtCustomerPhone.setMargin(inset);
+        txtRegisDate.setMargin(inset);
+        txtExpireDate.setMargin(inset);
     }
 
     public void setInfo(String id, String name, String dob, String gender, String address, String email, String phone, String membership,
@@ -147,9 +192,9 @@ public class CustomerInfoForm extends JFrame {
     }
 
     public void initMembershipValues() {
-        cbxMembership.addItem("Bình thường");
-        cbxMembership.addItem("Bạc");
-        cbxMembership.addItem("Vàng");
+        for (Membership membership : customerForm.getMembershipListInstance().getMembershipList()) {
+            cbxMembership.addItem(membership.getMembershipName());
+        }
     }
 
     public void initGenderValues() {
@@ -172,4 +217,8 @@ public class CustomerInfoForm extends JFrame {
     private JButton btnReset;
     private JComboBox cbxGender;
     private JComboBox cbxMembership;
+    private JTextField txtRegisDate;
+    private JTextField txtExpireDate;
+    private JLabel lblRegisDate;
+    private JLabel lblExpireDate;
 }

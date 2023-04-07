@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="giao diện membership">
+    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="add file CustomerList và chuyển những hàm add, delete, edit sang để sau này dễ dàng cho phần DAO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/icons/add_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/icons/edit.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/icons/edit_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/icons/search_icon.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/model/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/model/Membership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/model/Membership.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/MembershipType.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +79,7 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -177,10 +173,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.CustomerForm (5)" />
+        <item itemvalue="Application.CustomerForm (1)" />
         <item itemvalue="Application.CustomerForm (4)" />
+        <item itemvalue="Application.CustomerForm (5)" />
         <item itemvalue="Application.CustomerForm (3)" />
-        <item itemvalue="Application.CustomerForm (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -294,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680767480134</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add file CustomerList và chuyển những hàm add, delete, edit sang để sau này dễ dàng cho phần DAO">
+      <created>1680788561685</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680788561685</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,7 +314,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="customer" />
+                        <option value="origin/Nep" />
                       </list>
                     </value>
                   </entry>
@@ -331,7 +334,8 @@
     <MESSAGE value="xong phần suggest" />
     <MESSAGE value="xong filter, reset" />
     <MESSAGE value="giao diện membership" />
-    <option name="LAST_COMMIT_MESSAGE" value="giao diện membership" />
+    <MESSAGE value="add file CustomerList và chuyển những hàm add, delete, edit sang để sau này dễ dàng cho phần DAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="add file CustomerList và chuyển những hàm add, delete, edit sang để sau này dễ dàng cho phần DAO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -59,7 +59,7 @@
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                             <minimum-size width="-1" height="60"/>
-                            <preferred-size width="200" height="200"/>
+                            <maximum-size width="-1" height="60"/>
                           </grid>
                         </constraints>
                         <properties/>
@@ -159,7 +159,7 @@
                             <properties/>
                             <border type="none"/>
                             <children>
-                              <component id="f4ba0" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+                              <component id="f4ba0" class="javax.swing.JComboBox" binding="cbxCusMembership">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
                                   <gridbag weightx="1.0" weighty="1.0"/>
@@ -198,7 +198,7 @@
                           </hspacer>
                           <component id="6201a" class="javax.swing.JButton" binding="btnFilterCustomer">
                             <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false">
                                 <maximum-size width="120" height="-1"/>
                               </grid>
                             </constraints>
@@ -322,7 +322,7 @@
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                                 <minimum-size width="-1" height="60"/>
-                                <preferred-size width="200" height="200"/>
+                                <maximum-size width="-1" height="60"/>
                               </grid>
                             </constraints>
                             <properties/>
@@ -330,7 +330,7 @@
                             <children>
                               <grid id="dbe42" layout-manager="GridBagLayout">
                                 <constraints>
-                                  <tabbedpane title="Mã thành viên"/>
+                                  <tabbedpane title="Mã loại thành viên"/>
                                 </constraints>
                                 <properties/>
                                 <border type="none"/>
@@ -359,7 +359,7 @@
                               </grid>
                               <grid id="ac230" layout-manager="GridBagLayout">
                                 <constraints>
-                                  <tabbedpane title="Tên thành viên"/>
+                                  <tabbedpane title="Tên loại thành viên"/>
                                 </constraints>
                                 <properties/>
                                 <border type="none"/>
@@ -379,6 +379,8 @@
                                       <gridbag top="0" left="8" bottom="0" right="10" weightx="0.0" weighty="1.0"/>
                                     </constraints>
                                     <properties>
+                                      <background color="-11107086"/>
+                                      <foreground color="-1"/>
                                       <text value="Xóa"/>
                                     </properties>
                                   </component>
@@ -396,7 +398,7 @@
                             <children>
                               <component id="b875a" class="javax.swing.JButton" binding="btnFilterMembership">
                                 <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
                                 </constraints>
                                 <properties>
                                   <background color="-11107086"/>
@@ -433,7 +435,7 @@
                     <properties>
                       <background color="-11107086"/>
                       <foreground color="-1"/>
-                      <text value="Thêm thành viên"/>
+                      <text value="Thêm loại thành viên"/>
                     </properties>
                   </component>
                   <vspacer id="8aae6">
@@ -448,7 +450,7 @@
                     <properties>
                       <background color="-11107086"/>
                       <foreground color="-1"/>
-                      <text value="Xóa thành viên"/>
+                      <text value="Xóa loại thành viên"/>
                     </properties>
                   </component>
                   <component id="938ce" class="javax.swing.JButton" binding="btnEditMember">
