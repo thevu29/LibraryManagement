@@ -9,7 +9,7 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
             "Mã Chi Tiết",
             "Mã Phiếu Mượn",
             "Mã Nhân Viên",
-            "Mã Mã Sách",
+            "Mã Sách",
             "Mã Nhân Viên Xác Nhận",
     };
 

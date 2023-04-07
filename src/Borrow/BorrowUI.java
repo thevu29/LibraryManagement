@@ -12,6 +12,13 @@ public class BorrowUI {
     private JPanel panel_search;
     private JButton tìmKiếmButton;
     private JPanel panel_main;
+    private JButton btn_update;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField6;
+    private JTextField textField7;
 
     private BorrowModel model = new BorrowModel();
 

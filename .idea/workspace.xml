@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="Add database, mysql connector.">
-      <change afterPath="$PROJECT_DIR$/src/BookFault/BookFaultModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/BookFaultUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/BookFaultUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/BorrowBookFaultModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/BookFaultUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/BookFaultUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/BookFaultUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/BookFaultUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +58,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/Workspace/2_HK2/Java/LibraryManagementGUI",
     "node.js.detected.package.eslint": "true",
@@ -154,12 +153,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NhanVienC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienC" />
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainGUI.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
+          <option name="PATTERN" value="MainGUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -170,10 +169,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BookFaultUI" />
-        <item itemvalue="Application.BorrowDetailUI" />
         <item itemvalue="Application.BorrowUI" />
+        <item itemvalue="Application.BorrowDetailUI" />
         <item itemvalue="Application.BookGUI" />
-        <item itemvalue="Application.NhanVienC" />
+        <item itemvalue="Application.MainWindow" />
       </list>
     </recent_temporary>
   </component>
@@ -275,5 +274,13 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1680851897516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1680852476402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.*</FILTER>
+    </SUITE>
   </component>
 </project>

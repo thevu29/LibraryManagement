@@ -12,6 +12,10 @@ public class BookFaultUI {
     private JPanel panel_search;
     private JPanel panel_table;
     private JPanel panel_button;
+    private JButton btn_add;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
 
     private BookFaultModel model = new BookFaultModel();
 
