@@ -1,13 +1,13 @@
 package Customer.ui;
 
 import Customer.model.CustomerList;
+import Customer.model.Membership;
 import Customer.model.MembershipList;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Customer.model.Customer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +27,6 @@ public class CustomerForm {
     private TableRowSorter<DefaultTableModel> membershipSorter;
     private JTextField txtMemberId;
     private JTextField txtMemberName;
-    private JTextField txtMemberEmail;
 
     public CustomerForm() {
         handleCustomer();
@@ -81,6 +80,58 @@ public class CustomerForm {
                 showMembershipInfo(id, name, discount, "Lưu thông tin");
             }
         });
+
+        txtMemberId = AutoSuggestComboBox.createWithDelete(cbxMemId, 0, this::initMembershipSuggestion, btnDeleteMemId);
+        txtMemberName = AutoSuggestComboBox.createWithDelete(cbxMemName, 1, this::initMembershipSuggestion, btnDeleteMemName);
+
+        btnFilterMembership.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterMembership();
+            }
+        });
+
+        btnResetMember.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtMemberId.setText("");
+                txtMemberName.setText("");
+                membershipSorter.setRowFilter(null);
+            }
+        });
+    }
+
+    public void filterMembership() {
+        membershipSorter = new TableRowSorter<DefaultTableModel>(tblMembershipModel);
+        tblMemberships.setRowSorter(membershipSorter);
+
+        String id = txtMemberId.getText().toLowerCase();
+        String name = txtMemberName.getText().toLowerCase();
+
+        RowFilter<DefaultTableModel, Object> rowFilter = new RowFilter<DefaultTableModel, Object>() {
+            @Override
+            public boolean include(Entry<? extends DefaultTableModel, ?> entry) {
+                String rowId = entry.getStringValue(0).toLowerCase();
+                String rowName = entry.getStringValue(1).toLowerCase();
+
+                return rowId.contains(id) && rowName.contains(name);
+            }
+        };
+
+        membershipSorter.setRowFilter(rowFilter);
+    }
+
+    public ArrayList<String> initMembershipSuggestion(int col) {
+        ArrayList<String> suggestion = new ArrayList<>();
+        for (Membership membership : membershipList.getMembershipList()) {
+            if (col == 0) {
+                suggestion.add(membership.getMembershipId());
+            } else if (col == 1) {
+                suggestion.add(membership.getMembershipName());
+            }
+        }
+
+        return suggestion;
     }
 
     public void showMembershipInfo(String id, String name, float discount, String btnText) {
@@ -196,6 +247,29 @@ public class CustomerForm {
         });
     }
 
+    public void filterCustomer() {
+        customerSorter = new TableRowSorter<DefaultTableModel>(tblCustomerModel);
+        tblCustomers.setRowSorter(customerSorter);
+
+        String id = txtCusId.getText().toLowerCase();
+        String name = txtCusName.getText().toLowerCase();
+        String email = txtCusEmail.getText().toLowerCase();
+        String membership = txtCusMembership.getText().toLowerCase();
+
+        RowFilter<DefaultTableModel, Object> filter = new RowFilter<DefaultTableModel, Object>() {
+            public boolean include(Entry<? extends DefaultTableModel, ? extends Object> entry) {
+                String rowId = entry.getStringValue(0).toLowerCase();
+                String rowName = entry.getStringValue(1).toLowerCase();
+                String rowEmail = entry.getStringValue(2).toLowerCase();
+                String rowMember = entry.getStringValue(3).toLowerCase();
+
+                return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email) && rowMember.contains(membership);
+            }
+        };
+
+        customerSorter.setRowFilter(filter);
+    }
+
     public ArrayList<String> initCustomerSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
         for (Customer customer : customerList.getCustomerList()) {
@@ -210,29 +284,6 @@ public class CustomerForm {
             }
         }
         return suggestion;
-    }
-
-    public void filterCustomer() {
-        customerSorter = new TableRowSorter<DefaultTableModel>(tblCustomerModel);
-        tblCustomers.setRowSorter(customerSorter);
-
-        String id = txtCusId.getText().toLowerCase();
-        String name = txtCusName.getText().toLowerCase();
-        String email = txtCusEmail.getText().toLowerCase();
-        String membership = txtCusMembership.getText().toLowerCase();
-
-        RowFilter<TableModel, Object> filter = new RowFilter<TableModel, Object>() {
-            public boolean include(Entry<? extends TableModel, ? extends Object> entry) {
-                String rowId = entry.getStringValue(0).toLowerCase();
-                String rowName = entry.getStringValue(1).toLowerCase();
-                String rowEmail = entry.getStringValue(2).toLowerCase();
-                String rowMember = entry.getStringValue(3).toLowerCase();
-
-                return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email) && rowMember.contains(membership);
-            }
-        };
-
-        customerSorter.setRowFilter(filter);
     }
 
     public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone,
@@ -313,9 +364,9 @@ public class CustomerForm {
     private JTable tblMemberships;
     private JTabbedPane tabbedPane3;
     private JButton btnFilterMembership;
-    private JComboBox comboBox1;
+    private JComboBox cbxMemId;
     private JButton btnDeleteMemId;
-    private JComboBox comboBox2;
+    private JComboBox cbxMemName;
     private JButton btnDeleteMemName;
     private JComboBox cbxCusMembership;
     private JButton btnDeleteCusMembership;

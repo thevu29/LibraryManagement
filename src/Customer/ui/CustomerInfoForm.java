@@ -105,7 +105,7 @@ public class CustomerInfoForm extends JFrame {
         String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
         String membership = cbxMembership.getItemAt(cbxMembership.getSelectedIndex()).toString();
 
-        Customer cus = new Customer(id, name, dob, address, email, phone, gender, membership);
+        Customer cus = new Customer(id, name, dob, gender, address, email, phone, membership);
         customerForm.getCustomerListInstance().editCustomer(cus);
 
         JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
