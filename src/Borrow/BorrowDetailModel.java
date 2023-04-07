@@ -8,9 +8,10 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
     private final String[] cols = {
             "Mã Chi Tiết",
             "Mã Phiếu Mượn",
-            "Mã Nhân Viên",
-            "Mã Sách",
-            "Mã Nhân Viên Xác Nhận",
+            "Tên Sách",
+            "Mã Lỗi",
+            "Số Lượng",
+            "Giá Tiền",
     };
 
     private boolean isEditable = true;

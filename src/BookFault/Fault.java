@@ -1,11 +1,11 @@
 package BookFault;
 
-public class BookFault {
+public class Fault {
     private String id;
     private String tenLoi;
     private double heSo;
 
-    public BookFault(String id, String tenLoi, double heSo) {
+    public Fault(String id, String tenLoi, double heSo) {
         this.id = id;
         this.tenLoi = tenLoi;
         this.heSo = heSo;

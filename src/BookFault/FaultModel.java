@@ -4,7 +4,7 @@ import java.util.List;
 
 import Utils.AbstractTableModelWithFilters;
 
-public class BookFaultModel extends AbstractTableModelWithFilters<BookFault> {
+public class FaultModel extends AbstractTableModelWithFilters<Fault> {
     private final String[] cols = {
             "Mã Lỗi",
             "Tên Lỗi",
@@ -14,13 +14,13 @@ public class BookFaultModel extends AbstractTableModelWithFilters<BookFault> {
     private boolean isEditable = true;
 
     // Contructor
-    public BookFaultModel(boolean isEditable) {
+    public FaultModel(boolean isEditable) {
         this();
         this.isEditable = isEditable;
 
     }
 
-    public BookFaultModel() {
+    public FaultModel() {
         super();
     }
 
@@ -83,7 +83,7 @@ public class BookFaultModel extends AbstractTableModelWithFilters<BookFault> {
 
     }
 
-    public Object translateValue(BookFault bookFault, int columnIndex) {
+    public Object translateValue(Fault bookFault, int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
                 return bookFault.getId();

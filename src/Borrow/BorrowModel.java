@@ -10,9 +10,8 @@ import java.util.Objects;
 public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
     private final String[] cols = {
             "Mã Phiếu Mượn",
-            "Mã Nhân Viên",
-            "Mã Độc Giả",
-            "Mã Chi Tiết",
+            "Tên Nhân Viên",
+            "Tên Độc Giả",
             "Ngày Mượn",
             "Ngày Trả",
             "Tổng Tiền",
