@@ -8,6 +8,7 @@ public class GioHangModel implements Cloneable{
     private int solm;
     private long gia;
     private ArrayList<String> nxb;
+
     private ArrayList<Integer> idTacGia;
     private ArrayList<Integer> idTheLoai;
     private ArrayList<String> tacGia;
