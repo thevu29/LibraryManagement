@@ -1,5 +1,6 @@
 package Book;
 
+import Book.BUS.BookBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
@@ -9,6 +10,9 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Iterator;
+import java.util.concurrent.Callable;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class BookGUI {
     private JTabbedPane tabbedPane1;
@@ -36,17 +40,39 @@ public class BookGUI {
     private JButton statusDelBtn;
     private JButton thêmSáchButton;
     private JButton xóaSáchButton;
-    private JButton chỉnhSửaSáchButton;
+    private JButton editBookBtn;
+    private JButton languageDelBtn;
+    private JComboBox languageCB;
+    private JTable authorTable;
 
     private JTextField bookIDTF;
 
-    private final BookDataTableModel bookDataModel = new BookDataTableModel();
+    private final BookDataTableModel bookDataModel;
+    private final AuthorDataTableModel authorDataTableModel;
+    private final BookBUS bookBUS;
 
-    public BookGUI() {
+    public BookGUI(BookDataTableModel bookDataModel, AuthorDataTableModel authorDataTableModel, BookBUS bus) {
+        this.bookDataModel = bookDataModel;
+        this.authorDataTableModel = authorDataTableModel;
+        this.bookBUS = bus;
+
+        setupBookPanel();
+        setupAuthorPane();
+    }
+
+    private void setupAuthorPane() {
+        TableRowSorter<AuthorDataTableModel> sorter
+                = new TableRowSorter<>(authorDataTableModel);
+        authorTable.setRowSorter(sorter);
+        authorTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
+        authorTable.getTableHeader().setBackground(Color.WHITE);
+        authorTable.setModel(authorDataTableModel);
+    }
+
+    private void setupBookPanel() {
         bookDataModel.setEditable(false);
 
         bookDataModel.addTestData();
-//        table2.setModel(test);
         bookTable.setModel(bookDataModel);
         TableRowSorter<BookDataTableModel> sorter
                 = new TableRowSorter<>(bookDataModel);
@@ -64,20 +90,22 @@ public class BookGUI {
                     System.out.println("double clicked");
                     int[] pos = {bookTable.getSelectedRow(), bookTable.getSelectedColumn()};
                     System.out.println(pos[0] + " " + pos[1]);
+                    bookEditSelected();
                 }
             }
         });
         bookTable.getTableHeader().setReorderingAllowed(false);
 
 
-        var bookIDTF = AutoSuggestComboBox.createWithDelete(bookIDComboBox, 0 ,bookDataModel::getColumnValueToString, bookIDDelBtn);
-        var bookNameTF = AutoSuggestComboBox.createWithDelete(bookNameCB, 1,  bookDataModel::getColumnValueToString, bookNameDelBtn);
-        var authorTF = AutoSuggestComboBox.createWithDelete(authorCB, 2,  bookDataModel::getColumnValueToString, authorDelBtn);
-        var publisherTF = AutoSuggestComboBox.createWithDelete(publisherCB, 3,  bookDataModel::getColumnValueToString, publisherDelBtn);
-        var genreTF = AutoSuggestComboBox.createWithDelete(genreCB, 4,  bookDataModel::getColumnValueToString, genreDelBtn);
-        var locationTF = AutoSuggestComboBox.createWithDelete(locationCB, 5,  bookDataModel::getColumnValueToString, locationDelBtn);
-        var priceTF = AutoSuggestComboBox.createWithDelete(priceCB, 6,  bookDataModel::getColumnValueToString, priceDelBtn);
-        var statusField = AutoSuggestComboBox.createWithDelete(statusCB, 7, bookDataModel::getColumnValueToString, statusDelBtn);
+        var bookIDTF = AutoSuggestComboBox.createWithDeleteBtn(bookIDComboBox, 0 ,bookDataModel::getColumnValueToString, bookIDDelBtn);
+        var bookNameTF = AutoSuggestComboBox.createWithDeleteBtn(bookNameCB, 1,  bookDataModel::getColumnValueToString, bookNameDelBtn);
+        var authorTF = AutoSuggestComboBox.createWithDeleteBtn(authorCB, 2,  bookDataModel::getColumnValueToString, authorDelBtn);
+        var publisherTF = AutoSuggestComboBox.createWithDeleteBtn(publisherCB, 3,  bookDataModel::getColumnValueToString, publisherDelBtn);
+        var genreTF = AutoSuggestComboBox.createWithDeleteBtn(genreCB, 4,  bookDataModel::getColumnValueToString, genreDelBtn);
+        var locationTF = AutoSuggestComboBox.createWithDeleteBtn(locationCB, 5,  bookDataModel::getColumnValueToString, locationDelBtn);
+        var priceTF = AutoSuggestComboBox.createWithDeleteBtn(priceCB, 6,  bookDataModel::getColumnValueToString, priceDelBtn);
+        var statusField = AutoSuggestComboBox.createWithDeleteBtn(statusCB, 7, bookDataModel::getColumnValueToString, statusDelBtn);
+        var languageField = AutoSuggestComboBox.createWithDeleteBtn(statusCB, 8, bookDataModel::getColumnValueToString, languageDelBtn);
 
         bookDeleteAllButton.addActionListener(e -> {
             bookIDTF.setText("");
@@ -88,6 +116,7 @@ public class BookGUI {
             locationTF.setText("");
             priceTF.setText("");
             statusField.setText("");
+            languageField.setText("");
         });
 
         bookDataModel.setFilterField(0, bookIDTF);
@@ -98,6 +127,7 @@ public class BookGUI {
         bookDataModel.setFilterField(5, locationTF);
         bookDataModel.setFilterField(6, priceTF);
         bookDataModel.setFilterField(7, statusField);
+        bookDataModel.setFilterField(8, languageField);
 
         for (Iterator<TableColumn> it = bookTable.getColumnModel().getColumns().asIterator(); it.hasNext(); ) {
             var column = it.next();
@@ -108,18 +138,21 @@ public class BookGUI {
         bookFilterButton.addActionListener(e -> {
             TableUtils.filter(bookTable);
         });
+        editBookBtn.addActionListener(e -> {
+            bookEditSelected();
+        });
+    }
+
+    private void bookEditSelected() {
+        var rowsSelected = bookTable.getSelectedRows();
+        for (var row: rowsSelected) {
+            var coords = bookTable.getRowSorter().convertRowIndexToModel(row);
+            bookBUS.openBookEditDialog(coords);
+        }
     }
 
     public JPanel getPanel1() {
         return panel1;
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Book");
-        frame.setContentPane(new BookGUI().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 
 }

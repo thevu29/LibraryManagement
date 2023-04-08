@@ -1,8 +1,5 @@
 package MainGUI;
 
-import Book.BookEditorDialog;
-import Book.BookGUI;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,9 +12,8 @@ public class MainWindow {
 
     public MainWindow() {
 
-        var test = new BookGUI();
-        contentPanel.add("Book",test.getPanel1());
-        contentPanel.add("Dialog",new BookEditorDialog().getMainPanel());
+//        contentPanel.add("Book",test.getPanel1());
+//        contentPanel.add("Dialog",new BookEditorDialog().getMainPanel());
 
         button1.addActionListener(new ActionListener() {
             @Override
