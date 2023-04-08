@@ -6,6 +6,7 @@ public class AuthorDataTableModel extends AbstractTableModelWithFilters<Author> 
 
     public AuthorDataTableModel() {
         String[] cols = {"Id", "Tên", "Giới Tính", "Email", "Mô Tả"};
+        setCols(cols);
     }
     @Override
     public Object translateValue(Author value, int columnIndex) {

@@ -1,7 +1,7 @@
-package Book;
+package Book.DTO;
 
 import java.util.ArrayList;
-
+import Book.*;
 public class Book implements Cloneable {
 
     static int priceCounter = 0;
@@ -16,6 +16,18 @@ public class Book implements Cloneable {
     private String language;
     private String description;
 
+    public Book(String id, String name, ArrayList<String> authors, ArrayList<String> publisher, ArrayList<String> genre, String location, long price, String bookStatus, String language, String description) {
+        this.id = id;
+        this.name = name;
+        this.authors = authors;
+        this.publisher = publisher;
+        this.genre = genre;
+        this.location = location;
+        this.price = price;
+        setBookStatus(bookStatus);
+        this.language = language;
+        this.description = description;
+    }
 
     public String getId() {
         return id;
@@ -147,12 +159,21 @@ public class Book implements Cloneable {
 
         return new Book(String.valueOf(priceCounter), "HelloA"+priceCounter, authors, publisher, genre, "Nep", priceCounter++, EBookStatus.AVAILABLE, "English");
     }
+    public static Book createBlankBook() {
+        ArrayList<String> authors = new ArrayList<>();
+        ArrayList<String> publisher = new ArrayList<>();
+        ArrayList<String> genre = new ArrayList<>();
 
+        return new Book("", "", authors, publisher, genre, "", -1, EBookStatus.AVAILABLE, "");
+    }
 
     @Override
     public Book clone() {
         try {
             Book clone = (Book) super.clone();
+            clone.authors = (ArrayList<String>) this.authors.clone();
+            clone.genre = (ArrayList<String>) this.genre.clone();
+            clone.publisher = (ArrayList<String>) this.publisher.clone();
             // TODO: copy mutable state here, so the clone can't change the internals of the original
             return clone;
         } catch (CloneNotSupportedException e) {

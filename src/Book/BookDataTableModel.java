@@ -1,5 +1,6 @@
 package Book;
 
+import Book.DTO.Book;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;

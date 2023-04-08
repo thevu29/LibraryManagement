@@ -409,6 +409,36 @@
                               <editable value="true"/>
                             </properties>
                           </component>
+                          <grid id="63cd2" layout-manager="GridBagLayout">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <gridbag weightx="1.0" weighty="0.0"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="78caa" class="javax.swing.JLabel">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                                  <gridbag weightx="1.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Vị trí"/>
+                                </properties>
+                              </component>
+                              <component id="35a46" class="javax.swing.JComboBox" binding="locationCB">
+                                <constraints>
+                                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="-1"/>
+                                  </grid>
+                                  <gridbag weightx="1.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <editable value="true"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
                         </children>
                       </grid>
                       <grid id="8a395" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

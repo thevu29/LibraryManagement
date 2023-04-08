@@ -526,7 +526,7 @@
                     </properties>
                     <border type="none" title="Data"/>
                     <children>
-                      <component id="498cc" class="javax.swing.JTable">
+                      <component id="498cc" class="javax.swing.JTable" binding="authorTable">
                         <constraints/>
                         <properties>
                           <autoCreateRowSorter value="true"/>

@@ -1,5 +1,6 @@
 package Book;
 
+import Book.BUS.BookBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
@@ -42,12 +43,33 @@ public class BookGUI {
     private JButton editBookBtn;
     private JButton languageDelBtn;
     private JComboBox languageCB;
+    private JTable authorTable;
 
     private JTextField bookIDTF;
 
-    private final BookDataTableModel bookDataModel = new BookDataTableModel();
+    private final BookDataTableModel bookDataModel;
+    private final AuthorDataTableModel authorDataTableModel;
+    private final BookBUS bookBUS;
 
-    public BookGUI() {
+    public BookGUI(BookDataTableModel bookDataModel, AuthorDataTableModel authorDataTableModel, BookBUS bus) {
+        this.bookDataModel = bookDataModel;
+        this.authorDataTableModel = authorDataTableModel;
+        this.bookBUS = bus;
+
+        setupBookPanel();
+        setupAuthorPane();
+    }
+
+    private void setupAuthorPane() {
+        TableRowSorter<AuthorDataTableModel> sorter
+                = new TableRowSorter<>(authorDataTableModel);
+        authorTable.setRowSorter(sorter);
+        authorTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
+        authorTable.getTableHeader().setBackground(Color.WHITE);
+        authorTable.setModel(authorDataTableModel);
+    }
+
+    private void setupBookPanel() {
         bookDataModel.setEditable(false);
 
         bookDataModel.addTestData();
@@ -119,30 +141,18 @@ public class BookGUI {
         editBookBtn.addActionListener(e -> {
             bookEditSelected();
         });
-
     }
 
     private void bookEditSelected() {
         var rowsSelected = bookTable.getSelectedRows();
         for (var row: rowsSelected) {
             var coords = bookTable.getRowSorter().convertRowIndexToModel(row);
-            var book = bookDataModel.get(coords);
-            var dialog = new BookEditorDialog(book, bookDataModel);
-            dialog.pack();
-            dialog.setVisible(true);
+            bookBUS.openBookEditDialog(coords);
         }
     }
 
     public JPanel getPanel1() {
         return panel1;
-    }
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Book");
-        frame.setContentPane(new BookGUI().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 
 }

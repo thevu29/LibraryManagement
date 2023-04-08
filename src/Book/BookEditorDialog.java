@@ -1,5 +1,6 @@
 package Book;
 
+import Book.DTO.Book;
 import Utils.BindingListener;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 
@@ -30,6 +31,7 @@ public class BookEditorDialog extends JDialog {
     private JComboBox<String> publishYearCB;
     private JComboBox<String> languageCB;
     private JComboBox<String> totalPageCB;
+    private JComboBox locationCB;
 
     public JPanel getMainPanel() {
         return mainPanel;
