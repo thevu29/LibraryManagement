@@ -1,5 +1,6 @@
 package MainGUI;
 
+import Book.Book;
 import Book.BookEditorDialog;
 import Book.BookGUI;
 

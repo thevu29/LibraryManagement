@@ -3,7 +3,7 @@
   <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="48" y="54" width="596" height="695"/>
+      <xy x="48" y="54" width="519" height="703"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -110,7 +110,7 @@
                                 <properties/>
                                 <border type="none"/>
                                 <children>
-                                  <component id="c00a6" class="javax.swing.JComboBox" default-binding="true">
+                                  <component id="c00a6" class="javax.swing.JComboBox" binding="authorCB1">
                                     <constraints>
                                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                         <preferred-size width="150" height="-1"/>
@@ -158,7 +158,7 @@
                                 <properties/>
                                 <border type="none"/>
                                 <children>
-                                  <component id="deb0c" class="javax.swing.JComboBox" default-binding="true">
+                                  <component id="deb0c" class="javax.swing.JComboBox" binding="genreCB1">
                                     <constraints>
                                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                         <preferred-size width="150" height="-1"/>
@@ -206,10 +206,10 @@
                                   <gridbag weightx="1.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <text value="Nhà xuất bản"/>
+                                  <text value="Nhà phát hành"/>
                                 </properties>
                               </component>
-                              <component id="19a81" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="19a81" class="javax.swing.JComboBox" binding="publisherCB">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -238,7 +238,7 @@
                                   <text value="Năm xuất bản"/>
                                 </properties>
                               </component>
-                              <component id="9393a" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="9393a" class="javax.swing.JComboBox" binding="publishYearCB">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -278,7 +278,7 @@
                                   <text value="Ngôn ngữ"/>
                                 </properties>
                               </component>
-                              <component id="c620a" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="c620a" class="javax.swing.JComboBox" binding="languageCB">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -307,7 +307,7 @@
                                   <text value="Tổng số trang"/>
                                 </properties>
                               </component>
-                              <component id="f40ac" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="f40ac" class="javax.swing.JComboBox" binding="totalPageCB">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -339,7 +339,7 @@
                               <text value="Mô tả"/>
                             </properties>
                           </component>
-                          <component id="b983" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+                          <component id="b983" class="javax.swing.JTextPane" binding="descriptionField">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                                 <preferred-size width="150" height="50"/>
@@ -366,7 +366,7 @@
                               <text value="Tình trạng sách"/>
                             </properties>
                           </component>
-                          <component id="dda23" class="javax.swing.JComboBox" default-binding="true">
+                          <component id="dda23" class="javax.swing.JComboBox" binding="conditionCB">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="150" height="-1"/>
@@ -398,7 +398,7 @@
                               <text value="Tên sách"/>
                             </properties>
                           </component>
-                          <component id="588e7" class="javax.swing.JComboBox" default-binding="true">
+                          <component id="588e7" class="javax.swing.JComboBox" binding="bookNameCB">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="150" height="-1"/>
@@ -436,7 +436,7 @@
                                   <text value="Trạng thái sách"/>
                                 </properties>
                               </component>
-                              <component id="5cef0" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="5cef0" class="javax.swing.JComboBox" binding="statusCB">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -464,7 +464,7 @@
                                   <text value="Giá"/>
                                 </properties>
                               </component>
-                              <component id="fa2da" class="javax.swing.JComboBox" default-binding="true">
+                              <component id="fa2da" class="javax.swing.JComboBox" binding="priceCB">
                                 <constraints>
                                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -495,7 +495,7 @@
                               <text value="Mã Sách"/>
                             </properties>
                           </component>
-                          <component id="2062c" class="javax.swing.JComboBox" binding="textField1" default-binding="true">
+                          <component id="2062c" class="javax.swing.JComboBox" binding="bookSerialCB">
                             <constraints>
                               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                 <preferred-size width="150" height="-1"/>
