@@ -5,12 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="xong filter membership">
-      <change afterPath="$PROJECT_DIR$/src/Book/Author.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/AuthorDataTableModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainGUI/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainGUI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +26,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="customer" />
-      </map>
+      <map />
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -41,47 +39,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Nep",
-    "last_opened_file_path": "C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/LibraryManagementGUI",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/LibraryManagementGUI&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BookGUI">
-    <configuration name="BookGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Book.BookGUI" />
+  <component name="RunManager" selected="Application.BookBUS">
+    <configuration name="BookBUS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Book.BUS.BookBUS" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Book.*" />
+          <option name="PATTERN" value="Book.BUS.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -162,7 +158,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BookGUI" />
+        <item itemvalue="Application.BookBUS" />
         <item itemvalue="Application.MainWindow (3)" />
         <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.MainWindow (2)" />
@@ -223,8 +219,6 @@
       <workItem from="1678544046235" duration="820000" />
       <workItem from="1678883055296" duration="130000" />
       <workItem from="1679282641271" duration="1420000" />
-      <workItem from="1680883712745" duration="1182000" />
-      <workItem from="1680891614311" duration="2735000" />
     </task>
     <task id="LOCAL-00001" summary="First Init">
       <created>1676216964949</created>
@@ -352,11 +346,10 @@
           <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Book/Book.java</url>
-          <line>171</line>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
