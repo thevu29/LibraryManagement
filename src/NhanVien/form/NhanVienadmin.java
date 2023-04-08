@@ -65,9 +65,9 @@ public class NhanVienadmin {
 
         table1.getTableHeader().setReorderingAllowed(false);
 
-        var IDNV = AutoSuggestComboBox.createWithDelete(comboBox3, 0 , NVmodel :: getColumnValueToString, delFliterIDButton );
-        var NameNV = AutoSuggestComboBox.createWithDelete(comboBox2, 0 , NVmodel :: getColumnValueToString, delFliterNameButton );
-        var CVNV = AutoSuggestComboBox.createWithDelete(comboBox1, 0 , NVmodel :: getColumnValueToString, delFlitercvButton );
+        var IDNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox3, 0 , NVmodel :: getColumnValueToString, delFliterIDButton );
+        var NameNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox2, 0 , NVmodel :: getColumnValueToString, delFliterNameButton );
+        var CVNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox1, 0 , NVmodel :: getColumnValueToString, delFlitercvButton );
 
 
         delallButton.addActionListener(new ActionListener() {
