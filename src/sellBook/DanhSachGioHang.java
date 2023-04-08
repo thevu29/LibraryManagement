@@ -117,6 +117,7 @@ public class DanhSachGioHang {
 
                 dtm.removeFilterField(row);
 
+
             }
         });
         btnFilter.addActionListener(new ActionListener() {
