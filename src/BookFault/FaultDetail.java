@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class FaultDetail {
     static int priceCounter = 0;
-    private String maLoiChiTiet;
+    private String maChiTiet;
     private String maLoi;
     private String tenDocGia;
     private String tenSach;
@@ -12,8 +12,8 @@ public class FaultDetail {
     private String soLuong;
     private String tienDen;
 
-    public FaultDetail(String maLoiChiTiet, String maLoi, String tenDocGia, String tenSach, String tenLoi, String soLuong, String tienDen) {
-        this.maLoiChiTiet = maLoiChiTiet;
+    public FaultDetail(String maChiTiet, String maLoi, String tenDocGia, String tenSach, String tenLoi, String soLuong, String tienDen) {
+        this.maChiTiet = maChiTiet;
         this.maLoi = maLoi;
         this.tenDocGia = tenDocGia;
         this.tenSach = tenSach;
@@ -22,12 +22,20 @@ public class FaultDetail {
         this.tienDen = tienDen;
     }
 
-    public String getMaLoiChiTiet() {
-        return maLoiChiTiet;
+    public static int getPriceCounter() {
+        return priceCounter;
     }
 
-    public void setMaLoiChiTiet(String maLoiChiTiet) {
-        this.maLoiChiTiet = maLoiChiTiet;
+    public static void setPriceCounter(int priceCounter) {
+        FaultDetail.priceCounter = priceCounter;
+    }
+
+    public String getMaChiTiet() {
+        return maChiTiet;
+    }
+
+    public void setMaChiTiet(String maChiTiet) {
+        this.maChiTiet = maChiTiet;
     }
 
     public String getMaLoi() {

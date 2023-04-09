@@ -116,14 +116,14 @@
                         <children>
                           <grid id="40066" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Mã lỗi chi tiết"/>
+                              <tabbedpane title="Mã chi tiết"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="d83d3" class="javax.swing.JButton" binding="maLoiChiTietDelBtn">
+                              <component id="d83d3" class="javax.swing.JButton" binding="maChiTietDelBtn">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                   <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
@@ -134,7 +134,7 @@
                                   <text value="Xóa"/>
                                 </properties>
                               </component>
-                              <component id="7fc9e" class="javax.swing.JComboBox" binding="maLoiChiTietCB">
+                              <component id="7fc9e" class="javax.swing.JComboBox" binding="maChiTietCB">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>

@@ -5,28 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="Add database, mysql connector.">
-      <change afterPath="$PROJECT_DIR$/src/BookFault/FaultDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/FaultInfor.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/FaultInfor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/BorrowBookFault.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/BorrowBookFaultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/BorrowBookFaultUI.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/BorrowBookFaultUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/Fault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/Fault.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/Borrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/Borrow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +173,6 @@
       <list>
         <item itemvalue="Application.FaultDetailUI" />
         <item itemvalue="Application.BookGUI (1)" />
-        <item itemvalue="Application.BookFault.FaultUI" />
         <item itemvalue="Application.BorrowDetailUI" />
         <item itemvalue="Application.BorrowUI" />
       </list>

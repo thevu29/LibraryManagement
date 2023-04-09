@@ -98,7 +98,7 @@ public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail>
     public Object translateValue(FaultDetail borrowBookFault, int columnIndex) {
          switch (columnIndex) {
          case 0 -> {
-         return borrowBookFault.getMaLoiChiTiet();
+         return borrowBookFault.getMaChiTiet();
          }
          case 1 -> {
          return borrowBookFault.getMaLoi();

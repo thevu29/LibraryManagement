@@ -17,8 +17,8 @@ public class FaultDetailUI {
     private JButton bookDeleteAllButton;
     private JButton bookFilterButton;
     private JTabbedPane tabbedPane2;
-    private JButton maLoiChiTietDelBtn;
-    private JComboBox maLoiChiTietCB;
+    private JButton maChiTietDelBtn;
+    private JComboBox maChiTietCB;
     private JButton maLoiDelBtn;
     private JComboBox maLoiCB;
     private JButton tenDocGiaDelBtn;
@@ -65,8 +65,8 @@ public class FaultDetailUI {
         });
         bookTable.getTableHeader().setReorderingAllowed(false);
 
-        var maLoiChiTietTF = AutoSuggestComboBox.createWithDelete(maLoiChiTietCB, 0,
-                faultDetailModel::getColumnValueToString, maLoiChiTietDelBtn);
+        var maLoiChiTietTF = AutoSuggestComboBox.createWithDelete(maChiTietCB, 0,
+                faultDetailModel::getColumnValueToString, maChiTietDelBtn);
         var maLoiTF = AutoSuggestComboBox.createWithDelete(maLoiCB, 1, faultDetailModel::getColumnValueToString,
                 maLoiDelBtn);
         var tenDocGiaTF = AutoSuggestComboBox.createWithDelete(tenDocGiaCB, 2, faultDetailModel::getColumnValueToString,
