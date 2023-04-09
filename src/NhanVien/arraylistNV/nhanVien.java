@@ -2,7 +2,7 @@ package NhanVien.arraylistNV;
 
 import java.sql.Date;
 
-public class nhanVienC {
+public class nhanVien {
     private String ID;
     private String name;
     private  String phone;
@@ -17,10 +17,10 @@ public class nhanVienC {
     private int daywork;
     private int Salary;
     
-	public nhanVienC() {
+	public nhanVien() {
 	}
-	public nhanVienC(String iD, String name, String phone, Date birth, String address, String email, String password,
-			Shift shift, Position position, Gender gender, Workplace work, int daywork, int salary) {
+	public nhanVien(String iD, String name, String phone, Date birth, String address, String email, String password,
+					Shift shift, Position position, Gender gender, Workplace work, int daywork, int salary) {
 		super();
 		ID = iD;
 		this.name = name;
