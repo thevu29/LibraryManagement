@@ -1,4 +1,5 @@
 package Customer.model;
+
 public class Membership {
     private String membershipId;
     private String membershipName;

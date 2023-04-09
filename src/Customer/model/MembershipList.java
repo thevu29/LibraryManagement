@@ -1,5 +1,7 @@
 package Customer.model;
 
+import Customer.model.Membership;
+
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
