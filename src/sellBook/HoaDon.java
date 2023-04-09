@@ -78,7 +78,6 @@ public class HoaDon {
             var coords = tblCheckOut.convertRowIndexToModel(row);
             System.out.println(coords);
             var cart = hdTBL.get(coords);
-
         }
     }
 
