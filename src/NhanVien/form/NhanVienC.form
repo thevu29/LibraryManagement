@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="main" layout-manager="GridLayoutManager" row-count="25" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="20" bottom="10" right="20"/>
     <constraints>
-      <xy x="20" y="20" width="614" height="661"/>
+      <xy x="20" y="20" width="619" height="661"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -31,7 +31,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="SDT"/>
+          <text value="Số điện thoại"/>
         </properties>
       </component>
       <component id="7d27d" class="javax.swing.JLabel">
@@ -40,7 +40,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="giới tính"/>
+          <text value="Giới tính"/>
         </properties>
       </component>
       <component id="ae270" class="javax.swing.JLabel">
@@ -49,7 +49,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="ngày làm việc"/>
+          <text value="Ngày làm việc"/>
         </properties>
       </component>
       <component id="2ae7a" class="javax.swing.JLabel">
@@ -58,7 +58,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="ngày sinh"/>
+          <text value="Ngày sinh"/>
         </properties>
       </component>
       <component id="ecd92" class="javax.swing.JLabel">
@@ -67,7 +67,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="tên"/>
+          <text value="Tên"/>
         </properties>
       </component>
       <component id="48cae" class="javax.swing.JLabel">
@@ -85,7 +85,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="địa chỉ"/>
+          <text value="Địa chỉ"/>
         </properties>
       </component>
       <component id="fcae4" class="javax.swing.JLabel">
@@ -94,7 +94,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="email"/>
+          <text value="Email"/>
         </properties>
       </component>
       <component id="95d65" class="javax.swing.JLabel">
@@ -103,7 +103,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="ca làm việc"/>
+          <text value="Ca làm việc"/>
         </properties>
       </component>
       <component id="bacad" class="javax.swing.JLabel">
@@ -112,7 +112,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="chức vụ"/>
+          <text value="Chức vụ"/>
         </properties>
       </component>
       <component id="4f6bf" class="javax.swing.JLabel">
@@ -121,7 +121,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="nơi làm việc"/>
+          <text value="Nơi làm việc"/>
         </properties>
       </component>
       <component id="8eee1" class="javax.swing.JLabel">
@@ -130,7 +130,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="lương"/>
+          <text value="Lương"/>
         </properties>
       </component>
       <component id="2ab1" class="javax.swing.JLabel">
@@ -139,7 +139,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="mật khẩu cũ"/>
+          <text value="Mật khẩu"/>
         </properties>
       </component>
       <component id="fc3e9" class="javax.swing.JLabel">
@@ -148,7 +148,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="mật khẩu "/>
+          <text value="Mật khẩu "/>
         </properties>
       </component>
       <component id="3afd2" class="javax.swing.JTextField" binding="ID">
@@ -286,6 +286,8 @@
           <grid row="22" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15400718"/>
+          <foreground color="-1"/>
           <text value="reset"/>
         </properties>
       </component>
@@ -294,6 +296,8 @@
           <grid row="22" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <background color="-15400718"/>
+          <foreground color="-1"/>
           <text value="Lưu"/>
         </properties>
       </component>

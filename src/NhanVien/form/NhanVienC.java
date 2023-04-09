@@ -23,6 +23,10 @@ public class NhanVienC {
     private JTextField salary;
     private JTextField password2;
 
+    public JPanel getMain() {
+        return main;
+    }
+
     public NhanVienC() {
         resetButton.addActionListener(new ActionListener() {
             @Override
