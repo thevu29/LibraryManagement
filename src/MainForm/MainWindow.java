@@ -1,5 +1,8 @@
 package MainForm;
 
+import Book.AuthorDataTableModel;
+import Book.BUS.BookBUS;
+import Book.BookDataTableModel;
 import Book.BookGUI;
 import Customer.ui.CustomerForm;
 
@@ -33,10 +36,12 @@ public class MainWindow {
     }
 
     public void initContentPanel() {
-        BookGUI bookForm = new BookGUI();
+        var authorModel = new AuthorDataTableModel();
+        var bookModel = new BookDataTableModel();
+        var bookForm = new BookBUS(bookModel, authorModel);
         CustomerForm customerForm = new CustomerForm();
 
-        contentPanel.add("Book", bookForm.getPanel1());
+        contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
     }
 
