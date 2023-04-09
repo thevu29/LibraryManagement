@@ -2,9 +2,11 @@ package BookFault;
 
 import Utils.AbstractTableModelWithFilters;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class BorrowBookFaultModel extends AbstractTableModelWithFilters<BorrowBookFault> {
+public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail> {
     private final String[] cols = {
             "Mã Lỗi Chi Tiết",
             "Mã Mượn Chi Tiết",
@@ -18,25 +20,25 @@ public class BorrowBookFaultModel extends AbstractTableModelWithFilters<BorrowBo
     private boolean isEditable = true;
 
     // Contructor
-    public BorrowBookFaultModel(boolean isEditable) {
+    public FaultDetailModel(boolean isEditable) {
         this();
         this.isEditable = isEditable;
 
     }
 
-    public BorrowBookFaultModel() {
+    public FaultDetailModel() {
         super();
     }
 
     // add data test
     public void addBlank() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+         rows.add(FaultDetail.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public void addTestData() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+         rows.add(FaultDetail.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public boolean isEditable() {
@@ -93,33 +95,44 @@ public class BorrowBookFaultModel extends AbstractTableModelWithFilters<BorrowBo
                 columnIndex)).toList();
     }
 
-    public Object translateValue(BorrowBookFault borrowBookFault, int columnIndex) {
-        // switch (columnIndex) {
-        // case 0 -> {
-        // return bookFault.getId();
-        // }
-        // case 1 -> {
-        // return bookFault.getTenLoi();
-        // }
-        // case 2 -> {
-        // return bookFault.getHeSo();
-        // }
-        // }
+    public Object translateValue(FaultDetail borrowBookFault, int columnIndex) {
+         switch (columnIndex) {
+         case 0 -> {
+         return borrowBookFault.getMaLoiChiTiet();
+         }
+         case 1 -> {
+         return borrowBookFault.getMaLoi();
+         }
+         case 2 -> {
+         return borrowBookFault.getTenDocGia();
+         }
+             case 3 -> {
+                 return borrowBookFault.getTenSach();
+             }
+             case 4 -> {
+                 return borrowBookFault.getTenLoi();
+             }
+             case 5 -> {
+                 return borrowBookFault.getSoLuong();
+             }
+             case 6 -> {
+                 return borrowBookFault.getTienDen();
+             }
+         }
         return null;
     }
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        // switch (col) {
-        // case 2, 3, 4 -> {
-        // var item = new ArrayList<String>();
-        // rows.stream().map(book -> Objects.toString(translateValue(book, col)))
-        // .forEach((elem) -> item.addAll(List.of(elem.split(","))));
-        // return item;
-        // }
-        // }
-        // return rows.stream().map(book -> Objects.toString(translateValue(book,
-        // col))).toList();
-        return null;
+        switch (col) {
+            case 2, 3, 4 -> {
+                var item = new ArrayList<String>();
+                rows.stream().map(book -> Objects.toString(translateValue(book, col))).forEach((elem) ->
+                        item.addAll(List.of(elem.split(","))));
+                return item;
+            }
+        }
+        return rows.stream().map(book -> Objects.toString(translateValue(book, col))).toList();
     }
+
 }

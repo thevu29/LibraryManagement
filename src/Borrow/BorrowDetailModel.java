@@ -2,14 +2,16 @@ package Borrow;
 
 import Utils.AbstractTableModelWithFilters;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetailModel> {
+public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetail> {
     private final String[] cols = {
             "Mã Chi Tiết",
             "Mã Phiếu Mượn",
             "Tên Sách",
-            "Mã Lỗi",
+            "Tên Lỗi",
             "Số Lượng",
             "Giá Tiền",
     };
@@ -29,13 +31,14 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
 
     // add data test
     public void addBlank() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+//         rows.add(BorrowDetail.createTestBook());
+        rows.add(BorrowDetail.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public void addTestData() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+         rows.add(BorrowDetail.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public boolean isEditable() {
@@ -88,13 +91,16 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
                 return borrowDetail.getMaPhieuMuon();
             }
             case 2 -> {
-                return borrowDetail.getMaNhanVien();
+                return borrowDetail.getTenSach();
             }
             case 3 -> {
-                return borrowDetail.getMaSach();
+                return borrowDetail.getTenLoi();
             }
             case 4 -> {
-                return borrowDetail.getMaNvxn();
+                return borrowDetail.getSoLuong();
+            }
+            case 5 -> {
+                return borrowDetail.getGiaTien();
             }
         }
         return null;
@@ -109,26 +115,25 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
 
     @Override
     public List<?> getColumnValue(int columnIndex) {
-        return rows.stream().map((borrow) -> translateValue(borrow,
+        return rows.stream().map((borrowDetail) -> translateValue(borrowDetail,
                 columnIndex)).toList();
     }
 
-    private Object translateValue(BorrowDetailModel borrow, int columnIndex) {
+    private Object translateValue(BorrowDetailModel borrowDetail, int columnIndex) {
         return null;
     }
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        // switch (col) {
-        // case 2, 3, 4 -> {
-        // var item = new ArrayList<String>();
-        // rows.stream().map(book -> Objects.toString(translateValue(book, col)))
-        // .forEach((elem) -> item.addAll(List.of(elem.split(","))));
-        // return item;
-        // }
-        // }
-        // return rows.stream().map(book -> Objects.toString(translateValue(book,
-        // col))).toList();
-        return null;
+        switch (col) {
+            case 2, 3, 4 -> {
+                var item = new ArrayList<String>();
+                rows.stream().map(book -> Objects.toString(translateValue(book, col)))
+                        .forEach((elem) -> item.addAll(List.of(elem.split(","))));
+                return item;
+            }
+        }
+        return rows.stream().map(book -> Objects.toString(translateValue(book,
+                col))).toList();
     }
 }

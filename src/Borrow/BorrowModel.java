@@ -32,13 +32,13 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
 
     // add data test
     public void addBlank() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+         rows.add(Borrow.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public void addTestData() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+         rows.add(Borrow.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public boolean isEditable() {
@@ -95,22 +95,19 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
                 return borrow.getId();
             }
             case 1 -> {
-                return borrow.getMaNhanVien();
+                return borrow.getTenNhanVien();
             }
             case 2 -> {
-                return borrow.getMaDocGia();
+                return borrow.getTenDocGia();
             }
             case 3 -> {
-                return borrow.getMaChiTiet();
+                return borrow.getNgayMuuon();
             }
             case 4 -> {
-                return borrow.getNgayMuon();
-            }
-            case 5 -> {
                 return borrow.getNgayTra();
             }
-            case 6 -> {
-                return borrow.getTienTong();
+            case 5 -> {
+                return borrow.getTongTien();
             }
         }
         return null;
@@ -124,16 +121,15 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        // switch (col) {
-        // case 2, 3, 4 -> {
-        // var item = new ArrayList<String>();
-        // rows.stream().map(book -> Objects.toString(translateValue(book, col)))
-        // .forEach((elem) -> item.addAll(List.of(elem.split(","))));
-        // return item;
-        // }
-        // }
-        // return rows.stream().map(book -> Objects.toString(translateValue(book,
-        // col))).toList();
-        return null;
+         switch (col) {
+         case 2, 3, 4 -> {
+         var item = new ArrayList<String>();
+         rows.stream().map(book -> Objects.toString(translateValue(book, col)))
+         .forEach((elem) -> item.addAll(List.of(elem.split(","))));
+         return item;
+         }
+         }
+         return rows.stream().map(book -> Objects.toString(translateValue(book,
+         col))).toList();
     }
 }

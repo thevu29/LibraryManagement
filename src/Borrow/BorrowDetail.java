@@ -6,18 +6,29 @@ import Book.EBookStatus;
 import java.util.ArrayList;
 
 public class BorrowDetail {
+    static int priceCounter = 0;
     private String id;
     private String maPhieuMuon;
-    private String maNhanVien;
-    private String maSach;
-    private String maNvxn;
+    private String tenSach;
+    private String tenLoi;
+    private String soLuong;
+    private String giaTien;
 
-    public BorrowDetail(String id, String maPhieuMuon, String maNhanVien, String maSach, String maNvxn) {
+    public BorrowDetail(String id, String maPhieuMuon, String tenSach, String tenLoi, String soLuong, String giaTien) {
         this.id = id;
         this.maPhieuMuon = maPhieuMuon;
-        this.maNhanVien = maNhanVien;
-        this.maSach = maSach;
-        this.maNvxn = maNvxn;
+        this.tenSach = tenSach;
+        this.tenLoi = tenLoi;
+        this.soLuong = soLuong;
+        this.giaTien = giaTien;
+    }
+
+    public static int getPriceCounter() {
+        return priceCounter;
+    }
+
+    public static void setPriceCounter(int priceCounter) {
+        BorrowDetail.priceCounter = priceCounter;
     }
 
     public String getId() {
@@ -36,27 +47,41 @@ public class BorrowDetail {
         this.maPhieuMuon = maPhieuMuon;
     }
 
-    public String getMaNhanVien() {
-        return maNhanVien;
+    public String getTenSach() {
+        return tenSach;
     }
 
-    public void setMaNhanVien(String maNhanVien) {
-        this.maNhanVien = maNhanVien;
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
     }
 
-    public String getMaSach() {
-        return maSach;
+    public String getTenLoi() {
+        return tenLoi;
     }
 
-    public void setMaSach(String maSach) {
-        this.maSach = maSach;
+    public void setTenLoi(String tenLoi) {
+        this.tenLoi = tenLoi;
     }
 
-    public String getMaNvxn() {
-        return maNvxn;
+    public String getSoLuong() {
+        return soLuong;
     }
 
-    public void setMaNvxn(String maNvxn) {
-        this.maNvxn = maNvxn;
+    public void setSoLuong(String soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public String getGiaTien() {
+        return giaTien;
+    }
+
+    public void setGiaTien(String giaTien) {
+        this.giaTien = giaTien;
+    }
+
+    public static BorrowDetail createTestBook() {
+
+        return new BorrowDetail(String.valueOf(priceCounter),"Ma phieu "+priceCounter,"Tensach"+priceCounter,
+                "tenloi"+priceCounter,"soluong","giatien"+priceCounter++);
     }
 }

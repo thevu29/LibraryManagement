@@ -1,6 +1,11 @@
 package BookFault;
 
+import Book.Book;
+
+import java.util.ArrayList;
+
 public class Fault {
+    static int priceCounter = 0;
     private String id;
     private String tenLoi;
     private double heSo;
@@ -33,5 +38,11 @@ public class Fault {
 
     public void setHeSo(double heSo) {
         this.heSo = heSo;
+    }
+
+    public static Fault createTestBook() {
+        ArrayList<String> authors = new ArrayList<>();
+
+        return new Fault(String.valueOf(priceCounter), "Loi "+priceCounter,priceCounter++);
     }
 }

@@ -1,6 +1,8 @@
 package BookFault;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import Utils.AbstractTableModelWithFilters;
 
@@ -26,13 +28,13 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
 
     // add data test
     public void addBlank() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+         rows.add(Fault.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public void addTestData() {
-        // rows.add(Book.createTestBook());
-        // fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+         rows.add(Fault.createTestBook());
+         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public boolean isEditable() {
@@ -83,16 +85,16 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
 
     }
 
-    public Object translateValue(Fault bookFault, int columnIndex) {
+    public Object translateValue(Fault fault, int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
-                return bookFault.getId();
+                return fault.getId();
             }
             case 1 -> {
-                return bookFault.getTenLoi();
+                return fault.getTenLoi();
             }
             case 2 -> {
-                return bookFault.getHeSo();
+                return fault.getHeSo();
             }
         }
         return null;
@@ -100,22 +102,20 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
 
     @Override
     public List<?> getColumnValue(int columnIndex) {
-        return rows.stream().map((bookFault) -> translateValue(bookFault,
+        return rows.stream().map((fault) -> translateValue(fault,
                 columnIndex)).toList();
     }
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        // switch (col) {
-        // case 2, 3, 4 -> {
-        // var item = new ArrayList<String>();
-        // rows.stream().map(book -> Objects.toString(translateValue(book, col)))
-        // .forEach((elem) -> item.addAll(List.of(elem.split(","))));
-        // return item;
-        // }
-        // }
-        // return rows.stream().map(book -> Objects.toString(translateValue(book,
-        // col))).toList();
-        return null;
+        switch (col) {
+            case 2, 3, 4 -> {
+                var item = new ArrayList<String>();
+                rows.stream().map(book -> Objects.toString(translateValue(book, col))).forEach((elem) ->
+                        item.addAll(List.of(elem.split(","))));
+                return item;
+            }
+        }
+        return rows.stream().map(book -> Objects.toString(translateValue(book, col))).toList();
     }
 }

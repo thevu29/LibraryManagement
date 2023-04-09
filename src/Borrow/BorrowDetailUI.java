@@ -1,33 +1,114 @@
 package Borrow;
 
+import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
+import Utils.TableUtils;
+
 import javax.swing.*;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableRowSorter;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Iterator;
 
 public class BorrowDetailUI {
-    private JButton timKiemButton;
-    private JTable table_main;
-    private JButton btn_update;
-    private JButton btn_close;
-    private JButton btn_delete;
-    private JPanel panel_main;
-    private JPanel panel_search;
-    private JPanel panel_table;
-    private JPanel panel_btn;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JTextField textField6;
+    private JTabbedPane tabbedPane1;
+    private JTable borrowDetailTable;
+    private JButton bookDeleteAllButton;
+    private JButton bookFilterButton;
+    private JTabbedPane tabbedPane2;
+    private JButton IDDelBtn;
+    private JComboBox IDComboBox;
+    private JButton maPhieuMuonDelBtn;
+    private JComboBox maPhieuMuonCB;
+    private JButton tenSachDelBtn;
+    private JComboBox tenSachCB;
+    private JButton tenLoiDelBtn;
+    private JComboBox tenLoiCB;
+    private JButton soLuongDelBtn;
+    private JComboBox soLuongCB;
+    private JButton giaTienDelBtn;
+    private JComboBox giaTienCB;
+    private JButton addRowButton;
+    private JButton thêmPhiếuMượnButton;
+    private JButton xóaPhiếuMượnButton;
+    private JButton chỉnhSửaPhiếuMượnButton;
+    private JPanel panel1;
 
-    private BorrowDetailModel model = new BorrowDetailModel();
+    private static BorrowDetailModel borrowDetailModel = new BorrowDetailModel();
 
     public BorrowDetailUI() {
-        table_main.setModel(model);
+        borrowDetailModel.setEditable(false);
+
+        borrowDetailModel.addTestData();
+        // table2.setModel(test);
+        borrowDetailTable.setModel(borrowDetailModel);
+        TableRowSorter<BorrowDetailModel> sorter = new TableRowSorter<>(borrowDetailModel);
+        borrowDetailTable.setRowSorter(sorter);
+        borrowDetailTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
+        borrowDetailTable.getTableHeader().setBackground(Color.WHITE);
+
+        addRowButton.addActionListener(e -> borrowDetailModel.addTestData());
+
+        borrowDetailTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
+                    System.out.println("double clicked");
+                    int[] pos = { borrowDetailTable.getSelectedRow(), borrowDetailTable.getSelectedColumn() };
+                    System.out.println(pos[0] + " " + pos[1]);
+                }
+            }
+        });
+        borrowDetailTable.getTableHeader().setReorderingAllowed(false);
+
+        var maChiTietIDTF = AutoSuggestComboBox.createWithDelete(IDComboBox, 0,
+                borrowDetailModel::getColumnValueToString, IDDelBtn);
+        var maPhieuMuonIDTF = AutoSuggestComboBox.createWithDelete(maPhieuMuonCB, 1,
+                borrowDetailModel::getColumnValueToString, maPhieuMuonDelBtn);
+        var tenSachIDTF = AutoSuggestComboBox.createWithDelete(tenSachCB, 2, borrowDetailModel::getColumnValueToString,
+                tenSachDelBtn);
+        var tenLoiIDTF = AutoSuggestComboBox.createWithDelete(tenLoiCB, 3, borrowDetailModel::getColumnValueToString,
+                tenLoiDelBtn);
+        var soLuongIDTF = AutoSuggestComboBox.createWithDelete(soLuongCB, 4, borrowDetailModel::getColumnValueToString,
+                soLuongDelBtn);
+        var giaTienIDTF = AutoSuggestComboBox.createWithDelete(giaTienCB, 5, borrowDetailModel::getColumnValueToString,
+                giaTienDelBtn);
+
+        bookDeleteAllButton.addActionListener(e -> {
+            maChiTietIDTF.setText("");
+            maPhieuMuonIDTF.setText("");
+            tenSachIDTF.setText("");
+            tenLoiIDTF.setText("");
+            soLuongIDTF.setText("");
+            giaTienIDTF.setText("");
+        });
+
+        borrowDetailModel.setFilterField(0, maChiTietIDTF);
+        borrowDetailModel.setFilterField(1, maPhieuMuonIDTF);
+        borrowDetailModel.setFilterField(2, tenSachIDTF);
+        borrowDetailModel.setFilterField(3, tenLoiIDTF);
+        borrowDetailModel.setFilterField(4, soLuongIDTF);
+        borrowDetailModel.setFilterField(5, giaTienIDTF);
+
+        for (Iterator<TableColumn> it = borrowDetailTable.getColumnModel().getColumns().asIterator(); it.hasNext();) {
+            var column = it.next();
+            column.setMinWidth(100);
+        }
+
+        bookFilterButton.addActionListener(e -> {
+            TableUtils.filter(borrowDetailTable);
+        });
+    }
+
+    public JPanel getPanel1() {
+        return panel1;
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("BorrowDetailUI");
-        frame.setContentPane(new BorrowDetailUI().panel_main);
+        JFrame frame = new JFrame("Book");
+        frame.setContentPane(new BorrowDetailUI().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
