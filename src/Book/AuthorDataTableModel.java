@@ -1,5 +1,6 @@
 package Book;
 
+import Book.DTO.Author;
 import Utils.AbstractTableModelWithFilters;
 
 public class AuthorDataTableModel extends AbstractTableModelWithFilters<Author> {

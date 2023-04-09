@@ -1,4 +1,4 @@
-package Book;
+package Book.DTO;
 
 import NhanVien.arraylistNV.Gender;
 

@@ -1,6 +1,7 @@
 package Book.BUS;
 
 import Book.*;
+import Book.DAO.BookDAO;
 import Book.DTO.Book;
 
 import javax.swing.*;
@@ -14,6 +15,8 @@ public class BookBUS {
         this.bookDataTableModel = bookDataTableModel;
         this.authorDataTableModel = authorDataTableModel;
         bookGUI = new BookGUI(bookDataTableModel, authorDataTableModel, this);
+        var bookDao = new BookDAO();
+        bookDataTableModel.setRows(bookDao.getAllFromDatabase());
     }
 
 

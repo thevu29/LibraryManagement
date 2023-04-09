@@ -5,11 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="xong filter membership">
-      <change afterPath="$PROJECT_DIR$/src/Book/Author.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/AuthorDataTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Book/DTO/BookGenre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Book/DTO/BookPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DTO/Author.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/AuthorDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/AuthorDataTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BUS/BookBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BUS/BookBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookAuthor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DTO/BookAuthor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/BookPublisher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/DAO/BookDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DAO/BookDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/DTO/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DTO/Book.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AbstractTableModelWithFilters.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,10 +34,23 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="customer" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="11b30dac-d392-4d61-bc83-e83a066e91f5" />
+        <option name="url" value="https://github.com/Neptune27/LibraryManagementGUI" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,7 +66,6 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW": "false",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Nep",
     "last_opened_file_path": "C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/LibraryManagementGUI",
@@ -74,40 +93,30 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="Book.DTO" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.BookGUI">
+  <component name="RunManager" selected="Application.BookBUS">
+    <configuration name="BookBUS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Book.BUS.BookBUS" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Book.BUS.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="BookGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Book.BookGUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Book.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.ui.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.ui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainForm.*" />
+          <option name="PATTERN" value="Book.DTO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -116,19 +125,6 @@
       </method>
     </configuration>
     <configuration name="MainWindow (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainForm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainWindow (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -160,13 +156,21 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="docker: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BookGUI" />
+        <item itemvalue="Application.BookBUS" />
+        <item itemvalue="Docker.docker: Compose Deployment" />
         <item itemvalue="Application.MainWindow (3)" />
         <item itemvalue="Application.MainWindow" />
-        <item itemvalue="Application.MainWindow (2)" />
-        <item itemvalue="Application.MainWindow (5)" />
+        <item itemvalue="Application.BookGUI" />
       </list>
     </recent_temporary>
   </component>
@@ -223,8 +227,6 @@
       <workItem from="1678544046235" duration="820000" />
       <workItem from="1678883055296" duration="130000" />
       <workItem from="1679282641271" duration="1420000" />
-      <workItem from="1680883712745" duration="1182000" />
-      <workItem from="1680891614311" duration="2735000" />
     </task>
     <task id="LOCAL-00001" summary="First Init">
       <created>1676216964949</created>
@@ -353,8 +355,8 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Book/Book.java</url>
-          <line>171</line>
+          <url>file://$PROJECT_DIR$/src/Book/DTO/Book.java</url>
+          <line>177</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
@@ -363,5 +365,16 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowBookFaultUI.ic" NAME="BorrowBookFaultUI Coverage Results" MODIFIED="1680881584980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>BookFault.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1680852476402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1680879357459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.*</FILTER>
+    </SUITE>
   </component>
 </project>
