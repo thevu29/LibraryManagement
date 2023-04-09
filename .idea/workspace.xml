@@ -5,6 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Add database, mysql connector.">
+      <change afterPath="$PROJECT_DIR$/src/sellBook/CTHDFormDialog.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/CTHDFormDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/CTHDModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/CTHDTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/HDModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/HDTableModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/HoaDon.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/HoaDon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="tét" comment="tét" />
@@ -98,7 +108,7 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.adminNhanVien">
+  <component name="RunManager">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -250,7 +260,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680958494865</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add database, mysql connector.">
+      <created>1680967067640</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680967067640</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add database, mysql connector.">
+      <created>1680967431039</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680967431039</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
