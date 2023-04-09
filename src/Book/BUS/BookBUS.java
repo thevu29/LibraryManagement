@@ -34,6 +34,10 @@ public class BookBUS {
         dialog.setVisible(true);
     }
 
+    public JPanel getPanel() {
+        return bookGUI.getPanel1();
+    }
+
     public void startGUI() {
         JFrame frame = new JFrame("Book");
         frame.setContentPane(bookGUI.getPanel1());
