@@ -1,13 +1,10 @@
 package Utils.ComboBoxAutoSuggest;
 
-import Customer.model.Customer;
-
 import javax.swing.*;
 import javax.swing.event.PopupMenuEvent;
 import javax.swing.event.PopupMenuListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.function.Function;
@@ -26,6 +23,7 @@ public class AutoSuggestComboBox {
         }
         return model;
     }
+
 
     public static JTextField create(JComboBox<String> comboBox, List<String> list) {
         return create(comboBox, 0, (i)-> list);
@@ -63,6 +61,7 @@ public class AutoSuggestComboBox {
     }
 
     private static void autoSuggestBoxEventHandler(KeyEvent e, JComboBox<String> comboBox, List<String> list) {
+
         switch (e.getKeyCode()) {
             case KeyEvent.VK_DOWN, KeyEvent.VK_UP, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT -> {
                 return;
@@ -82,32 +81,18 @@ public class AutoSuggestComboBox {
         }
     }
 
-    static public JTextField createWithDelete(JComboBox<String> comboBox, int col,
-                                              Function<Integer, List<String>> function, JButton deleteButton) {
+    public static JTextField createIgnored(JComboBox<String> comboBox, List<String> list) {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        list.forEach(model::addElement);
+        comboBox.setModel(model);
+        return (JTextField) comboBox.getEditor().getEditorComponent();
+    }
+
+    static public JTextField createWithDeleteBtn(JComboBox<String> comboBox, int col,
+                                                 Function<Integer, List<String>> function, JButton deleteButton) {
         var textField = create(comboBox, col, function);
 
         deleteButton.addActionListener(e -> {
-            textField.setText("");
-        });
-
-        return textField;
-    }
-
-    static public JTextField createWithDelete(JComboBox<String> comboBox, int col, ArrayList<Customer> customerList, JButton btnDelete) {
-        ArrayList<String> suggestion = new ArrayList<>();
-        for (Customer customer : customerList) {
-            if (col == 0) {
-                suggestion.add(customer.getCustomerId());
-            } else if (col == 1) {
-                suggestion.add(customer.getCustomerName());
-            } else if (col == 2) {
-                suggestion.add(customer.getCustomerEmail());
-            }
-        }
-
-        JTextField textField = create(comboBox, suggestion);
-
-        btnDelete.addActionListener(e -> {
             textField.setText("");
         });
 

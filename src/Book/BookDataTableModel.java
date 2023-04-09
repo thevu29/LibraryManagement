@@ -1,5 +1,6 @@
 package Book;
 
+import Book.DTO.Book;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;
@@ -7,21 +8,14 @@ import java.util.List;
 import java.util.Objects;
 
 public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
-
-
-    private final String[] cols = {"Mã Sách", "Tên Sách", "Tác Giả", "Nhà Phát Hành", "Thể Loại", "Vị Trí", "Giá", "Tình Trạng"};
-
-    private boolean isEditable = true;
-
-
     public BookDataTableModel(boolean isEditable) {
         this();
-        this.isEditable = isEditable;
-
+        setEditable(isEditable);
     }
 
     public BookDataTableModel() {
-        super();
+        String[] cols = {"Mã Sách", "Tên Sách", "Tác Giả", "Nhà Phát Hành", "Thể Loại", "Vị Trí", "Giá", "Tình Trạng", "Ngôn ngữ"};
+        setCols(cols);
     }
 
     public void addBlank() {
@@ -35,81 +29,55 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
     }
 
 
-    public boolean isEditable() {
-        return isEditable;
-    }
-
-    public void setEditable(boolean editable) {
-        isEditable = editable;
-    }
-
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 6) {
+        if (columnIndex == 6 || columnIndex == 0) {
             return Integer.class;
         }
         return super.getColumnClass(columnIndex);
     }
 
-    @Override
-    public String getColumnName(int column) { return cols[column]; }
-    public boolean isCellEditable(int row, int column) { return isEditable;}
+
     public void setValueAt(Object value, int row, int col) {
 //        rows.get(row).set(col, (String) value);
         fireTableCellUpdated(row, col);
     }
 
-    @Override
-    public int getRowCount() {
-        return rows.size();
-    }
 
-    @Override
-    public int getColumnCount() {
-        return cols.length;
-    }
-
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        var book = rows.get(rowIndex);
-        return translateValue(book, columnIndex);
-
-    }
-
-    public Object translateValue(Book book, int columnIndex) {
+    public Object translateValue(Book value, int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
-                return book.getId();
+                return value.getId();
             }
             case 1 -> {
-                return book.getName();
+                return value.getName();
             }
             case 2 -> {
-                return String.join(", ", book.getAuthors());
+                return String.join(", ", value.getAuthors());
             }
             case 3 -> {
-                return String.join(", ", book.getPublisher());
+                return String.join(", ", value.getPublisher());
             }
             case 4 -> {
-                return String.join(", ", book.getGenre());
+                return String.join(", ", value.getGenre());
             }
             case 5 -> {
-                return book.getLocation();
+                return value.getLocation();
             }
             case 6 -> {
-                return book.getPrice();
+                return value.getPrice();
             }
             case 7 -> {
-                return book.getBookStatus().toString();
+                return value.getBookStatus().toString();
+            }
+            case 8 -> {
+                return value.getLanguage();
             }
         }
         return null;
     }
 
-    @Override
-    public List<?> getColumnValue(int columnIndex) {
-        return rows.stream().map((book) -> translateValue(book, columnIndex)).toList();
-    }
+
 
     @Override
     public List<String> getColumnValueToString(int col) {

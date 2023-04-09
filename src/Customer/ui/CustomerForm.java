@@ -81,8 +81,8 @@ public class CustomerForm {
             }
         });
 
-        txtMemberId = AutoSuggestComboBox.createWithDelete(cbxMemId, 0, this::initMembershipSuggestion, btnDeleteMemId);
-        txtMemberName = AutoSuggestComboBox.createWithDelete(cbxMemName, 1, this::initMembershipSuggestion, btnDeleteMemName);
+        txtMemberId = AutoSuggestComboBox.createWithDeleteBtn(cbxMemId, 0, this::initMembershipSuggestion, btnDeleteMemId);
+        txtMemberName = AutoSuggestComboBox.createWithDeleteBtn(cbxMemName, 1, this::initMembershipSuggestion, btnDeleteMemName);
 
         btnFilterMembership.addActionListener(new ActionListener() {
             @Override
@@ -223,10 +223,10 @@ public class CustomerForm {
             }
         });
 
-        txtCusId = AutoSuggestComboBox.createWithDelete(cbxCustomerId, 0, this::initCustomerSuggestion, btnDeleteCusId);
-        txtCusName = AutoSuggestComboBox.createWithDelete(cbxCustomerName, 1, this::initCustomerSuggestion, btnDeleteCusName);
-        txtCusEmail = AutoSuggestComboBox.createWithDelete(cbxCustomerEmail, 2, this::initCustomerSuggestion, btnDeleteCusEmail);
-        txtCusMembership = AutoSuggestComboBox.createWithDelete(cbxCusMembership, 3, this::initCustomerSuggestion, btnDeleteCusMembership);
+        txtCusId = AutoSuggestComboBox.createWithDeleteBtn(cbxCustomerId, 0, this::initCustomerSuggestion, btnDeleteCusId);
+        txtCusName = AutoSuggestComboBox.createWithDeleteBtn(cbxCustomerName, 1, this::initCustomerSuggestion, btnDeleteCusName);
+        txtCusEmail = AutoSuggestComboBox.createWithDeleteBtn(cbxCustomerEmail, 2, this::initCustomerSuggestion, btnDeleteCusEmail);
+        txtCusMembership = AutoSuggestComboBox.createWithDeleteBtn(cbxCusMembership, 3, this::initCustomerSuggestion, btnDeleteCusMembership);
 
         btnFilterCustomer.addActionListener(new ActionListener() {
             @Override
