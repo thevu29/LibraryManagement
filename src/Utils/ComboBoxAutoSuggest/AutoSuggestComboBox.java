@@ -7,7 +7,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.TreeSet;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class AutoSuggestComboBox {
@@ -22,7 +21,6 @@ public class AutoSuggestComboBox {
                 model.addElement(s);
             }
         }
-
         return model;
     }
 
@@ -62,13 +60,6 @@ public class AutoSuggestComboBox {
         return textField;
     }
 
-    public static JTextField createIgnored(JComboBox<String> comboBox, List<String> list) {
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-        list.forEach(model::addElement);
-        comboBox.setModel(model);
-        return (JTextField) comboBox.getEditor().getEditorComponent();
-    }
-
     private static void autoSuggestBoxEventHandler(KeyEvent e, JComboBox<String> comboBox, List<String> list) {
 
         switch (e.getKeyCode()) {
@@ -88,6 +79,13 @@ public class AutoSuggestComboBox {
         } else {
             comboBox.showPopup();
         }
+    }
+
+    public static JTextField createIgnored(JComboBox<String> comboBox, List<String> list) {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        list.forEach(model::addElement);
+        comboBox.setModel(model);
+        return (JTextField) comboBox.getEditor().getEditorComponent();
     }
 
     static public JTextField createWithDeleteBtn(JComboBox<String> comboBox, int col,
