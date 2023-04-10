@@ -2,6 +2,6 @@ package NhanVien.arraylistNV;
 
 import java.util.ArrayList;
 
-public class ArraylistNhanVien extends ArrayList<nhanVienC> {
+public class ArraylistNhanVien extends ArrayList<nhanVien> {
 	
 }
