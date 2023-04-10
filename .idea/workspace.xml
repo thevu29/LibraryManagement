@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Add database, mysql connector." />
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Add database, mysql connector.">
+      <change afterPath="$PROJECT_DIR$/src/sellBook/BUS/SellBookBUS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/DTO/HoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/HoaDon.java" afterDir="false" />
+    </list>
     <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +275,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681040648330</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add database, mysql connector.">
+      <created>1681052133935</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681052133935</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add database, mysql connector.">
+      <created>1681052182877</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681052182877</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

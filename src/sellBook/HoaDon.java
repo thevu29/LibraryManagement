@@ -65,7 +65,11 @@ public class HoaDon {
                     int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
                     System.out.println(pos[0] + " " + pos[1]);
                     var cthd = new ChiTietHoaDon();
-//                    cthd.setVisible(true);
+                    JFrame frame = new JFrame("ChiTietHoaDon");
+                    frame.setContentPane(cthd.getMain());
+                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.pack();
+                    frame.setVisible(true);
                 }
             }
         });

@@ -68,6 +68,14 @@ public class ChiTietHoaDon {
         });
     }
 
+    public JPanel getMain() {
+        return main;
+    }
+
+    public void setMain(JPanel main) {
+        this.main = main;
+    }
+
     public void initTable(){
         tableCart.setModel(cthdTbl);
     }
