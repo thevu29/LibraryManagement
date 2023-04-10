@@ -1,16 +1,17 @@
 package Book;
 
-import Book.DTO.Author;
+import Book.DTO.Publisher;
 import Utils.AbstractTableModelWithFilters;
 
-public class AuthorDataTableModel extends AbstractTableModelWithFilters<Author> {
+public class PublisherDataTableModel extends AbstractTableModelWithFilters<Publisher> {
 
-    public AuthorDataTableModel() {
-        String[] cols = {"Id", "Tên", "Giới Tính", "Email", "Mô Tả"};
+    public PublisherDataTableModel() {
+        String[] cols = {"ID", "Tên", "Email", "SĐT", "Địa chỉ", "Mô tả" };
         setCols(cols);
     }
+
     @Override
-    public Object translateValue(Author value, int columnIndex) {
+    public Object translateValue(Publisher value, int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
                 return value.getId();
@@ -19,12 +20,15 @@ public class AuthorDataTableModel extends AbstractTableModelWithFilters<Author> 
                 return value.getName();
             }
             case 2 -> {
-                return value.getGender().toString();
-            }
-            case 3 -> {
                 return value.getEmail();
             }
+            case 3 -> {
+                return value.getPhone();
+            }
             case 4 -> {
+                return value.getAddress();
+            }
+            case 5 -> {
                 return value.getDescription();
             }
         }

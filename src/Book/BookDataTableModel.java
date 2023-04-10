@@ -1,6 +1,9 @@
 package Book;
 
 import Book.DTO.Book;
+import Book.DTO.BookAuthor;
+import Book.DTO.BookGenre;
+import Book.DTO.BookPublisher;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;
@@ -53,13 +56,13 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
                 return value.getName();
             }
             case 2 -> {
-                return String.join(", ", value.getAuthors());
+                return String.join(", ", value.getAuthors().stream().map(BookAuthor::toString).toList());
             }
             case 3 -> {
-                return String.join(", ", value.getPublisher());
+                return String.join(", ", value.getPublisher().stream().map(BookPublisher::toString).toList());
             }
             case 4 -> {
-                return String.join(", ", value.getGenre());
+                return String.join(", ", value.getGenre().stream().map(BookGenre::toString).toList());
             }
             case 5 -> {
                 return value.getLocation();

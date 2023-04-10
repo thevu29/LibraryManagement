@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Book.BookGUI">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Book.GUI.BookGUI">
   <grid id="27dc6" binding="panel1" default-binding="true" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
@@ -530,7 +530,7 @@
                         <constraints/>
                         <properties>
                           <autoCreateRowSorter value="true"/>
-                          <autoResizeMode value="0"/>
+                          <autoResizeMode value="4"/>
                           <font size="16"/>
                           <rowHeight value="24"/>
                         </properties>
@@ -597,7 +597,7 @@
                         <children>
                           <grid id="47399" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Mã Sách"/>
+                              <tabbedpane title="ID"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -632,7 +632,7 @@
                           </grid>
                           <grid id="5e139" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Tên Sách"/>
+                              <tabbedpane title="Tên"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -666,7 +666,7 @@
                           </grid>
                           <grid id="f7c12" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Tác Giả"/>
+                              <tabbedpane title="Giới tính"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -700,7 +700,7 @@
                           </grid>
                           <grid id="c2666" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Nhà Phát Hành"/>
+                              <tabbedpane title="Email"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -734,7 +734,7 @@
                           </grid>
                           <grid id="20be2" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Thể Loại"/>
+                              <tabbedpane title="Mô tả"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -753,144 +753,6 @@
                                 </properties>
                               </component>
                               <component id="b2db6" class="javax.swing.JComboBox">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="3.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13382401"/>
-                                  <editable value="true"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <grid id="46eb" layout-manager="GridBagLayout">
-                            <constraints>
-                              <tabbedpane title="Vị Trí"/>
-                            </constraints>
-                            <properties>
-                              <foreground color="-5194043"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="4f29b" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-11107086"/>
-                                  <foreground color="-1"/>
-                                  <text value="Xóa"/>
-                                </properties>
-                              </component>
-                              <component id="fb0b7" class="javax.swing.JComboBox">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="3.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13382401"/>
-                                  <editable value="true"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <grid id="420ef" layout-manager="GridBagLayout">
-                            <constraints>
-                              <tabbedpane title="Giá"/>
-                            </constraints>
-                            <properties>
-                              <foreground color="-5194043"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="21f24" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-11107086"/>
-                                  <foreground color="-1"/>
-                                  <text value="Xóa"/>
-                                </properties>
-                              </component>
-                              <component id="3be65" class="javax.swing.JComboBox">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="3.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13382401"/>
-                                  <editable value="true"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <grid id="b189e" layout-manager="GridBagLayout">
-                            <constraints>
-                              <tabbedpane title="Tình Trạng"/>
-                            </constraints>
-                            <properties>
-                              <foreground color="-5194043"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="60fc2" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-11107086"/>
-                                  <foreground color="-1"/>
-                                  <text value="Xóa"/>
-                                </properties>
-                              </component>
-                              <component id="20d08" class="javax.swing.JComboBox">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="3.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13382401"/>
-                                  <editable value="true"/>
-                                  <foreground color="-15000805"/>
-                                  <model/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <grid id="7f012" layout-manager="GridBagLayout">
-                            <constraints>
-                              <tabbedpane title="Ngôn ngữ"/>
-                            </constraints>
-                            <properties>
-                              <foreground color="-5194043"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="6c38b" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-11107086"/>
-                                  <foreground color="-1"/>
-                                  <text value="Xóa"/>
-                                </properties>
-                              </component>
-                              <component id="917d5" class="javax.swing.JComboBox">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -1068,11 +930,11 @@
                     </properties>
                     <border type="none" title="Data"/>
                     <children>
-                      <component id="5ebe4" class="javax.swing.JTable">
+                      <component id="5ebe4" class="javax.swing.JTable" binding="publisherTable">
                         <constraints/>
                         <properties>
                           <autoCreateRowSorter value="true"/>
-                          <autoResizeMode value="0"/>
+                          <autoResizeMode value="2"/>
                           <font size="16"/>
                           <rowHeight value="24"/>
                         </properties>
@@ -1139,7 +1001,7 @@
                         <children>
                           <grid id="a4793" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Mã Sách"/>
+                              <tabbedpane title="ID"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -1174,7 +1036,7 @@
                           </grid>
                           <grid id="dba30" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Tên Sách"/>
+                              <tabbedpane title="Tên"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -1208,7 +1070,7 @@
                           </grid>
                           <grid id="96f53" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Tác Giả"/>
+                              <tabbedpane title="Email"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -1242,7 +1104,7 @@
                           </grid>
                           <grid id="a5c0a" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Nhà Phát Hành"/>
+                              <tabbedpane title="SĐT"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
@@ -1274,50 +1136,121 @@
                               </component>
                             </children>
                           </grid>
-                          <grid id="6ef79" layout-manager="GridBagLayout">
+                        </children>
+                      </tabbedpane>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="b5c03" layout-manager="GridBagLayout">
+            <constraints>
+              <tabbedpane title="Genre"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <grid id="90957" layout-manager="GridBagLayout">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="8.0" weighty="1.0"/>
+                </constraints>
+                <properties>
+                  <font size="16"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <scrollpane id="43ae1">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="5" hsize-policy="5" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="1.0" weighty="1.0"/>
+                    </constraints>
+                    <properties>
+                      <foreground color="-1"/>
+                      <horizontalScrollBarPolicy value="32"/>
+                    </properties>
+                    <border type="none" title="Data"/>
+                    <children>
+                      <component id="6ce4d" class="javax.swing.JTable" binding="genreTable">
+                        <constraints/>
+                        <properties>
+                          <autoCreateRowSorter value="true"/>
+                          <autoResizeMode value="4"/>
+                          <font size="16"/>
+                          <rowHeight value="24"/>
+                        </properties>
+                        <clientProperties>
+                          <JTable.autoStartsEdit class="java.lang.Boolean" value="false"/>
+                          <Table.isFileList class="java.lang.Boolean" value="false"/>
+                        </clientProperties>
+                      </component>
+                    </children>
+                  </scrollpane>
+                  <grid id="65ca8" layout-manager="GridBagLayout">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                      <gridbag weightx="1.0" weighty="0.0"/>
+                    </constraints>
+                    <properties>
+                      <minimumSize width="189" height="133"/>
+                      <preferredSize width="237" height="133"/>
+                    </properties>
+                    <border type="none" title="Filter"/>
+                    <children>
+                      <grid id="c0998" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                          <gridbag weightx="1.0" weighty="0.0"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="a2707" class="javax.swing.JButton">
                             <constraints>
-                              <tabbedpane title="Thể Loại"/>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                             </constraints>
                             <properties>
-                              <foreground color="-5194043"/>
+                              <background color="-11107086"/>
+                              <foreground color="-1"/>
+                              <text value="Xóa Tất Cả"/>
                             </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="3a29" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-11107086"/>
-                                  <foreground color="-1"/>
-                                  <text value="Xóa"/>
-                                </properties>
-                              </component>
-                              <component id="f745e" class="javax.swing.JComboBox">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="3.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13382401"/>
-                                  <editable value="true"/>
-                                </properties>
-                              </component>
-                            </children>
+                          </component>
+                          <component id="d6677" class="javax.swing.JButton">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <background color="-11107086"/>
+                              <foreground color="-1"/>
+                              <text value="Lọc"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <tabbedpane id="fd4be" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                            <preferred-size width="200" height="200"/>
                           </grid>
-                          <grid id="350a" layout-manager="GridBagLayout">
+                          <gridbag weightx="1.0" weighty="0.0"/>
+                        </constraints>
+                        <properties>
+                          <preferredSize width="227" height="75"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <grid id="bb299" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Vị Trí"/>
+                              <tabbedpane title="ID"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="5ede2" class="javax.swing.JButton">
+                              <component id="b6d37" class="javax.swing.JButton">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                   <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
@@ -1328,75 +1261,7 @@
                                   <text value="Xóa"/>
                                 </properties>
                               </component>
-                              <component id="eaf6" class="javax.swing.JComboBox">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="3.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13382401"/>
-                                  <editable value="true"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <grid id="6c5b7" layout-manager="GridBagLayout">
-                            <constraints>
-                              <tabbedpane title="Giá"/>
-                            </constraints>
-                            <properties>
-                              <foreground color="-5194043"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="78382" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-11107086"/>
-                                  <foreground color="-1"/>
-                                  <text value="Xóa"/>
-                                </properties>
-                              </component>
-                              <component id="687d9" class="javax.swing.JComboBox">
-                                <constraints>
-                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                    <preferred-size width="150" height="-1"/>
-                                  </grid>
-                                  <gridbag weightx="3.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-13382401"/>
-                                  <editable value="true"/>
-                                </properties>
-                              </component>
-                            </children>
-                          </grid>
-                          <grid id="4cb86" layout-manager="GridBagLayout">
-                            <constraints>
-                              <tabbedpane title="Tình Trạng"/>
-                            </constraints>
-                            <properties>
-                              <foreground color="-5194043"/>
-                            </properties>
-                            <border type="none"/>
-                            <children>
-                              <component id="1386c" class="javax.swing.JButton">
-                                <constraints>
-                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                                </constraints>
-                                <properties>
-                                  <background color="-11107086"/>
-                                  <foreground color="-1"/>
-                                  <text value="Xóa"/>
-                                </properties>
-                              </component>
-                              <component id="77c77" class="javax.swing.JComboBox">
+                              <component id="57639" class="javax.swing.JComboBox">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -1407,21 +1272,20 @@
                                   <background color="-13382401"/>
                                   <editable value="true"/>
                                   <foreground color="-15000805"/>
-                                  <model/>
                                 </properties>
                               </component>
                             </children>
                           </grid>
-                          <grid id="c63d1" layout-manager="GridBagLayout">
+                          <grid id="20281" layout-manager="GridBagLayout">
                             <constraints>
-                              <tabbedpane title="Ngôn ngữ"/>
+                              <tabbedpane title="Tên"/>
                             </constraints>
                             <properties>
                               <foreground color="-5194043"/>
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="622b" class="javax.swing.JButton">
+                              <component id="330c6" class="javax.swing.JButton">
                                 <constraints>
                                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                                   <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
@@ -1432,7 +1296,41 @@
                                   <text value="Xóa"/>
                                 </properties>
                               </component>
-                              <component id="6b679" class="javax.swing.JComboBox">
+                              <component id="31bf1" class="javax.swing.JComboBox">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                                    <preferred-size width="150" height="-1"/>
+                                  </grid>
+                                  <gridbag weightx="3.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-13382401"/>
+                                  <editable value="true"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="e8ed9" layout-manager="GridBagLayout">
+                            <constraints>
+                              <tabbedpane title="Mô tả"/>
+                            </constraints>
+                            <properties>
+                              <foreground color="-5194043"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="90fcf" class="javax.swing.JButton">
+                                <constraints>
+                                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                                  <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
+                                </constraints>
+                                <properties>
+                                  <background color="-11107086"/>
+                                  <foreground color="-1"/>
+                                  <text value="Xóa"/>
+                                </properties>
+                              </component>
+                              <component id="d06cc" class="javax.swing.JComboBox">
                                 <constraints>
                                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                                     <preferred-size width="150" height="-1"/>
@@ -1450,6 +1348,70 @@
                       </tabbedpane>
                     </children>
                   </grid>
+                </children>
+              </grid>
+              <grid id="d3302" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <gridbag weightx="0.0" weighty="1.0"/>
+                </constraints>
+                <properties/>
+                <border type="none" title="Chức năng"/>
+                <children>
+                  <component id="a757a" class="javax.swing.JButton">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-11107086"/>
+                      <borderPainted value="true"/>
+                      <font name="Roboto Medium" size="14"/>
+                      <foreground color="-1"/>
+                      <text value="Add Test Row"/>
+                    </properties>
+                  </component>
+                  <vspacer id="24c">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                  </vspacer>
+                  <component id="8af8d" class="javax.swing.JButton" default-binding="true">
+                    <constraints>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-11107086"/>
+                      <borderPainted value="true"/>
+                      <font size="14"/>
+                      <foreground color="-1"/>
+                      <text value="Thêm sách"/>
+                    </properties>
+                  </component>
+                  <component id="4d888" class="javax.swing.JButton" default-binding="true">
+                    <constraints>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-11107086"/>
+                      <borderPainted value="true"/>
+                      <font size="14"/>
+                      <foreground color="-1"/>
+                      <text value="Xóa sách"/>
+                    </properties>
+                  </component>
+                  <component id="54e72" class="javax.swing.JButton">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <background color="-11107086"/>
+                      <borderPainted value="true"/>
+                      <font size="14"/>
+                      <foreground color="-1"/>
+                      <text value="Chỉnh sửa sách"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
             </children>
