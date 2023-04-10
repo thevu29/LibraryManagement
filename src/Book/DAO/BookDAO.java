@@ -40,18 +40,19 @@ public class BookDAO extends DefaultConnection {
                         description, publishYear, totalPage));
             }
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("Không thể kết nối");
+            return books;
         }
         return books;
     }
 
     private static ArrayList<BookGenre> getGenre(Statement stmt, String id) throws SQLException {
         ResultSet genreRS = stmt.executeQuery(
-                "SELECT * FROM GENRE GE JOIN BOOK_GENRE BG on GE.MA_TL = BG.MA_TL WHERE BG.MA_SERIES='" + id + "'");
+                "SELECT GE.MA_TL AS MTL, TEN_TL FROM GENRE GE JOIN BOOK_GENRE BG on GE.MA_TL = BG.MA_TL WHERE BG.MA_SERIES='" + id + "'");
         ArrayList<BookGenre> genres = new ArrayList<>();
         while (genreRS.next()) {
-            var genreID = genreRS.getString("MTG");
-            var genreName = genreRS.getString("TEN_TG");
+            var genreID = genreRS.getString("MTL");
+            var genreName = genreRS.getString("TEN_TL");
 
             genres.add(new BookGenre(genreID, genreName));
         }
@@ -60,11 +61,11 @@ public class BookDAO extends DefaultConnection {
 
     private static ArrayList<BookPublisher> getPublishers(Statement stmt, String id) throws SQLException {
         ResultSet publisherRS = stmt.executeQuery(
-                "SELECT * FROM PUBLISHER PU JOIN BOOK_PUBLISHER BP on PU.MA_NXB = BP.MA_NXB WHERE MA_SERIES='" + id + "'");
+                "SELECT PU.MA_NXB AS NXB, TEN_NXB FROM PUBLISHER PU JOIN BOOK_PUBLISHER BP on PU.MA_NXB = BP.MA_NXB WHERE MA_SERIES='" + id + "'");
         ArrayList<BookPublisher> publishers = new ArrayList<>();
         while (publisherRS.next()) {
-            var publisherID = publisherRS.getString("MTG");
-            var publisherName = publisherRS.getString("TEN_TG");
+            var publisherID = publisherRS.getString("NXB");
+            var publisherName = publisherRS.getString("TEN_NXB");
 
             publishers.add(new BookPublisher(publisherID, publisherName));
         }

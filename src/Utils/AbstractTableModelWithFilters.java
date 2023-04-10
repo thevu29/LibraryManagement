@@ -91,7 +91,7 @@ public abstract class AbstractTableModelWithFilters<T> extends AbstractTableMode
         var keyList = filterFields.keySet().stream().toList();
         var valueList = filterFields.values().stream().toList();
         for (int i = 0; i < keyList.size(); i++) {
-            filters.add(RowFilter.regexFilter(valueList.get(i).getText(), keyList.get(i)));
+            filters.add(RowFilter.regexFilter("(?i)("+valueList.get(i).getText()+")", keyList.get(i)));
         }
         return RowFilter.andFilter(filters);
     }

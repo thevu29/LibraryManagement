@@ -1,20 +1,19 @@
 package Book.DTO;
 
-import NhanVien.arraylistNV.Gender;
-import Utils.EGender;
-
-public class Author {
+public class Publisher {
     private String id;
     private String name;
+    private String address;
     private String email;
-    private EGender gender;
+    private String phone;
     private String description;
 
-    public Author(String id, String name, String email, String gender, String description) {
+    public Publisher(String id, String name, String address, String email, String phone, String description) {
         this.id = id;
         this.name = name;
+        this.address = address;
         this.email = email;
-        setGender(gender);
+        this.phone = phone;
         this.description = description;
     }
 
@@ -34,6 +33,14 @@ public class Author {
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -42,22 +49,13 @@ public class Author {
         this.email = email;
     }
 
-    public void setGender(EGender gender) {
-        this.gender = gender;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setGender(String gender) {
-        if (gender.equals(String.valueOf(EGender.NAM))) {
-            this.gender = EGender.NAM;
-        } else if (gender.equals(String.valueOf(EGender.NU))) {
-            this.gender = EGender.NU;
-        }
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
-
-    public EGender getGender() {
-        return gender;
-    }
-
 
     public String getDescription() {
         return description;
