@@ -1,6 +1,10 @@
-package Book;
+package Book.GUI;
 
+import Book.AuthorDataTableModel;
 import Book.BUS.BookBUS;
+import Book.BookDataTableModel;
+import Book.GenreDataTableModel;
+import Book.PublisherDataTableModel;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
@@ -10,11 +14,10 @@ import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Iterator;
-import java.util.concurrent.Callable;
-import java.util.function.Consumer;
-import java.util.function.Function;
 
 public class BookGUI {
+    private final GenreDataTableModel genreDataTableModel;
+    private final PublisherDataTableModel publisherTableModel;
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
     private JTable bookTable;
@@ -44,6 +47,8 @@ public class BookGUI {
     private JButton languageDelBtn;
     private JComboBox languageCB;
     private JTable authorTable;
+    private JTable genreTable;
+    private JTable publisherTable;
 
     private JTextField bookIDTF;
 
@@ -51,13 +56,26 @@ public class BookGUI {
     private final AuthorDataTableModel authorDataTableModel;
     private final BookBUS bookBUS;
 
-    public BookGUI(BookDataTableModel bookDataModel, AuthorDataTableModel authorDataTableModel, BookBUS bus) {
-        this.bookDataModel = bookDataModel;
-        this.authorDataTableModel = authorDataTableModel;
+    public BookGUI(BookBUS bus) {
+        this.bookDataModel = bus.getBookDataTableModel();
+        this.authorDataTableModel = bus.getAuthorDataTableModel();
+        this.genreDataTableModel = bus.getGenreDataTableModel();
+        this.publisherTableModel = bus.getPublisherDataTableModel();
         this.bookBUS = bus;
 
-        setupBookPanel();
+        setupBookPane();
         setupAuthorPane();
+        setupGenrePane();
+        setupPublisherPane();
+    }
+
+    private void setupPublisherPane() {
+        TableRowSorter<PublisherDataTableModel> sorter
+                = new TableRowSorter<>(publisherTableModel);
+        publisherTable.setRowSorter(sorter);
+        publisherTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
+        publisherTable.getTableHeader().setBackground(Color.WHITE);
+        publisherTable.setModel(publisherTableModel);
     }
 
     private void setupAuthorPane() {
@@ -69,7 +87,16 @@ public class BookGUI {
         authorTable.setModel(authorDataTableModel);
     }
 
-    private void setupBookPanel() {
+    private void setupGenrePane() {
+        TableRowSorter<GenreDataTableModel> sorter
+                = new TableRowSorter<>(genreDataTableModel);
+        genreTable.setRowSorter(sorter);
+        genreTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
+        genreTable.getTableHeader().setBackground(Color.WHITE);
+        genreTable.setModel(genreDataTableModel);
+    }
+
+    private void setupBookPane() {
         bookDataModel.setEditable(false);
 
         bookDataModel.addTestData();
@@ -147,7 +174,7 @@ public class BookGUI {
         var rowsSelected = bookTable.getSelectedRows();
         for (var row: rowsSelected) {
             var coords = bookTable.getRowSorter().convertRowIndexToModel(row);
-            bookBUS.openBookEditDialog(coords);
+            bookBUS.openNewBookDialog(coords);
         }
     }
 

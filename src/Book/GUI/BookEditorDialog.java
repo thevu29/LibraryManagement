@@ -1,9 +1,9 @@
-package Book;
+package Book.GUI;
 
 import Book.DTO.Book;
 import Utils.BindingListener;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
-
+import Book.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -40,17 +40,19 @@ public class BookEditorDialog extends JDialog {
     //TODO Add Author and Publisher model
 
     public BookEditorDialog() {
-        this(Book.createTestBook(), new BookDataTableModel());
+        this(Book.createBlankBook(), new BookDataTableModel(), "Chỉnh sửa sách");
     }
 
     private Book book;
     private Book clonedBook;
 
-    public BookEditorDialog(Book book, BookDataTableModel bookDataTableModel) {
+    public BookEditorDialog(Book book, BookDataTableModel bookDataTableModel, String title) {
         this.bookDataTableModel = bookDataTableModel;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+
+        this.setTitle(title);
 
 
         var clonedBook = book.clone();
