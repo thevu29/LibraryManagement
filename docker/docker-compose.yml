@@ -1,4 +1,5 @@
 version: "3.8"
+name: library_gui
 services:
   db:
     image: mysql

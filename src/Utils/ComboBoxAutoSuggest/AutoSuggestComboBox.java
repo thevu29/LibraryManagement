@@ -7,7 +7,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.TreeSet;
-import java.util.function.Consumer;
 import java.util.function.Function;
 
 public class AutoSuggestComboBox {
@@ -22,7 +21,6 @@ public class AutoSuggestComboBox {
                 model.addElement(s);
             }
         }
-
         return model;
     }
 
@@ -32,6 +30,10 @@ public class AutoSuggestComboBox {
     }
 
     public static JTextField create(JComboBox<String> comboBox, int col, Function<Integer, List<String>> function) {
+        return create(comboBox, col, function, new AutoSuggestBoxOption());
+    }
+
+    public static JTextField create(JComboBox<String> comboBox, int col, Function<Integer, List<String>> function, AutoSuggestBoxOption option) {
         var textField = (JTextField) comboBox.getEditor().getEditorComponent();
         textField.addKeyListener(new KeyAdapter() {
             @Override
@@ -62,12 +64,6 @@ public class AutoSuggestComboBox {
         return textField;
     }
 
-    public static JTextField createIgnored(JComboBox<String> comboBox, List<String> list) {
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
-        list.forEach(model::addElement);
-        comboBox.setModel(model);
-        return (JTextField) comboBox.getEditor().getEditorComponent();
-    }
 
     private static void autoSuggestBoxEventHandler(KeyEvent e, JComboBox<String> comboBox, List<String> list) {
 
@@ -90,8 +86,20 @@ public class AutoSuggestComboBox {
         }
     }
 
+    public static JTextField createIgnored(JComboBox<String> comboBox, List<String> list) {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        list.forEach(model::addElement);
+        comboBox.setModel(model);
+        return (JTextField) comboBox.getEditor().getEditorComponent();
+    }
+
     static public JTextField createWithDeleteBtn(JComboBox<String> comboBox, int col,
                                                  Function<Integer, List<String>> function, JButton deleteButton) {
+        return createWithDeleteBtn(comboBox, col, function, deleteButton, new AutoSuggestBoxOption());
+    }
+
+    static public JTextField createWithDeleteBtn(JComboBox<String> comboBox, int col,
+                                                 Function<Integer, List<String>> function, JButton deleteButton, AutoSuggestBoxOption option) {
         var textField = create(comboBox, col, function);
 
         deleteButton.addActionListener(e -> {
@@ -100,4 +108,5 @@ public class AutoSuggestComboBox {
 
         return textField;
     }
+
 }
