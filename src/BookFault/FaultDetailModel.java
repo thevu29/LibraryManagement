@@ -41,6 +41,21 @@ public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail>
          fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
+    public void deleteTestData(String id){
+        int index = 0;
+        for(FaultDetail row : rows) {
+            if(row.getMaChiTiet().equals(id)){
+                rows.remove(index);
+                return;
+            }
+            index++;
+        }
+    }
+
+    public void renderTable(){
+        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+    }
+
     public boolean isEditable() {
         return isEditable;
     }

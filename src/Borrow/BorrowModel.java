@@ -1,6 +1,7 @@
 package Borrow;
 
-import Book.Book;
+import Book.DTO.Book;
+import BookFault.Fault;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;
@@ -39,6 +40,46 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
     public void addTestData() {
          rows.add(Borrow.createTestBook());
          fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+    }
+
+    public boolean checkID(String id){
+        for(Borrow row : rows) {
+            if(row.getId().equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addData(String maLoi,String tenDocGia,String ngayMuon,String ngayTra,ArrayList<String> sach){
+//        rows.add(new Borrow(id,tenLoi,heSo));
+        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+    }
+
+//    public void updateData(String id,String tenLoi,double heSo){
+//        for(Fault row : rows) {
+//            if(row.getId().equals(id)){
+//                row.setTenLoi(tenLoi);
+//                row.setHeSo(heSo);
+//                fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+//                return;
+//            }
+//        }
+//    }
+
+    public void deleteTestData(String id){
+        int index = 0;
+        for(Borrow row : rows) {
+            if(row.getId().equals(id)){
+                rows.remove(index);
+                return;
+            }
+            index++;
+        }
+    }
+
+    public void renderTable(){
+        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
     public boolean isEditable() {

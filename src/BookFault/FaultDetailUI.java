@@ -65,19 +65,19 @@ public class FaultDetailUI {
         });
         bookTable.getTableHeader().setReorderingAllowed(false);
 
-        var maLoiChiTietTF = AutoSuggestComboBox.createWithDelete(maChiTietCB, 0,
+        var maLoiChiTietTF = AutoSuggestComboBox.createWithDeleteBtn(maChiTietCB, 0,
                 faultDetailModel::getColumnValueToString, maChiTietDelBtn);
-        var maLoiTF = AutoSuggestComboBox.createWithDelete(maLoiCB, 1, faultDetailModel::getColumnValueToString,
+        var maLoiTF = AutoSuggestComboBox.createWithDeleteBtn(maLoiCB, 1, faultDetailModel::getColumnValueToString,
                 maLoiDelBtn);
-        var tenDocGiaTF = AutoSuggestComboBox.createWithDelete(tenDocGiaCB, 2, faultDetailModel::getColumnValueToString,
+        var tenDocGiaTF = AutoSuggestComboBox.createWithDeleteBtn(tenDocGiaCB, 2, faultDetailModel::getColumnValueToString,
                 tenDocGiaDelBtn);
-        var tenSachTF = AutoSuggestComboBox.createWithDelete(tenSachCB, 3, faultDetailModel::getColumnValueToString,
+        var tenSachTF = AutoSuggestComboBox.createWithDeleteBtn(tenSachCB, 3, faultDetailModel::getColumnValueToString,
                 tenSachDelBtn);
-        var tenLoiTF = AutoSuggestComboBox.createWithDelete(tenLoiCB, 4, faultDetailModel::getColumnValueToString,
+        var tenLoiTF = AutoSuggestComboBox.createWithDeleteBtn(tenLoiCB, 4, faultDetailModel::getColumnValueToString,
                 tenLoiDelBtn);
-        var soLuongTF = AutoSuggestComboBox.createWithDelete(soLuongCB, 5, faultDetailModel::getColumnValueToString,
+        var soLuongTF = AutoSuggestComboBox.createWithDeleteBtn(soLuongCB, 5, faultDetailModel::getColumnValueToString,
                 soLuongDelBtn);
-        var tienDenTF = AutoSuggestComboBox.createWithDelete(tienDenCB, 6, faultDetailModel::getColumnValueToString,
+        var tienDenTF = AutoSuggestComboBox.createWithDeleteBtn(tienDenCB, 6, faultDetailModel::getColumnValueToString,
                 tienDenDelBtn);
 
         bookDeleteAllButton.addActionListener(e -> {

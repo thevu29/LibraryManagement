@@ -1,6 +1,6 @@
 package Borrow;
 
-import Book.Book;
+import Book.DTO.Book;
 import Book.EBookStatus;
 import BookFault.Fault;
 

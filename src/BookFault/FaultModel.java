@@ -37,6 +37,48 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
          fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
     }
 
+    public void addData(String id,String tenLoi,double heSo){
+        rows.add(new Fault(id,tenLoi,heSo));
+        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+    }
+
+    public void updateData(String id,String tenLoi,double heSo){
+        for(Fault row : rows) {
+            if(row.getId().equals(id)){
+                row.setTenLoi(tenLoi);
+                row.setHeSo(heSo);
+                fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+                return;
+            }
+        }
+    }
+
+    public void deleteTestData(String id){
+        int index = 0;
+        for(Fault row : rows) {
+            if(row.getId().equals(id)){
+                rows.remove(index);
+                return;
+            }
+            index++;
+        }
+    }
+
+    public void renderTable(){
+        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+    }
+
+    public boolean checkID(String id){
+        for(Fault row : rows) {
+            if(row.getId().equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
     public boolean isEditable() {
         return isEditable;
     }

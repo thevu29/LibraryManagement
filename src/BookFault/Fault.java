@@ -1,6 +1,6 @@
 package BookFault;
 
-import Book.Book;
+import Book.DTO.Book;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,10 @@ public class Fault {
     private String id;
     private String tenLoi;
     private double heSo;
+
+    public Fault(){
+
+    }
 
     public Fault(String id, String tenLoi, double heSo) {
         this.id = id;

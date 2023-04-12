@@ -1,5 +1,6 @@
 package BookFault;
 
+import Customer.model.Customer;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
@@ -28,19 +29,26 @@ public class FaultUI {
     private JComboBox<String> heSoCB;
     private JButton heSoDelBtn;
     private JButton add_btn;
-    private JButton xóaLỗiButton;
-    private JButton chỉnhSửaLỗiButton;
+    private JButton deleteFaultButton;
+    private JButton editFaultButton;
     private JPanel panel_main;
 
     private JTextField bookIDTF;
 
+    public void showFaultInfo(String id, String tenLoi, String heSo,String btnText) {
+        FaultInfor faultDetailUI = new FaultInfor(this, id, tenLoi, heSo, btnText);
+        faultDetailUI.setContentPane(faultDetailUI.getContentPane());
+        faultDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        faultDetailUI.setSize(500, 700);
+        faultDetailUI.setLocationRelativeTo(null);
+        faultDetailUI.setVisible(true);
+    }
     private final FaultModel faultModel = new FaultModel();
 
     public FaultUI() {
         faultModel.setEditable(false);
 
         faultModel.addTestData();
-//        table2.setModel(test);
         faultTable.setModel(faultModel);
         TableRowSorter<FaultModel> sorter
                 = new TableRowSorter<>(faultModel);
@@ -63,9 +71,9 @@ public class FaultUI {
         });
         faultTable.getTableHeader().setReorderingAllowed(false);
 
-        var faultIDTF = AutoSuggestComboBox.createWithDelete(faultIDComboBox, 0 ,faultModel::getColumnValueToString, faultIDDelBtn);
-        var faultNameTF = AutoSuggestComboBox.createWithDelete(faultNameCB, 1,  faultModel::getColumnValueToString, faultNameDelBtn);
-        var heSoTF = AutoSuggestComboBox.createWithDelete(heSoCB, 2,  faultModel::getColumnValueToString, heSoDelBtn);
+        var faultIDTF = AutoSuggestComboBox.createWithDeleteBtn(faultIDComboBox, 0 ,faultModel::getColumnValueToString, faultIDDelBtn);
+        var faultNameTF = AutoSuggestComboBox.createWithDeleteBtn(faultNameCB, 1,  faultModel::getColumnValueToString, faultNameDelBtn);
+        var heSoTF = AutoSuggestComboBox.createWithDeleteBtn(heSoCB, 2,  faultModel::getColumnValueToString, heSoDelBtn);
 
         bookDeleteAllButton.addActionListener(e -> {
             faultIDTF.setText("");
@@ -85,11 +93,50 @@ public class FaultUI {
         bookFilterButton.addActionListener(e -> {
             TableUtils.filter(faultTable);
         });
+
+
         add_btn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                showFaultInfo("","","","Thêm lỗi");
             }
+        });
+        editFaultButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = faultTable.getSelectedRow();
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                String id = faultTable.getValueAt(selectedRow, 0).toString();
+                String tenLoi = faultTable.getValueAt(selectedRow, 1).toString();
+                String maLoi = faultTable.getValueAt(selectedRow, 2).toString();
+                showFaultInfo(id, tenLoi,maLoi, "Lưu thông tin");
+            }
+        });
+        deleteFaultButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = faultTable.getSelectedRow();
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn xóa", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa lỗi này không?", "Question", JOptionPane.YES_NO_OPTION);
+                if (choice != JOptionPane.YES_OPTION) {
+                    return;
+                }
+
+                String id = faultTable.getValueAt(selectedRow, 0).toString();
+                faultModel.deleteTestData(id);
+
+                JOptionPane.showMessageDialog(null, "Xóa lỗi thành công");
+                faultModel.renderTable();
+            }
+
         });
     }
 

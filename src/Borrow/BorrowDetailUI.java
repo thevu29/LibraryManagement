@@ -63,17 +63,17 @@ public class BorrowDetailUI {
         });
         borrowDetailTable.getTableHeader().setReorderingAllowed(false);
 
-        var maChiTietIDTF = AutoSuggestComboBox.createWithDelete(IDComboBox, 0,
+        var maChiTietIDTF = AutoSuggestComboBox.createWithDeleteBtn(IDComboBox, 0,
                 borrowDetailModel::getColumnValueToString, IDDelBtn);
-        var maPhieuMuonIDTF = AutoSuggestComboBox.createWithDelete(maPhieuMuonCB, 1,
+        var maPhieuMuonIDTF = AutoSuggestComboBox.createWithDeleteBtn(maPhieuMuonCB, 1,
                 borrowDetailModel::getColumnValueToString, maPhieuMuonDelBtn);
-        var tenSachIDTF = AutoSuggestComboBox.createWithDelete(tenSachCB, 2, borrowDetailModel::getColumnValueToString,
+        var tenSachIDTF = AutoSuggestComboBox.createWithDeleteBtn(tenSachCB, 2, borrowDetailModel::getColumnValueToString,
                 tenSachDelBtn);
-        var tenLoiIDTF = AutoSuggestComboBox.createWithDelete(tenLoiCB, 3, borrowDetailModel::getColumnValueToString,
+        var tenLoiIDTF = AutoSuggestComboBox.createWithDeleteBtn(tenLoiCB, 3, borrowDetailModel::getColumnValueToString,
                 tenLoiDelBtn);
-        var soLuongIDTF = AutoSuggestComboBox.createWithDelete(soLuongCB, 4, borrowDetailModel::getColumnValueToString,
+        var soLuongIDTF = AutoSuggestComboBox.createWithDeleteBtn(soLuongCB, 4, borrowDetailModel::getColumnValueToString,
                 soLuongDelBtn);
-        var giaTienIDTF = AutoSuggestComboBox.createWithDelete(giaTienCB, 5, borrowDetailModel::getColumnValueToString,
+        var giaTienIDTF = AutoSuggestComboBox.createWithDeleteBtn(giaTienCB, 5, borrowDetailModel::getColumnValueToString,
                 giaTienDelBtn);
 
         bookDeleteAllButton.addActionListener(e -> {
