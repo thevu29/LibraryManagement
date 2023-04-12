@@ -115,7 +115,7 @@ public class NhanVienadmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(table1.getSelectedRow() < 0){
-                    JOptionPane.showMessageDialog(null,"thông báo","Bạn cần chọn nhân viên để thao tác",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Bạn cần chọn nhân viên để thao tác","thông báo",JOptionPane.WARNING_MESSAGE);
                 }else {
 
                 var ro = table1.getSelectedRow();
@@ -178,7 +178,7 @@ public class NhanVienadmin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (table1.getSelectedRow() < 0) {
-                    JOptionPane.showMessageDialog(null, "thông báo", "Bạn cần chọn nhân viên để thao tác", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Bạn cần chọn nhân viên để thao tác", "thông báo", JOptionPane.WARNING_MESSAGE);
                 } else {
 
                     var ro = table1.getSelectedRow();
