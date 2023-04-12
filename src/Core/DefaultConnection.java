@@ -10,6 +10,7 @@ public class DefaultConnection {
     private String user = "root";
     private String pass = "gg";
 
+//    private String pass ="huy123";
     public DefaultConnection() {
     }
 
@@ -18,6 +19,11 @@ public class DefaultConnection {
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         return DriverManager.getConnection("jdbc:mysql://localhost:3306/LIBRARY_MANAGEMENT", user, pass);
+
+    }
+    public static Connection getConnect() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/LIBRARY_MANAGEMENT", "root", "huy123");
 
     }
 

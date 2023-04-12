@@ -1,6 +1,7 @@
-package sellBook;
+package sellBook.GUI;
 
 import Utils.AbstractTableModelWithFilters;
+import sellBook.CTHDModel;
 
 public class CTHDTableModel extends AbstractTableModelWithFilters<CTHDModel> {
 

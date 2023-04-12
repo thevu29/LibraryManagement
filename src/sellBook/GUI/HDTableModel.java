@@ -1,6 +1,7 @@
-package sellBook;
+package sellBook.GUI;
 
 import Utils.AbstractTableModelWithFilters;
+import sellBook.HDModel;
 
 public class HDTableModel extends AbstractTableModelWithFilters<HDModel> {
 

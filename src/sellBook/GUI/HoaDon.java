@@ -1,13 +1,17 @@
-package sellBook;
+package sellBook.GUI;
 
+import Book.BUS.BookBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
+import sellBook.BUS.SellTicketBus;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 public class HoaDon {
     private JPanel main;
@@ -29,7 +33,18 @@ public class HoaDon {
     private JComboBox priceCB;
     private JButton statusDelBtn;
     private JComboBox statusCB;
-    HDTableModel hdTBL = new HDTableModel();
+    HDTableModel hdTBL ;
+    DefaultTableModel dtm = new DefaultTableModel();
+    private List<sellBook.DTO.HoaDon> dshd  ;
+    private SellTicketBus sellTicketBus;
+
+
+    public HoaDon(SellTicketBus bus) {
+        this.hdTBL = new HDTableModel();
+        this.sellTicketBus  = bus;
+        this.dshd = this.sellTicketBus.getAllSellTicket();
+    }
+
 
     public HoaDon(){
         initTable();
@@ -67,7 +82,8 @@ public class HoaDon {
                     var cthd = new ChiTietHoaDon();
                     JFrame frame = new JFrame("ChiTietHoaDon");
                     frame.setContentPane(cthd.getMain());
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
                     frame.pack();
                     frame.setVisible(true);
                 }
@@ -94,6 +110,8 @@ public class HoaDon {
     }
 
     public void initTable(){
+        String[] columns = {"Mã Phieu", "Ma Nhan Vien", "Ma Chi Tiet", "Ma Khach Hang"};
+        dtm.setColumnIdentifiers(columns);
         tblCheckOut.setModel(hdTBL);
     }
 }

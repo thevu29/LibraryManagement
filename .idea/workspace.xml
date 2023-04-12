@@ -4,12 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Add database, mysql connector.">
-      <change afterPath="$PROJECT_DIR$/src/sellBook/BUS/SellBookBUS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sellBook/DTO/HoaDon.java" afterDir="false" />
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="hello">
+      <change afterPath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/BUS/SellTicketBus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/DTO/CTHD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/HoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/ActionButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/ButtonRender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/CTHDTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/ChiTietHoaDon.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/ChiTietHoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/ChiTietHoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/DTO/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DTO/HoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/HDTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HDTableModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/HoaDon.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" afterDir="false" />
     </list>
     <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
@@ -92,11 +111,11 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="J:\LapTrinhJava\LibraryManagementGUI\src\sellBook\GUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\form" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sellBook" />
@@ -289,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681052182877</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="hello">
+      <created>1681090744988</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681090744988</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,7 +332,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="sellBook" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -321,7 +347,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Init" />
     <MESSAGE value="Add database, mysql connector." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add database, mysql connector." />
+    <MESSAGE value="hello" />
+    <option name="LAST_COMMIT_MESSAGE" value="hello" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="sellBook.DTO.CTHD" memberName="ma_series" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

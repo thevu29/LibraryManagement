@@ -1,7 +1,8 @@
-package sellBook;
+package sellBook.GUI;
 
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
+import sellBook.CTHDFormDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
