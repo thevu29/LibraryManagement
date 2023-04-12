@@ -410,9 +410,9 @@ CREATE TABLE `EMPLOYEE` (
                             `MA_NV` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                             `TEN` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                             `CA` int DEFAULT NULL,
-                            `CHUC_VU` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                            `CHUC_VU` int   DEFAULT 0,
                             `SO_NGAY_LAM_VIEC` int DEFAULT NULL,
-                            `NOI_LAM_VIEC` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+                            `NOI_LAM_VIEC` int DEFAULT 0,
                             `HE_SO` double DEFAULT NULL,
                             `PASSWORD` varchar(100) DEFAULT NULL,
                             `NGAY_NHAN_CHUC` date DEFAULT NULL,
@@ -421,7 +421,7 @@ CREATE TABLE `EMPLOYEE` (
                             `CCCD` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                             `EMAIL` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                             `PHONE` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-                            `GIOI_TINH` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+                            `GIOI_TINH` int DEFAULT 0,
                             `IS_DELETED` tinyint(1) NOT NULL,
                             PRIMARY KEY (`MA_NV`),
                             KEY `FK_EMPL_EP_CHUCVU` (`CHUC_VU`),
@@ -446,7 +446,7 @@ DROP TABLE IF EXISTS `EMPLOYEE_PERMISSION`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `EMPLOYEE_PERMISSION` (
-                                       `CHUC_VU` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                                       `CHUC_VU` int DEFAULT 0,
                                        `DESCRIPTION` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                                        `IS_DELETED` tinyint(1) DEFAULT NULL,
                                        PRIMARY KEY (`CHUC_VU`)

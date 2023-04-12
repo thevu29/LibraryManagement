@@ -1,4 +1,4 @@
-package NhanVien.arraylistNV;
+package NhanVien.DTO;
 
 import java.sql.Date;
 
@@ -6,21 +6,21 @@ public class nhanVien {
     private String ID;
     private String name;
     private  String phone;
-    private Date birth;
+    private String birth;
     private String address;
     private String email;
     private String password;
-    private Shift shift;
-    private Position position;
-    private Gender gender;
-    private Workplace work;
+    private int shift;
+    private int position;
+    private int gender;
+    private int work;
     private int daywork;
     private int Salary;
     
 	public nhanVien() {
 	}
-	public nhanVien(String iD, String name, String phone, Date birth, String address, String email, String password,
-					Shift shift, Position position, Gender gender, Workplace work, int daywork, int salary) {
+	public nhanVien(String iD, String name, String phone, String birth, String address, String email, String password,
+					int shift, int position, int gender, int work, int daywork, int salary) {
 		super();
 		ID = iD;
 		this.name = name;
@@ -36,10 +36,10 @@ public class nhanVien {
 		this.daywork = daywork;
 		Salary = salary;
 	}
-	public Workplace getWork() {
+	public int getWork() {
 		return work;
 	}
-	public void setWork(Workplace work) {
+	public void setWork(int work) {
 		this.work = work;
 	}
 	public int getDaywork() {
@@ -72,10 +72,10 @@ public class nhanVien {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getAddress() {
@@ -96,22 +96,22 @@ public class nhanVien {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Shift getShift() {
+	public int getShift() {
 		return shift;
 	}
-	public void setShift(Shift shift) {
+	public void setShift(int shift) {
 		this.shift = shift;
 	}
-	public Position getPosition() {
+	public int getPosition() {
 		return position;
 	}
-	public void setPosition(Position position) {
+	public void setPosition(int position) {
 		this.position = position;
 	}
-	public Gender getGender() {
+	public int getGender() {
 		return gender;
 	}
-	public void setGender(Gender gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
     

@@ -33,7 +33,7 @@ public abstract class AbstractTableModelWithFilters<T> extends AbstractTableMode
 
     public void addRow(T item) {
         rows.add(item);
-        fireTableRowsInserted(rows.size()-2, rows.size());
+        fireTableRowsInserted(rows.size()-1, rows.size()-1);
     }
 
     public void setRows(ArrayList<T> rows) {
