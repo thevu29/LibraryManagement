@@ -6,6 +6,7 @@ import NhanVien.arraylistNV.NVDataTableModel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class NhanVienC {
     private JComboBox gender;
@@ -199,6 +200,35 @@ public class NhanVienC {
             }
         });
 
+    }
+
+    public  boolean check(){
+        if(ID.getText().equals("")&&name.getText().equals("")&&salary.getText().equals("")&&getDaywork().getText().equals("")&&getBrith().getText().equals("")&&email.getText().equals("")&&address.getText().equals("")&&password1.getText().equals("")&&password2.getText().equals("")&&password2.getText().equals("")&&phone.getText().equals("")){
+
+            JOptionPane.showMessageDialog(null, "Bạn không được để trống vị trí thông tin nào!!", "thông báo", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
+        if (!password2.getText().equals(password1.getText())){
+            JOptionPane.showMessageDialog(null, "mật khẩu cần trùng khớp với nhau", "thông báo", JOptionPane.WARNING_MESSAGE);
+            return  false;
+        }
+        if(!email.getText().matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")){
+            JOptionPane.showMessageDialog(null, "Nhập email sai định dạng", "thông báo", JOptionPane.WARNING_MESSAGE);
+            return  false;
+        }
+        if(!brith.getText().matches("^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$")){
+            JOptionPane.showMessageDialog(null, "Nhập ngày sinh dạng : YYYY-MM-DD và hợp lý", "thông báo", JOptionPane.WARNING_MESSAGE);
+            return  false;
+        }
+        if(!salary.getText().matches("[0-9]+")&&!daywork.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "Nhập Số điện thoại từ đúng định dạng 0 và 9-10 số liện sau", "thông báo", JOptionPane.WARNING_MESSAGE);
+            return  false;
+        }
+        if(!phone.getText().matches("^0[0-9]{9,10}")){
+            JOptionPane.showMessageDialog(null, "Nhập Số điện thoại từ đúng định dạng 0 và 9-10 số liện sau", "thông báo", JOptionPane.WARNING_MESSAGE);
+            return  false;
+        }
+        return  true;
     }
 
     public static void main(String[] args) {

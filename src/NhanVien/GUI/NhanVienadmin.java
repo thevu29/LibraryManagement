@@ -40,6 +40,10 @@ public class NhanVienadmin {
     private NVDataTableModel NVmodel = new NVDataTableModel();
 //    private final NVBUS;
 
+//    private boolean check(NhanVienC nv){
+//        if(nv.getID().getText().toString().equals("")){}
+//    }
+
     public NhanVienadmin() {
 
         NVmodel.setEditable(false);
@@ -68,8 +72,8 @@ public class NhanVienadmin {
         table1.getTableHeader().setReorderingAllowed(false);
 
         var IDNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox3, 0 , NVmodel :: getColumnValueToString, delFliterIDButton );
-        var NameNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox2, 0 , NVmodel :: getColumnValueToString, delFliterNameButton );
-        var CVNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox1, 0 , NVmodel :: getColumnValueToString, delFlitercvButton );
+        var NameNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox2, 1 , NVmodel :: getColumnValueToString, delFliterNameButton );
+        var CVNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox1, 5 , NVmodel :: getColumnValueToString, delFlitercvButton );
 
 
         delallButton.addActionListener(new ActionListener() {
@@ -105,8 +109,12 @@ public class NhanVienadmin {
                 b.setVisible(true);
                 b.pack();
                 a.getLưuButton().addActionListener(new ActionListener() {
+
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        if(!a.check()){
+                            return;
+                        }
                         NVBUS.getNVDAO().AddNV(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                         NVmodel.addRow(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                         b.dispose();
@@ -132,21 +140,25 @@ public class NhanVienadmin {
                 a.getID().setEditable(false);
                 a.getID().setText(table1.getValueAt(ro,0).toString());
                 a.getName().setText(table1.getValueAt(ro,1).toString());
-                a.getPhone().setText(table1.getValueAt(ro,4).toString());
-                a.getGender().setSelectedIndex(table1.getValueAt(ro,3).toString().equals("nam") ? 0 : 1);
-                a.getBrith().setText(table1.getValueAt(ro,10).toString());
-                a.getAddress().setText(table1.getValueAt(ro,0).toString());
-                a.getDaywork().setText(table1.getValueAt(ro,11).toString());
+                a.getPhone().setText(table1.getValueAt(ro,3).toString());
+                a.getGender().setSelectedIndex(table1.getValueAt(ro,2).toString().equals("nam") ? 0 : 1);
+                a.getBrith().setText(table1.getValueAt(ro,11).toString());
+                a.getAddress().setText(table1.getValueAt(ro,9).toString());
+                a.getDaywork().setText(table1.getValueAt(ro,12).toString());
                 a.getWordplace().setSelectedIndex(table1.getValueAt(ro,7).toString().equals("CS1") ? 0 : table1.getValueAt(ro,7).toString().equals("CS2") ?1:2);
-                a.getPassword1().setText(table1.getValueAt(ro,0).toString());
+                a.getPassword1().setText(table1.getValueAt(ro,4).toString());
                 a.getPosition().setSelectedIndex(table1.getValueAt(ro,5).toString().equals("librarian") ? 0 : 1);
-                a.getEmail().setText(table1.getValueAt(ro,9).toString());
+                a.getEmail().setText(table1.getValueAt(ro,10).toString());
                 a.getSalary().setText(table1.getValueAt(ro,6).toString());
                 a.getShift().setSelectedIndex(table1.getValueAt(ro,8).toString().equals("C1") ? 0 :table1.getValueAt(ro,8).toString().equals("C2") ? 1 : 2);
 
                 a.getLưuButton().addActionListener(new ActionListener() {
+
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        if(!a.check()){
+                            return;
+                        }
                         var nvt = NVmodel.getRows();
                         for (int i = 0 ; i< nvt.size();i++) {
                             System.out.print("qq");

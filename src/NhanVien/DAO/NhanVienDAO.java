@@ -39,7 +39,6 @@ public class NhanVienDAO extends DefaultConnection {
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Không thể kết nối");
-//            return books;
         }
         return NV;
     }
@@ -66,6 +65,7 @@ public class NhanVienDAO extends DefaultConnection {
 
             smt = pst.executeUpdate();
         } catch (SQLException e) {
+            System.out.print("nhập chưa hợp lý nó ko chạy");
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -74,7 +74,7 @@ public class NhanVienDAO extends DefaultConnection {
     }
 
     public int removeNV(String id){
-        String sql ="UPDATE `employee` SET `IS_DELETED`=? WHERE    `ID`=?";;
+        String sql ="UPDATE `employee` SET `IS_DELETED`=? WHERE    `MA_NV`=?";;
 
         int smt = 0;
         PreparedStatement pst = null;
@@ -115,6 +115,7 @@ public class NhanVienDAO extends DefaultConnection {
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

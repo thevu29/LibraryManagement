@@ -14,11 +14,11 @@ public class NVBUS {
 
     private NhanVienadmin NVGUI;
 
-    private NhanVienDAO NVDAO;
+    private NhanVienDAO NVDAO = new NhanVienDAO();
 
     public NVBUS() {
         NVs = new NVDataTableModel();
-        NVGUI = new NhanVienadmin();
+//        NVGUI = new NhanVienadmin();
 //        var NCDAO = new NhanVienDAO();
         NVs.setRows(NVDAO.getAllFromDatabase());
     }
