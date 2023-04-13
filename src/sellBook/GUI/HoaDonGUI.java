@@ -127,7 +127,7 @@ public class HoaDonGUI {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var dialog = new HoaDonFD();
+                var dialog = new HoaDonFD(HoaDonGUI.this);
                 dialog.pack();
                 dialog.setVisible(true);
             }
@@ -142,15 +142,21 @@ public class HoaDonGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
-                String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
-                int smt =bus.remove(maHD);
-                if(smt>0){
-                    JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
-                    showAll();
+                if(pos[0]==-1){
+                    JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
+                    int smt =bus.remove(maHD);
+                    if(smt>0){
+                        JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
+                        showAll();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                    }
                 }
+
 
             }
         });
@@ -158,11 +164,17 @@ public class HoaDonGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
-                String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0));
+                if(pos[0]==-1){
+                    JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
+                }
+                else {
+                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0));
 
-                var dialog = new HoaDonFD(maHD);
-                dialog.pack();
-                dialog.setVisible(true);
+                    var dialog = new HoaDonFD(maHD,HoaDonGUI.this);
+                    dialog.pack();
+                    dialog.setVisible(true);
+                }
+
             }
         });
     }
@@ -227,7 +239,7 @@ public class HoaDonGUI {
 
         tblCheckOut.setModel(dtm);
     }
-    private void showAll(){
+    public void showAll(){
         changeTable(bus.getAllSellTicket());
     }
 

@@ -18,14 +18,16 @@ public class HoaDonFD extends JDialog {
     private JButton addButton;
     private JButton updateButton;
 
+    private HoaDonGUI gui ;
+
     SellTicketBus bus = new SellTicketBus();
 
 
-    public HoaDonFD() {
+    public HoaDonFD(HoaDonGUI gui) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnRemove);
-
+        this.gui = gui;
         btnRemove.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
@@ -65,6 +67,7 @@ public class HoaDonFD extends JDialog {
                 int smt = bus.insert(hd);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Them Hoa Don thanh cong");
+                    gui.showAll();
                 }
                 else {
                     JOptionPane.showMessageDialog(null,"Them Hoa Don KHONG THANH CONG");
@@ -74,11 +77,12 @@ public class HoaDonFD extends JDialog {
 
     }
 
-    public HoaDonFD(String maHD){
+    public HoaDonFD(String maHD,HoaDonGUI gui){
 
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnRemove);
+        this.gui = gui;
 
         List<HoaDon>  bill = bus.filterMaHD(maHD);
         HoaDon ticket = bill.get(0);
@@ -125,6 +129,7 @@ public class HoaDonFD extends JDialog {
                 int smt = bus.insert(hd);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Them Hoa Don thanh cong");
+                    gui.showAll();
                 }
                 else {
                     JOptionPane.showMessageDialog(null,"Them Hoa Don KHONG THANH CONG");
@@ -145,6 +150,8 @@ public class HoaDonFD extends JDialog {
                 int smt = bus.update(hd);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Cap Nhat Hoa Don thanh cong");
+                    dispose();
+                    gui.showAll();
                 }
                 else {
                     JOptionPane.showMessageDialog(null,"Cap Nhat Hoa Don KHONG THANH CONG");
@@ -164,10 +171,10 @@ public class HoaDonFD extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        HoaDonFD dialog = new HoaDonFD();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
+//    public static void main(String[] args) {
+//        HoaDonFD dialog = new HoaDonFD();
+//        dialog.pack();
+//        dialog.setVisible(true);
+//        System.exit(0);
+//    }
 }

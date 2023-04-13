@@ -33,12 +33,12 @@
             <properties/>
             <border type="none"/>
             <children>
-              <component id="f1aed" class="javax.swing.JButton" binding="XÓAKHỎIHÓAĐƠNButton" default-binding="true">
+              <component id="f1aed" class="javax.swing.JButton" binding="btnRemove">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="XÓA KHỎI HÓA ĐƠN"/>
+                  <text value="XÓA CTHD"/>
                 </properties>
               </component>
               <vspacer id="63998">
@@ -46,28 +46,28 @@
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="3eccd" class="javax.swing.JButton" binding="CẬPNHẬTGIỎHÀNGButton" default-binding="true">
+              <component id="b18fe" class="javax.swing.JButton" binding="btnFinish">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <text value="CẬP NHẬT GIỎ HÀNG"/>
-                </properties>
-              </component>
-              <component id="b18fe" class="javax.swing.JButton" binding="THÀNHCÔNGButton" default-binding="true">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <text value="THÀNH CÔNG"/>
                 </properties>
               </component>
-              <component id="f0f4d" class="javax.swing.JButton" binding="testAdd">
+              <component id="7cbb5" class="javax.swing.JButton" binding="btnAdd">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="TEST THÊM HÓA ĐƠN"/>
+                  <text value="THÊM CTHD"/>
+                </properties>
+              </component>
+              <component id="3eccd" class="javax.swing.JButton" binding="btnUpdate">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <text value="CẬP NHẬT CTHD"/>
                 </properties>
               </component>
             </children>

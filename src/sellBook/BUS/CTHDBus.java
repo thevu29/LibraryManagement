@@ -11,7 +11,7 @@ public class CTHDBus {
     public CTHDBus() {
         this.cthd = new CTHDDao();
     }
-    public List<CTHD> getDsHD(String ma){
+    public List<CTHD> getDsCTHD(String ma){
         return cthd.getDsCTHD(ma);
     }
     public List<String> getAllMaCTHD(String id){
@@ -37,6 +37,15 @@ public class CTHDBus {
     }
     public List<CTHD> filterMaSeri(String id,String ma){
         return cthd.locMaSeri(id,ma);
+    }
+    public int remove(String maCTHD){
+        return cthd.removeCTHD(maCTHD);
+    }
+    public int insert(CTHD hd){
+        return cthd.insertCTHD(hd);
+    }
+    public int update(CTHD hd){
+        return cthd.updateCTHD(hd);
     }
 
     public static void main(String[] args) {

@@ -16,10 +16,9 @@ import java.util.List;
 
 public class CTHDGUI {
     private JPanel main;
-    private JButton XÓAKHỎIHÓAĐƠNButton;
-    private JButton CẬPNHẬTGIỎHÀNGButton;
-    private JButton THÀNHCÔNGButton;
-    private JButton testAdd;
+    private JButton btnRemove;
+    private JButton btnUpdate;
+    private JButton btnFinish;
     private JTable tblCTHD;
     private JButton bookDeleteAllButton;
     private JButton btnFilter;
@@ -32,6 +31,7 @@ public class CTHDGUI {
     private JComboBox cboHeSo;
     private JComboBox cboMaSeri;
     private JButton btnXoaMaSeri;
+    private JButton btnAdd;
     private String maHD;
     DefaultTableModel dtm = new DefaultTableModel();
     CTHDBus bus = new CTHDBus();
@@ -120,9 +120,52 @@ public class CTHDGUI {
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                     System.out.println("double clicked");
                     int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
-                    String maHD = String.valueOf(tblCTHD.getValueAt(pos[0],pos[1])) ;
+                    String maHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
                     //Khoi tao
                 }
+            }
+        });
+        btnRemove.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
+                if(pos[0]>0){
+                    String maCTHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
+                    int smt = bus.remove(maCTHD);
+                    if(smt==0){
+                        JOptionPane.showMessageDialog(null,"Xoa CTHD khong thanh cong! :>>");
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
+                        showAll();
+                    }
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Can chon dong truoc khi xoa");
+                }
+
+            }
+        });
+
+        btnUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
+                String maCTHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
+
+                List<CTHD> ds = bus.filterMaCTHD(maHD,maCTHD);
+                CTHD temp = ds.get(0);
+                CTHDFD dialog = new CTHDFD(temp,CTHDGUI.this);
+                dialog.pack();
+                dialog.setVisible(true);
+            }
+        });
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CTHDFD dialog = new CTHDFD(CTHDGUI.this);
+                dialog.pack();
+                dialog.setVisible(true);
             }
         });
     }
@@ -135,6 +178,11 @@ public class CTHDGUI {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public void showAll(){
+        dsCTHD = bus.getDsCTHD(maHD);
+        changeTable();
     }
 
     private void changeTable(){
@@ -179,7 +227,7 @@ public class CTHDGUI {
 
     }
     private void initTable(){
-        List<CTHD> dsct = bus.getDsHD(maHD);
+        List<CTHD> dsct = bus.getDsCTHD(maHD);
 
         String[] columns = {"Mã Chi Tiet", "Ma Hoa Don", "He So","Ma Seri"};
         dtm.setColumnIdentifiers(columns);

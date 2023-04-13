@@ -4,6 +4,8 @@ import Core.DefaultConnection;
 import sellBook.DTO.CTHD;
 import sellBook.DTO.HoaDon;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -96,15 +98,82 @@ public class CTHDDao extends DefaultConnection {
         return CTHDDao.getDs(sql);
     }
 
+
+    public int removeCTHD(String maCTHD){
+        String sql = "DELETE FROM `sell_ticket_details` WHERE MA_CHITIET = "+maCTHD;
+        int smt = 0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnect().prepareStatement(sql);
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return smt;
+    }
+
+    public int insertCTHD(CTHD cthd){
+        String sql = "INSERT INTO `sell_ticket_details`(`MA_CHITIET`, `MA_PHIEU`, `HE_SO`, `MA_SERIES`) VALUES (?,?,?,?)";
+        int smt=0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnect().prepareStatement(sql);
+            pst.setString(1, cthd.getMa_chiTiet());
+            pst.setString(2,cthd.getMa_phieu());
+            pst.setDouble(3, cthd.getHe_so());
+            pst.setString(4,cthd.getMa_series());
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return smt;
+    }
+
+    public int updateCTHD(CTHD cthd){
+        String sql = "UPDATE `sell_ticket_details` SET `MA_PHIEU`=?,`HE_SO`=?,`MA_SERIES`=? WHERE `MA_CHITIET`=?";
+        int smt = 0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnect().prepareStatement(sql);
+            pst.setString(1, cthd.getMa_phieu());
+            pst.setDouble(2,cthd.getHe_so());
+            pst.setString(3,cthd.getMa_series());
+            pst.setString(4,cthd.getMa_chiTiet());
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return smt;
+    }
+
     public static void main(String[] args) {
         CTHDDao t = new CTHDDao();
 //        List<CTHD> dsct = t.locHeSo("1",3);
 //        for(CTHD ct:dsct){
 //            System.out.println(ct.getHe_so());
 //        }
-        List<Double> ds = t.getHeSo("1");
-        for(Double h:ds){
-            System.out.println(h);
+//        List<Double> ds = t.getHeSo("1");
+//        for(Double h:ds){
+//            System.out.println(h);
+//        }
+
+        CTHD cthd = new CTHD();
+        cthd.setMa_chiTiet("20");
+        cthd.setHe_so(2);
+        cthd.setMa_series("5");
+        cthd.setMa_phieu("5");
+        int smt = t.removeCTHD("20");
+        if(smt>0){
+            System.out.println("Hello");
+        }
+        else{
+            System.out.println("hmm");
         }
     }
 }
