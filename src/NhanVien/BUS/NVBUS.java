@@ -10,16 +10,22 @@ import NhanVien.arraylistNV.NVDataTableModel;
 
 public class NVBUS {
 
-    private final NVDataTableModel NVs;
+    private NVDataTableModel NVs;
 
-    private final NhanVienadmin NVGUI;
+    private NhanVienadmin NVGUI;
+
+    private NhanVienDAO NVDAO;
 
     public NVBUS() {
         NVs = new NVDataTableModel();
         NVGUI = new NhanVienadmin();
-        var NVDAO = new NhanVienDAO();
-        var NCDAO = new NhanVienDAO();
+//        var NCDAO = new NhanVienDAO();
         NVs.setRows(NVDAO.getAllFromDatabase());
+    }
+
+
+    public NhanVienDAO getNVDAO() {
+        return NVDAO;
     }
 
     public NVDataTableModel getNVs() {

@@ -4,6 +4,7 @@ import Book.DTO.Book;
 import Core.DefaultConnection;
 import NhanVien.DTO.nhanVien;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,7 +17,7 @@ public class NhanVienDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM employee");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `employee` WHERE `IS_DELETED` = 1 ");
             while (rs.next()) {
 
                 var id = rs.getString("MA_NV");
@@ -42,5 +43,85 @@ public class NhanVienDAO extends DefaultConnection {
         }
         return NV;
     }
+
+    public int AddNV(nhanVien nv){
+        String sql ="INSERT INTO `employee` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        int smt=0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnection().prepareStatement(sql);
+            pst.setString(1, nv.getID());
+            pst.setString(2,nv.getName());
+            pst.setInt(3,nv.getShift());
+            pst.setInt(4, nv.getPosition());
+            pst.setInt(5,nv.getDaywork());
+            pst.setInt(6,nv.getWork());
+            pst.setString(7, nv.getPassword());
+            pst.setString(8,nv.getBirth());
+            pst.setString(9,nv.getAddress());
+            pst.setString(10, nv.getPhone());
+            pst.setInt(11,nv.getGender());
+            pst.setInt(12,nv.getSalary());
+            pst.setString(13, nv.getEmail());
+
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return smt;
+    }
+
+    public int removeNV(String id){
+        String sql ="UPDATE `employee` SET `IS_DELETED`=? WHERE    `ID`=?";;
+
+        int smt = 0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnection().prepareStatement(sql);
+            pst.setInt(1, 0);
+            pst.setString(2,id);
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return smt;
+    }
+
+    public int EditNV(nhanVien nv){
+        String sql ="UPDATE `employee` SET `TEN`=?,`CA`=?,`CHUC_VU`=?,`SO_NGAY_LAM_VIEC`=?,`NOI_LAM_VIEC`=?,`PASSWORD`=?,`NGAY_SINH`=?,`DIA_CHI`=?,`PHONE`=?,`GIOI_TINH`=?,`LUONG`=?,`EMAIL`=? WHERE `MA_NV`=?";;
+
+        int smt = 0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnection().prepareStatement(sql);
+            pst.setString(13, nv.getID());
+            pst.setString(1,nv.getName());
+            pst.setInt(2,nv.getShift());
+            pst.setInt(3, nv.getPosition());
+            pst.setInt(4,nv.getDaywork());
+            pst.setInt(5,nv.getWork());
+            pst.setString(6, nv.getPassword());
+            pst.setString(7,nv.getBirth());
+            pst.setString(8,nv.getAddress());
+            pst.setString(9, nv.getPhone());
+            pst.setInt(10,nv.getGender());
+            pst.setInt(11,nv.getSalary());
+            pst.setString(12, nv.getEmail());
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        return smt;
+    }
+
+
 
 }

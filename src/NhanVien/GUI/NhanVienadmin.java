@@ -33,14 +33,17 @@ public class NhanVienadmin {
     private JComboBox<String> comboBox1;
     private JButton delFliterNameButton;
 
-    private NVDataTableModel NVmodel = new NVDataTableModel();
 
+
+    private  NVBUS NVBUS = new NVBUS();
+
+    private NVDataTableModel NVmodel = new NVDataTableModel();
 //    private final NVBUS;
 
     public NhanVienadmin() {
 
         NVmodel.setEditable(false);
-
+        NVmodel.setRows(NVBUS.getNVDAO().getAllFromDatabase());
         table1.setModel(NVmodel);
         TableRowSorter<NVDataTableModel> sorter
                 = new TableRowSorter<>(NVmodel);
@@ -104,6 +107,7 @@ public class NhanVienadmin {
                 a.getLưuButton().addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        NVBUS.getNVDAO().AddNV(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                         NVmodel.addRow(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                         b.dispose();
                     }
@@ -161,6 +165,7 @@ public class NhanVienadmin {
 //                                nvt.get(i).setBirth(a.getBrith().getText());
 //                                nvt.get(i).setPosition((int) a.getPosition().getSelectedItem());
 //                                nvt.get(i).setPhone(a.getPhone().getText());
+                                NVBUS.getNVDAO().EditNV(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                                 nvt.set(i,new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                             }
                         }
@@ -186,6 +191,7 @@ public class NhanVienadmin {
                     var nvt = NVmodel.getRows();
                     for (int i = 0 ; i< nvt.size();i++) {
                         if (nvt.get(i).getID().toString().equals(table1.getValueAt(table1.getSelectedRow(), 0).toString())) {
+                            NVBUS.getNVDAO().removeNV(nvt.get(i).getID());
                             nvt.remove(i);
                         }
                     }

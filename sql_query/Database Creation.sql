@@ -413,6 +413,7 @@ CREATE TABLE `EMPLOYEE` (
                             `CHUC_VU` int   DEFAULT 0,
                             `SO_NGAY_LAM_VIEC` int DEFAULT NULL,
                             `NOI_LAM_VIEC` int DEFAULT 0,
+                            `LUONG` int DEFAULT 0,
                             `HE_SO` double DEFAULT NULL,
                             `PASSWORD` varchar(100) DEFAULT NULL,
                             `NGAY_NHAN_CHUC` date DEFAULT NULL,
@@ -422,7 +423,7 @@ CREATE TABLE `EMPLOYEE` (
                             `EMAIL` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                             `PHONE` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                             `GIOI_TINH` int DEFAULT 0,
-                            `IS_DELETED` tinyint(1) NOT NULL,
+                            `IS_DELETED` tinyint(1) DEFAULT 1,
                             PRIMARY KEY (`MA_NV`),
                             KEY `FK_EMPL_EP_CHUCVU` (`CHUC_VU`),
                             CONSTRAINT `FK_EMPL_EP_CHUCVU` FOREIGN KEY (`CHUC_VU`) REFERENCES `EMPLOYEE_PERMISSION` (`CHUC_VU`)
