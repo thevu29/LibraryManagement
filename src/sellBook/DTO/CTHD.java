@@ -9,7 +9,7 @@ public class CTHD {
     public CTHD() {
     }
 
-    public CTHD(String ma_chiTiet, String ma_phieu, double he_so, String ma_series) {
+    public CTHD(String ma_phieu, double he_so, String ma_series) {
         this.ma_chiTiet = ma_chiTiet;
         this.ma_phieu = ma_phieu;
         this.he_so = he_so;

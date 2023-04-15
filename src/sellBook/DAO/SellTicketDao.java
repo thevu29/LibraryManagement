@@ -34,7 +34,7 @@ public class SellTicketDao extends DefaultConnection {
 
 
     public  ArrayList<HoaDon> getDsHoaDon() {
-        String sql = "SELECT * FROM sell_ticket";
+        String sql = "SELECT * FROM SELL_TICKET";
         return getDs(sql);
     }
 
@@ -81,7 +81,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int insertHD(HoaDon hd){
-        String sql ="INSERT INTO `sell_ticket`(`MA_PHIEU`, `MA_NV`, `MA_KH`) VALUES (?,?,?)";
+        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`) VALUES (?,?,?)";
         int smt=0;
         PreparedStatement pst = null;
         try {
@@ -99,7 +99,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int removeHD(String id){
-        String sql = "DELETE FROM `sell_ticket` WHERE MA_PHIEU = "+id;
+        String sql = "DELETE FROM `SELL_TICKET` WHERE MA_PHIEU = "+id;
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -114,7 +114,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int updateHD(HoaDon hd){
-        String sql = "UPDATE `sell_ticket` SET MA_NV=?,`MA_KH`=? WHERE MA_PHIEU=?";
+        String sql = "UPDATE `SELL_TICKET` SET MA_NV=?,`MA_KH`=? WHERE MA_PHIEU=?";
         int smt = 0;
 
         PreparedStatement pst = null;

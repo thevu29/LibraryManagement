@@ -52,11 +52,11 @@ public class CTHDFD extends JDialog {
         btnInsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String maCTHD = txtMaChiTiet.getText();
+
                 String maHD = txtMaPhieu.getText();
                 Double heSo = Double.parseDouble(txtHeSo.getText());
                 String maSeri = txtMaSeri.getText();
-                CTHD ct = new CTHD(maCTHD,maHD,heSo,maSeri);
+                CTHD ct = new CTHD(maHD,heSo,maSeri);
                 int smt = bus.insert(ct);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Them CTHD THANH CONG");
@@ -70,11 +70,10 @@ public class CTHDFD extends JDialog {
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String maCTHD = txtMaChiTiet.getText();
                 String maHD = txtMaPhieu.getText();
                 Double heSo = Double.parseDouble(txtHeSo.getText());
                 String maSeri = txtMaSeri.getText();
-                CTHD ct = new CTHD(maCTHD,maHD,heSo,maSeri);
+                CTHD ct = new CTHD(maHD,heSo,maSeri);
                 int smt = bus.update(ct);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Cap Nhat CTHD THANH CONG");
@@ -122,11 +121,10 @@ public class CTHDFD extends JDialog {
         btnInsert.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String maCTHD = txtMaChiTiet.getText();
                 String maHD = txtMaPhieu.getText();
                 Double heSo = Double.parseDouble(txtHeSo.getText());
                 String maSeri = txtMaSeri.getText();
-                CTHD ct = new CTHD(maCTHD,maHD,heSo,maSeri);
+                CTHD ct = new CTHD(maHD,heSo,maSeri);
                 int smt = bus.insert(ct);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Them CTHD THANH CONG");
@@ -141,11 +139,10 @@ public class CTHDFD extends JDialog {
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String maCTHD = txtMaChiTiet.getText();
                 String maHD = txtMaPhieu.getText();
                 Double heSo = Double.parseDouble(txtHeSo.getText());
                 String maSeri = txtMaSeri.getText();
-                CTHD ct = new CTHD(maCTHD,maHD,heSo,maSeri);
+                CTHD ct = new CTHD(maHD,heSo,maSeri);
                 int smt = bus.update(ct);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Cap Nhat CTHD THANH CONG");

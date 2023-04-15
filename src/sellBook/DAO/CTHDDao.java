@@ -22,12 +22,11 @@ public class CTHDDao extends DefaultConnection {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
 
-                var maCTHD = rs.getString("MA_CHITIET");
                 var maPhieu = rs.getString("MA_PHIEU");
                 var heSo = Double.valueOf(rs.getString("HE_SO"))  ;
                 var maSeri = rs.getString("MA_SERIES");
 
-                dsct.add(new CTHD(maCTHD, maPhieu,  heSo, maSeri));
+                dsct.add(new CTHD( maPhieu,  heSo, maSeri));
             }
         } catch (SQLException | ClassNotFoundException e) {
             return dsct;
@@ -35,7 +34,7 @@ public class CTHDDao extends DefaultConnection {
         return dsct;
     }
     public ArrayList<CTHD> getDsCTHD(String ma) {
-        String sql = "SELECT * FROM `sell_ticket_details`  WHERE  MA_PHIEU = "+ma;
+        String sql = "SELECT * FROM SELL_TICKET_DETAILS WHERE MA_PHIEU = '"+ma+"'";
         return CTHDDao.getDs(sql);
     }
 
@@ -66,7 +65,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public List<Double> getHeSo(String ma){
-        String sql= "SELECT DISTINCT HE_SO FROM `sell_ticket_details`  WHERE  MA_PHIEU = "+ma;
+        String sql= "SELECT DISTINCT HE_SO FROM SELL_TICKET_DETAILS  WHERE  MA_PHIEU = "+ma;
 
         List<Double> dshs = new ArrayList<>();
         Statement stmt = null;
@@ -86,21 +85,21 @@ public class CTHDDao extends DefaultConnection {
 
 
     public List<CTHD> locCTHD(String id,String ma){
-        String sql = "select * from `sell_ticket_details`  WHERE  MA_PHIEU = "+id+" and MA_CHITIET = "+ma;
+        String sql = "select * from SELL_TICKET_DETAILS  WHERE  MA_PHIEU = "+id+" and MA_CHITIET = "+ma;
         return CTHDDao.getDs(sql);
     }
     public List<CTHD> locHeSo(String id,double hs){
-        String sql = "select * from `sell_ticket_details`  WHERE  MA_PHIEU = "+id+" and HE_SO = "+hs;
+        String sql = "select * from SELL_TICKET_DETAILS  WHERE  MA_PHIEU = "+id+" and HE_SO = "+hs;
         return CTHDDao.getDs(sql);
     }
     public List<CTHD> locMaSeri(String id,String ma){
-        String sql = "select * from `sell_ticket_details`  WHERE  MA_PHIEU = "+id+" and MA_SERIES = "+ma;
+        String sql = "select * from SELL_TICKET_DETAILS  WHERE  MA_PHIEU = "+id+" and MA_SERIES = "+ma;
         return CTHDDao.getDs(sql);
     }
 
 
     public int removeCTHD(String maCTHD){
-        String sql = "DELETE FROM `sell_ticket_details` WHERE MA_CHITIET = "+maCTHD;
+        String sql = "DELETE FROM SELL_TICKET_DETAILS WHERE MA_PHIEU = "+maCTHD;
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -115,15 +114,14 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public int insertCTHD(CTHD cthd){
-        String sql = "INSERT INTO `sell_ticket_details`(`MA_CHITIET`, `MA_PHIEU`, `HE_SO`, `MA_SERIES`) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO SELL_TICKET_DETAILS(`MA_PHIEU`, `HE_SO`, `MA_SERIES`) VALUES (?,?,?)";
         int smt=0;
         PreparedStatement pst = null;
         try {
             pst = getConnect().prepareStatement(sql);
-            pst.setString(1, cthd.getMa_chiTiet());
-            pst.setString(2,cthd.getMa_phieu());
-            pst.setDouble(3, cthd.getHe_so());
-            pst.setString(4,cthd.getMa_series());
+            pst.setString(1,cthd.getMa_phieu());
+            pst.setDouble(2, cthd.getHe_so());
+            pst.setString(3,cthd.getMa_series());
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -134,7 +132,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public int updateCTHD(CTHD cthd){
-        String sql = "UPDATE `sell_ticket_details` SET `MA_PHIEU`=?,`HE_SO`=?,`MA_SERIES`=? WHERE `MA_CHITIET`=?";
+        String sql = "UPDATE SELL_TICKET_DETAILS SET `MA_PHIEU`=?,`HE_SO`=?,`MA_SERIES`=? WHERE MA_PHIEU=? AND MA_SERIES=?";
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -142,7 +140,8 @@ public class CTHDDao extends DefaultConnection {
             pst.setString(1, cthd.getMa_phieu());
             pst.setDouble(2,cthd.getHe_so());
             pst.setString(3,cthd.getMa_series());
-            pst.setString(4,cthd.getMa_chiTiet());
+            pst.setString(4,cthd.getMa_phieu());
+            pst.setString(5,cthd.getMa_series());
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

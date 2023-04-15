@@ -46,7 +46,7 @@ public class HoaDonGUI {
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                     System.out.println("double clicked");
                     int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
-                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],pos[1])) ;
+                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],pos[0])) ;
                     //Khoi tao
                     var cthd = new CTHDGUI(maHD);
                     JFrame frame = new JFrame("ChiTietHoaDon");
