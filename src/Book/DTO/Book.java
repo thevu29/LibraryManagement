@@ -62,6 +62,11 @@ public class Book implements Cloneable {
         this.authors = authors;
     }
 
+    public void setAuthor(int index, String id,String name) {
+        authors.get(index).setId(id.strip());
+        authors.get(index).setName(name.strip());
+    }
+
     public ArrayList<BookPublisher> getPublisher() {
         return publisher;
     }
