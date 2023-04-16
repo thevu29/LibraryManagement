@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="Add database, mysql connector.">
-      <change afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailInfoUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailInfoUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowInfoUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/BorrowInfoUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/Fault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/Fault.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultInfor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultInfor.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultInfor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultInfor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/BookFault/FaultUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/Borrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/Borrow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +29,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Book/BUS/BookBUS.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Book/GUI/BookGUI.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/BookFault/FaultDetail.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/BookFault/FaultDetailInfoUI.java" root0="SKIP_INSPECTION" />
@@ -116,19 +99,19 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BorrowUI (4)">
+  <component name="RunManager" selected="Application.BookBUS">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="BorrowUI (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Borrow.BorrowUI" />
+    <configuration name="BookBUS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Book.BUS.BookBUS" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Borrow.*" />
+          <option name="PATTERN" value="Book.BUS.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -175,12 +158,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FaultDetailInfoUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BookFault.FaultDetailInfoUI" />
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="BookFault.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -190,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BookBUS" />
+        <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.BorrowUI" />
         <item itemvalue="Application.BorrowUI (4)" />
         <item itemvalue="Application.BorrowUI (3)" />
-        <item itemvalue="Application.BorrowUI" />
-        <item itemvalue="Application.FaultDetailInfoUI" />
-        <item itemvalue="Application.BorrowUI (2)" />
       </list>
     </recent_temporary>
   </component>
