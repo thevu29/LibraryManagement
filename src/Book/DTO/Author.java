@@ -10,12 +10,20 @@ public class Author {
     private EGender gender;
     private String description;
 
+    public static int totalID = 1;
+
     public Author(String id, String name, String email, String gender, String description) {
         this.id = id;
         this.name = name;
         this.email = email;
         setGender(gender);
         this.description = description;
+    }
+
+
+    public static Author addTestAuthor() {
+        totalID+=1;
+        return new Author(String.valueOf(totalID), "Test"+totalID, "", "NU", "");
     }
 
     public String getId() {

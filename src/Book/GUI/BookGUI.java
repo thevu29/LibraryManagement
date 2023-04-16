@@ -3,6 +3,7 @@ package Book.GUI;
 import Book.AuthorDataTableModel;
 import Book.BUS.BookBUS;
 import Book.BookDataTableModel;
+import Book.DTO.Author;
 import Book.GenreDataTableModel;
 import Book.PublisherDataTableModel;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
@@ -49,6 +50,7 @@ public class BookGUI {
     private JTable authorTable;
     private JTable genreTable;
     private JTable publisherTable;
+    private JButton authorTest;
 
     private JTextField bookIDTF;
 
@@ -67,6 +69,12 @@ public class BookGUI {
         setupAuthorPane();
         setupGenrePane();
         setupPublisherPane();
+        authorTest.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bus.getAuthorDataTableModel().addRow(Author.addTestAuthor());
+            }
+        });
     }
 
     private void setupPublisherPane() {

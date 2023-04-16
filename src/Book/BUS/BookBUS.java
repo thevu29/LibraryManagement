@@ -75,7 +75,7 @@ public class BookBUS {
     }
 
     private void openBookEditDialog(Book book, String title) {
-        var dialog = new BookEditorDialog(book, bookDataTableModel, title);
+        var dialog = new BookEditorDialog(book, this, title);
         dialog.pack();
         dialog.setVisible(true);
     }

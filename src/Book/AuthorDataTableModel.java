@@ -27,6 +27,9 @@ public class AuthorDataTableModel extends AbstractTableModelWithFilters<Author> 
             case 4 -> {
                 return value.getDescription();
             }
+            case 99 -> {
+                return value.getId() + ", "+ value.getName();
+            }
         }
         return null;
     }

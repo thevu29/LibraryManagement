@@ -781,7 +781,7 @@
                 <properties/>
                 <border type="none" title="Chức năng"/>
                 <children>
-                  <component id="6d5e1" class="javax.swing.JButton">
+                  <component id="6d5e1" class="javax.swing.JButton" binding="authorTest">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
