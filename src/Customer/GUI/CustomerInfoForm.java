@@ -25,7 +25,7 @@ public class CustomerInfoForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (isEditMode) {
-                    editCustomerInfo();
+                    updateCustomerInfo();
                 } else {
                     addCustomer();
                 }
@@ -81,7 +81,7 @@ public class CustomerInfoForm extends JFrame {
         }
     }
 
-    public void editCustomerInfo() {
+    public void updateCustomerInfo() {
         String id = txtCustomerId.getText();
         String name = txtCustomerName.getText();
         String dob = txtCustomerDOB.getText();
@@ -96,7 +96,6 @@ public class CustomerInfoForm extends JFrame {
 
         Customer cus = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, registrationDate, expirationDate, false);
         if (cusBus.validateUpdate(cus, id, name, dob, address, email, phone, membership, registrationDate, expirationDate)) {
-            JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
             dispose();
             customerForm.getCustomerBUS().renderToTable(customerForm.getTblCustomerModel());
         }

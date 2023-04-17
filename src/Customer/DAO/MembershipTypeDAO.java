@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class MembershipDAO {
+public class MembershipTypeDAO {
     public ArrayList<MembershipType> createList() {
         ArrayList<MembershipType> list = new ArrayList<>();
         try {

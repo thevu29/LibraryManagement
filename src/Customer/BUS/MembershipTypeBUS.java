@@ -1,20 +1,20 @@
 package Customer.BUS;
 
-import Customer.DAO.MembershipDAO;
+import Customer.DAO.MembershipTypeDAO;
 import Customer.DTO.MembershipType;
 
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-public class MembershipBUS {
+public class MembershipTypeBUS {
     private ArrayList<MembershipType> membershipList = new ArrayList<>();
-    private MembershipDAO memDAO = new MembershipDAO();
+    private MembershipTypeDAO memDAO = new MembershipTypeDAO();
 
-    public MembershipBUS() {
+    public MembershipTypeBUS() {
         membershipList = memDAO.createList();
     }
 
-    public MembershipBUS(ArrayList<MembershipType> membershipList) {
+    public MembershipTypeBUS(ArrayList<MembershipType> membershipList) {
         this.membershipList = membershipList;
     }
 
@@ -57,11 +57,11 @@ public class MembershipBUS {
         return membershipList;
     }
 
-    public void setMembershipList(ArrayList<MembershipType> membershipList) {
+    public void setMembershipTypeList(ArrayList<MembershipType> membershipList) {
         this.membershipList = membershipList;
     }
 
-    public int getMembershipListLength() {
+    public int getMembershipTypeListLength() {
         return  membershipList.size();
     }
 }

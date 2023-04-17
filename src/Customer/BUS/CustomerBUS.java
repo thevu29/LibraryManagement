@@ -5,6 +5,7 @@ import Customer.DTO.Customer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class CustomerBUS {
     private ArrayList<Customer> customerList;
@@ -59,24 +60,25 @@ public class CustomerBUS {
             return false;
         }
 
-        for (Customer cus : customerList) {
-            if (cus.getCustomerId().equals(id)) {
-                JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-                return false;
-            }
+        if (findCustomerById(id)) {
+            JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
         }
 
         if(cusDAO.addCustomer(customer)) {
             JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
             return true;
         }
+
+        JOptionPane.showMessageDialog(null, "Thêm khách hàng thất bại", "Error", JOptionPane.ERROR_MESSAGE);
         return false;
     }
 
-    public boolean validateDelete(String id) {
-        cusDAO.deleteCustomer(id);
-        customerList = cusDAO.createList();
-        return true;
+    public void validateDelete(String id) {
+        if (cusDAO.deleteCustomer(id)) {
+            JOptionPane.showMessageDialog(null, "Xóa khách hàng thành công");
+        }
+        JOptionPane.showMessageDialog(null, "Xóa khách hàng thất bại", "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public boolean validateUpdate(Customer customer, String id, String name, String dob, String address, String email, String phone,
@@ -85,15 +87,42 @@ public class CustomerBUS {
             return false;
         }
 
-        cusDAO.updateCustomer(customer);
-        this.customerList = cusDAO.createList();
-        return true;
+        if (cusDAO.updateCustomer(customer)) {
+            JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
+            return true;
+        }
+
+        JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thất bại", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+
+    public boolean findCustomerById(String id) {
+        for (Customer cus : customerList) {
+            if (cus.getCustomerId().equals(id)) {
+                JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean findMembershipByCustomerId(String cusId) {
+        for (Customer cus : customerList) {
+            if (!cus.getMembership().equals("Bình thường")) {
+                if (cus.getCustomerId().equals(cusId)) {
+                    JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void renderToTable(DefaultTableModel tblModel) {
         tblModel.setRowCount(0);
 
         customerList = cusDAO.createList();
+        customerList.sort((a, b) -> a.getCustomerId().compareTo(b.getCustomerId()));
         for (Customer customer : customerList) {
             if (!customer.isDeleted()) {
                 tblModel.addRow(new Object[]{customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerEmail(),
@@ -114,5 +143,9 @@ public class CustomerBUS {
 
     public int getCustomerListLength() {
         return customerList.size();
+    }
+
+    public int getMembershipListLength() {
+        return (int) customerList.stream().filter(cus -> !cus.getMembership().equals("Bình thường")).count();
     }
 }

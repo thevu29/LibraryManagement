@@ -2,7 +2,7 @@ package Customer.GUI;
 
 import Customer.BUS.CustomerBUS;
 import Customer.DTO.MembershipType;
-import Customer.BUS.MembershipBUS;
+import Customer.BUS.MembershipTypeBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Customer.DTO.Customer;
 import javax.swing.*;
@@ -22,7 +22,7 @@ public class CustomerForm {
     private JTextField txtCusEmail;
     private JTextField txtCusMembership;
 
-    private MembershipBUS membershipList = new MembershipBUS();
+    private MembershipTypeBUS membershipList = new MembershipTypeBUS();
     private DefaultTableModel tblMembershipModel;
     private TableRowSorter<DefaultTableModel> membershipSorter;
     private JTextField txtMemberId;
@@ -190,8 +190,6 @@ public class CustomerForm {
 
                 String id = tblCustomers.getValueAt(selectedRow, 0).toString();
                 customerBUS.validateDelete(id);
-
-                JOptionPane.showMessageDialog(null, "Xóa khách hàng thành công");
                 customerBUS.renderToTable(tblCustomerModel);
             }
         });
@@ -319,7 +317,7 @@ public class CustomerForm {
         }
     }
 
-    public MembershipBUS getMembershipListInstance() {
+    public MembershipTypeBUS getMembershipListInstance() {
         return membershipList;
     }
 

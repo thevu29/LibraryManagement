@@ -4,24 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="Add database, mysql connector.">
-      <change afterPath="$PROJECT_DIR$/src/Customer/DAO/MembershipDAO.java" afterDir="false" />
+    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="connect sql, update phần thêm, sửa, xóa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_query/Database Creation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query/Database Creation.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DTO/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/CustomerList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/Membership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DTO/MembershipType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/MembershipList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/MembershipBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/DefaultConnectionModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/MembershipBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/MembershipTypeBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/DAO/MembershipDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DAO/MembershipTypeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +70,7 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerForm (3)">
+  <component name="RunManager" selected="Application.CustomerForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -127,6 +116,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CustomerForm (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
@@ -140,24 +142,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HoaDon" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDon" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sellBook.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CustomerForm (3)" />
-        <item itemvalue="Application.HoaDon" />
         <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.CustomerForm (3)" />
+        <item itemvalue="Application.CustomerForm (5)" />
         <item itemvalue="Application.CustomerForm (2)" />
         <item itemvalue="Application.CustomerForm (1)" />
       </list>
@@ -301,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680854271884</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="connect sql, update phần thêm, sửa, xóa">
+      <created>1681712891078</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681712891078</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,7 +353,8 @@
     <MESSAGE value="xong add, delete, edit, reset membership" />
     <MESSAGE value="xong filter membership" />
     <MESSAGE value="update MainForm" />
-    <option name="LAST_COMMIT_MESSAGE" value="update MainForm" />
+    <MESSAGE value="connect sql, update phần thêm, sửa, xóa" />
+    <option name="LAST_COMMIT_MESSAGE" value="connect sql, update phần thêm, sửa, xóa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
