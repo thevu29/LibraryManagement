@@ -17,6 +17,7 @@ public class CTHDDao extends DefaultConnection {
     public static ArrayList<CTHD> getDs(String sql){
         ArrayList<CTHD> dsct = new ArrayList<>();
         Statement stmt = null;
+        CTHDDao temp = new CTHDDao();
         try {
             stmt = getConnect().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -25,8 +26,8 @@ public class CTHDDao extends DefaultConnection {
                 var maPhieu = rs.getString("MA_PHIEU");
                 var heSo = Double.valueOf(rs.getString("HE_SO"))  ;
                 var maSeri = rs.getString("MA_SERIES");
-
-                dsct.add(new CTHD( maPhieu,  heSo, maSeri));
+                var tienSach = temp.tinhTienSach(maPhieu,maSeri);
+                dsct.add(new CTHD( maPhieu,  heSo, maSeri,tienSach));
             }
         } catch (SQLException | ClassNotFoundException e) {
             return dsct;
@@ -36,15 +37,6 @@ public class CTHDDao extends DefaultConnection {
     public ArrayList<CTHD> getDsCTHD(String ma) {
         String sql = "SELECT * FROM SELL_TICKET_DETAILS WHERE MA_PHIEU = '"+ma+"'";
         return CTHDDao.getDs(sql);
-    }
-
-    public List<String> getMaCTHD(String ma){
-        List<CTHD> dsct = getDsCTHD(ma);
-        List<String> dsid = new ArrayList<>();
-        for(CTHD ct:dsct){
-            dsid.add(ct.getMa_chiTiet());
-        }
-        return dsid;
     }
 
     public List<String> getMaHD(String ma){
@@ -151,6 +143,24 @@ public class CTHDDao extends DefaultConnection {
         return smt;
     }
 
+    public long tinhTienSach(String maHD,String maSeri){
+        String sql = "SELECT CAST(book.GIA AS UNSIGNED) * sell_ticket_details.HE_SO as total FROM sell_ticket_details " +
+                "INNER JOIN book on sell_ticket_details.MA_SERIES = book.MA_SERIES " +
+                "WHERE MA_PHIEU = "+maHD+" and book.MA_SERIES = "+maSeri;
+        Statement stmt = null;
+        long total = 0;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                total = rs.getLong("total");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            return 0;
+        }
+        return total;
+    }
+
     public static void main(String[] args) {
         CTHDDao t = new CTHDDao();
 //        List<CTHD> dsct = t.locHeSo("1",3);
@@ -162,17 +172,19 @@ public class CTHDDao extends DefaultConnection {
 //            System.out.println(h);
 //        }
 
-        CTHD cthd = new CTHD();
-        cthd.setMa_chiTiet("20");
-        cthd.setHe_so(2);
-        cthd.setMa_series("5");
-        cthd.setMa_phieu("5");
-        int smt = t.removeCTHD("20");
-        if(smt>0){
-            System.out.println("Hello");
-        }
-        else{
-            System.out.println("hmm");
-        }
+//        CTHD cthd = new CTHD();
+//        cthd.setMa_chiTiet("20");
+//        cthd.setHe_so(2);
+//        cthd.setMa_series("5");
+//        cthd.setMa_phieu("5");
+//        int smt = t.removeCTHD("20");
+//        if(smt>0){
+//            System.out.println("Hello");
+//        }
+//        else{
+//            System.out.println("hmm");
+//        }
+
+        System.out.println(t.tinhTienSach("1","2"));
     }
 }

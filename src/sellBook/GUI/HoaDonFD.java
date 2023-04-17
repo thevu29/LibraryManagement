@@ -17,6 +17,8 @@ public class HoaDonFD extends JDialog {
     private JTextField txtMaPhieu;
     private JButton addButton;
     private JButton updateButton;
+    private JPanel tacGiaPanel;
+    private JTextField txtTenKH;
 
     private HoaDonGUI gui ;
 
@@ -75,6 +77,14 @@ public class HoaDonFD extends JDialog {
             }
         });
 
+        txtMaKH.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                String tenKH = bus.goiYNameKH(txtMaKH.getText());
+                txtTenKH.setText(tenKH);
+            }
+        });
     }
 
     public HoaDonFD(String maHD,HoaDonGUI gui){
@@ -85,10 +95,13 @@ public class HoaDonFD extends JDialog {
         this.gui = gui;
 
         List<HoaDon>  bill = bus.filterMaHD(maHD);
+        System.out.println(maHD+"  "+bill.size());
+
         HoaDon ticket = bill.get(0);
         txtMaPhieu.setText(ticket.getMa_phieu());
         txtMaKH.setText(ticket.getMa_KH());
         txtMaNV.setText(ticket.getMa_nv());
+        txtTenKH.setText(ticket.getTenKH());
 
         btnRemove.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -156,6 +169,16 @@ public class HoaDonFD extends JDialog {
                 else {
                     JOptionPane.showMessageDialog(null,"Cap Nhat Hoa Don KHONG THANH CONG");
                 }
+            }
+        });
+
+
+        txtMaKH.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                String tenKH = bus.goiYNameKH(txtMaKH.getText());
+                txtTenKH.setText(tenKH);
             }
         });
 

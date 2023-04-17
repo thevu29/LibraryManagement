@@ -12,7 +12,10 @@ import java.util.*;
 
 public class SellTicketDao extends DefaultConnection {
 
+
+
     public static ArrayList<HoaDon> getDs(String sql){
+        SellTicketDao temp = new SellTicketDao();
         ArrayList<HoaDon> dshd = new ArrayList<>();
         Statement stmt = null;
         try {
@@ -23,18 +26,23 @@ public class SellTicketDao extends DefaultConnection {
                 var maPhieu = rs.getString("MA_PHIEU");
                 var maNv = rs.getString("MA_NV");
                 var maKh = rs.getString("MA_KH");
-
-                dshd.add(new HoaDon(maPhieu, maNv,  maKh));
+                var tenKH = rs.getString("tenKH");
+                var tenNV = rs.getString("tenNV");
+                var total = temp.tinhTongHoaDon(maPhieu);
+                dshd.add(new HoaDon(maPhieu, maNv,  maKh,tenKH,tenNV,total));
             }
         } catch (SQLException | ClassNotFoundException e) {
-            return dshd;
+            System.out.println(e);
         }
         return dshd;
     }
 
 
     public  ArrayList<HoaDon> getDsHoaDon() {
-        String sql = "SELECT * FROM SELL_TICKET";
+        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
+                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
+                "where sell_ticket.IS_DELETED = 0";
         return getDs(sql);
     }
 
@@ -57,31 +65,73 @@ public class SellTicketDao extends DefaultConnection {
         }
         return new ArrayList<>(maNVSet);
     }
+    public long tinhTongHoaDon(String maHD){
+        String sql = "SELECT SUM(CAST(book.GIA AS UNSIGNED) * sell_ticket_details.HE_SO) as tongTien " +
+                "FROM `sell_ticket` INNER JOIN sell_ticket_details on sell_ticket.MA_PHIEU = sell_ticket_details.MA_PHIEU " +
+                "INNER JOIN book on sell_ticket_details.MA_SERIES = book.MA_SERIES " +
+                "WHERE sell_ticket.MA_PHIEU = "+maHD;
+        Statement stmt = null;
+        long total = 0;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                total = rs.getLong("tongTien");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            return 0;
+        }
+        return total;
+    }
 
     public ArrayList<String> getMaKH(){
-        Set<String> maKHSet = new HashSet<>();
-        ArrayList<HoaDon> dsHoaDon = getDsHoaDon();
-        for (HoaDon hd : dsHoaDon) {
-            maKHSet.add(hd.getMa_nv());
+        String sql = "SELECT DISTINCT `MA_KH`FROM `sell_ticket` ";
+        ArrayList<String> dsStr = new ArrayList<>();
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                var maKh = rs.getString("MA_KH");
+
+                dsStr.add( maKh);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            return dsStr;
         }
-        return new ArrayList<>(maKHSet);
+        return dsStr;
     }
 
     public List<HoaDon> locMaHD(String ma){
-        String sql = "SELECT * FROM sell_ticket where MA_PHIEU = "+ma;
+        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
+                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
+                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_PHIEU = "+ma;
+//        var a = """
+//                SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV\s
+//                FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH\s
+//                INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV\s
+//                where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_PHIEU = '%s'
+//                """.formatted(ma);
         return getDs(sql);
     }
     public List<HoaDon> locMaNV(String ma){
-        String sql = "SELECT * FROM sell_ticket where MA_NV = "+ma;
+        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
+                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
+                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_NV = "+ma;
         return getDs(sql);
     }
     public List<HoaDon> locMaKH(String ma){
-        String sql = "SELECT * FROM sell_ticket where MA_KH = "+ma;
+        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
+                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
+                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_KH = "+ma;
         return getDs(sql);
     }
 
     public int insertHD(HoaDon hd){
-        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`) VALUES (?,?,?)";
+        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`) VALUES (?,?,?,?)";
         int smt=0;
         PreparedStatement pst = null;
         try {
@@ -89,6 +139,7 @@ public class SellTicketDao extends DefaultConnection {
             pst.setString(1, hd.getMa_phieu());
             pst.setString(2,hd.getMa_nv());
             pst.setString(3,hd.getMa_KH());
+            pst.setBoolean(4,false);
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -133,11 +184,29 @@ public class SellTicketDao extends DefaultConnection {
         return smt;
     }
 
+    public String goiYTenKH(String maKH){
+        String sql = "SELECT  `TEN` FROM `customer` WHERE MA_KH LIKE '%"+maKH+"%'";
+        Statement stmt = null;
+        String tenKH = "";
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                tenKH = rs.getString("TEN");
+                break;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return tenKH;
+    }
+
+
     public static void main(String[] args) {
         SellTicketDao t = new SellTicketDao();
 //        List<HoaDon> dshd  = t.getDsHoaDon();
 //        for (HoaDon hd : dshd) {
-//             System.out.println(hd.getMa_nv());
+//             System.out.println(hd.getTongHD());
 //
 //        }
 
@@ -146,14 +215,22 @@ public class SellTicketDao extends DefaultConnection {
 //            System.out.println(nv);
 //        }
 
-        HoaDon hd = new HoaDon("21","2","5");
-        int smt = t.updateHD(hd);
-        if(smt>0){
-            System.out.println("Hello Thanh Cong");
-        }
-        else{
-            System.out.println("Khong thanh");
-        }
+//        HoaDon hd = new HoaDon("21","2","5");
+//        int smt = t.updateHD(hd);
+//        if(smt>0){
+//            System.out.println("Hello Thanh Cong");
+//        }
+//        else{
+//            System.out.println("Khong thanh");
+//        }
 
+//        List<String> dsMaKH = t.getMaKH();
+//        for(String te:dsMaKH){
+//            System.out.println(te);
+//        }
+//        System.out.println(t.tinhTongHoaDon("1"));
+//        System.out.println(t.goiYTenKH("4"));
+
+        System.out.println(t.locMaHD("1").size());
     }
 }

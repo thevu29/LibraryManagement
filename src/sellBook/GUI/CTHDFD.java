@@ -56,7 +56,10 @@ public class CTHDFD extends JDialog {
                 String maHD = txtMaPhieu.getText();
                 Double heSo = Double.parseDouble(txtHeSo.getText());
                 String maSeri = txtMaSeri.getText();
-                CTHD ct = new CTHD(maHD,heSo,maSeri);
+                CTHD ct = new CTHD();
+                ct.setMa_phieu(maHD);
+                ct.setMa_series(maSeri);
+                ct.setHe_so(heSo);
                 int smt = bus.insert(ct);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Them CTHD THANH CONG");
@@ -107,7 +110,6 @@ public class CTHDFD extends JDialog {
         this.cthd = cthd;
         this.gui = gui;
 
-        txtMaChiTiet.setText(cthd.getMa_chiTiet());
         txtHeSo.setText(String.valueOf(cthd.getHe_so()) );
         txtMaPhieu.setText(cthd.getMa_phieu());
         txtMaSeri.setText(cthd.getMa_series());

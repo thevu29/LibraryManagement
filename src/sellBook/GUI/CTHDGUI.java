@@ -1,6 +1,7 @@
 package sellBook.GUI;
 
 import sellBook.BUS.CTHDBus;
+import sellBook.DAO.SellTicketDao;
 import sellBook.DTO.CTHD;
 
 import javax.swing.*;
@@ -32,6 +33,7 @@ public class CTHDGUI {
     private JComboBox cboMaSeri;
     private JButton btnXoaMaSeri;
     private JButton btnAdd;
+    private JTextField txtTongHD;
     private String maHD;
     DefaultTableModel dtm = new DefaultTableModel();
     CTHDBus bus = new CTHDBus();
@@ -46,27 +48,7 @@ public class CTHDGUI {
         tab.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
-                    // Clear existing items in maHDComboBox
-                    cboMaCTHD.removeAllItems();
-                    List<String> maCTHDs = bus.getAllMaCTHD(maHD);
-                    for (String maCTHD : maCTHDs) {
-                        cboMaCTHD.addItem(maCTHD);
-                    }
-                    rmvListerBtnFilter();
-                    btnFilter.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            String selected = String.valueOf(cboMaCTHD.getSelectedItem()) ;
-                            dsCTHD = bus.filterMaCTHD(maHD,selected);
-                            System.out.println(CTHDGUI.dsCTHD.size());
-                            changeTable();
-                        }
-
-                    });
-
-                }
-                else if (tab.getSelectedIndex() == 1) {
+                if (tab.getSelectedIndex() == 0) {
                     cboMaHD.removeAllItems();
                     List<String> maHDs = bus.getAllMaHD(maHD);
                     for (String maHD : maHDs) {
@@ -187,10 +169,10 @@ public class CTHDGUI {
 
     private void changeTable(){
         dtm.setRowCount(0);
-        String[] columns = {"Mã Chi Tiet", "Ma Hoa Don", "He So","Ma Seri"};
+        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Tong Tien"};
         dtm.setColumnIdentifiers(columns);
         for (CTHD ct : dsCTHD) {
-            Object[] t = {ct.getMa_chiTiet(), ct.getMa_phieu(), ct.getHe_so(), ct.getMa_series()};
+            Object[] t = { ct.getMa_phieu(), ct.getHe_so(), ct.getMa_series(),ct.getTienSach()};
             dtm.addRow(t);
         }
         tblCTHD.setModel(dtm);
@@ -207,7 +189,7 @@ public class CTHDGUI {
     private void initTab(){
         if (tab.getSelectedIndex() == 0) {
             cboMaCTHD.removeAllItems();
-            List<String> maCTHDs = bus.getAllMaCTHD(maHD);
+            List<String> maCTHDs = bus.getAllMaHD(maHD);
             for (String maCTHD : maCTHDs) {
                 cboMaCTHD.addItem(maCTHD);
             }
@@ -222,18 +204,17 @@ public class CTHDGUI {
             });
 
         }
-
-
-
+        SellTicketDao temp = new SellTicketDao();
+        txtTongHD.setText(String.valueOf(temp.tinhTongHoaDon(maHD)));
     }
     private void initTable(){
         List<CTHD> dsct = bus.getDsCTHD(maHD);
 
-        String[] columns = {"Mã Chi Tiet", "Ma Hoa Don", "He So","Ma Seri"};
+        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Tong Tien"};
         dtm.setColumnIdentifiers(columns);
 
         for(CTHD ct:dsct){
-            Object[] t = {ct.getMa_chiTiet(), ct.getMa_phieu(), ct.getHe_so(),ct.getMa_series()};
+            Object[] t = {ct.getMa_phieu(), ct.getHe_so(),ct.getMa_series(),ct.getTienSach()};
             dtm.addRow(t);
         }
         tblCTHD.setModel(dtm);

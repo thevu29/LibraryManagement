@@ -14,9 +14,6 @@ public class CTHDBus {
     public List<CTHD> getDsCTHD(String ma){
         return cthd.getDsCTHD(ma);
     }
-    public List<String> getAllMaCTHD(String id){
-        return cthd.getMaCTHD(id);
-    }
 
     public List<String> getAllMaHD(String id){
         return cthd.getMaHD(id);
