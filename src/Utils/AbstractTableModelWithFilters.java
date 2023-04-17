@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public abstract class AbstractTableModelWithFilters<T> extends AbstractTableModel {
     HashMap<Integer, JTextComponent> filterFields = new HashMap<>();
-    protected final ArrayList<T> rows = new ArrayList<>();
+    protected ArrayList<T> rows = new ArrayList<>();
     private boolean isEditable = true;
 
     private String[] cols = {};
@@ -19,6 +19,8 @@ public abstract class AbstractTableModelWithFilters<T> extends AbstractTableMode
 
     protected AbstractTableModelWithFilters() {
     }
+
+
 
 
     @Override
@@ -31,7 +33,12 @@ public abstract class AbstractTableModelWithFilters<T> extends AbstractTableMode
 
     public void addRow(T item) {
         rows.add(item);
-        fireTableRowsInserted(rows.size()-2, rows.size());
+        fireTableRowsInserted(rows.size()-2, rows.size()-1);
+    }
+
+    public void setRows(ArrayList<T> rows) {
+        this.rows = rows;
+        fireTableDataChanged();
     }
 
     @Override
@@ -84,7 +91,7 @@ public abstract class AbstractTableModelWithFilters<T> extends AbstractTableMode
         var keyList = filterFields.keySet().stream().toList();
         var valueList = filterFields.values().stream().toList();
         for (int i = 0; i < keyList.size(); i++) {
-            filters.add(RowFilter.regexFilter(valueList.get(i).getText(), keyList.get(i)));
+            filters.add(RowFilter.regexFilter("(?i)("+valueList.get(i).getText()+")", keyList.get(i)));
         }
         return RowFilter.andFilter(filters);
     }

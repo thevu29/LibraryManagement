@@ -1,22 +1,29 @@
 package Book.DTO;
 
 import java.util.ArrayList;
+
 import Book.*;
+
 public class Book implements Cloneable {
 
     static int priceCounter = 0;
     private String id;
     private String name;
-    private ArrayList<String> authors;
-    private ArrayList<String> publisher;
-    private ArrayList<String> genre;
+    private ArrayList<BookAuthor> authors;
+    private ArrayList<BookPublisher> publisher;
+    private ArrayList<BookGenre> genre;
     private String location;
     private long price;
     private EBookStatus bookStatus;
     private String language;
     private String description;
 
-    public Book(String id, String name, ArrayList<String> authors, ArrayList<String> publisher, ArrayList<String> genre, String location, long price, String bookStatus, String language, String description) {
+    private int publishYear;
+    private int totalPage;
+
+    public Book(String id, String name, ArrayList<BookAuthor> authors, ArrayList<BookPublisher> publisher,
+                ArrayList<BookGenre> genre, String location, long price, String bookStatus, String language,
+                String description, int publishYear, int totalPage) {
         this.id = id;
         this.name = name;
         this.authors = authors;
@@ -27,6 +34,8 @@ public class Book implements Cloneable {
         setBookStatus(bookStatus);
         this.language = language;
         this.description = description;
+        this.publishYear = publishYear;
+        this.totalPage = totalPage;
     }
 
     public String getId() {
@@ -45,27 +54,32 @@ public class Book implements Cloneable {
         this.name = name;
     }
 
-    public ArrayList<String> getAuthors() {
+    public ArrayList<BookAuthor> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(ArrayList<String> authors) {
+    public void setAuthors(ArrayList<BookAuthor> authors) {
         this.authors = authors;
     }
 
-    public ArrayList<String> getPublisher() {
+    public void setAuthor(int index, String id,String name) {
+        authors.get(index).setId(id.strip());
+        authors.get(index).setName(name.strip());
+    }
+
+    public ArrayList<BookPublisher> getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(ArrayList<String> publisher) {
+    public void setPublisher(ArrayList<BookPublisher> publisher) {
         this.publisher = publisher;
     }
 
-    public ArrayList<String> getGenre() {
+    public ArrayList<BookGenre> getGenre() {
         return genre;
     }
 
-    public void setGenre(ArrayList<String> genre) {
+    public void setGenre(ArrayList<BookGenre> genre) {
         this.genre = genre;
     }
 
@@ -100,17 +114,13 @@ public class Book implements Cloneable {
     public void setBookStatus(String bookStatus) {
         if (bookStatus.equals(String.valueOf(EBookStatus.SOLD))) {
             this.bookStatus = EBookStatus.SOLD;
-        }
-        else if (bookStatus.equals(String.valueOf(EBookStatus.MISSING))) {
+        } else if (bookStatus.equals(String.valueOf(EBookStatus.MISSING))) {
             this.bookStatus = EBookStatus.MISSING;
-        }
-        else if (bookStatus.equals(String.valueOf(EBookStatus.IN_USE))) {
+        } else if (bookStatus.equals(String.valueOf(EBookStatus.IN_USE))) {
             this.bookStatus = EBookStatus.IN_USE;
-        }
-        else if (bookStatus.equals(String.valueOf(EBookStatus.BORROWED))) {
+        } else if (bookStatus.equals(String.valueOf(EBookStatus.BORROWED))) {
             this.bookStatus = EBookStatus.BORROWED;
-        }
-        else if (bookStatus.equals(String.valueOf(EBookStatus.AVAILABLE))) {
+        } else if (bookStatus.equals(String.valueOf(EBookStatus.AVAILABLE))) {
             this.bookStatus = EBookStatus.AVAILABLE;
         }
     }
@@ -131,49 +141,41 @@ public class Book implements Cloneable {
         this.language = language;
     }
 
-    public Book(String id, String name, ArrayList<String> authors, ArrayList<String> publisher, ArrayList<String> genre, String location, long price, EBookStatus bookStatus, String language) {
-        this.id = id;
-        this.name = name;
-        this.authors = authors;
-        this.publisher = publisher;
-        this.genre = genre;
-        this.location = location;
-        this.price = price;
-        this.bookStatus = bookStatus;
-        this.language = language;
-    }
-
-
     public static Book createTestBook() {
-        ArrayList<String> authors = new ArrayList<>();
-        authors.add("My");
-        authors.add("Real");
+        ArrayList<BookAuthor> authors = new ArrayList<>();
+        authors.add(new BookAuthor("1", "My"));
+        authors.add(new BookAuthor("2", "Real"));
 
-        ArrayList<String> publisher = new ArrayList<>();
-        publisher.add("Nep");
-        publisher.add("Tune");
+        ArrayList<BookPublisher> publisher = new ArrayList<>();
+        publisher.add(new BookPublisher("3", "Nep"));
+        publisher.add(new BookPublisher("4", "Tune"));
 
-        ArrayList<String> genre = new ArrayList<>();
-        genre.add("Xin chàp");
-        genre.add("Wp");
+        ArrayList<BookGenre> genre = new ArrayList<>();
+        genre.add(new BookGenre("5", "GG"));
+        genre.add(new BookGenre("6", "WP"));
 
-        return new Book(String.valueOf(priceCounter), "HelloA"+priceCounter, authors, publisher, genre, "Nep", priceCounter++, EBookStatus.AVAILABLE, "English");
+        return new Book(String.valueOf(priceCounter),
+                "HelloA" + priceCounter,
+                authors, publisher, genre, "Nep",
+                priceCounter++, String.valueOf(EBookStatus.AVAILABLE), "English", "Ok", 2003, 10);
     }
-    public static Book createBlankBook() {
-        ArrayList<String> authors = new ArrayList<>();
-        ArrayList<String> publisher = new ArrayList<>();
-        ArrayList<String> genre = new ArrayList<>();
 
-        return new Book("", "", authors, publisher, genre, "", -1, EBookStatus.AVAILABLE, "");
+    public static Book createBlankBook() {
+        ArrayList<BookAuthor> authors = new ArrayList<>();
+        ArrayList<BookPublisher> publisher = new ArrayList<>();
+        ArrayList<BookGenre> genre = new ArrayList<>();
+
+        return new Book("", "", authors, publisher, genre, "", -1,
+                String.valueOf(EBookStatus.AVAILABLE), "", "", -1, -1);
     }
 
     @Override
     public Book clone() {
         try {
             Book clone = (Book) super.clone();
-            clone.authors = (ArrayList<String>) this.authors.clone();
-            clone.genre = (ArrayList<String>) this.genre.clone();
-            clone.publisher = (ArrayList<String>) this.publisher.clone();
+            clone.authors = (ArrayList<BookAuthor>) this.authors.clone();
+            clone.genre = (ArrayList<BookGenre>) this.genre.clone();
+            clone.publisher = (ArrayList<BookPublisher>) this.publisher.clone();
             // TODO: copy mutable state here, so the clone can't change the internals of the original
             return clone;
         } catch (CloneNotSupportedException e) {
@@ -214,5 +216,21 @@ public class Book implements Cloneable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getPublishYear() {
+        return publishYear;
+    }
+
+    public void setPublishYear(int publishYear) {
+        this.publishYear = publishYear;
+    }
+
+    public int getTotalPage() {
+        return totalPage;
+    }
+
+    public void setTotalPage(int totalPage) {
+        this.totalPage = totalPage;
     }
 }
