@@ -1,10 +1,10 @@
-package Customer.ui;
+package Customer.GUI;
 
-import Customer.model.CustomerList;
-import Customer.model.Membership;
-import Customer.model.MembershipList;
+import Customer.BUS.CustomerBUS;
+import Customer.DTO.MembershipType;
+import Customer.BUS.MembershipBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
-import Customer.model.Customer;
+import Customer.DTO.Customer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class CustomerForm {
-    private CustomerList customerList = new CustomerList();
+    private CustomerBUS customerBUS = new CustomerBUS();
     private DefaultTableModel tblCustomerModel;
     private TableRowSorter<DefaultTableModel> customerSorter;
     private JTextField txtCusId;
@@ -22,7 +22,7 @@ public class CustomerForm {
     private JTextField txtCusEmail;
     private JTextField txtCusMembership;
 
-    private MembershipList membershipList = new MembershipList();
+    private MembershipBUS membershipList = new MembershipBUS();
     private DefaultTableModel tblMembershipModel;
     private TableRowSorter<DefaultTableModel> membershipSorter;
     private JTextField txtMemberId;
@@ -40,7 +40,7 @@ public class CustomerForm {
         btnAddMember.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showMembershipInfo("", "", 0, "Thêm loại thành viên");
+                showMembershipInfo("", 0, "Thêm loại thành viên");
             }
         });
 
@@ -74,10 +74,9 @@ public class CustomerForm {
                     return;
                 }
 
-                String id = tblMemberships.getValueAt(selectedRow, 0).toString();
                 String name = tblMemberships.getValueAt(selectedRow, 1).toString();
                 float discount = Float.parseFloat(tblMemberships.getValueAt(selectedRow, 2).toString());
-                showMembershipInfo(id, name, discount, "Lưu thông tin");
+                showMembershipInfo(name, discount, "Lưu thông tin");
             }
         });
 
@@ -123,9 +122,9 @@ public class CustomerForm {
 
     public ArrayList<String> initMembershipSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
-        for (Membership membership : membershipList.getMembershipList()) {
+        for (MembershipType membership : membershipList.getMembershipList()) {
             if (col == 0) {
-                suggestion.add(membership.getMembershipId());
+                suggestion.add(membership.getMembershipName());
             } else if (col == 1) {
                 suggestion.add(membership.getMembershipName());
             }
@@ -134,8 +133,8 @@ public class CustomerForm {
         return suggestion;
     }
 
-    public void showMembershipInfo(String id, String name, float discount, String btnText) {
-        MembershipInfoForm membershipInfoForm = new MembershipInfoForm(this, id, name, discount, btnText);
+    public void showMembershipInfo(String name, float discount, String btnText) {
+        MembershipInfoForm membershipInfoForm = new MembershipInfoForm(this, name, discount, btnText);
         membershipInfoForm.setContentPane(membershipInfoForm.getContentPane());
         membershipInfoForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         membershipInfoForm.setSize(400,400);
@@ -151,7 +150,7 @@ public class CustomerForm {
             }
         };
 
-        String[] cols = new String[]{"Mã loại thành viên", "Tên loại thành viên", "Giảm giá(%)"};
+        String[] cols = new String[]{"Tên loại thành viên", "Giảm giá(%)"};
         tblMembershipModel.setColumnIdentifiers(cols);
 
         tblMemberships.setModel(tblMembershipModel);
@@ -165,12 +164,13 @@ public class CustomerForm {
 
     public void handleCustomer() {
         initCustomerTable();
-        customerList.renderToTable(tblCustomerModel);
+        customerBUS.renderToTable(tblCustomerModel);
 
         btnAddCustomer.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                showCustomerInfo("", "", "", "", "", "", "", "", "Thêm khách hàng");
+                Customer customer = new Customer("", "", "", "", "", "", "", "", "", "", "", false);
+                showCustomerInfo(customer, "Thêm khách hàng");
             }
         });
 
@@ -189,10 +189,10 @@ public class CustomerForm {
                 }
 
                 String id = tblCustomers.getValueAt(selectedRow, 0).toString();
-                customerList.deleteCustomer(id);
+                customerBUS.validateDelete(id);
 
                 JOptionPane.showMessageDialog(null, "Xóa khách hàng thành công");
-                customerList.renderToTable(tblCustomerModel);
+                customerBUS.renderToTable(tblCustomerModel);
             }
         });
 
@@ -206,17 +206,21 @@ public class CustomerForm {
                 }
 
                 String id = tblCustomers.getValueAt(selectedRow, 0).toString();
-                for (Customer customer : customerList.getCustomerList()) {
+                for (Customer customer : customerBUS.getCustomerList()) {
                     if (customer.getCustomerId().equals(id)) {
                         String name = customer.getCustomerName();
                         String dob = customer.getCustomerDOB();
+                        String cccd = customer.getCccd();
                         String gender = customer.getCustomerGender();
                         String address = customer.getCustomerAddress();
                         String email = customer.getCustomerEmail();
                         String phone = customer.getCustomerPhone();
                         String membership = customer.getMembership();
+                        String regisDate = customer.getRegistrationDate();
+                        String expireDate = customer.getExpirationDate();
 
-                        showCustomerInfo(id, name, dob, gender, address, email, phone, membership, "Lưu thông tin");
+                        Customer cus = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, regisDate, expireDate, false);
+                        showCustomerInfo(cus, "Lưu thông tin");
                         return;
                     }
                 }
@@ -272,7 +276,7 @@ public class CustomerForm {
 
     public ArrayList<String> initCustomerSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
-        for (Customer customer : customerList.getCustomerList()) {
+        for (Customer customer : customerBUS.getCustomerList()) {
             if (col == 0) {
                 suggestion.add(customer.getCustomerId());
             } else if (col == 1) {
@@ -286,12 +290,11 @@ public class CustomerForm {
         return suggestion;
     }
 
-    public void showCustomerInfo(String id, String name, String dob, String gender, String address, String email, String phone,
-                                    String membership, String btnText) {
-        CustomerInfoForm customerInfoForm = new CustomerInfoForm(this, id, name, dob, gender, address, email, phone, membership, btnText);
+    public void showCustomerInfo(Customer customer, String btnText) {
+        CustomerInfoForm customerInfoForm = new CustomerInfoForm(this, customer, btnText);
         customerInfoForm.setContentPane(customerInfoForm.getContentPane());
         customerInfoForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        customerInfoForm.setSize(500, 700);
+        customerInfoForm.setSize(500, 750);
         customerInfoForm.setLocationRelativeTo(null);
         customerInfoForm.setVisible(true);
     }
@@ -316,7 +319,7 @@ public class CustomerForm {
         }
     }
 
-    public MembershipList getMembershipListInstance() {
+    public MembershipBUS getMembershipListInstance() {
         return membershipList;
     }
 
@@ -324,8 +327,8 @@ public class CustomerForm {
         return tblMembershipModel;
     }
 
-    public CustomerList getCustomerListInstance() {
-        return customerList;
+    public CustomerBUS getCustomerBUS() {
+        return customerBUS;
     }
 
     public DefaultTableModel getTblCustomerModel() {

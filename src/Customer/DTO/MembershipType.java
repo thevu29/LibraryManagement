@@ -1,25 +1,17 @@
-package Customer.model;
+package Customer.DTO;
 
-public class Membership {
-    private String membershipId;
+public class MembershipType {
     private String membershipName;
     private float discount;
+    private boolean isDeleted;
 
-    public Membership() {
+    public MembershipType() {
     }
 
-    public Membership(String membershipId, String membershipName, float discount) {
-        this.membershipId = membershipId;
+    public MembershipType(String membershipName, float discount, boolean isDeleted) {
         this.membershipName = membershipName;
         this.discount = discount;
-    }
-
-    public String getMembershipId() {
-        return membershipId;
-    }
-
-    public void setMembershipId(String membershipId) {
-        this.membershipId = membershipId;
+        this.isDeleted = isDeleted;
     }
 
     public String getMembershipName() {
@@ -36,5 +28,13 @@ public class Membership {
 
     public void setDiscount(float discount) {
         this.discount = discount;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

@@ -1,30 +1,38 @@
-package Customer.model;
+package Customer.DTO;
 
 public class Customer {
     private String customerId;
     private String customerName;
-    private String customerGender;
     private String customerDOB;
     private String customerAddress;
+    private String cccd;
     private String customerEmail;
     private String customerPhone;
+    private String customerGender;
     private String membership;
     private String registrationDate;
     private String expirationDate;
+    private boolean isDeleted;
 
     public Customer() {
+
     }
 
-    public Customer(String customerId, String customerName, String customerDOB, String customerGender, String customerAddress,
-                    String customerEmail, String customerPhone, String membership) {
+    public Customer(String customerId, String customerName, String customerDOB, String customerAddress, String cccd,
+                    String customerEmail, String customerPhone, String customerGender, String membership, String registrationDate,
+                    String expirationDate, boolean isDeleted) {
         this.customerId = customerId;
         this.customerName = customerName;
         this.customerDOB = customerDOB;
-        this.customerGender = customerGender;
+        this.cccd = cccd;
         this.customerAddress = customerAddress;
         this.customerEmail = customerEmail;
         this.customerPhone = customerPhone;
+        this.customerGender = customerGender;
         this.membership = membership;
+        this.registrationDate = registrationDate;
+        this.expirationDate = expirationDate;
+        this.isDeleted = isDeleted;
     }
 
     public String getCustomerId() {
@@ -105,5 +113,21 @@ public class Customer {
 
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

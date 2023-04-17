@@ -1,7 +1,8 @@
 package MainForm;
 
 import Book.BUS.BookBUS;
-import Customer.ui.CustomerForm;
+import Book.BookDataTableModel;
+import Customer.GUI.CustomerForm;
 
 import javax.swing.*;
 import javax.swing.border.Border;

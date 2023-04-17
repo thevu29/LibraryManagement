@@ -1,6 +1,6 @@
-package Customer.ui;
+package Customer.GUI;
 
-import Customer.model.Membership;
+import Customer.DTO.MembershipType;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,11 +10,11 @@ public class MembershipInfoForm extends JFrame {
     private CustomerForm customerForm;
     private boolean isEditMode;
 
-    public MembershipInfoForm(CustomerForm customerForm, String id, String name, float discount, String btnText) {
+    public MembershipInfoForm(CustomerForm customerForm, String name, float discount, String btnText) {
         this.customerForm = customerForm;
         isEditMode = btnText.equals("Lưu thông tin") ? true : false;
         setInset();
-        setInfo(id, name, discount, btnText);
+        setInfo(name, discount, btnText);
 
         btnSave.addActionListener(new ActionListener() {
             @Override
@@ -31,9 +31,8 @@ public class MembershipInfoForm extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (!isEditMode) {
-                    txtMembershipId.setText("");
+                    txtMembershipName.setText("");
                 }
-                txtMembershipName.setText("");
                 txtDiscount.setText("");
             }
         });
@@ -44,18 +43,17 @@ public class MembershipInfoForm extends JFrame {
             return;
         }
 
-        String id = txtMembershipId.getText();
-        for (Membership membership : customerForm.getMembershipListInstance().getMembershipList()) {
-            if (membership.getMembershipId().equals(id)) {
-                JOptionPane.showMessageDialog(null, "Mã loại thành viên đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
+        String name = txtMembershipName.getText();
+        for (MembershipType membership : customerForm.getMembershipListInstance().getMembershipList()) {
+            if (membership.getMembershipName().equals(name)) {
+                JOptionPane.showMessageDialog(null, "Tên loại thành viên đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
                 return;
             }
         }
 
-        String name = txtMembershipName.getText();
         float discount = Float.parseFloat(txtDiscount.getText());
 
-        Membership membership = new Membership(id, name, discount);
+        MembershipType membership = new MembershipType(name, discount, false);
         customerForm.getMembershipListInstance().addMembership(membership);
 
         JOptionPane.showMessageDialog(null, "Thêm loại thành viên thành công");
@@ -68,11 +66,10 @@ public class MembershipInfoForm extends JFrame {
             return;
         }
 
-        String id = txtMembershipId.getText();
         String name = txtMembershipName.getText();
         float discount = Float.parseFloat(txtDiscount.getText());
 
-        Membership mem = new Membership(id, name, discount);
+        MembershipType mem = new MembershipType(name, discount, false);
         customerForm.getMembershipListInstance().editMembership(mem);
 
         JOptionPane.showMessageDialog(null, "Sửa thông tin loại thành viên thành công");
@@ -83,9 +80,6 @@ public class MembershipInfoForm extends JFrame {
     public boolean validateEmpty() {
         StringBuilder sb = new StringBuilder();
 
-        if (txtMembershipId.getText().equals("")) {
-            sb.append("Mã loại thành viên không được để trống \n");
-        }
         if (txtMembershipName.getText().equals("")) {
             sb.append("Tên loại thành viên không được để trống \n");
         }
@@ -102,13 +96,11 @@ public class MembershipInfoForm extends JFrame {
 
     public void setInset() {
         Insets inset = new Insets(4, 10, 4, 10);
-        txtMembershipId.setMargin(inset);
         txtMembershipName.setMargin(inset);
         txtDiscount.setMargin(inset);
     }
 
-    public void setInfo(String id, String name, float discount, String btnText) {
-        txtMembershipId.setText(id);
+    public void setInfo(String name, float discount, String btnText) {
         txtMembershipName.setText(name);
 
         if (!isEditMode) {
@@ -118,7 +110,7 @@ public class MembershipInfoForm extends JFrame {
         }
 
         btnSave.setText(btnText);
-        txtMembershipId.setEnabled(!isEditMode);
+        txtMembershipName.setEnabled(!isEditMode);
     }
 
     public JPanel getContentPane() {
@@ -126,7 +118,6 @@ public class MembershipInfoForm extends JFrame {
     }
 
     private JPanel mainPanel;
-    private JTextField txtMembershipId;
     private JTextField txtMembershipName;
     private JTextField txtDiscount;
     private JButton btnSave;
