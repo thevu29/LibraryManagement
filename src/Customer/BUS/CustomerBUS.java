@@ -5,7 +5,6 @@ import Customer.DTO.Customer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
 public class CustomerBUS {
     private ArrayList<Customer> customerList;
@@ -54,13 +53,14 @@ public class CustomerBUS {
         return true;
     }
 
-    public boolean validateAdd(Customer customer, String id, String name, String dob, String address, String email, String phone,
-                               String membership, String registrationDate, String expirationDate) {
-        if (!validateEmpty(id, name, dob, address, email, phone, membership, registrationDate, expirationDate)) {
+    public boolean validateAdd(Customer customer) {
+        if (!validateEmpty(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerDOB(), customer.getCustomerAddress(),
+                customer.getCustomerEmail(), customer.getCustomerPhone(), customer.getMembership(), customer.getRegistrationDate(),
+                customer.getExpirationDate())) {
             return false;
         }
 
-        if (findCustomerById(id)) {
+        if (findCustomerById(customer.getCustomerId())) {
             JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
@@ -74,16 +74,19 @@ public class CustomerBUS {
         return false;
     }
 
-    public void validateDelete(String id) {
+    public boolean validateDelete(String id) {
         if (cusDAO.deleteCustomer(id)) {
             JOptionPane.showMessageDialog(null, "Xóa khách hàng thành công");
+            return true;
         }
         JOptionPane.showMessageDialog(null, "Xóa khách hàng thất bại", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
     }
 
-    public boolean validateUpdate(Customer customer, String id, String name, String dob, String address, String email, String phone,
-                                  String membership, String registrationDate, String expirationDate) {
-        if (!validateEmpty(id, name, dob, address, email, phone, membership, registrationDate, expirationDate)) {
+    public boolean validateUpdate(Customer customer) {
+        if (!validateEmpty(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerDOB(), customer.getCustomerAddress(),
+                customer.getCustomerEmail(), customer.getCustomerPhone(), customer.getMembership(), customer.getRegistrationDate(),
+                customer.getExpirationDate())) {
             return false;
         }
 

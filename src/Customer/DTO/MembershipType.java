@@ -1,32 +1,32 @@
 package Customer.DTO;
 
 public class MembershipType {
-    private String membershipName;
-    private float discount;
+    private String membershipTypeName;
+    private int discount;
     private boolean isDeleted;
 
     public MembershipType() {
     }
 
-    public MembershipType(String membershipName, float discount, boolean isDeleted) {
-        this.membershipName = membershipName;
+    public MembershipType(String membershipTypeName, int discount, boolean isDeleted) {
+        this.membershipTypeName = membershipTypeName;
         this.discount = discount;
         this.isDeleted = isDeleted;
     }
 
-    public String getMembershipName() {
-        return membershipName;
+    public String getMembershipTypeName() {
+        return membershipTypeName;
     }
 
-    public void setMembershipName(String membershipName) {
-        this.membershipName = membershipName;
+    public void setMembershipTypeNameName(String membershipTypeName) {
+        this.membershipTypeName = membershipTypeName;
     }
 
-    public float getDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
-    public void setDiscount(float discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 

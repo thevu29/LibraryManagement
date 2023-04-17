@@ -75,7 +75,7 @@ public class CustomerInfoForm extends JFrame {
         String expirationDate = txtExpireDate.getText();
 
         Customer customer = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, registrationDate, expirationDate, false);
-        if (cusBus.validateAdd(customer, id, name, dob, address, email, phone, membership, registrationDate, expirationDate)) {
+        if (cusBus.validateAdd(customer)) {
             dispose();
             customerForm.getCustomerBUS().renderToTable(customerForm.getTblCustomerModel());
         }
@@ -94,8 +94,8 @@ public class CustomerInfoForm extends JFrame {
         String registrationDate = txtRegisDate.getText();
         String expirationDate = txtExpireDate.getText();
 
-        Customer cus = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, registrationDate, expirationDate, false);
-        if (cusBus.validateUpdate(cus, id, name, dob, address, email, phone, membership, registrationDate, expirationDate)) {
+        Customer customer = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, registrationDate, expirationDate, false);
+        if (cusBus.validateUpdate(customer)) {
             dispose();
             customerForm.getCustomerBUS().renderToTable(customerForm.getTblCustomerModel());
         }
@@ -155,8 +155,8 @@ public class CustomerInfoForm extends JFrame {
 
     public void initMembershipValues() {
         cbxMembership.addItem("Bình thường");
-        for (MembershipType membership : customerForm.getMembershipListInstance().getMembershipList()) {
-            cbxMembership.addItem(membership.getMembershipName());
+        for (MembershipType membership : customerForm.getMembershipTypeBUS().getMembershipTypeList()) {
+            cbxMembership.addItem(membership.getMembershipTypeName());
         }
     }
 

@@ -10,17 +10,17 @@ public class MembershipInfoForm extends JFrame {
     private CustomerForm customerForm;
     private boolean isEditMode;
 
-    public MembershipInfoForm(CustomerForm customerForm, String name, float discount, String btnText) {
+    public MembershipInfoForm(CustomerForm customerForm, MembershipType membershipType, String btnText) {
         this.customerForm = customerForm;
         isEditMode = btnText.equals("Lưu thông tin") ? true : false;
         setInset();
-        setInfo(name, discount, btnText);
+        setInfo(membershipType, btnText);
 
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (isEditMode) {
-                    editMembership();
+                    updateMembership();
                 } else {
                     addMembership();
                 }
@@ -39,59 +39,26 @@ public class MembershipInfoForm extends JFrame {
     }
 
     public void addMembership() {
-        if (!validateEmpty()) {
-            return;
-        }
-
         String name = txtMembershipName.getText();
-        for (MembershipType membership : customerForm.getMembershipListInstance().getMembershipList()) {
-            if (membership.getMembershipName().equals(name)) {
-                JOptionPane.showMessageDialog(null, "Tên loại thành viên đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-        }
-
-        float discount = Float.parseFloat(txtDiscount.getText());
+        int discount = Integer.parseInt(txtDiscount.getText());
 
         MembershipType membership = new MembershipType(name, discount, false);
-        customerForm.getMembershipListInstance().addMembership(membership);
 
-        JOptionPane.showMessageDialog(null, "Thêm loại thành viên thành công");
-        dispose();
-        customerForm.getMembershipListInstance().renderToTable(customerForm.getTblMembershipModelModel());
+        if (customerForm.getMembershipTypeBUS().validateAdd(membership)) {
+            dispose();
+            customerForm.getMembershipTypeBUS().renderToTable(customerForm.getTblMembershipTypeModelModel());
+        }
     }
 
-    public void editMembership() {
-        if (!validateEmpty()) {
-            return;
-        }
-
+    public void updateMembership() {
         String name = txtMembershipName.getText();
-        float discount = Float.parseFloat(txtDiscount.getText());
+        int discount = Integer.parseInt(txtDiscount.getText());
 
         MembershipType mem = new MembershipType(name, discount, false);
-        customerForm.getMembershipListInstance().editMembership(mem);
-
-        JOptionPane.showMessageDialog(null, "Sửa thông tin loại thành viên thành công");
-        dispose();
-        customerForm.getMembershipListInstance().renderToTable(customerForm.getTblMembershipModelModel());
-    }
-
-    public boolean validateEmpty() {
-        StringBuilder sb = new StringBuilder();
-
-        if (txtMembershipName.getText().equals("")) {
-            sb.append("Tên loại thành viên không được để trống \n");
+        if (customerForm.getMembershipTypeBUS().validateUpdate(mem)) {
+            dispose();
+            customerForm.getMembershipTypeBUS().renderToTable(customerForm.getTblMembershipTypeModelModel());
         }
-        if (txtDiscount.getText().equals("")) {
-            sb.append("Giảm giá không được để trống \n");
-        }
-
-        if (sb.length() > 0) {
-            JOptionPane.showMessageDialog(null, sb.toString(), "Warning", JOptionPane.WARNING_MESSAGE);
-            return false;
-        }
-        return true;
     }
 
     public void setInset() {
@@ -100,14 +67,9 @@ public class MembershipInfoForm extends JFrame {
         txtDiscount.setMargin(inset);
     }
 
-    public void setInfo(String name, float discount, String btnText) {
-        txtMembershipName.setText(name);
-
-        if (!isEditMode) {
-            txtDiscount.setText("");
-        } else {
-            txtDiscount.setText(discount + "");
-        }
+    public void setInfo(MembershipType membershipType, String btnText) {
+        txtMembershipName.setText(membershipType.getMembershipTypeName());
+        txtDiscount.setText(membershipType.getDiscount() + "");
 
         btnSave.setText(btnText);
         txtMembershipName.setEnabled(!isEditMode);
