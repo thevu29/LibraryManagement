@@ -179,11 +179,11 @@ public class NhanVienC {
     }
 
     public NhanVienC() {
+        ID.setEditable(false);
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 name.setText("");
-                ID.setText("");
                 position.setSelectedIndex(0);
                 daywork.setText("");
                 address.setText("");

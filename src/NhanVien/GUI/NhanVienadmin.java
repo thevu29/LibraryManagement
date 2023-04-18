@@ -14,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -108,6 +110,11 @@ public class NhanVienadmin {
 
                 b.setVisible(true);
                 b.pack();
+                try {
+                    a.getID().setText("NV"+NVBUS.getNVDAO().contNV());
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 a.getLưuButton().addActionListener(new ActionListener() {
 
                     @Override
@@ -115,8 +122,8 @@ public class NhanVienadmin {
                         if(!a.check()){
                             return;
                         }
-                        NVBUS.getNVDAO().AddNV(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
-                        NVmodel.addRow(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
+                        NVBUS.getNVDAO().AddNV(new nhanVien(a.getID().getText().substring(2),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
+                        NVmodel.addRow(new nhanVien(a.getID().getText().substring(2),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                         b.dispose();
                     }
                 });
@@ -141,7 +148,7 @@ public class NhanVienadmin {
                 a.getID().setText(table1.getValueAt(ro,0).toString());
                 a.getName().setText(table1.getValueAt(ro,1).toString());
                 a.getPhone().setText(table1.getValueAt(ro,3).toString());
-                a.getGender().setSelectedIndex(table1.getValueAt(ro,2).toString().equals("nam") ? 0 : 1);
+                a.getGender().setSelectedIndex(table1.getValueAt(ro,2).toString().equals("Nam") ? 0 : 1);
                 a.getBrith().setText(table1.getValueAt(ro,11).toString());
                 a.getAddress().setText(table1.getValueAt(ro,9).toString());
                 a.getDaywork().setText(table1.getValueAt(ro,12).toString());
@@ -149,7 +156,8 @@ public class NhanVienadmin {
                 a.getPassword1().setText(table1.getValueAt(ro,4).toString());
                 a.getPosition().setSelectedIndex(table1.getValueAt(ro,5).toString().equals("librarian") ? 0 : 1);
                 a.getEmail().setText(table1.getValueAt(ro,10).toString());
-                a.getSalary().setText(table1.getValueAt(ro,6).toString());
+                int te =   Integer.parseInt(table1.getValueAt(ro,6).toString())/(1000* Integer.parseInt(table1.getValueAt(ro,12).toString()));
+                a.getSalary().setText(te+"");
                 a.getShift().setSelectedIndex(table1.getValueAt(ro,8).toString().equals("C1") ? 0 :table1.getValueAt(ro,8).toString().equals("C2") ? 1 : 2);
 
                 a.getLưuButton().addActionListener(new ActionListener() {
@@ -162,7 +170,7 @@ public class NhanVienadmin {
                         var nvt = NVmodel.getRows();
                         for (int i = 0 ; i< nvt.size();i++) {
                             System.out.print("qq");
-                            if(nvt.get(i).getID().equals(a.getID().getText())){
+                            if(nvt.get(i).getID().equals(a.getID().getText().substring(2))){
                                 System.out.print("qq");
 //                                nvt.get(i).setID(a.getID().getText());
 //                                nvt.get(i).setName(a.getName().getText());
@@ -177,8 +185,8 @@ public class NhanVienadmin {
 //                                nvt.get(i).setBirth(a.getBrith().getText());
 //                                nvt.get(i).setPosition((int) a.getPosition().getSelectedItem());
 //                                nvt.get(i).setPhone(a.getPhone().getText());
-                                NVBUS.getNVDAO().EditNV(new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
-                                nvt.set(i,new nhanVien(a.getID().getText(),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
+                                NVBUS.getNVDAO().EditNV(new nhanVien(a.getID().getText().substring(2),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
+                                nvt.set(i,new nhanVien(a.getID().getText().substring(2),a.getName().getText(),a.getPhone().getText(),a.getBrith().getText(),a.getAddress().getText(),a.getEmail().getText(),a.getPassword1().getText(),a.getShift().getSelectedIndex(),a.getPosition().getSelectedIndex(),a.getGender().getSelectedIndex(),a.getWordplace().getSelectedIndex(),Integer.parseInt(a.getDaywork().getText()),Integer.parseInt(a.getSalary().getText())));
                             }
                         }
                         NVmodel.setRows(nvt);
@@ -202,7 +210,7 @@ public class NhanVienadmin {
 
                     var nvt = NVmodel.getRows();
                     for (int i = 0 ; i< nvt.size();i++) {
-                        if (nvt.get(i).getID().toString().equals(table1.getValueAt(table1.getSelectedRow(), 0).toString())) {
+                        if (nvt.get(i).getID().toString().equals(table1.getValueAt(table1.getSelectedRow(), 0).toString().substring(2))) {
                             NVBUS.getNVDAO().removeNV(nvt.get(i).getID());
                             nvt.remove(i);
                         }

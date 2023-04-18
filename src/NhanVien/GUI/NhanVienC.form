@@ -130,7 +130,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="Lương"/>
+          <text value="Hệ số lương"/>
         </properties>
       </component>
       <component id="2ab1" class="javax.swing.JLabel">

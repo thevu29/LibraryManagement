@@ -407,7 +407,7 @@ DROP TABLE IF EXISTS `EMPLOYEE`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `EMPLOYEE` (
-                            `MA_NV` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                            `MA_NV` int auto_increment,
                             `TEN` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                             `CA` int DEFAULT NULL,
                             `CHUC_VU` int   DEFAULT 0,
@@ -419,14 +419,13 @@ CREATE TABLE `EMPLOYEE` (
                             `NGAY_NHAN_CHUC` date DEFAULT NULL,
                             `NGAY_SINH` date DEFAULT NULL,
                             `DIA_CHI` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-                            `CCCD` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                            `CCCD` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci default NULL,
                             `EMAIL` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                             `PHONE` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                             `GIOI_TINH` int DEFAULT 0,
                             `IS_DELETED` tinyint(1) DEFAULT 1,
-                            PRIMARY KEY (`MA_NV`),
-                            KEY `FK_EMPL_EP_CHUCVU` (`CHUC_VU`),
-                            CONSTRAINT `FK_EMPL_EP_CHUCVU` FOREIGN KEY (`CHUC_VU`) REFERENCES `EMPLOYEE_PERMISSION` (`CHUC_VU`)
+                            PRIMARY KEY (`MA_NV`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -607,7 +606,7 @@ DROP TABLE IF EXISTS `SELL_TICKET`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `SELL_TICKET` (
                                `MA_PHIEU` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-                               `MA_NV` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                               `MA_NV` int NOT NULL,
                                `MA_KH` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                                `IS_DELETED` tinyint(1) DEFAULT NULL,
                                PRIMARY KEY (`MA_PHIEU`),

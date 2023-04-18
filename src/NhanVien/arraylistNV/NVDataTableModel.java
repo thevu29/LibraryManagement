@@ -70,7 +70,7 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
     public Object translateValue(nhanVien NV,int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
-                return NV.getID();
+                return "NV"+NV.getID();
             }
             case 1 -> {
                 return NV.getName();

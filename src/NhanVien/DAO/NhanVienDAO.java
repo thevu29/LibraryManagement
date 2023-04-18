@@ -44,24 +44,24 @@ public class NhanVienDAO extends DefaultConnection {
     }
 
     public int AddNV(nhanVien nv){
-        String sql ="INSERT INTO `employee` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql ="INSERT INTO `employee` (`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         int smt=0;
         PreparedStatement pst = null;
         try {
             pst = getConnection().prepareStatement(sql);
-            pst.setString(1, nv.getID());
-            pst.setString(2,nv.getName());
-            pst.setInt(3,nv.getShift());
-            pst.setInt(4, nv.getPosition());
-            pst.setInt(5,nv.getDaywork());
-            pst.setInt(6,nv.getWork());
-            pst.setString(7, nv.getPassword());
-            pst.setString(8,nv.getBirth());
-            pst.setString(9,nv.getAddress());
-            pst.setString(10, nv.getPhone());
-            pst.setInt(11,nv.getGender());
-            pst.setInt(12,nv.getSalary());
-            pst.setString(13, nv.getEmail());
+
+            pst.setString(1,nv.getName());
+            pst.setInt(2,nv.getShift());
+            pst.setInt(3, nv.getPosition());
+            pst.setInt(4,nv.getDaywork());
+            pst.setInt(5,nv.getWork());
+            pst.setString(6, nv.getPassword());
+            pst.setString(7,nv.getBirth());
+            pst.setString(8,nv.getAddress());
+            pst.setString(9, nv.getPhone());
+            pst.setInt(10,nv.getGender());
+            pst.setInt(11,nv.getSalary());
+            pst.setString(12, nv.getEmail());
 
             smt = pst.executeUpdate();
         } catch (SQLException e) {
@@ -90,6 +90,27 @@ public class NhanVienDAO extends DefaultConnection {
         }
 
         return smt;
+    }
+
+    public int contNV() throws SQLException {
+        String sql="select count(*) con from employee";
+        Statement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = getConnection().createStatement();
+//            pst = getConnection().prepareStatement(sql);
+            rs = stmt.executeQuery(sql);
+//            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        if(rs.next())
+        return rs.getInt(1)+1;
+        return 1;
+
     }
 
     public int EditNV(nhanVien nv){
