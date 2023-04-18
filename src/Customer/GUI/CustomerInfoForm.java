@@ -129,7 +129,15 @@ public class CustomerInfoForm extends JFrame {
     }
 
     public void setInfo(Customer customer, String btnText) {
-        txtCustomerId.setText(customer.getCustomerId());
+        if (!isEditMode) {
+            int length = cusBus.getCustomerListLength() + 1;
+            String id = String.format("%03d", length);
+            id = "CUS" + id;
+            txtCustomerId.setText(id);
+        } else {
+            txtCustomerId.setText(customer.getCustomerId());
+        }
+
         txtCustomerName.setText(customer.getCustomerName());
         txtCCCD.setText(customer.getCccd());
         txtCustomerDOB.setText(customer.getCustomerDOB());
@@ -150,7 +158,6 @@ public class CustomerInfoForm extends JFrame {
         }
 
         btnSave.setText(btnText);
-        txtCustomerId.setEnabled(!isEditMode);
     }
 
     public void initMembershipValues() {

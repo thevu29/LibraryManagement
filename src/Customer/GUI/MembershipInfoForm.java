@@ -40,11 +40,9 @@ public class MembershipInfoForm extends JFrame {
 
     public void addMembership() {
         String name = txtMembershipName.getText();
-        int discount = Integer.parseInt(txtDiscount.getText());
+        String discount = txtDiscount.getText();
 
-        MembershipType membership = new MembershipType(name, discount, false);
-
-        if (customerForm.getMembershipTypeBUS().validateAdd(membership)) {
+        if (customerForm.getMembershipTypeBUS().validateAdd(name, discount)) {
             dispose();
             customerForm.getMembershipTypeBUS().renderToTable(customerForm.getTblMembershipTypeModelModel());
         }
@@ -52,10 +50,9 @@ public class MembershipInfoForm extends JFrame {
 
     public void updateMembership() {
         String name = txtMembershipName.getText();
-        int discount = Integer.parseInt(txtDiscount.getText());
+        String discount =txtDiscount.getText();
 
-        MembershipType mem = new MembershipType(name, discount, false);
-        if (customerForm.getMembershipTypeBUS().validateUpdate(mem)) {
+        if (customerForm.getMembershipTypeBUS().validateUpdate(name, discount)) {
             dispose();
             customerForm.getMembershipTypeBUS().renderToTable(customerForm.getTblMembershipTypeModelModel());
         }
@@ -69,7 +66,12 @@ public class MembershipInfoForm extends JFrame {
 
     public void setInfo(MembershipType membershipType, String btnText) {
         txtMembershipName.setText(membershipType.getMembershipTypeName());
-        txtDiscount.setText(membershipType.getDiscount() + "");
+
+        if (isEditMode) {
+            txtDiscount.setText(membershipType.getDiscount() + "");
+        } else {
+            txtDiscount.setText("");
+        }
 
         btnSave.setText(btnText);
         txtMembershipName.setEnabled(!isEditMode);

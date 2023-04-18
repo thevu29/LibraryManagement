@@ -49,7 +49,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <enabled value="false"/>
+            </properties>
           </component>
           <component id="b2f97" class="javax.swing.JTextField" binding="txtCustomerName">
             <constraints>

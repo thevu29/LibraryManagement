@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="fix phần thêm, sửa, xóa customer">
+    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="connect membership_type db và thêm, sửa, xóa membership_type">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/BUS/MembershipTypeBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/MembershipTypeBUS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/DAO/MembershipTypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DAO/MembershipTypeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/DTO/MembershipType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DTO/MembershipType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +70,7 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerForm (1)">
+  <component name="RunManager" selected="Application.CustomerForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -94,7 +90,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -107,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -148,11 +144,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CustomerForm (1)" />
         <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.CustomerForm (4)" />
         <item itemvalue="Application.CustomerForm (3)" />
         <item itemvalue="Application.CustomerForm (5)" />
+        <item itemvalue="Application.CustomerForm (2)" />
+        <item itemvalue="Application.CustomerForm (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -308,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681737722120</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="connect membership_type db và thêm, sửa, xóa membership_type">
+      <created>1681741241608</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681741241608</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +369,8 @@
     <MESSAGE value="update MainForm" />
     <MESSAGE value="connect sql, update phần thêm, sửa, xóa" />
     <MESSAGE value="fix phần thêm, sửa, xóa customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix phần thêm, sửa, xóa customer" />
+    <MESSAGE value="connect membership_type db và thêm, sửa, xóa membership_type" />
+    <option name="LAST_COMMIT_MESSAGE" value="connect membership_type db và thêm, sửa, xóa membership_type" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
