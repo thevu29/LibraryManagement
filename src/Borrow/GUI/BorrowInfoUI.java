@@ -1,6 +1,6 @@
-package Borrow;
+package Borrow.GUI;
 
-import BookFault.FaultModel;
+import Borrow.BorrowModel;
 
 import javax.swing.*;
 import java.awt.*;

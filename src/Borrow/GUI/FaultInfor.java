@@ -1,7 +1,8 @@
-package BookFault;
+package Borrow.GUI;
 
-import Borrow.BorrowUI;
-import Customer.model.Customer;
+import Borrow.BUS.FaultBUS;
+import Borrow.DTO.Fault;
+import Borrow.FaultModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,20 +10,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class FaultInfor extends JFrame {
-    private FaultUI faultUI;
+    private BorrowUI borrowUI;
     private boolean isEditMode;
 
-    public FaultInfor(FaultUI faultUI, String id, String tenLoi, String heSo,String btnText) {
+    private FaultBUS faultBUS = new FaultBUS();
 
-        this.faultUI = faultUI;
+    public FaultInfor(BorrowUI borrowUI, String id, String tenLoi, String heSo,String btnText) {
+        this.borrowUI = borrowUI;
         isEditMode = btnText.equals("Lưu thông tin") ? true : false;
-        setInfo(id, tenLoi,heSo);
+        setInfo(id, tenLoi,heSo ,btnText);
 
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (isEditMode) {
-                    editFaultInfo();
+                    editFault();
                 } else {
                     addFault();
                 }
@@ -37,6 +39,7 @@ public class FaultInfor extends JFrame {
                 }
                 txtTenLoi.setText("");
                 txtHeSo.setText("");
+
             }
         });
 
@@ -59,13 +62,15 @@ public class FaultInfor extends JFrame {
 
         String tenLoi = txtTenLoi.getText();
         double heSo = Double.parseDouble(txtHeSo.getText());
+        int isDeleted = 1;
 
         faultModel.addData(id,tenLoi,heSo);
+        faultBUS.insert(new Fault(id,tenLoi,heSo));
         JOptionPane.showMessageDialog(null, "Thêm lỗi thành công");
         dispose();
     }
 
-    public void editFaultInfo() {
+    public void editFault() {
         if (!validateEmpty()) {
             return;
         }
@@ -73,10 +78,12 @@ public class FaultInfor extends JFrame {
         String id = txtFaultId.getText();
         String tenLoi = txtTenLoi.getText();
         double heSo = Double.parseDouble(txtHeSo.getText());
+        int isDeleted = 1;
 
         FaultModel faultModel = BorrowUI.faultModel;
 
-        faultModel.updateData(id,tenLoi,heSo);
+        faultBUS.update(new Fault(id,tenLoi,heSo));
+        faultModel.initModelTable(faultBUS.getDsLoi());
         JOptionPane.showMessageDialog(null, "Cập nhập lỗi thành công");
         dispose();
     }
@@ -109,20 +116,7 @@ public class FaultInfor extends JFrame {
 //        }
         return true;
     }
-
-//    public void showRegisAndExpireDate() {
-//        lblRegisDate.setVisible(true);
-//        lblExpireDate.setVisible(true);
-//        txtRegisDate.setVisible(true);
-//        txtExpireDate.setVisible(true);
-//    }
-//
-//    public void hideRegisAndExpireDate() {
-//        lblRegisDate.setVisible(false);
-//        lblExpireDate.setVisible(false);
-//        txtRegisDate.setVisible(false);
-//        txtExpireDate.setVisible(false);
-//    }
+    
 
     public void setInset() {
         Insets inset = new Insets(4, 10, 4, 10);
@@ -131,38 +125,15 @@ public class FaultInfor extends JFrame {
         txtHeSo.setMargin(inset);
     }
 
-    public void setInfo(String id, String tenLoi, String heSo) {
+    public void setInfo(String id, String tenLoi, String heSo,String btnText) {
         txtFaultId.setText(id);
         txtTenLoi.setText(tenLoi);
         txtHeSo.setText(heSo);
-//        txtCustomerAddress.setText(address);
-//        txtCustomerEmail.setText(email);
-//        txtCustomerPhone.setText(phone);
-//
-//        int index = gender.equals("Nữ") ? 1 : 0;
-//        cbxGender.setSelectedIndex(index);
-//
-//        for (int i = 0; i < cbxMembership.getItemCount(); i++) {
-//            if (cbxMembership.getItemAt(i).equals(membership)) {
-//                cbxMembership.setSelectedIndex(i);
-//                break;
-//            }
-//        }
-//
-//        btnSave.setText(btnText);
+
         txtFaultId.setEnabled(!isEditMode);
     }
 
-//    public void initMembershipValues() {
-//        for (Membership membership : customerForm.getMembershipListInstance().getMembershipList()) {
-//            cbxMembership.addItem(membership.getMembershipName());
-//        }
-//    }
-//
-//    public void initGenderValues() {
-//        cbxGender.addItem("Nam");
-//        cbxGender.addItem("Nữ");
-//    }
+
 
     public JPanel getContentPane() {
         return panel1;

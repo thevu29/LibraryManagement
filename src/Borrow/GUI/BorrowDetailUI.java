@@ -1,5 +1,6 @@
-package Borrow;
+package Borrow.GUI;
 
+import Borrow.BorrowDetailModel;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 

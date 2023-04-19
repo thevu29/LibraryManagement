@@ -1,6 +1,10 @@
-package Borrow;
+package Borrow.GUI;
 
-import BookFault.*;
+import Borrow.BUS.FaultBUS;
+import Borrow.BorrowDetailModel;
+import Borrow.BorrowModel;
+import Borrow.FaultDetailModel;
+import Borrow.FaultModel;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
@@ -90,6 +94,9 @@ public class BorrowUI {
 
     public static FaultDetailModel faultDetailModel = new FaultDetailModel();
 
+//    cac BUS can thiet
+    private FaultBUS faultBUS = new FaultBUS();
+
     public void showBorrowInfo(String id, String tenDocGia, String ngayMuon, String ngayTra, ArrayList<String> sachMuon, String btnText) {
         BorrowInfoUI borrowInfoUI = new BorrowInfoUI(new BorrowUI(),id,tenDocGia,ngayMuon,ngayTra,sachMuon, btnText);
         borrowInfoUI.setContentPane(borrowInfoUI.getContentPane());
@@ -99,7 +106,7 @@ public class BorrowUI {
         borrowInfoUI.setVisible(true);
     }
     public void showFaultInfo(String id, String tenLoi, String heSo,String btnText) {
-        FaultInfor faultDetailUI = new FaultInfor(new FaultUI(), id, tenLoi, heSo, btnText);
+        FaultInfor faultDetailUI = new FaultInfor(this, id, tenLoi, heSo, btnText);
         faultDetailUI.setContentPane(faultDetailUI.getContentPane());
         faultDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         faultDetailUI.setSize(500, 700);
@@ -294,9 +301,8 @@ public class BorrowUI {
 
 //        xu ly lỗi
         faultModel.setEditable(false);
+        faultModel.initModelTable(faultBUS.getDsLoi());
 
-        faultModel.addTestData();
-//        table2.setModel(test);
         faultTable.setModel(faultModel);
         TableRowSorter<FaultModel> sorterFault
                 = new TableRowSorter<>(faultModel);
@@ -311,9 +317,19 @@ public class BorrowUI {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
-                    System.out.println("double clicked");
+                    System.out.println("double clicked fault");
                     int[] pos = {faultTable.getSelectedRow(), faultTable.getSelectedColumn()};
                     System.out.println(pos[0] + " " + pos[1]);
+                    int selectedRow = faultTable.getSelectedRow();
+                    if (selectedRow < 0) {
+                        JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    String id = faultTable.getValueAt(selectedRow, 0).toString();
+                    String tenLoi = faultTable.getValueAt(selectedRow, 1).toString();
+                    String heSo = faultTable.getValueAt(selectedRow, 2).toString();
+                    showFaultInfo(id, tenLoi,heSo,"Lưu thông tin");
                 }
             }
         });
@@ -358,8 +374,9 @@ public class BorrowUI {
 
                 String id = faultTable.getValueAt(selectedRow, 0).toString();
                 String tenLoi = faultTable.getValueAt(selectedRow, 1).toString();
-                String maLoi = faultTable.getValueAt(selectedRow, 2).toString();
-                showFaultInfo(id, tenLoi,maLoi, "Lưu thông tin");
+                String heSo = faultTable.getValueAt(selectedRow, 2).toString();
+                showFaultInfo(id, tenLoi,heSo,"Lưu thông tin");
+
             }
         });
         deleteFaultButton.addActionListener(new ActionListener() {
@@ -377,7 +394,8 @@ public class BorrowUI {
                 }
 
                 String id = faultTable.getValueAt(selectedRow, 0).toString();
-                faultModel.deleteTestData(id);
+                faultBUS.remove(id);
+                faultModel.initModelTable(faultBUS.getDsLoi());
 
                 JOptionPane.showMessageDialog(null, "Xóa lỗi thành công");
                 faultModel.renderTable();

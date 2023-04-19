@@ -1,6 +1,4 @@
-package BookFault;
-
-import Book.DTO.Book;
+package Borrow.DTO;
 
 import java.util.ArrayList;
 
@@ -9,6 +7,8 @@ public class Fault {
     private String id;
     private String tenLoi;
     private double heSo;
+
+
 
     public Fault(){
 
@@ -43,6 +43,16 @@ public class Fault {
     public void setHeSo(double heSo) {
         this.heSo = heSo;
     }
+
+
+
+    //    public String getTrangThai() {
+//        return trangThai;
+//    }
+//
+//    public void setTrangThai(String trangThai){
+//        this.trangThai = trangThai;
+//    }
 
     public static Fault createTestBook() {
         ArrayList<String> authors = new ArrayList<>();

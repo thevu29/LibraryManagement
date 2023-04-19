@@ -1,5 +1,6 @@
-package BookFault;
+package Borrow;
 
+import Borrow.DTO.FaultDetail;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;

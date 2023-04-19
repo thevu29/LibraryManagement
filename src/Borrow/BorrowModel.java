@@ -1,7 +1,6 @@
 package Borrow;
 
-import Book.DTO.Book;
-import BookFault.Fault;
+import Borrow.DTO.Borrow;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;
@@ -14,11 +13,13 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
             "Tên Nhân Viên",
             "Tên Độc Giả",
             "Ngày Mượn",
+            "Ngày hẹn trả",
             "Ngày Trả",
             "Tổng Tiền",
     };
 
     private boolean isEditable = true;
+
 
     // Contructor
     public BorrowModel(boolean isEditable) {
@@ -127,7 +128,6 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
     public Object getValueAt(int rowIndex, int columnIndex) {
         var borrow = rows.get(rowIndex);
         return translateValue(borrow, columnIndex);
-
     }
 
     public Object translateValue(Borrow borrow, int columnIndex) {
@@ -142,12 +142,15 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
                 return borrow.getTenDocGia();
             }
             case 3 -> {
-                return borrow.getNgayMuuon();
+                return borrow.getNgayMuon();
             }
             case 4 -> {
-                return borrow.getNgayTra();
+                return borrow.getNgayHenTra();
             }
             case 5 -> {
+                return borrow.getNgayTra();
+            }
+            case 6 -> {
                 return borrow.getTongTien();
             }
         }

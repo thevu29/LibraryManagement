@@ -1,8 +1,4 @@
-package BookFault;
-
-import Customer.model.Customer;
-import Customer.model.Membership;
-import Customer.ui.CustomerForm;
+package Borrow.GUI;
 
 import javax.swing.*;
 import java.awt.*;

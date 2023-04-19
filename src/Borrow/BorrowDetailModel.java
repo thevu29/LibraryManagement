@@ -1,5 +1,6 @@
 package Borrow;
 
+import Borrow.DTO.BorrowDetail;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;

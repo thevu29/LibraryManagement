@@ -1,9 +1,4 @@
-package Borrow;
-
-import Book.DTO.Book;
-import Book.EBookStatus;
-
-import java.util.ArrayList;
+package Borrow.DTO;
 
 public class BorrowDetail {
     static int priceCounter = 0;

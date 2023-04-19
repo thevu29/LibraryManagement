@@ -1,8 +1,4 @@
-package Borrow;
-
-import Book.DTO.Book;
-import Book.EBookStatus;
-import BookFault.Fault;
+package Borrow.DTO;
 
 import java.util.ArrayList;
 
@@ -11,25 +7,19 @@ public class Borrow {
     private String id;
     private String tenNhanVien;
     private String tenDocGia;
-    private String ngayMuuon;
+    private String ngayMuon;
+    private String ngayHenTra;
     private String ngayTra;
     private String tongTien;
 
-    public Borrow(String id, String tenNhanVien, String tenDocGia, String ngayMuuon, String ngayTra, String tongTien) {
+    public Borrow(String id, String tenNhanVien, String tenDocGia, String ngayMuon, String ngayHenTra, String ngayTra, String tongTien) {
         this.id = id;
         this.tenNhanVien = tenNhanVien;
         this.tenDocGia = tenDocGia;
-        this.ngayMuuon = ngayMuuon;
+        this.ngayMuon = ngayMuon;
+        this.ngayHenTra = ngayHenTra;
         this.ngayTra = ngayTra;
         this.tongTien = tongTien;
-    }
-
-    public static int getPriceCounter() {
-        return priceCounter;
-    }
-
-    public static void setPriceCounter(int priceCounter) {
-        Borrow.priceCounter = priceCounter;
     }
 
     public String getId() {
@@ -56,12 +46,20 @@ public class Borrow {
         this.tenDocGia = tenDocGia;
     }
 
-    public String getNgayMuuon() {
-        return ngayMuuon;
+    public String getNgayMuon() {
+        return ngayMuon;
     }
 
-    public void setNgayMuuon(String ngayMuuon) {
-        this.ngayMuuon = ngayMuuon;
+    public void setNgayMuon(String ngayMuon) {
+        this.ngayMuon = ngayMuon;
+    }
+
+    public String getNgayHenTra() {
+        return ngayHenTra;
+    }
+
+    public void setNgayHenTra(String ngayHenTra) {
+        this.ngayHenTra = ngayHenTra;
     }
 
     public String getNgayTra() {
@@ -80,10 +78,20 @@ public class Borrow {
         this.tongTien = tongTien;
     }
 
+    public static int getPriceCounter() {
+        return priceCounter;
+    }
+
+    public static void setPriceCounter(int priceCounter) {
+        Borrow.priceCounter = priceCounter;
+    }
+
+
+
     public static Borrow createTestBook() {
         ArrayList<String> authors = new ArrayList<>();
 
-        return new Borrow(String.valueOf(priceCounter),"NhanVien "+priceCounter,"Doc gia "+priceCounter,"Ngaymuon"+priceCounter,"ngayTra"+priceCounter,
+        return new Borrow(String.valueOf(priceCounter),"NhanVien "+priceCounter,"Doc gia "+priceCounter,"Ngaymuon"+priceCounter,"Ngay hen tra"+priceCounter,"ngayTra"+priceCounter,
                 "Tong tien "+priceCounter++);
     }
 }

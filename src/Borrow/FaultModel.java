@@ -1,9 +1,11 @@
-package BookFault;
+package Borrow;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import Borrow.DAO.FaultDAO;
+import Borrow.DTO.Fault;
 import Utils.AbstractTableModelWithFilters;
 
 public class FaultModel extends AbstractTableModelWithFilters<Fault> {
@@ -13,6 +15,7 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
             "Hệ Số",
     };
 
+    private FaultDAO faultDAO = new FaultDAO();
     private boolean isEditable = true;
 
     // Contructor
@@ -24,6 +27,14 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
 
     public FaultModel() {
         super();
+    }
+
+    public void initModelTable(ArrayList<Fault> dsLoi){
+        rows.clear();
+        for (Fault fault: dsLoi) {
+            rows.add(fault);
+            fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+        }
     }
 
     // add data test
@@ -47,7 +58,7 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
             if(row.getId().equals(id)){
                 row.setTenLoi(tenLoi);
                 row.setHeSo(heSo);
-                fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+                fireTableCellUpdated(rows.size() - 1, rows.size() - 1);
                 return;
             }
         }

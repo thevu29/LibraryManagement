@@ -1,4 +1,4 @@
-package BookFault;
+package Borrow.DTO;
 
 import java.util.ArrayList;
 

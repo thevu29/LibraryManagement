@@ -1,5 +1,6 @@
-package BookFault;
+package Borrow.GUI;
 
+import Borrow.FaultDetailModel;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 

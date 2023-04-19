@@ -4,21 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="Add database, mysql connector.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-=======
     <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="xong hoa don">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
+      <change beforePath="$PROJECT_DIR$/src/BookFault/Fault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/Fault.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/FaultDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/FaultDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultInfor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultInfor.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultInfor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultInfor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/FaultModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultUI.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BookFault/FaultUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/Borrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/Borrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/BorrowDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
     </list>
     <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,7 +39,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
@@ -42,26 +51,6 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-<<<<<<< HEAD
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Book/BUS/BookBUS.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Book/GUI/BookGUI.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/BookFault/FaultDetail.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/BookFault/FaultDetailInfoUI.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/BookFault/FaultDetailModel.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/BookFault/FaultDetailUI.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/BookFault/FaultInfor.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/BookFault/FaultModel.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/BookFault/FaultUI.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Borrow/Borrow.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetail.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetailUI.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowInfoUI.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowModel.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowUI.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" root0="SKIP_INSPECTION" />
-=======
   <component name="GitHubPullRequestSearchHistory">{
   &quot;history&quot;: [
     {
@@ -79,7 +68,22 @@
         <option name="url" value="https://github.com/Neptune27/LibraryManagementGUI.git" />
       </UrlAndAccount>
     </option>
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DAO/FaultDAO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DTO/Borrow.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DTO/Fault.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/FaultModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/FaultInfor.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/GioHangModel.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -95,16 +99,8 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-<<<<<<< HEAD
-    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
-    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;316&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/2_HK2/Java/Shop_Manager_System&quot;,
-=======
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Programming/JetBrainProjects/IDEA/LibraryManagementGUI/src/MainGUI&quot;,
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/2_HK2/Java/GiaoDien&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -129,45 +125,44 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
-<<<<<<< HEAD
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\form" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Application.BookBUS">
-=======
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Workspace\2_HK2\Java\LibraryManagementGUI\src\Borrow\GUI" />
       <recent name="J:\LapTrinhJava\LibraryManagementGUI\src\sellBook\GUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\form" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager">
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
+  <component name="RunManager" selected="Application.BorrowUI">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-<<<<<<< HEAD
-    <configuration name="BookBUS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Book.BUS.BookBUS" />
+    <configuration name="BorrowUI (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Book.BUS.*" />
+          <option name="PATTERN" value="Borrow.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BorrowUI (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Borrow.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -176,11 +171,11 @@
       </method>
     </configuration>
     <configuration name="BorrowUI (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Borrow.BorrowUI" />
+      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Borrow.*" />
+          <option name="PATTERN" value="Borrow.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -189,11 +184,11 @@
       </method>
     </configuration>
     <configuration name="BorrowUI (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Borrow.BorrowUI" />
+      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Borrow.*" />
+          <option name="PATTERN" value="Borrow.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -202,78 +197,11 @@
       </method>
     </configuration>
     <configuration name="BorrowUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Borrow.BorrowUI" />
+      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Borrow.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainForm.*" />
-=======
-    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainGUI.MainWindow" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainGUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVienC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienC" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVien.form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="form.adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="form.*" />
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
+          <option name="PATTERN" value="Borrow.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -283,31 +211,19 @@
     </configuration>
     <recent_temporary>
       <list>
-<<<<<<< HEAD
-        <item itemvalue="Application.BookBUS" />
-        <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.BorrowUI" />
         <item itemvalue="Application.BorrowUI (4)" />
         <item itemvalue="Application.BorrowUI (3)" />
-=======
-        <item itemvalue="Application.NhanVienC" />
-        <item itemvalue="Application.NhanVien.form.adminNhanVien" />
-        <item itemvalue="Application.form.adminNhanVien" />
-        <item itemvalue="Application.adminNhanVien" />
-        <item itemvalue="Application.MainWindow" />
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
+        <item itemvalue="Application.BorrowUI (2)" />
+        <item itemvalue="Application.BorrowUI (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="fb5ec9a6-8d34-4053-a027-e52379beca8e" name="Changes" comment="" />
-=======
       <changelist id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="" />
       <changelist id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="tét" comment="tét" />
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
       <created>1676216910792</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -365,9 +281,6 @@
       <option name="project" value="LOCAL" />
       <updated>1676216964949</updated>
     </task>
-<<<<<<< HEAD
-    <option name="localTasksCounter" value="2" />
-=======
     <task id="LOCAL-00002" summary="Add database, mysql connector.">
       <created>1680958056904</created>
       <option name="number" value="00002" />
@@ -432,7 +345,6 @@
       <updated>1681309264489</updated>
     </task>
     <option name="localTasksCounter" value="11" />
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -464,9 +376,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Init" />
     <MESSAGE value="Add database, mysql connector." />
-<<<<<<< HEAD
-    <option name="LAST_COMMIT_MESSAGE" value="Add database, mysql connector." />
-=======
     <MESSAGE value="hello" />
     <MESSAGE value="xong hoa don" />
     <option name="LAST_COMMIT_MESSAGE" value="xong hoa don" />
@@ -477,45 +386,26 @@
         <PinnedItemInfo parentTag="sellBook.DTO.CTHD" memberName="ma_series" />
       </pinned-members>
     </pin-to-top-manager>
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
-<<<<<<< HEAD
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowBookFaultUI.ic" NAME="BorrowBookFaultUI Coverage Results" MODIFIED="1680881824336" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>BookFault.*</FILTER>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__3_.ic" NAME="BorrowUI (3) Coverage Results" MODIFIED="1681693921238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$Book_FaultUI__2_.ic" NAME="Book.FaultUI (2) Coverage Results" MODIFIED="1681011774234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Book.*</FILTER>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__4_.ic" NAME="BorrowUI (4) Coverage Results" MODIFIED="1681703017465" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowInfoUI__1_.ic" NAME="BorrowInfoUI (1) Coverage Results" MODIFIED="1681088889402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.*</FILTER>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1681703480094" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$Book_FaultUI.ic" NAME="Book.FaultUI Coverage Results" MODIFIED="1681009148570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Book.*</FILTER>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__2_.ic" NAME="BorrowUI (2) Coverage Results" MODIFIED="1681661239308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BookGUI.ic" NAME="BookGUI Coverage Results" MODIFIED="1681012002695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Book.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1680852476402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$MainWindow__2_.ic" NAME="MainWindow (2) Coverage Results" MODIFIED="1681203756773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>MainForm.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1681295705121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultDetailInfoUI.ic" NAME="FaultDetailInfoUI Coverage Results" MODIFIED="1681288272989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>BookFault.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultUI.ic" NAME="FaultUI Coverage Results" MODIFIED="1680970803626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>BookFault.*</FILTER>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__1_.ic" NAME="BorrowUI (1) Coverage Results" MODIFIED="1681693142354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
     </SUITE>
   </component>
-=======
->>>>>>> bef744e987f78035d3e5410affb6dfb2dcb06763
 </project>
