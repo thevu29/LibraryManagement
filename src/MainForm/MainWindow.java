@@ -1,8 +1,9 @@
 package MainForm;
 
 import Book.BUS.BookBUS;
-import Book.BookDataTableModel;
 import Customer.GUI.CustomerForm;
+import NhanVien.form.NhanVienadmin;
+import sellBook.GUI.HoaDonGUI;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -26,20 +27,30 @@ public class MainWindow {
                     card.show(contentPanel, "Book");
                 } else if (e.getSource() == lblCustomer) {
                     card.show(contentPanel, "Customer");
+                } else if (e.getSource() == lblSell) {
+                    card.show(contentPanel, "Sell");
+                } else if (e.getSource() == lblEmployee) {
+                    card.show(contentPanel, "Employee");
                 }
             }
         };
         lblBook.addMouseListener(showContent);
         lblCustomer.addMouseListener(showContent);
+        lblSell.addMouseListener(showContent);
+        lblBorrow.addMouseListener(showContent);
+        lblEmployee.addMouseListener(showContent);
     }
 
     public void initContentPanel() {
-
         var bookForm = new BookBUS();
         CustomerForm customerForm = new CustomerForm();
+        NhanVienadmin employeeForm = new NhanVienadmin();
+        HoaDonGUI sellForm = new HoaDonGUI();
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
+        contentPanel.add("Employee", employeeForm.getMainPanel());
+        contentPanel.add("Sell", sellForm.getMain());
     }
 
     public void hover() {
@@ -103,7 +114,7 @@ public class MainWindow {
         JFrame frame = new JFrame("MainWindow");
         frame.setContentPane(new MainWindow().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1200, 600);
+        frame.setSize(1350, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }

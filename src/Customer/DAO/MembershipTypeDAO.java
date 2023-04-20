@@ -12,7 +12,7 @@ public class MembershipTypeDAO {
     public ArrayList<MembershipType> getAll() {
         ArrayList<MembershipType> list = new ArrayList<>();
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("select * from membership_type");
 
@@ -32,7 +32,7 @@ public class MembershipTypeDAO {
     public MembershipType getDeletedMembershipTypeByName(String name) {
         MembershipType membershipType = null;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "select * from membership_type " + "where DANG_THE = " + "'" + name + "'";
             Statement stmt = conn.createStatement();
@@ -53,7 +53,7 @@ public class MembershipTypeDAO {
     public boolean addMembershipType(MembershipType membershipType) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "insert into membership_type values (?, ?, ?)";
             PreparedStatement ptmt = conn.prepareStatement(query);
@@ -74,7 +74,7 @@ public class MembershipTypeDAO {
     public boolean recoverMembershipType(MembershipType membershipType) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "update membership_type set GIA_GIAM = ?, IS_DELETED = ? " + "where DANG_THE = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
@@ -95,7 +95,7 @@ public class MembershipTypeDAO {
     public boolean deleteMembershipType(String name) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "update membership_type set IS_DELETED = ? " + "where DANG_THE = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
@@ -115,7 +115,7 @@ public class MembershipTypeDAO {
     public boolean updateMembership(MembershipType membershipType) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "update membership_type set GIA_GIAM = ? " + "where DANG_THE = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);

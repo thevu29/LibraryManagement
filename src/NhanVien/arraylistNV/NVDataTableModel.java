@@ -1,7 +1,6 @@
 package NhanVien.arraylistNV;
 
 
-import NhanVien.form.NhanVienC;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
-    private final String[] cols = {"ID", "Tên Nhân viên", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc"};
+    private final String[] cols = {"Mã nhân viên", "Tên nhân viên", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc"};
 
     private boolean isEditable = true;
 

@@ -43,14 +43,6 @@ public class NhanVienadmin {
         table1.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         table1.getTableHeader().setBackground(Color.WHITE);
 
-
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new NhanVienC();
-            }
-        });
-
         table1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -68,7 +60,6 @@ public class NhanVienadmin {
         var IDNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox3, 0 , NVmodel :: getColumnValueToString, delFliterIDButton );
         var NameNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox2, 0 , NVmodel :: getColumnValueToString, delFliterNameButton );
         var CVNV = AutoSuggestComboBox.createWithDeleteBtn(comboBox1, 0 , NVmodel :: getColumnValueToString, delFlitercvButton );
-
 
         delallButton.addActionListener(new ActionListener() {
             @Override
@@ -96,19 +87,17 @@ public class NhanVienadmin {
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var a = new NhanVienC();
-                var b = new JFrame();
-                b.setContentPane(a.getMain());
-
-                b.setVisible(true);
-                b.pack();
-
+                NhanVienC a = new NhanVienC();
+                a.setContentPane(a.getMain());
+                a.setLocationRelativeTo(null);
+                a.setVisible(true);
+                a.pack();
             }
         });
     }
 
-    private void  inittable(){
-
+    public JPanel getMainPanel() {
+        return main;
     }
 
     public static void main(String[] args) {
@@ -116,6 +105,7 @@ public class NhanVienadmin {
         frame.setContentPane(new NhanVienadmin().main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

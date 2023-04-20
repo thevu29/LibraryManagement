@@ -14,7 +14,7 @@ public class CustomerDAO {
     public ArrayList<Customer> createList() {
         ArrayList<Customer> list = new ArrayList<>();
         try {
-            Connection con = DefaultConnection.openConnection();
+            Connection con = DefaultConnection.getConnect();
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select C.MA_KH, TEN, NGAY_SINH, DIA_CHI, CCCD, EMAIL, PHONE, GIOI_TINH, M.DANG_THE, M.NGAY_DK, M.NGAY_HH, C.IS_DELETED\n" +
@@ -54,7 +54,7 @@ public class CustomerDAO {
     public boolean addCustomer(Customer customer) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "insert into customer values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ptmt = conn.prepareStatement(query);
@@ -86,7 +86,7 @@ public class CustomerDAO {
     public boolean addMembership(Customer customer) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "insert into membership values (?, ?, ?, ?, ?, ?)";
             PreparedStatement ptmt = conn.prepareStatement(query);
@@ -114,7 +114,7 @@ public class CustomerDAO {
     public boolean deleteCustomer(String id) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "update customer set IS_DELETED = ? " + "where MA_KH = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
@@ -134,7 +134,7 @@ public class CustomerDAO {
     public boolean updateCustomer(Customer customer) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "update customer set TEN = ?, NGAY_SINH = ?, DIA_CHI = ?, CCCD = ?, EMAIL = ?, PHONE = ?, GIOI_TINH = ? " +
                     "where MA_KH = ?";
@@ -163,7 +163,7 @@ public class CustomerDAO {
     public boolean updateMembership(Customer customer) {
         boolean res = false;
         try {
-            Connection conn = DefaultConnection.openConnection();
+            Connection conn = DefaultConnection.getConnect();
 
             String query = "";
             PreparedStatement ptmt;

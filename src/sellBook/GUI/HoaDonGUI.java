@@ -129,6 +129,7 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 var dialog = new HoaDonFD(HoaDonGUI.this);
                 dialog.pack();
+                dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
             }
         });
@@ -184,6 +185,7 @@ public class HoaDonGUI {
         frame.setContentPane(new HoaDonGUI().main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     private void rmvListenerBtnFilter(){
@@ -226,7 +228,7 @@ public class HoaDonGUI {
         tblCheckOut.setModel(dtm);
     }
     private void initTable(){
-        String[] columns = {"Mã Phieu", "Ma Nhan Vien", "Ma Khach Hang"};
+        String[] columns = {"Mã hóa đơn", "Mã nhân viên", "Mã khách hàng"};
         dtm.setColumnIdentifiers(columns);
 
         dshd =  bus.getAllSellTicket();
@@ -243,4 +245,7 @@ public class HoaDonGUI {
         changeTable(bus.getAllSellTicket());
     }
 
+    public JPanel getMain() {
+        return main;
+    }
 }
