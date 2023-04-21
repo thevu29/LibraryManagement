@@ -25,8 +25,8 @@ public class CTHDBus {
     public List<Double> getAllHeSo(String id){
         return cthd.getHeSo(id);
     }
-    public List<CTHD> filterMaCTHD(String id, String maCTHD){
-        return cthd.locCTHD(id,maCTHD);
+    public List<CTHD> filterMaCTHD(String id,String maSeri){
+        return cthd.locCTHD(id,maSeri);
     }
 
     public List<CTHD> filterHeSo(String id,double hs){
@@ -44,12 +44,26 @@ public class CTHDBus {
     public int update(CTHD hd){
         return cthd.updateCTHD(hd);
     }
+    public String goiYTenSach(String maSeri){
+        return cthd.goiYTenSach(maSeri);
+    }
+
+    public long tinhTienSach(String maHD,String maSeri){
+        return cthd.tinhTienSach(maHD,maSeri);
+    }
+    public long tienSach(String maSeri){
+        return cthd.layGiaSach(maSeri);
+    }
+    public int updateStatusBook(String MaSeri){
+        return cthd.changeTrangThaiSach(MaSeri);
+    }
 
     public static void main(String[] args) {
         CTHDBus t = new CTHDBus();
-        List<CTHD> ds = t.filterMaSeri("1","7");
-        for(CTHD h:ds){
-            System.out.println(h.getMa_series());
-        }
+//        List<CTHD> ds = t.filterMaCTHD("1","2");
+//        for(CTHD h:ds){
+//            System.out.println(h.getMa_series());
+//        }
+        System.out.println(t.goiYTenSach("1"));
     }
 }

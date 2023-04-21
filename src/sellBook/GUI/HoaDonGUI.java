@@ -111,16 +111,21 @@ public class HoaDonGUI {
                     // Clear existing items in maHDComboBox
                     cboMaKH.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
-                    List<String> maKHs = bus.getAllMaKH();
-                    for (String maKH : maKHs) {
-                        cboMaKH.addItem(maKH);
+                    List<HoaDon> dshd = bus.getAllSellTicket();
+                    Map<String, String> mapKH = new HashMap<>();
+                    for(HoaDon hd:dshd){
+                        mapKH.put(hd.getTenKH(),hd.getMa_KH());
+                    }
+                    for(String tenKH:mapKH.keySet()){
+                        cboMaKH.addItem(tenKH);
                     }
                     rmvListenerBtnFilter();
                     btnFilter.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             String selected = String.valueOf(cboMaKH.getSelectedItem()) ;
-                            changeTable(bus.filterMaKH(selected));
+                            String idKH = mapKH.get(selected);
+                            changeTable(bus.filterMaKH(idKH));
                         }
                     });
 
@@ -148,7 +153,7 @@ public class HoaDonGUI {
         btnRemove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
+                int[] pos = {tblCheckOut.getSelectedRow(), 0};
                 if(pos[0]==-1){
                     JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
                 }

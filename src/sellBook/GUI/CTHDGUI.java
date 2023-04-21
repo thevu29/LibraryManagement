@@ -24,7 +24,6 @@ public class CTHDGUI {
     private JButton bookDeleteAllButton;
     private JButton btnFilter;
     private JTabbedPane tab;
-    private JButton btnXoaMaCTHD;
     private JComboBox cboMaCTHD;
     private JButton btnXoaMaHD;
     private JComboBox cboMaHD;
@@ -54,9 +53,20 @@ public class CTHDGUI {
                     for (String maHD : maHDs) {
                         cboMaHD.addItem(maHD);
                     }
+                    cboMaHD.setEditable(false);
+                    rmvListerBtnFilter();
+
+                    btnFilter.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            dsCTHD = bus.getDsCTHD(maHD);
+
+                            changeTable();
+                        }
+                    });
 
                 }
-                else if (tab.getSelectedIndex() == 2) {
+                else if (tab.getSelectedIndex() == 1) {
                     cboHeSo.removeAllItems();
                     List<Double> heSo = bus.getAllHeSo(maHD);
                     for (Double so : heSo) {
@@ -75,7 +85,7 @@ public class CTHDGUI {
                     });
                 }
 
-                else if (tab.getSelectedIndex() == 3) {
+                else if (tab.getSelectedIndex() == 2) {
                     cboMaSeri.removeAllItems();
                     List<String> maSeries = bus.getAllMaSeries(maHD);
                     for (String seri : maSeries) {
@@ -132,20 +142,27 @@ public class CTHDGUI {
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
-                String maCTHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
 
-                List<CTHD> ds = bus.filterMaCTHD(maHD,maCTHD);
-                CTHD temp = ds.get(0);
-                CTHDFD dialog = new CTHDFD(temp,CTHDGUI.this);
-                dialog.pack();
-                dialog.setVisible(true);
+                if(tblCTHD.getSelectedRow()==-1){
+                    JOptionPane.showMessageDialog(null,"Can Chon 1 Hang De Cap Nhat");
+                }
+                else{
+                    int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
+                    String maSeri = String.valueOf(tblCTHD.getValueAt(pos[0],2)) ;
+                    System.out.println(maSeri);
+                    List<CTHD> ds = bus.filterMaCTHD(maHD,maSeri);
+                    CTHD temp = ds.get(0);
+                    CTHDFD dialog = new CTHDFD(temp,CTHDGUI.this);
+                    dialog.pack();
+                    dialog.setVisible(true);
+                }
+
             }
         });
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CTHDFD dialog = new CTHDFD(CTHDGUI.this);
+                CTHDFD dialog = new CTHDFD(CTHDGUI.this,maHD);
                 dialog.pack();
                 dialog.setVisible(true);
             }
@@ -169,10 +186,10 @@ public class CTHDGUI {
 
     private void changeTable(){
         dtm.setRowCount(0);
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Tong Tien"};
+        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
         dtm.setColumnIdentifiers(columns);
         for (CTHD ct : dsCTHD) {
-            Object[] t = { ct.getMa_phieu(), ct.getHe_so(), ct.getMa_series(),ct.getTienSach()};
+            Object[] t = { ct.getMa_phieu(), ct.getHe_so(), ct.getMa_series(),ct.getTenSach(),ct.getTienSach()};
             dtm.addRow(t);
         }
         tblCTHD.setModel(dtm);
@@ -188,16 +205,18 @@ public class CTHDGUI {
     }
     private void initTab(){
         if (tab.getSelectedIndex() == 0) {
-            cboMaCTHD.removeAllItems();
-            List<String> maCTHDs = bus.getAllMaHD(maHD);
-            for (String maCTHD : maCTHDs) {
-                cboMaCTHD.addItem(maCTHD);
+            cboMaHD.removeAllItems();
+            cboMaHD.setEditable(false);
+            cboMaHD.setMaximumRowCount(2);
+            List<String> maHDs = bus.getAllMaHD(maHD);
+            for (String maHD : maHDs) {
+                cboMaHD.addItem(maHD);
             }
             btnFilter.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String selected = String.valueOf(cboMaCTHD.getSelectedItem()) ;
-                    dsCTHD = bus.filterMaCTHD(maHD,selected);
+                    String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
+                    dsCTHD = bus.getDsCTHD(maHD);
                     changeTable();
                 }
 
@@ -210,11 +229,11 @@ public class CTHDGUI {
     private void initTable(){
         List<CTHD> dsct = bus.getDsCTHD(maHD);
 
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Tong Tien"};
+        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
         dtm.setColumnIdentifiers(columns);
 
         for(CTHD ct:dsct){
-            Object[] t = {ct.getMa_phieu(), ct.getHe_so(),ct.getMa_series(),ct.getTienSach()};
+            Object[] t = {ct.getMa_phieu(), ct.getHe_so(),ct.getMa_series(),ct.getTenSach(),ct.getTienSach()};
             dtm.addRow(t);
         }
         tblCTHD.setModel(dtm);

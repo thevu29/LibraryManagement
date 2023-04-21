@@ -47,6 +47,9 @@ public class SellTicketBus {
     public String goiYNameKH(String maKH){
         return hd.goiYTenKH(maKH);
     }
+    public String getNewMaHD(){
+        return hd.getNewMaHD();
+    }
     public static void main(String[] args) {
 
     }

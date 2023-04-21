@@ -29,7 +29,7 @@ public class SellTicketDao extends DefaultConnection {
                 var tenKH = rs.getString("tenKH");
                 var tenNV = rs.getString("tenNV");
                 var total = temp.tinhTongHoaDon(maPhieu);
-                dshd.add(new HoaDon(maPhieu, maNv,  maKh,tenKH,tenNV,total));
+                dshd.add(new HoaDon(maPhieu, maNv,  maKh,tenNV,tenKH,total));
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -65,6 +65,16 @@ public class SellTicketDao extends DefaultConnection {
         }
         return new ArrayList<>(maNVSet);
     }
+
+    public ArrayList<String> getMaKH(){
+        Set<String> maKHSet = new HashSet<>();
+        ArrayList<HoaDon> dsHoaDon = getDsHoaDon();
+        for (HoaDon hd : dsHoaDon) {
+            maKHSet.add(hd.getMa_KH());
+        }
+        return new ArrayList<>(maKHSet);
+    }
+
     public long tinhTongHoaDon(String maHD){
         String sql = "SELECT SUM(CAST(book.GIA AS UNSIGNED) * sell_ticket_details.HE_SO) as tongTien " +
                 "FROM `sell_ticket` INNER JOIN sell_ticket_details on sell_ticket.MA_PHIEU = sell_ticket_details.MA_PHIEU " +
@@ -84,29 +94,14 @@ public class SellTicketDao extends DefaultConnection {
         return total;
     }
 
-    public ArrayList<String> getMaKH(){
-        String sql = "SELECT DISTINCT `MA_KH`FROM `sell_ticket` ";
-        ArrayList<String> dsStr = new ArrayList<>();
-        Statement stmt = null;
-        try {
-            stmt = getConnect().createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                var maKh = rs.getString("MA_KH");
 
-                dsStr.add( maKh);
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            return dsStr;
-        }
-        return dsStr;
-    }
 
     public List<HoaDon> locMaHD(String ma){
         String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
                 "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
                 "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
-                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_PHIEU = "+ma;
+                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_PHIEU = '"+ma+"'";
+        System.out.println(ma);
 //        var a = """
 //                SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV\s
 //                FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH\s
@@ -130,13 +125,34 @@ public class SellTicketDao extends DefaultConnection {
         return getDs(sql);
     }
 
+    public String getNewMaHD(){
+        String sql = "SELECT CONCAT('HD', LPAD(SUBSTRING(MAX(MA_PHIEU), 3) + 1, 3, '0')) AS new_id FROM sell_ticket WHERE MA_PHIEU LIKE 'HD%'";
+        Statement stmt = null;
+        String maHD = "";
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                maHD = rs.getString("new_id");
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return maHD;
+    }
+
     public int insertHD(HoaDon hd){
         String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`) VALUES (?,?,?,?)";
         int smt=0;
+
+        SellTicketDao temp = new SellTicketDao();
+        String maHD = temp.getNewMaHD();
         PreparedStatement pst = null;
+
         try {
             pst = getConnect().prepareStatement(sql);
-            pst.setString(1, hd.getMa_phieu());
+            pst.setString(1, maHD);
             pst.setString(2,hd.getMa_nv());
             pst.setString(3,hd.getMa_KH());
             pst.setBoolean(4,false);
@@ -150,7 +166,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int removeHD(String id){
-        String sql = "DELETE FROM `SELL_TICKET` WHERE MA_PHIEU = "+id;
+        String sql = "UPDATE `sell_ticket` SET `IS_DELETED`=1 WHERE MA_PHIEU = "+id;
         int smt = 0;
         PreparedStatement pst = null;
         try {

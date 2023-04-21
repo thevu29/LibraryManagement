@@ -1,27 +1,25 @@
 package sellBook.GUI;
 
 import javax.swing.*;
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-public class TestChart extends JFrame {
-
+public class Chart {
     private JPanel main;
+    private JPanel chart1;
+    private JButton button1;
 
-    public TestChart(String title) {
-        super(title);
-
-        // Create dataset
+    public Chart() {
+        // create dataset
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.setValue(120, "Books", "2019");
         dataset.setValue(160, "Books", "2020");
         dataset.setValue(200, "Books", "2021");
 
-        // Create chart
+        // create chart
         JFreeChart chart = ChartFactory.createBarChart(
                 "Books Sold", // Chart title
                 "Year", // X-Axis Label
@@ -33,11 +31,17 @@ public class TestChart extends JFrame {
                 false // Generate URLs
         );
 
-        // Create panel
+        // create chart panel and add it to the chart JPanel
         ChartPanel chartPanel = new ChartPanel(chart);
-        setContentPane(chartPanel);
+        chart1.setLayout(new java.awt.BorderLayout());
+        chart1.add(chartPanel);
     }
 
-
-
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Chart");
+        frame.setContentPane(new Chart().main);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 }
