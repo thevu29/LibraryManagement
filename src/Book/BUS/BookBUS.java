@@ -45,12 +45,17 @@ public class BookBUS {
         this.genreDAO = new GenreDAO();
         this.publisherDAO = new PublisherDAO();
         this.importerDAO = new ImporterDAO();
+        resetData();
+    }
+
+    public void resetData() {
         bookDataTableModel.setRows(bookDAO.getAllFromDatabase());
         authorDataTableModel.setRows(authorDAO.getAllFromDatabase());
         publisherDataTableModel.setRows(publisherDAO.getAllFromDatabase());
         genreDataTableModel.setRows(genreDAO.getAllFromDatabase());
         importerTableModel.setRows(importerDAO.getAllFromDatabase());
     }
+
     //endregion
 
     //region MODEL

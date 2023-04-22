@@ -207,6 +207,14 @@ public class HoaDonGUI {
         });
     }
 
+    public JPanel getMain() {
+        return main;
+    }
+
+    public void setMain(JPanel main) {
+        this.main = main;
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("HoaDonGUI");
         frame.setContentPane(new HoaDonGUI().main);

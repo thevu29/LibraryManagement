@@ -12,6 +12,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MainWindow {
+    private BookBUS bookForm;
+
     public MainWindow() {
         setMargin();
         setCursor();
@@ -25,6 +27,8 @@ public class MainWindow {
 
                 if (e.getSource() == lblBook) {
                     card.show(contentPanel, "Book");
+                    bookForm.resetData();
+
                 } else if (e.getSource() == lblCustomer) {
                     card.show(contentPanel, "Customer");
                 } else if (e.getSource() == lblSell) {
@@ -42,7 +46,7 @@ public class MainWindow {
     }
 
     public void initContentPanel() {
-        var bookForm = new BookBUS();
+        bookForm = new BookBUS();
         CustomerForm customerForm = new CustomerForm();
         NhanVienadmin employeeForm = new NhanVienadmin();
         HoaDonGUI sellForm = new HoaDonGUI();
@@ -112,7 +116,7 @@ public class MainWindow {
 
     public static void main(String[] args) {
         try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+//            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         }
         catch (Exception ignored) {}
 

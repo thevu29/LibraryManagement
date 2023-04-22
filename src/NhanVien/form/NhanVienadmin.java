@@ -37,8 +37,7 @@ public class NhanVienadmin {
         NVmodel.setEditable(false);
 
         table1.setModel(NVmodel);
-        TableRowSorter<NVDataTableModel> sorter
-                = new TableRowSorter<>(NVmodel);
+        TableRowSorter<NVDataTableModel> sorter = new TableRowSorter<>(NVmodel);
         table1.setRowSorter(sorter);
         table1.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         table1.getTableHeader().setBackground(Color.WHITE);
@@ -90,6 +89,7 @@ public class NhanVienadmin {
                 NhanVienC a = new NhanVienC();
                 a.setContentPane(a.getMain());
                 a.setLocationRelativeTo(null);
+                a.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 a.setVisible(true);
                 a.pack();
             }

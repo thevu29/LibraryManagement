@@ -132,6 +132,7 @@ public class CTHDGUI {
                     else{
                         JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
                         showAll();
+                        bus.updateStatusBook(maSeri,"AVAILABLE");
                     }
                 }
                 else{
