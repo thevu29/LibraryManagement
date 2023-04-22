@@ -13,7 +13,6 @@ import java.util.*;
 public class SellTicketDao extends DefaultConnection {
 
 
-
     public static ArrayList<HoaDon> getDs(String sql){
         SellTicketDao temp = new SellTicketDao();
         ArrayList<HoaDon> dshd = new ArrayList<>();
@@ -149,7 +148,7 @@ public class SellTicketDao extends DefaultConnection {
                 return "HD1";
             }
             var maHD = rs.getString("MA_PHIEU");
-            var maHDMoi = "HD" + Integer.parseInt(maHD.split("HD")[1])+1;
+            var maHDMoi = "HD" + (Integer.parseInt(maHD.split("HD")[1])+1);
             return maHDMoi;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
