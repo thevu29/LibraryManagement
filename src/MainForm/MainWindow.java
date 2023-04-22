@@ -99,12 +99,18 @@ public class MainWindow {
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        }
+        catch (Exception ignored) {}
+
         JFrame frame = new JFrame("MainWindow");
         frame.setContentPane(new MainWindow().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1200, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
     }
 
     private JPanel mainPanel;
