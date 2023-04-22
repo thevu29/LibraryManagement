@@ -39,14 +39,9 @@ public class SellTicketBus {
         return hd.insertHD(bill);
     }
     public int remove(String id){
-        int smt = 1;
-//        smt = hd.removeHD(id);
-        if(smt>0){
-            cthdBus.xoaHD(id);
-        }
-        else{
-          System.out.println("Co Loi Khi Xoa Hoa Don");
-        }
+        int smt = 0 ;
+        smt = hd.removeHD(id);
+        cthdBus.xoaHD(id);
         return smt ;
     }
     public int update(HoaDon bill){

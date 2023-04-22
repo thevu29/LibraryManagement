@@ -119,6 +119,7 @@ public class BookDAO extends DefaultConnection {
             pst.setString(1,tt);
             pst.setString(2, maSeri);
             smt = pst.executeUpdate();
+            System.out.println("Hello 1");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -126,4 +127,10 @@ public class BookDAO extends DefaultConnection {
         }
         return smt;
     }
+
+    public static void main(String[] args) {
+        BookDAO b = new BookDAO();
+        b.changeTrangThaiSach("5_4","AVAILABLE");
+    }
+
 }
