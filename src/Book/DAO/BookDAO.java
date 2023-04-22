@@ -109,4 +109,21 @@ public class BookDAO extends DefaultConnection {
             throw new RuntimeException(e);
         }
     }
+
+    public int changeTrangThaiSach(String maSeri,String tt){
+        String sql = "UPDATE `BOOK` SET `TRANG_THAI`=? WHERE MA_SERIES = ? ";
+        int smt = 0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnect().prepareStatement(sql);
+            pst.setString(1,tt);
+            pst.setString(2, maSeri);
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return smt;
+    }
 }

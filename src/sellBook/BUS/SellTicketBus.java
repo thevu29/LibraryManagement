@@ -7,6 +7,7 @@ import java.util.List;
 
 public class SellTicketBus {
     private SellTicketDao hd;
+    private CTHDBus cthdBus = new CTHDBus();
 
     public SellTicketBus() {
         hd =new SellTicketDao();
@@ -38,7 +39,15 @@ public class SellTicketBus {
         return hd.insertHD(bill);
     }
     public int remove(String id){
-        return  hd.removeHD(id);
+        int smt = 1;
+//        smt = hd.removeHD(id);
+        if(smt>0){
+            cthdBus.xoaHD(id);
+        }
+        else{
+          System.out.println("Co Loi Khi Xoa Hoa Don");
+        }
+        return smt ;
     }
     public int update(HoaDon bill){
         return hd.updateHD(bill);

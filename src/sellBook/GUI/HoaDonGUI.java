@@ -158,15 +158,20 @@ public class HoaDonGUI {
                     JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
                 }
                 else{
-                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
-                    int smt =bus.remove(maHD);
-                    if(smt>0){
-                        JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
-                        showAll();
+                    int dialogResult = JOptionPane.showConfirmDialog(null,"Bạn có muốn xóa không ?","Remove", JOptionPane.YES_NO_OPTION);
+                    if(dialogResult == JOptionPane.YES_OPTION){
+                        String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
+                        int smt =bus.remove(maHD);
+                        if(smt>0){
+                            JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
+                            showAll();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                        }
                     }
-                    else{
-                        JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
-                    }
+
+
                 }
 
 

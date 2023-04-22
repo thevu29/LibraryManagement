@@ -4,10 +4,8 @@ import Book.DTO.Author;
 import Core.DefaultConnection;
 import sellBook.DTO.HoaDon;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.Instant;
 import java.util.*;
 
 public class SellTicketDao extends DefaultConnection {
@@ -156,7 +154,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int insertHD(HoaDon hd){
-        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`) VALUES (?,?,?,0)";
+        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`,`CREATED_AT`) VALUES (?,?,?,0,?)";
         int smt=0;
 
         SellTicketDao temp = new SellTicketDao();
@@ -168,6 +166,7 @@ public class SellTicketDao extends DefaultConnection {
             pst.setString(1, maHD);
             pst.setString(2,hd.getMa_nv());
             pst.setString(3,hd.getMa_KH());
+            pst.setTimestamp(4, Timestamp.from(Instant.now()));
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -178,7 +177,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int removeHD(String id){
-        String sql = "UPDATE `SELL_TICKET` SET `IS_DELETED`=1 WHERE MA_PHIEU = "+id;
+        String sql = "UPDATE `SELL_TICKET` SET `IS_DELETED`=1 WHERE MA_PHIEU = '"+id+"'";
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -228,6 +227,8 @@ public class SellTicketDao extends DefaultConnection {
         }
         return tenKH;
     }
+
+
 
 
     public static void main(String[] args) {

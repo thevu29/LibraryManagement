@@ -167,6 +167,21 @@ public class CTHDDao extends DefaultConnection {
         return smt;
     }
 
+    public int hiddenCTHD(String maHD){
+        String sql = "UPDATE `sell_ticket_details` SET `IS_DELETED`=1 WHERE MA_PHIEU = ?";
+        int smt = 0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnect().prepareStatement(sql);
+            pst.setString(1,maHD);
+            smt = pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return smt;
+    }
 
     public long tinhTienSach(String maHD,String maSeri){
         String sql = "SELECT CAST(BOOK.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO as total FROM SELL_TICKET_DETAILS " +

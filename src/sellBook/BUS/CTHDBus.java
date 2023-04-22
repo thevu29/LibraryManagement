@@ -1,5 +1,6 @@
 package sellBook.BUS;
 
+import Book.DAO.BookDAO;
 import sellBook.DAO.CTHDDao;
 import sellBook.DTO.CTHD;
 
@@ -7,6 +8,8 @@ import java.util.List;
 
 public class CTHDBus {
     private CTHDDao cthd ;
+
+    public BookDAO book;
 
     public CTHDBus() {
         this.cthd = new CTHDDao();
@@ -56,6 +59,16 @@ public class CTHDBus {
     }
     public int updateStatusBook(String MaSeri,String tt){
         return cthd.changeTrangThaiSach(MaSeri,tt);
+    }
+
+    public void xoaHD(String maHD){
+        cthd.hiddenCTHD(maHD);
+        List<CTHD> dsCthd = cthd.getDsCTHD(maHD);
+        for (CTHD ct:dsCthd) {
+            System.out.println("Hello");
+            System.out.println(ct.getMa_series());
+//             book.changeTrangThaiSach(ct.getMa_series(),"AVAILABLE");
+        }
     }
 
     public static void main(String[] args) {
