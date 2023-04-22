@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment=".">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="sửa GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
     </list>
     <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
@@ -314,7 +308,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681309264489</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="sửa GUI">
+      <created>1682148244261</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682148244261</updated>
+    </task>
+    <task id="LOCAL-00012" summary="sửa GUI">
+      <created>1682148256317</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1682148256317</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,7 +356,8 @@
     <MESSAGE value="Add database, mysql connector." />
     <MESSAGE value="hello" />
     <MESSAGE value="xong hoa don" />
-    <option name="LAST_COMMIT_MESSAGE" value="xong hoa don" />
+    <MESSAGE value="sửa GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="sửa GUI" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

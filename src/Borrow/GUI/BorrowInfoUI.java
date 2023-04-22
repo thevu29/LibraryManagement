@@ -14,7 +14,6 @@ public class BorrowInfoUI extends JFrame {
     private JPanel sachPanel;
     private JButton button1;
 
-
     private JPanel panel1;
     private JTextField txtMaPhieuMuon;
     private JTextField txtNgayMuon;
@@ -32,6 +31,7 @@ public class BorrowInfoUI extends JFrame {
     }
 
     public BorrowInfoUI(BorrowUI borrowUI,String id, String tenDocGia, String ngayMuon, String ngayTra, ArrayList<String> sachMuon, String btnText) {
+        setInset();
 //        setContentPane(panel1);
 //        getRootPane().setDefaultButton(buttonOk);
 //
@@ -200,9 +200,9 @@ public class BorrowInfoUI extends JFrame {
 
     public void setInset() {
         Insets inset = new Insets(4, 10, 4, 10);
-//        txtFaultId.setMargin(inset);
-//        txtTenLoi.setMargin(inset);
-//        txtHeSo.setMargin(inset);
+        txtMaPhieuMuon.setMargin(inset);
+        txtNgayMuon.setMargin(inset);
+        txtNgayTra.setMargin(inset);
     }
 
     public void setInfo(String id, String tenDocGia, String ngayMuon,String ngayTra,ArrayList<String> sach,String btnText) {
@@ -240,6 +240,4 @@ public class BorrowInfoUI extends JFrame {
     public JPanel getContentPane() {
         return panel1;
     }
-
-
 }
