@@ -1,6 +1,7 @@
 package MainForm;
 
 import Book.BUS.BookBUS;
+import Borrow.GUI.BorrowUI;
 import Customer.GUI.CustomerForm;
 import NhanVien.form.NhanVienadmin;
 import sellBook.GUI.HoaDonGUI;
@@ -13,6 +14,10 @@ import java.awt.event.MouseEvent;
 
 public class MainWindow {
     private BookBUS bookForm;
+    private CustomerForm customerForm;
+    private NhanVienadmin employeeForm;
+    private HoaDonGUI sellForm;
+    private BorrowUI borrowForm;
 
     public MainWindow() {
         setMargin();
@@ -28,13 +33,14 @@ public class MainWindow {
                 if (e.getSource() == lblBook) {
                     card.show(contentPanel, "Book");
                     bookForm.resetData();
-
                 } else if (e.getSource() == lblCustomer) {
                     card.show(contentPanel, "Customer");
                 } else if (e.getSource() == lblSell) {
                     card.show(contentPanel, "Sell");
                 } else if (e.getSource() == lblEmployee) {
                     card.show(contentPanel, "Employee");
+                } else if (e.getSource() == lblBorrow) {
+                    card.show(contentPanel, "Borrow");
                 }
             }
         };
@@ -47,12 +53,14 @@ public class MainWindow {
 
     public void initContentPanel() {
         bookForm = new BookBUS();
-        CustomerForm customerForm = new CustomerForm();
-        NhanVienadmin employeeForm = new NhanVienadmin();
-        HoaDonGUI sellForm = new HoaDonGUI();
+        customerForm = new CustomerForm();
+        employeeForm = new NhanVienadmin();
+        sellForm = new HoaDonGUI();
+        borrowForm = new BorrowUI();
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
+        contentPanel.add("Borrow", borrowForm.getPanel1());
         contentPanel.add("Employee", employeeForm.getMainPanel());
         contentPanel.add("Sell", sellForm.getMain());
     }

@@ -55,6 +55,7 @@ public class HoaDonGUI {
                     frame.setContentPane(cthd.getMain());
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     frame.pack();
+                    frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
                 }
             }
@@ -141,6 +142,7 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 var dialog = new HoaDonFD(HoaDonGUI.this);
                 dialog.pack();
+                dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
             }
         });
@@ -183,6 +185,7 @@ public class HoaDonGUI {
                     String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0));
                     var dialog = new HoaDonFD(maHD,HoaDonGUI.this);
                     dialog.pack();
+                    dialog.setLocationRelativeTo(null);
                     dialog.setVisible(true);
                 }
 

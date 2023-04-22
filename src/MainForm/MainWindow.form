@@ -79,6 +79,8 @@
             <properties>
               <font size="18" style="1"/>
               <foreground color="-16777216"/>
+              <icon value="icons/borrow_icon.png"/>
+              <iconTextGap value="12"/>
               <text value="Quản lý phiếu mượn"/>
             </properties>
           </component>
@@ -89,6 +91,8 @@
             <properties>
               <font size="18" style="1"/>
               <foreground color="-16777216"/>
+              <icon value="icons/sell_icon.png"/>
+              <iconTextGap value="12"/>
               <text value="Quản lý phiếu bán"/>
             </properties>
           </component>

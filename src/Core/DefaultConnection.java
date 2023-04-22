@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.concurrent.RecursiveTask;
 
-public class DefaultConnection {
+public abstract class DefaultConnection {
     private String url = "jdbc:mysql://localhost:3306";
     private String user = "root";
     private String pass = "gg";

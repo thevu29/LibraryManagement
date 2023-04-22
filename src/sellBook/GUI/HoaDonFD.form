@@ -29,6 +29,8 @@
                   <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="Remove"/>
                 </properties>
               </component>
@@ -37,6 +39,8 @@
                   <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="Cancel"/>
                 </properties>
               </component>
@@ -45,6 +49,8 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="Add"/>
                 </properties>
               </component>
@@ -53,6 +59,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="Update"/>
                 </properties>
               </component>
