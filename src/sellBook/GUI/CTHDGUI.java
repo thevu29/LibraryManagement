@@ -122,8 +122,9 @@ public class CTHDGUI {
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
                 if(pos[0]>0){
-                    String maCTHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
-                    int smt = bus.remove(maCTHD);
+                    String maHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
+                    String maSeri = String.valueOf(tblCTHD.getValueAt(pos[0],2)) ;
+                    int smt = bus.remove(maHD,maSeri);
                     if(smt==0){
                         JOptionPane.showMessageDialog(null,"Xoa CTHD khong thanh cong! :>>");
                     }

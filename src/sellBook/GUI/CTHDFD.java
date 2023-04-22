@@ -93,10 +93,10 @@ public class CTHDFD extends JDialog {
                         gui.showAll();
 
                         //Cap Nhat Trang Thai Sach
-//                        smt = bus.updateStatusBook(ct.getMa_series());
-//                        if(smt==0){
-//                            JOptionPane.showMessageDialog(null,"Cap Nhat Trang Thai Sach Loi");
-//                        }
+                        smt = bus.updateStatusBook(ct.getMa_series(),"SOLD");
+                        if(smt==0){
+                            JOptionPane.showMessageDialog(null,"Cap Nhat Trang Thai Sach Loi");
+                        }
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Them San Pham khong thanh cong");
@@ -165,11 +165,16 @@ public class CTHDFD extends JDialog {
         btnRemove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String maCTHD = txtMaChiTiet.getText();
-                int smt = bus.remove(maCTHD);
+                String maHD = String.valueOf(cboMaPhieu.getSelectedItem());
+                String maSeri = txtMaSeri.getText();
+                int smt = bus.remove(maHD,maSeri);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
                     gui.showAll();
+                    smt = bus.updateStatusBook(maSeri,"AVAILABLE");
+                    if(smt==0){
+                        JOptionPane.showMessageDialog(null,"Cap Nhat Trang Thai Sach Loi");
+                    }
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Xoa CTHD KHONG THANH CONG");

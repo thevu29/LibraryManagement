@@ -35,8 +35,8 @@ public class CTHDBus {
     public List<CTHD> filterMaSeri(String id,String ma){
         return cthd.locMaSeri(id,ma);
     }
-    public int remove(String maCTHD){
-        return cthd.removeCTHD(maCTHD);
+    public int remove(String maCTHD,String maSeri){
+        return cthd.removeCTHD(maCTHD,maSeri);
     }
     public int insert(CTHD hd){
         return cthd.insertCTHD(hd);
@@ -54,8 +54,8 @@ public class CTHDBus {
     public long tienSach(String maSeri){
         return cthd.layGiaSach(maSeri);
     }
-    public int updateStatusBook(String MaSeri){
-        return cthd.changeTrangThaiSach(MaSeri);
+    public int updateStatusBook(String MaSeri,String tt){
+        return cthd.changeTrangThaiSach(MaSeri,tt);
     }
 
     public static void main(String[] args) {

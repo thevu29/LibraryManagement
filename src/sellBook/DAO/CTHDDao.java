@@ -4,7 +4,6 @@ import Core.DefaultConnection;
 import sellBook.DTO.CTHD;
 import sellBook.DTO.HoaDon;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,7 +37,7 @@ public class CTHDDao extends DefaultConnection {
         return dsct;
     }
     public ArrayList<CTHD> getDsCTHD(String ma) {
-        String sql = "SELECT sell_ticket_details.*,book.TEN_SACH FROM `sell_ticket_details` INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES WHERE MA_PHIEU = '"+ma+"'";
+        String sql = "SELECT SELL_TICKET_DETAILS.*,BOOK.TEN_SACH FROM `SELL_TICKET_DETAILS` INNER JOIN BOOK on BOOK.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES WHERE MA_PHIEU = '"+ma+"'";
         return CTHDDao.getDs(sql);
     }
 
@@ -82,16 +81,16 @@ public class CTHDDao extends DefaultConnection {
 
 
     public List<CTHD> locCTHD(String id,String maSeri){
-        String sql = "select sell_ticket_details.*,book.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES   WHERE  MA_PHIEU = "+id +" and sell_ticket_details.MA_SERIES = '"+maSeri+"'";
+        String sql = "select SELL_TICKET_DETAILS.*,BOOK.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN BOOK on BOOK.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES   WHERE  MA_PHIEU = '"+id +"' and SELL_TICKET_DETAILS.MA_SERIES = '"+maSeri+"'";
         return CTHDDao.getDs(sql);
     }
 
     public List<CTHD> locHeSo(String id,double hs){
-        String sql = "select sell_ticket_details.*,book.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES   WHERE  MA_PHIEU = "+id+" and HE_SO = "+hs;
+        String sql = "select SELL_TICKET_DETAILS.*,BOOK.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN BOOK on BOOK.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES   WHERE  MA_PHIEU = '"+id+"' and HE_SO = "+hs;
         return CTHDDao.getDs(sql);
     }
     public List<CTHD> locMaSeri(String id,String ma){
-        String sql = "select sell_ticket_details.*,book.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES   WHERE  MA_PHIEU = "+id+" and sell_ticket_details.MA_SERIES = '"+ma+"'";
+        String sql = "select SELL_TICKET_DETAILS.*,BOOK.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN BOOK on BOOK.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES   WHERE  MA_PHIEU = "+id+" and SELL_TICKET_DETAILS.MA_SERIES = '"+ma+"'";
         return CTHDDao.getDs(sql);
     }
 
@@ -149,13 +148,14 @@ public class CTHDDao extends DefaultConnection {
         return smt;
     }
 
-    public int changeTrangThaiSach(String maSeri){
-        String sql = "UPDATE `book` SET `TRANG_THAI`='SOLD' WHERE MA_SERIES = ? ";
+    public int changeTrangThaiSach(String maSeri,String tt){
+        String sql = "UPDATE `BOOK` SET `TRANG_THAI`=? WHERE MA_SERIES = ? ";
         int smt = 0;
         PreparedStatement pst = null;
         try {
             pst = getConnect().prepareStatement(sql);
-            pst.setString(1, maSeri);
+            pst.setString(1,tt);
+            pst.setString(2, maSeri);
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -167,9 +167,9 @@ public class CTHDDao extends DefaultConnection {
 
 
     public long tinhTienSach(String maHD,String maSeri){
-        String sql = "SELECT CAST(book.GIA AS UNSIGNED) * sell_ticket_details.HE_SO as total FROM sell_ticket_details " +
-                "INNER JOIN book on sell_ticket_details.MA_SERIES = book.MA_SERIES " +
-                "WHERE MA_PHIEU = "+maHD+" and book.MA_SERIES = "+maSeri;
+        String sql = "SELECT CAST(BOOK.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO as total FROM SELL_TICKET_DETAILS " +
+                "INNER JOIN BOOK on SELL_TICKET_DETAILS.MA_SERIES = BOOK.MA_SERIES " +
+                "WHERE MA_PHIEU = '"+maHD+"' and BOOK.MA_SERIES = '"+maSeri+"'";
         Statement stmt = null;
         long total = 0;
         try {
@@ -185,7 +185,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public long layGiaSach(String maSeri){
-        String sql ="SELECT GIA FROM `book` WHERE MA_SERIES = "+maSeri;
+        String sql ="SELECT GIA FROM `BOOK` WHERE MA_SERIES = '"+maSeri+"'";
         Statement stmt = null;
         long total = 0;
         try {
@@ -202,7 +202,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public String goiYTenSach(String maSeri){
-        String sql ="SELECT book.TEN_SACH FROM `sell_ticket_details` INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES WHERE book.TRANG_THAI = 'AVAILABLE' and book.MA_SERIES LIKE '"+maSeri+"'";
+        String sql ="SELECT TEN_SACH FROM BOOK WHERE BOOK.TRANG_THAI = 'AVAILABLE' and BOOK.MA_SERIES = '"+maSeri+"'";
         Statement stmt = null;
         String tenSach = "";
         try {

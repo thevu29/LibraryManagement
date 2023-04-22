@@ -39,10 +39,10 @@ public class SellTicketDao extends DefaultConnection {
 
 
     public  ArrayList<HoaDon> getDsHoaDon() {
-        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
-                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
-                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
-                "where sell_ticket.IS_DELETED = 0";
+        String sql = "SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH " +
+                "INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV " +
+                "where SELL_TICKET.IS_DELETED = 0";
         return getDs(sql);
     }
 
@@ -76,10 +76,11 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public long tinhTongHoaDon(String maHD){
-        String sql = "SELECT SUM(CAST(book.GIA AS UNSIGNED) * sell_ticket_details.HE_SO) as tongTien " +
-                "FROM `sell_ticket` INNER JOIN sell_ticket_details on sell_ticket.MA_PHIEU = sell_ticket_details.MA_PHIEU " +
-                "INNER JOIN book on sell_ticket_details.MA_SERIES = book.MA_SERIES " +
-                "WHERE sell_ticket.MA_PHIEU = "+maHD;
+        String sql = """
+                    SELECT SUM(CAST(BOOK.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO) as tongTien
+                    FROM `SELL_TICKET` INNER JOIN SELL_TICKET_DETAILS on SELL_TICKET.MA_PHIEU = SELL_TICKET_DETAILS.MA_PHIEU 
+                    INNER JOIN BOOK on SELL_TICKET_DETAILS.MA_SERIES = BOOK.MA_SERIES
+                    WHERE SELL_TICKET.MA_PHIEU = '%s'""".formatted(maHD);
         Statement stmt = null;
         long total = 0;
         try {
@@ -97,53 +98,66 @@ public class SellTicketDao extends DefaultConnection {
 
 
     public List<HoaDon> locMaHD(String ma){
-        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
-                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
-                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
-                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_PHIEU = '"+ma+"'";
+        String sql = "SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH " +
+                "INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV " +
+                "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_PHIEU = '"+ma+"'";
         System.out.println(ma);
 //        var a = """
-//                SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV\s
-//                FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH\s
-//                INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV\s
-//                where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_PHIEU = '%s'
+//                SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV\s
+//                FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH\s
+//                INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV\s
+//                where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_PHIEU = '%s'
 //                """.formatted(ma);
         return getDs(sql);
     }
     public List<HoaDon> locMaNV(String ma){
-        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
-                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
-                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
-                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_NV = "+ma;
+        String sql = "SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH " +
+                "INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV " +
+                "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_NV = "+ma;
         return getDs(sql);
     }
     public List<HoaDon> locMaKH(String ma){
-        String sql = "SELECT sell_ticket.*,customer.TEN as tenKH,employee.TEN as tenNV  " +
-                "FROM SELL_TICKET INNER JOIN customer on sell_ticket.MA_KH = customer.MA_KH " +
-                "INNER JOIN employee on sell_ticket.MA_NV = employee.MA_NV " +
-                "where sell_ticket.IS_DELETED = 0  AND sell_ticket.MA_KH = "+ma;
+        String sql = "SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV  " +
+                "FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH " +
+                "INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV " +
+                "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_KH = "+ma;
         return getDs(sql);
     }
 
     public String getNewMaHD(){
-        String sql = "SELECT CONCAT('HD', LPAD(SUBSTRING(MAX(MA_PHIEU), 3) + 1, 3, '0')) AS new_id FROM sell_ticket WHERE MA_PHIEU LIKE 'HD%'";
+//        String sql = "SELECT CONCAT('HD', LPAD(SUBSTRING(MAX(MA_PHIEU), 3) + 1, 3, '0')) AS new_id FROM SELL_TICKET WHERE MA_PHIEU LIKE 'HD%'";
+//        Statement stmt = null;
+//        String maHD = "";
+//        try {
+//            stmt = getConnect().createStatement();
+//            ResultSet rs = stmt.executeQuery(sql);
+//            while (rs.next()) {
+//                maHD = rs.getString("new_id");
+//            }
+//
+//        } catch (SQLException | ClassNotFoundException e) {
+//            System.out.println(e);
+//        }
+//        return maHD;
         Statement stmt = null;
-        String maHD = "";
         try {
-            stmt = getConnect().createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                maHD = rs.getString("new_id");
+            stmt = getConnection().createStatement();
+            var rs = stmt.executeQuery("SELECT MA_PHIEU FROM SELL_TICKET WHERE MA_PHIEU=(SELECT max(MA_PHIEU) FROM SELL_TICKET)");
+            if (!rs.next()) {
+                return "HD1";
             }
-
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e);
+            var maHD = rs.getString("MA_PHIEU");
+            var maHDMoi = "HD" + Integer.parseInt(maHD.split("HD")[1])+1;
+            return maHDMoi;
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
         }
-        return maHD;
     }
 
     public int insertHD(HoaDon hd){
-        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`) VALUES (?,?,?,?)";
+        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`) VALUES (?,?,?,0)";
         int smt=0;
 
         SellTicketDao temp = new SellTicketDao();
@@ -155,7 +169,6 @@ public class SellTicketDao extends DefaultConnection {
             pst.setString(1, maHD);
             pst.setString(2,hd.getMa_nv());
             pst.setString(3,hd.getMa_KH());
-            pst.setBoolean(4,false);
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -166,7 +179,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int removeHD(String id){
-        String sql = "UPDATE `sell_ticket` SET `IS_DELETED`=1 WHERE MA_PHIEU = "+id;
+        String sql = "UPDATE `SELL_TICKET` SET `IS_DELETED`=1 WHERE MA_PHIEU = "+id;
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -201,7 +214,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public String goiYTenKH(String maKH){
-        String sql = "SELECT  `TEN` FROM `customer` WHERE MA_KH LIKE '%"+maKH+"%'";
+        String sql = "SELECT  `TEN` FROM `CUSTOMER` WHERE MA_KH LIKE '%"+maKH+"%'";
         Statement stmt = null;
         String tenKH = "";
         try {
