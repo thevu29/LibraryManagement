@@ -1,17 +1,18 @@
 package Book;
 
-import Book.DTO.Publisher;
+import Book.DTO.Importer;
 import Utils.AbstractTableModelWithFilters;
 
-public class PublisherDataTableModel extends AbstractTableModelWithFilters<Publisher> {
+public class ImporterDataTableModel extends AbstractTableModelWithFilters<Importer> {
 
-    public PublisherDataTableModel() {
-        String[] cols = {"ID", "Tên", "Email", "SĐT", "Địa chỉ", "Mô tả" };
+    public ImporterDataTableModel() {
+        String[] cols = {"ID", "Tên", "SĐT", "Email","Địa chỉ", "Mô tả"};
         setCols(cols);
+
     }
 
     @Override
-    public Object translateValue(Publisher value, int columnIndex) {
+    public Object translateValue(Importer value, int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
                 return value.getId();
@@ -20,19 +21,16 @@ public class PublisherDataTableModel extends AbstractTableModelWithFilters<Publi
                 return value.getName();
             }
             case 2 -> {
-                return value.getEmail();
+                return value.getPhone();
             }
             case 3 -> {
-                return value.getPhone();
+                return value.getEmail();
             }
             case 4 -> {
                 return value.getAddress();
             }
             case 5 -> {
                 return value.getDescription();
-            }
-            case 110 -> {
-                return value.getId() +", " + value.getName();
             }
         }
         return null;

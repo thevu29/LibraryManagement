@@ -12,13 +12,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HoaDonGUI {
     private JPanel main;
     private JTable tblCheckOut;
     private JButton btnRemove;
-    private JButton CẬPNHẬTHÓAĐƠNButton;
+    private JButton btnCapNhat;
     private JButton THÀNHCÔNGButton;
     private JButton btnAdd;
     private JButton bookDeleteAllButton;
@@ -46,7 +48,7 @@ public class HoaDonGUI {
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                     System.out.println("double clicked");
                     int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
-                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],pos[0])) ;
+                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
                     //Khoi tao
                     var cthd = new CTHDGUI(maHD);
                     JFrame frame = new JFrame("ChiTietHoaDon");
@@ -87,33 +89,43 @@ public class HoaDonGUI {
                     // Clear existing items in maHDComboBox
                     cboMaNV.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
-                    List<String> maNVs = bus.getAllMaNV();
-                    for (String maNV : maNVs) {
-                        cboMaNV.addItem(maNV);
+                    List<HoaDon> dshd = bus.getAllSellTicket();
+                    Map<String, String> mapNV = new HashMap<>();
+                    for(HoaDon hd:dshd){
+                        mapNV.put(hd.getTenNV(),hd.getMa_nv());
+                    }
+                    for(String tenNV:mapNV.keySet()){
+                        cboMaNV.addItem(tenNV);
                     }
                     rmvListenerBtnFilter();
                     btnFilter.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             String selected = String.valueOf(cboMaNV.getSelectedItem()) ;
-                            changeTable(bus.filterMaNV(selected));
+                            String idNV = mapNV.get(selected);
+                            changeTable(bus.filterMaNV(idNV));
                         }
                     });
                 }
                 else if (tab.getSelectedIndex() == 2) { // Check if maHD tab is selected
                     // Clear existing items in maHDComboBox
-                    cboMaNV.removeAllItems();
+                    cboMaKH.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
-                    List<String> maKHs = bus.getAllMaKH();
-                    for (String maKH : maKHs) {
-                        cboMaKH.addItem(maKH);
+                    List<HoaDon> dshd = bus.getAllSellTicket();
+                    Map<String, String> mapKH = new HashMap<>();
+                    for(HoaDon hd:dshd){
+                        mapKH.put(hd.getTenKH(),hd.getMa_KH());
+                    }
+                    for(String tenKH:mapKH.keySet()){
+                        cboMaKH.addItem(tenKH);
                     }
                     rmvListenerBtnFilter();
                     btnFilter.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             String selected = String.valueOf(cboMaKH.getSelectedItem()) ;
-                            changeTable(bus.filterMaKH(selected));
+                            String idKH = mapKH.get(selected);
+                            changeTable(bus.filterMaKH(idKH));
                         }
                     });
 
@@ -129,7 +141,6 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 var dialog = new HoaDonFD(HoaDonGUI.this);
                 dialog.pack();
-                dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
             }
         });
@@ -142,7 +153,7 @@ public class HoaDonGUI {
         btnRemove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
+                int[] pos = {tblCheckOut.getSelectedRow(), 0};
                 if(pos[0]==-1){
                     JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
                 }
@@ -161,7 +172,7 @@ public class HoaDonGUI {
 
             }
         });
-        CẬPNHẬTHÓAĐƠNButton.addActionListener(new ActionListener() {
+        btnCapNhat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
@@ -170,12 +181,28 @@ public class HoaDonGUI {
                 }
                 else {
                     String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0));
-
                     var dialog = new HoaDonFD(maHD,HoaDonGUI.this);
                     dialog.pack();
                     dialog.setVisible(true);
                 }
 
+            }
+        });
+        btnXoaMaHD.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int index = cboMaHD.getSelectedIndex();
+                if (index != -1) {
+                    cboMaHD.removeItemAt(index);
+
+                }
+            }
+        });
+        bookDeleteAllButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dshd =  bus.getAllSellTicket();
+                changeTable(dshd);
             }
         });
     }
@@ -185,7 +212,6 @@ public class HoaDonGUI {
         frame.setContentPane(new HoaDonGUI().main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
-        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     private void rmvListenerBtnFilter(){
@@ -216,11 +242,11 @@ public class HoaDonGUI {
     private void changeTable(List<HoaDon> dshd){
 
         dtm.setRowCount(0);
-        String[] columns = {"Mã Phieu", "Ma Nhan Vien", "Ma Khach Hang"};
+        String[] columns = {"Mã Phieu", "Ma Nhan Vien","Ten Nhan Vien", "Ma Khach Hang","Ten Khach Hang","Tong Tien"};
         dtm.setColumnIdentifiers(columns);
         if(!dshd.isEmpty()){
             for(HoaDon hd:dshd){
-                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(), hd.getMa_KH()};
+                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(),hd.getTenNV(), hd.getMa_KH(),hd.getTenKH(),hd.getTongHD()};
                 dtm.addRow(t);
             }
         }
@@ -228,13 +254,13 @@ public class HoaDonGUI {
         tblCheckOut.setModel(dtm);
     }
     private void initTable(){
-        String[] columns = {"Mã hóa đơn", "Mã nhân viên", "Mã khách hàng"};
+        String[] columns = {"Mã Phieu", "Ma Nhan Vien","Ten Nhan Vien", "Ma Khach Hang","Ten Khach Hang","Tong Tien"};
         dtm.setColumnIdentifiers(columns);
 
         dshd =  bus.getAllSellTicket();
         if(!dshd.isEmpty()){
             for(HoaDon hd:dshd){
-                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(), hd.getMa_KH()};
+                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(),hd.getTenNV(), hd.getMa_KH(),hd.getTenKH(),hd.getTongHD()};
                 dtm.addRow(t);
             }
         }
@@ -245,7 +271,4 @@ public class HoaDonGUI {
         changeTable(bus.getAllSellTicket());
     }
 
-    public JPanel getMain() {
-        return main;
-    }
 }

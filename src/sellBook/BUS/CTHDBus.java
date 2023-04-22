@@ -14,9 +14,6 @@ public class CTHDBus {
     public List<CTHD> getDsCTHD(String ma){
         return cthd.getDsCTHD(ma);
     }
-    public List<String> getAllMaCTHD(String id){
-        return cthd.getMaCTHD(id);
-    }
 
     public List<String> getAllMaHD(String id){
         return cthd.getMaHD(id);
@@ -28,8 +25,8 @@ public class CTHDBus {
     public List<Double> getAllHeSo(String id){
         return cthd.getHeSo(id);
     }
-    public List<CTHD> filterMaCTHD(String id, String maCTHD){
-        return cthd.locCTHD(id,maCTHD);
+    public List<CTHD> filterMaCTHD(String id,String maSeri){
+        return cthd.locCTHD(id,maSeri);
     }
 
     public List<CTHD> filterHeSo(String id,double hs){
@@ -38,8 +35,8 @@ public class CTHDBus {
     public List<CTHD> filterMaSeri(String id,String ma){
         return cthd.locMaSeri(id,ma);
     }
-    public int remove(String maCTHD){
-        return cthd.removeCTHD(maCTHD);
+    public int remove(String maCTHD,String maSeri){
+        return cthd.removeCTHD(maCTHD,maSeri);
     }
     public int insert(CTHD hd){
         return cthd.insertCTHD(hd);
@@ -47,12 +44,26 @@ public class CTHDBus {
     public int update(CTHD hd){
         return cthd.updateCTHD(hd);
     }
+    public String goiYTenSach(String maSeri){
+        return cthd.goiYTenSach(maSeri);
+    }
+
+    public long tinhTienSach(String maHD,String maSeri){
+        return cthd.tinhTienSach(maHD,maSeri);
+    }
+    public long tienSach(String maSeri){
+        return cthd.layGiaSach(maSeri);
+    }
+    public int updateStatusBook(String MaSeri,String tt){
+        return cthd.changeTrangThaiSach(MaSeri,tt);
+    }
 
     public static void main(String[] args) {
         CTHDBus t = new CTHDBus();
-        List<CTHD> ds = t.filterMaSeri("1","7");
-        for(CTHD h:ds){
-            System.out.println(h.getMa_series());
-        }
+//        List<CTHD> ds = t.filterMaCTHD("1","2");
+//        for(CTHD h:ds){
+//            System.out.println(h.getMa_series());
+//        }
+        System.out.println(t.goiYTenSach("1"));
     }
 }

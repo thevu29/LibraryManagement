@@ -4,20 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="fix 1 sô lỗi">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="xong hoa don">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/DAO/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DAO/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/DAO/MembershipTypeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DAO/MembershipTypeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/NVDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/NVDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienC.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienadmin.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/form/NhanVienadmin.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienadmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/form/NhanVienadmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
     </list>
+    <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,8 +29,30 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Nep" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;CLOSED&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;CLOSED&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="fab8142b-bed2-4a47-b9f0-9c426fa29fef" />
+        <option name="url" value="https://github.com/Neptune27/LibraryManagementGUI.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,46 +63,68 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "297",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagementGUI",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Programming/JetBrainProjects/IDEA/LibraryManagementGUI/src/MainGUI&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
+      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagementGUI\src\Customer" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\sql_query" />
+      <recent name="J:\LapTrinhJava\LibraryManagementGUI\src\sellBook\GUI" />
+      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
+      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
+      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien" />
+      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\form" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.NhanVienadmin (2)">
+  <component name="RunManager">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
+    </configuration>
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainGUI.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainGUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="NhanVienC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienC" />
@@ -97,8 +139,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NhanVienadmin (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienadmin" />
+    <configuration name="NhanVien.form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NhanVien.form.adminNhanVien" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
@@ -110,77 +152,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NhanVienadmin (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienadmin" />
+    <configuration name="adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="adminNhanVien" />
       <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NhanVienadmin (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienadmin" />
+    <configuration name="form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="form.adminNhanVien" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVienadmin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienadmin" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVienadmin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienadmin" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVienadmin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienadmin" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVienadmin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienadmin" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
+          <option name="PATTERN" value="form.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -190,18 +174,19 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NhanVienadmin (2)" />
-        <item itemvalue="Application.NhanVienadmin (1)" />
         <item itemvalue="Application.NhanVienC" />
-        <item itemvalue="Application.NhanVienadmin (1)" />
-        <item itemvalue="Application.NhanVienadmin (4)" />
+        <item itemvalue="Application.NhanVien.form.adminNhanVien" />
+        <item itemvalue="Application.form.adminNhanVien" />
+        <item itemvalue="Application.adminNhanVien" />
+        <item itemvalue="Application.MainWindow" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f0b6137c-84d2-4e31-bf78-75774c441d49" name="Changes" comment="giao diện membership" />
+      <changelist id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="" />
+      <changelist id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="tét" comment="tét" />
       <created>1676216910792</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -260,111 +245,69 @@
       <updated>1676216964949</updated>
     </task>
     <task id="LOCAL-00002" summary="Add database, mysql connector.">
-      <created>1680743642498</created>
+      <created>1680958056904</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1680743642498</updated>
+      <updated>1680958056904</updated>
     </task>
-    <task id="LOCAL-00003" summary="add, delete, edit info, auto suggest">
-      <created>1680744297319</created>
+    <task id="LOCAL-00003" summary="Add database, mysql connector.">
+      <created>1680958494865</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1680744297319</updated>
+      <updated>1680958494865</updated>
     </task>
-    <task id="LOCAL-00004" summary="add nhưng không thêm vào auto suggesst">
-      <created>1680745476106</created>
+    <task id="LOCAL-00004" summary="Add database, mysql connector.">
+      <created>1680967067640</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1680745476106</updated>
+      <updated>1680967067640</updated>
     </task>
-    <task id="LOCAL-00005" summary="add nhưng không thêm vào auto suggesst">
-      <created>1680756704417</created>
+    <task id="LOCAL-00005" summary="Add database, mysql connector.">
+      <created>1680967431039</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1680756704417</updated>
+      <updated>1680967431039</updated>
     </task>
-    <task id="LOCAL-00006" summary="xong phần suggest">
-      <created>1680760785455</created>
+    <task id="LOCAL-00006" summary="Add database, mysql connector.">
+      <created>1681040648330</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1680760785455</updated>
+      <updated>1681040648330</updated>
     </task>
-    <task id="LOCAL-00007" summary="xong filter, reset">
-      <created>1680764941505</created>
+    <task id="LOCAL-00007" summary="Add database, mysql connector.">
+      <created>1681052133935</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1680764941505</updated>
+      <updated>1681052133935</updated>
     </task>
-    <task id="LOCAL-00008" summary="giao diện membership">
-      <created>1680767480134</created>
+    <task id="LOCAL-00008" summary="Add database, mysql connector.">
+      <created>1681052182877</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1680767480134</updated>
+      <updated>1681052182877</updated>
     </task>
-    <task id="LOCAL-00009" summary="add file CustomerList và chuyển những hàm add, delete, edit sang để sau này dễ dàng cho phần DAO">
-      <created>1680788561685</created>
+    <task id="LOCAL-00009" summary="hello">
+      <created>1681090744988</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1680788561685</updated>
+      <updated>1681090744988</updated>
     </task>
-    <task id="LOCAL-00010" summary="xong add, delete, edit, reset membership">
-      <created>1680847329388</created>
+    <task id="LOCAL-00010" summary="xong hoa don">
+      <created>1681309264488</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1680847329388</updated>
+      <updated>1681309264489</updated>
     </task>
-    <task id="LOCAL-00011" summary="xong filter membership">
-      <created>1680848218799</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1680848218799</updated>
-    </task>
-    <task id="LOCAL-00012" summary="update MainForm">
-      <created>1680854271884</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1680854271884</updated>
-    </task>
-    <task id="LOCAL-00013" summary="connect sql, update phần thêm, sửa, xóa">
-      <created>1681712891078</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1681712891078</updated>
-    </task>
-    <task id="LOCAL-00014" summary="fix phần thêm, sửa, xóa customer">
-      <created>1681737722120</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1681737722120</updated>
-    </task>
-    <task id="LOCAL-00015" summary="connect membership_type db và thêm, sửa, xóa membership_type">
-      <created>1681741241608</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1681741241608</updated>
-    </task>
-    <task id="LOCAL-00016" summary="fix 1 sô lỗi">
-      <created>1681799841910</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1681799841910</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +324,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="customer" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -392,67 +335,23 @@
         </entry>
       </map>
     </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/master" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Init" />
     <MESSAGE value="Add database, mysql connector." />
-    <MESSAGE value="add, delete, edit info, auto suggest" />
-    <MESSAGE value="add nhưng không thêm vào auto suggesst" />
-    <MESSAGE value="xong phần suggest" />
-    <MESSAGE value="xong filter, reset" />
-    <MESSAGE value="giao diện membership" />
-    <MESSAGE value="add file CustomerList và chuyển những hàm add, delete, edit sang để sau này dễ dàng cho phần DAO" />
-    <MESSAGE value="xong add, delete, edit, reset membership" />
-    <MESSAGE value="xong filter membership" />
-    <MESSAGE value="update MainForm" />
-    <MESSAGE value="connect sql, update phần thêm, sửa, xóa" />
-    <MESSAGE value="fix phần thêm, sửa, xóa customer" />
-    <MESSAGE value="connect membership_type db và thêm, sửa, xóa membership_type" />
-    <MESSAGE value="fix 1 sô lỗi" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix 1 sô lỗi" />
+    <MESSAGE value="hello" />
+    <MESSAGE value="xong hoa don" />
+    <option name="LAST_COMMIT_MESSAGE" value="xong hoa don" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="sellBook.DTO.CTHD" memberName="ma_series" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1680852476402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowBookFaultUI.ic" NAME="BorrowBookFaultUI Coverage Results" MODIFIED="1680881584980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>BookFault.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1680879357459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.*</FILTER>
-    </SUITE>
   </component>
 </project>

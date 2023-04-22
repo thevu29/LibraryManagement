@@ -1,27 +1,34 @@
 package sellBook.DTO;
 
 public class CTHD {
-    private String ma_chiTiet;
     private String ma_phieu;
     private double he_so;
     private String ma_series;
+    private long tienSach;
+    private String tenSach;
 
     public CTHD() {
     }
 
     public CTHD(String ma_phieu, double he_so, String ma_series) {
-        this.ma_chiTiet = ma_chiTiet;
         this.ma_phieu = ma_phieu;
         this.he_so = he_so;
         this.ma_series = ma_series;
     }
 
-    public String getMa_chiTiet() {
-        return ma_chiTiet;
-    }
+//    public CTHD(String ma_phieu, double he_so, String ma_series,long tienSach) {
+//        this.ma_phieu = ma_phieu;
+//        this.he_so = he_so;
+//        this.ma_series = ma_series;
+//        this.tienSach = tienSach;
+//    }
 
-    public void setMa_chiTiet(String ma_chiTiet) {
-        this.ma_chiTiet = ma_chiTiet;
+    public CTHD(String ma_phieu, double he_so, String ma_series, long tienSach, String tenSach) {
+        this.ma_phieu = ma_phieu;
+        this.he_so = he_so;
+        this.ma_series = ma_series;
+        this.tienSach = tienSach;
+        this.tenSach = tenSach;
     }
 
     public String getMa_phieu() {
@@ -46,5 +53,21 @@ public class CTHD {
 
     public void setMa_series(String ma_series) {
         this.ma_series = ma_series;
+    }
+
+    public long getTienSach() {
+        return tienSach;
+    }
+
+    public void setTienSach(long tienSach) {
+        this.tienSach = tienSach;
+    }
+
+    public String getTenSach() {
+        return tenSach;
+    }
+
+    public void setTenSach(String tenSach) {
+        this.tenSach = tenSach;
     }
 }

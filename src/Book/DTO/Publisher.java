@@ -1,6 +1,8 @@
 package Book.DTO;
 
-public class Publisher {
+import Book.GUI.PublisherDialog;
+
+public class Publisher implements Cloneable {
     private String id;
     private String name;
     private String address;
@@ -15,6 +17,10 @@ public class Publisher {
         this.email = email;
         this.phone = phone;
         this.description = description;
+    }
+
+    public static Publisher createBlank() {
+        return new Publisher("", "", "", "", "", "");
     }
 
     public String getId() {
@@ -63,5 +69,24 @@ public class Publisher {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public Publisher clone() {
+        try {
+            Publisher clone = (Publisher) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+    public void cloneFrom(Publisher clonedPublisher) {
+        this.id = clonedPublisher.id;
+        this.name = clonedPublisher.name;
+        this.address = clonedPublisher.address;
+        this.email = clonedPublisher.email;
+        this.phone = clonedPublisher.phone;
+        this.description = clonedPublisher.description;
     }
 }

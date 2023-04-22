@@ -43,10 +43,14 @@ public class SellTicketBus {
     public int update(HoaDon bill){
         return hd.updateHD(bill);
     }
+
+    public String goiYNameKH(String maKH){
+        return hd.goiYTenKH(maKH);
+    }
+    public String getNewMaHD(){
+        return hd.getNewMaHD();
+    }
     public static void main(String[] args) {
 
-        HoaDon bill = new HoaDon("21","2","4");
-        SellTicketBus t =new SellTicketBus();
-        t.update(bill);
     }
 }

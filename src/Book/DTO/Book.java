@@ -10,7 +10,7 @@ public class Book implements Cloneable {
     private String id;
     private String name;
     private ArrayList<BookAuthor> authors;
-    private ArrayList<BookPublisher> publisher;
+    private BookPublisher publisher;
     private ArrayList<BookGenre> genre;
     private String location;
     private long price;
@@ -21,7 +21,7 @@ public class Book implements Cloneable {
     private int publishYear;
     private int totalPage;
 
-    public Book(String id, String name, ArrayList<BookAuthor> authors, ArrayList<BookPublisher> publisher,
+    public Book(String id, String name, ArrayList<BookAuthor> authors, BookPublisher publisher,
                 ArrayList<BookGenre> genre, String location, long price, String bookStatus, String language,
                 String description, int publishYear, int totalPage) {
         this.id = id;
@@ -67,11 +67,11 @@ public class Book implements Cloneable {
         authors.get(index).setName(name.strip());
     }
 
-    public ArrayList<BookPublisher> getPublisher() {
+    public BookPublisher getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(ArrayList<BookPublisher> publisher) {
+    public void setPublisher(BookPublisher publisher) {
         this.publisher = publisher;
     }
 
@@ -146,9 +146,7 @@ public class Book implements Cloneable {
         authors.add(new BookAuthor("1", "My"));
         authors.add(new BookAuthor("2", "Real"));
 
-        ArrayList<BookPublisher> publisher = new ArrayList<>();
-        publisher.add(new BookPublisher("3", "Nep"));
-        publisher.add(new BookPublisher("4", "Tune"));
+        var publisher = new BookPublisher("3", "Nep");
 
         ArrayList<BookGenre> genre = new ArrayList<>();
         genre.add(new BookGenre("5", "GG"));
@@ -162,10 +160,10 @@ public class Book implements Cloneable {
 
     public static Book createBlankBook() {
         ArrayList<BookAuthor> authors = new ArrayList<>();
-        ArrayList<BookPublisher> publisher = new ArrayList<>();
+        authors.add(new BookAuthor("", ""));
         ArrayList<BookGenre> genre = new ArrayList<>();
-
-        return new Book("", "", authors, publisher, genre, "", -1,
+        genre.add(new BookGenre("", ""));
+        return new Book("", "", authors, new BookPublisher("", ""), genre, "", -1,
                 String.valueOf(EBookStatus.AVAILABLE), "", "", -1, -1);
     }
 
@@ -175,7 +173,6 @@ public class Book implements Cloneable {
             Book clone = (Book) super.clone();
             clone.authors = (ArrayList<BookAuthor>) this.authors.clone();
             clone.genre = (ArrayList<BookGenre>) this.genre.clone();
-            clone.publisher = (ArrayList<BookPublisher>) this.publisher.clone();
             // TODO: copy mutable state here, so the clone can't change the internals of the original
             return clone;
         } catch (CloneNotSupportedException e) {
@@ -222,6 +219,14 @@ public class Book implements Cloneable {
         return publishYear;
     }
 
+
+    public void setPublishYear(String publishYear) {
+        try {
+            setPublishYear(Integer.parseInt(publishYear));
+        } catch (NumberFormatException ignored) {
+            setPublishYear(-1);
+        }
+    }
     public void setPublishYear(int publishYear) {
         this.publishYear = publishYear;
     }
