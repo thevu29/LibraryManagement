@@ -37,6 +37,7 @@ public class BookEditorDialog extends JDialog {
     private JComboBox<String> totalPageCB;
     private JComboBox locationCB;
     private JPanel genrePanel;
+    private JButton xácNhậnButton;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -87,14 +88,25 @@ public class BookEditorDialog extends JDialog {
         languageField.setText(String.valueOf(clonedBook.getLanguage()));
         languageField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setLanguage));
 
+        var locationField = AutoSuggestComboBox.create(locationCB, 8, bookDataTableModel::getColumnValueToString);
+        locationField.setText(String.valueOf(clonedBook.getLocation()));
+        locationField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setLocation));
+
+        var publisherField = AutoSuggestComboBox.create(publisherCB, 110, bus.getPublisherDataTableModel()::getColumnValueToString);
+        publisherField.setText(String.valueOf(clonedBook.getPublisher().toDialogString()));
+        publisherField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setLocation));
+
+
+        var yearField = AutoSuggestComboBox.create(publishYearCB, 9, bookDataTableModel::getColumnValueToString);
+        yearField.setText(String.valueOf(clonedBook.getPublishYear()));
+        yearField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setPublishYear));
+
+
         descriptionField.setText(String.valueOf(clonedBook.getDescription()));
         descriptionField.getDocument().addDocumentListener(new BindingListener<>(descriptionField, clonedBook, clonedBook::setDescription));
 
         setupAuthorCB();
         setupGenreCB();
-
-
-
 
 
         buttonOK.addActionListener(new ActionListener() {

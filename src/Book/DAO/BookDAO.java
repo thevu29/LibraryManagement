@@ -6,6 +6,7 @@ import Book.DTO.BookGenre;
 import Book.DTO.BookPublisher;
 import Core.DefaultConnection;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +18,7 @@ public class BookDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM BOOK WHERE IS_DELETED=0");
             while (rs.next()) {
 
                 var id = rs.getString("MA_SERIES");
@@ -46,6 +47,18 @@ public class BookDAO extends DefaultConnection {
         return books;
     }
 
+    public boolean isIDDuplicate(String id) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = getConnection().prepareStatement("SELECT MA_SERIES FROM BOOK WHERE MA_SERIES=?");
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
     private static ArrayList<BookGenre> getGenre(Statement stmt, String id) throws SQLException {
         ResultSet genreRS = stmt.executeQuery(
                 "SELECT GE.MA_TL AS MTL, TEN_TL FROM GENRE GE JOIN BOOK_GENRE BG on GE.MA_TL = BG.MA_TL WHERE BG.MA_SERIES='" + id + "'");
@@ -59,17 +72,17 @@ public class BookDAO extends DefaultConnection {
         return genres;
     }
 
-    private static ArrayList<BookPublisher> getPublishers(Statement stmt, String id) throws SQLException {
+    private static BookPublisher getPublishers(Statement stmt, String id) throws SQLException {
         ResultSet publisherRS = stmt.executeQuery(
                 "SELECT PU.MA_NXB AS NXB, TEN_NXB FROM PUBLISHER PU JOIN BOOK_PUBLISHER BP on PU.MA_NXB = BP.MA_NXB WHERE MA_SERIES='" + id + "'");
         ArrayList<BookPublisher> publishers = new ArrayList<>();
-        while (publisherRS.next()) {
+        if (publisherRS.next()) {
             var publisherID = publisherRS.getString("NXB");
             var publisherName = publisherRS.getString("TEN_NXB");
 
-            publishers.add(new BookPublisher(publisherID, publisherName));
+            return new BookPublisher(publisherID, publisherName);
         }
-        return publishers;
+        return null;
     }
 
     private static ArrayList<BookAuthor> getAuthors(Statement stmt, String id) throws SQLException {
@@ -83,5 +96,17 @@ public class BookDAO extends DefaultConnection {
             authors.add(new BookAuthor(authorID, authorName));
         }
         return authors;
+    }
+
+    public void delete(Book book) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = getConnection().prepareStatement("UPDATE BOOK SET IS_DELETED=1 WHERE MA_SERIES=?");
+            stmt.setString(1, book.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

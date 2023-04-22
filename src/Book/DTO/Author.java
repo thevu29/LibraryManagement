@@ -3,7 +3,7 @@ package Book.DTO;
 import NhanVien.arraylistNV.Gender;
 import Utils.EGender;
 
-public class Author {
+public class Author implements Cloneable {
     private String id;
     private String name;
     private String email;
@@ -21,9 +21,8 @@ public class Author {
     }
 
 
-    public static Author addTestAuthor() {
-        totalID+=1;
-        return new Author(String.valueOf(totalID), "Test"+totalID, "", "NU", "");
+    public static Author createBlankAuthor() {
+        return new Author("", "", "", "NAM", "");
     }
 
     public String getId() {
@@ -73,5 +72,24 @@ public class Author {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public Author clone() {
+        try {
+            Author clone = (Author) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+
+    public void cloneFrom(Author cloner) {
+        this.id = cloner.getId();
+        this.name = cloner.getName();
+        this.email = cloner.getEmail();
+        setGender(cloner.gender);
+        this.description = cloner.getDescription();
     }
 }
