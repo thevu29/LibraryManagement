@@ -95,12 +95,14 @@ public class CTHDDao extends DefaultConnection {
     }
 
 
-    public int removeCTHD(String maCTHD){
-        String sql = "DELETE FROM SELL_TICKET_DETAILS WHERE MA_PHIEU = "+maCTHD;
+    public int removeCTHD(String maHD,String maSeri){
+        String sql = "DELETE FROM SELL_TICKET_DETAILS WHERE MA_PHIEU = ? and MA_SERIES  = ?";
         int smt = 0;
         PreparedStatement pst = null;
         try {
             pst = getConnect().prepareStatement(sql);
+            pst.setString(1,maHD);
+            pst.setString(2,maSeri);
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

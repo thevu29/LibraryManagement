@@ -121,7 +121,7 @@ public class CTHDGUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
-                if(pos[0]>0){
+                if(tblCTHD.getSelectedRow()!=-1){
                     String maHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
                     String maSeri = String.valueOf(tblCTHD.getValueAt(pos[0],2)) ;
                     int smt = bus.remove(maHD,maSeri);
