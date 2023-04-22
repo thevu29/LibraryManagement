@@ -80,17 +80,18 @@ public class BookBUS {
 
 
     private void openNewBookDialog(Book book) {
-        openBookEditDialog(book, "Chỉnh sửa sách");
+        openBookEditDialog(book, "Chỉnh sửa sách", 1);
     }
 
-    private void openBookEditDialog(Book book, String title) {
-        var dialog = new BookEditorDialog(book, this, title);
+    private void openBookEditDialog(Book book, String title, int mode) {
+        var dialog = new BookEditorDialog(book, this, title, mode);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
     public void openNewBookDialog() {
-        openBookEditDialog(Book.createBlankBook(), "Thêm sách");
+        openBookEditDialog(Book.createBlankBook(), "Thêm sách", 0);
     }
     public void openNewBookDialog(int coords) {
         var book = bookDataTableModel.get(coords);
@@ -130,14 +131,12 @@ public class BookBUS {
     private void openAuthorEditDialog(Author author, String title) {
         var dialog = new AuthorDialog(author, authorDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
-    public boolean validateAuthor(Author author, int mode) {
+    public boolean validateAuthor(Author author) {
         var message = "";
-        if (mode == 0 && authorDAO.isIDDuplicate(author.getId())) {
-            message += "ID trùng\n";
-        }
 
         if (!Validation.isValidEmail(author.getEmail())) {
             message += "Email không hợp lệ";
@@ -201,6 +200,7 @@ public class BookBUS {
     private void openGenreEditDialog(Genre genre, String title) {
         var dialog = new GenreDialog(genre, genreDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -256,6 +256,7 @@ public class BookBUS {
     private void openPublisherEditDialog(Publisher publisher, String title) {
         var dialog = new PublisherDialog(publisher, publisherDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -310,6 +311,7 @@ public class BookBUS {
     private void openImporterEditDialog(Importer importer, String title) {
         var dialog = new ImporterDialog(importer, importerTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 

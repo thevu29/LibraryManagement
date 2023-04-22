@@ -52,7 +52,7 @@ public class BookEditorDialog extends JDialog {
     private Book book;
     private Book clonedBook;
 
-    public BookEditorDialog(Book book, BookBUS bus, String title) {
+    public BookEditorDialog(Book book, BookBUS bus, String title, int mode) {
         this.bookDataTableModel = bus.getBookDataTableModel();
         this.bus = bus;
         setContentPane(contentPane);
@@ -61,6 +61,9 @@ public class BookEditorDialog extends JDialog {
 
         this.setTitle(title);
 
+        if (mode == 1) {
+            bookSerialCB.setEnabled(false);
+        }
 
         var clonedBook = book.clone();
         this.book = book;

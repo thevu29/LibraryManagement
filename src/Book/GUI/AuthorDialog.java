@@ -101,8 +101,8 @@ public class AuthorDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        int mode = 0;
-        if (bus.validateAuthor(clonedAuthor, mode)) {
+
+        if (bus.validateAuthor(clonedAuthor)) {
             author.cloneFrom(clonedAuthor);
             bus.commitAuthor(author);
             dispose();
