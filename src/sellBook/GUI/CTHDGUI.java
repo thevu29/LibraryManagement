@@ -127,6 +127,7 @@ public class CTHDGUI {
                     int smt = bus.remove(maHD,maSeri);
                     if(smt==0){
                         JOptionPane.showMessageDialog(null,"Xoa CTHD khong thanh cong! :>>");
+
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");

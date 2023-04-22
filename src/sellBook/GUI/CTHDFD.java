@@ -170,11 +170,13 @@ public class CTHDFD extends JDialog {
                 int smt = bus.remove(maHD,maSeri);
                 if(smt>0){
                     JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
+
                     gui.showAll();
                     smt = bus.updateStatusBook(maSeri,"AVAILABLE");
                     if(smt==0){
                         JOptionPane.showMessageDialog(null,"Cap Nhat Trang Thai Sach Loi");
                     }
+                    onCancel();
                 }
                 else{
                     JOptionPane.showMessageDialog(null,"Xoa CTHD KHONG THANH CONG");
