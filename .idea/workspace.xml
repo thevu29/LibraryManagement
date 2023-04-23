@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="test statistics và thêm dữ liệu vào db">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="thêm 1 số hàm validate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/DAO/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DAO/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,38 +99,12 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.test">
+  <component name="RunManager" selected="Application.CustomerForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
-    </configuration>
-    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="CustomerForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
@@ -160,6 +132,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MembershipStatistics (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatistics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.BUS.test" />
       <module name="LibraryManagementGUI" />
@@ -175,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.MembershipStatistics" />
+        <item itemvalue="Application.MembershipStatistics (1)" />
         <item itemvalue="Application.test" />
         <item itemvalue="Application.CustomerForm (4)" />
-        <item itemvalue="Application.CustomerForm (3)" />
-        <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.CustomerForm (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -349,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682219553054</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="thêm 1 số hàm validate">
+      <created>1682234843206</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1682234843206</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +371,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/tienhai" />
+                        <option value="customer" />
                       </list>
                     </value>
                   </entry>
@@ -385,7 +390,8 @@
     <MESSAGE value="xong hoa don" />
     <MESSAGE value="sửa GUI" />
     <MESSAGE value="test statistics và thêm dữ liệu vào db" />
-    <option name="LAST_COMMIT_MESSAGE" value="test statistics và thêm dữ liệu vào db" />
+    <MESSAGE value="thêm 1 số hàm validate" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm 1 số hàm validate" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

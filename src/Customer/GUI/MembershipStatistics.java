@@ -10,6 +10,8 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 public class MembershipStatistics {
@@ -21,17 +23,25 @@ public class MembershipStatistics {
 
     public MembershipStatistics() {
         initComboboxvalues();
-        initChart();
+        initChart("Tất cả");
+
+        cbxMembershipType.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String type = cbxMembershipType.getSelectedItem().toString();
+                initChart(type);
+            }
+        });
     }
 
-    public void createDataset() {
+    public void createDataset(String type) {
         for (int i = 1; i <= 12; i++) {
-            dataset.setValue(customerBUS.countMembershipByMonth(i), "Số khách hàng", i + "");
+            dataset.setValue(customerBUS.countMembershipByMonth(i, type), "Số khách hàng", i + "");
         }
     }
 
-    public void initChart() {
-        createDataset();
+    public void initChart(String type) {
+        createDataset(type);
 
         barChart = ChartFactory.createBarChart(
                 "",

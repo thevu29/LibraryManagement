@@ -161,14 +161,23 @@ public class CustomerBUS {
         return false;
     }
 
-    public int countMembershipByMonth(int month) {
+    public int countMembershipByMonth(int month, String type) {
         int cnt = 0;
         int regisMonth = 0;
         for (Customer customer : customerList) {
-            if (!customer.getMembership().equals("Bình thường")) {
-                regisMonth = findRegistrationMonth(customer.getRegistrationDate());
-                if (regisMonth == month) {
-                    cnt++;
+            if (type.equals("Tất cả")) {
+                if (!customer.getMembership().equals("Bình thường")) {
+                    regisMonth = findRegistrationMonth(customer.getRegistrationDate());
+                    if (regisMonth == month) {
+                        cnt++;
+                    }
+                }
+            } else {
+                if (customer.getMembership().equals(type)) {
+                    regisMonth = findRegistrationMonth(customer.getRegistrationDate());
+                    if (regisMonth == month) {
+                        cnt++;
+                    }
                 }
             }
         }
