@@ -9,6 +9,7 @@ import Utils.AbstractTableModelWithFilters;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.RecursiveTask;
 
 public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
     public BookDataTableModel(boolean isEditable) {
@@ -59,7 +60,7 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
                 return String.join(", ", value.getAuthors().stream().map(BookAuthor::toString).toList());
             }
             case 3 -> {
-                return String.join(", ", value.getPublisher().stream().map(BookPublisher::toString).toList());
+                return value.getPublisher().toString();
             }
             case 4 -> {
                 return String.join(", ", value.getGenre().stream().map(BookGenre::toString).toList());
@@ -76,6 +77,9 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
             case 8 -> {
                 return value.getLanguage();
             }
+            case 9 -> {
+                return value.getPublishYear();
+            }
         }
         return null;
     }
@@ -91,7 +95,17 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
                         item.addAll(List.of(elem.split(","))));
                 return item;
             }
+            case 81 -> {
+                var item = new ArrayList<String>();
+                item.add("AVAILABLE");
+                item.add("BORROWED");
+                item.add("MISSING");
+                item.add("IN_USE");
+                item.add("SOLD");
+                return item;
+            }
         }
+
         return rows.stream().map(book -> Objects.toString(translateValue(book, col))).toList();
     }
 
