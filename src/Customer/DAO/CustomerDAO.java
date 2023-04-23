@@ -179,9 +179,9 @@ public class CustomerDAO {
                     res = true;
                 }
             } else {
-                boolean isMemership = new CustomerBUS().findMembershipByCustomerId(customer.getCustomerId());
+                boolean isMembership = new CustomerBUS().findMembershipByCustomerId(customer.getCustomerId()) != null ? true : false;
 
-                if (isMemership) {
+                if (isMembership) {
                     query = "update membership set DANG_THE = ?, NGAY_DK = ?, NGAY_HH = ?, IS_DELETED = 0 " + "where MA_KH = ?";
                     ptmt = conn.prepareStatement(query);
 

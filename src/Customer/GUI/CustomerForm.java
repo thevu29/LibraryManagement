@@ -111,7 +111,11 @@ public class CustomerForm {
             public boolean include(Entry<? extends DefaultTableModel, ?> entry) {
                 String rowName = entry.getStringValue(0).toLowerCase();
 
-                return rowName.contains(name);
+                if (name.equals("")) {
+                    return true;
+                }
+
+                return rowName.equals(name);
             }
         };
 
@@ -259,7 +263,11 @@ public class CustomerForm {
                 String rowEmail = entry.getStringValue(2).toLowerCase();
                 String rowMember = entry.getStringValue(3).toLowerCase();
 
-                return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email) && rowMember.contains(membership);
+                if (membership.equals("")) {
+                    return true;
+                }
+
+                return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email) && rowMember.equals(membership);
             }
         };
 

@@ -2,9 +2,13 @@ package Customer.BUS;
 
 import Customer.DAO.CustomerDAO;
 import Customer.DTO.Customer;
+import Utils.ValidationContract.Validation;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class CustomerBUS {
     private ArrayList<Customer> customerList;
@@ -12,6 +16,34 @@ public class CustomerBUS {
 
     public CustomerBUS() {
         customerList = cusDAO.createList();
+    }
+
+    public boolean validateDate(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf.setLenient(false);
+        try {
+            Date d = sdf.parse(date);
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ngày phải là số có định dạng dd-mm-yyyy", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public boolean validateEmail(String email) {
+        if (!Validation.isValidEmail(email)) {
+            JOptionPane.showMessageDialog(null, "Email không hợp lệ", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    public boolean validatePhone(String phone) {
+        if (!Validation.isValidPhoneNumber(phone)) {
+            JOptionPane.showMessageDialog(null, "Số điện thoại phải là 10 chữ số", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
     public boolean validateEmpty(String id, String name, String dob, String address, String email, String phone, String membership,
@@ -53,14 +85,46 @@ public class CustomerBUS {
         return true;
     }
 
-    public boolean validateAdd(Customer customer) {
+    public boolean validateCustomerInfo(Customer customer) {
         if (!validateEmpty(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerDOB(), customer.getCustomerAddress(),
                 customer.getCustomerEmail(), customer.getCustomerPhone(), customer.getMembership(), customer.getRegistrationDate(),
                 customer.getExpirationDate())) {
             return false;
         }
 
-        if (findCustomerById(customer.getCustomerId())) {
+        if (!validateDate(customer.getCustomerDOB())) {
+            return false;
+        }
+
+        if (!validateEmail(customer.getCustomerEmail())) {{
+            return false;
+        }}
+
+        if (!validatePhone(customer.getCustomerPhone())) {
+            return false;
+        }
+
+        if (!validateDate(customer.getCustomerDOB())) {
+            return false;
+        }
+
+        if (!validateDate(customer.getRegistrationDate())) {
+            return false;
+        }
+
+        if (!validateDate(customer.getExpirationDate())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validateAdd(Customer customer) {
+        if (!validateCustomerInfo(customer)) {
+            return false;
+        }
+
+        if (findCustomerById(customer.getCustomerId()) != null) {
             JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
             return false;
         }
@@ -84,9 +148,7 @@ public class CustomerBUS {
     }
 
     public boolean validateUpdate(Customer customer) {
-        if (!validateEmpty(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerDOB(), customer.getCustomerAddress(),
-                customer.getCustomerEmail(), customer.getCustomerPhone(), customer.getMembership(), customer.getRegistrationDate(),
-                customer.getExpirationDate())) {
+        if (!validateCustomerInfo(customer)) {
             return false;
         }
 
@@ -113,32 +175,30 @@ public class CustomerBUS {
         return cnt;
     }
 
-    public int findRegistrationMonth (String date) {
+    public int findRegistrationMonth(String date) {
         int month = 0;
         month = Integer.parseInt(date.split("-")[1]);
         return month;
     }
 
-    public boolean findCustomerById(String id) {
+    public Customer findCustomerById(String id) {
         for (Customer cus : customerList) {
             if (cus.getCustomerId().equals(id)) {
-                JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-                return true;
+                return cus;
             }
         }
-        return false;
+        return null;
     }
 
-    public boolean findMembershipByCustomerId(String cusId) {
+    public Customer findMembershipByCustomerId(String cusId) {
         for (Customer cus : customerList) {
             if (!cus.getMembership().equals("Bình thường")) {
                 if (cus.getCustomerId().equals(cusId)) {
-                    JOptionPane.showMessageDialog(null, "Mã khách hàng đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return true;
+                    return cus;
                 }
             }
         }
-        return false;
+        return null;
     }
 
     public void renderToTable(DefaultTableModel tblModel) {

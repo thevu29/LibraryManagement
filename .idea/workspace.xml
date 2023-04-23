@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="test statistics và thêm dữ liệu vào db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_query/cusomter&amp;membershipData.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query/cusomter&amp;membershipData.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/DAO/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DAO/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,19 +101,45 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MembershipStatistics">
+  <component name="RunManager" selected="Application.test">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="BorrowUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
+    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Borrow.GUI.*" />
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,38 +160,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerStatistics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerStatistics" />
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.BUS.test" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="MainForm.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MembershipStatistics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="PATTERN" value="Customer.BUS.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -172,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MembershipStatistics" />
-        <item itemvalue="Application.CustomerStatistics" />
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.CustomerForm (4)" />
+        <item itemvalue="Application.CustomerForm (3)" />
         <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.MainWindow" />
-        <item itemvalue="Application.BorrowUI" />
+        <item itemvalue="Application.CustomerForm (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -184,7 +187,6 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="" />
-      <changelist id="" name="tét" comment="tét" />
       <created>1676216910792</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -340,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682219496216</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="test statistics và thêm dữ liệu vào db">
+      <created>1682219553054</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1682219553054</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
