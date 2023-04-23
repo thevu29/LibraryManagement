@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="sửa GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/MembershipTypeBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/MembershipTypeBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/data.sql" afterDir="false" />
     </list>
     <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +71,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.new.ui&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
@@ -101,7 +101,7 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainWindow">
+  <component name="RunManager" selected="Application.MembershipStatistics">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -114,6 +114,32 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Borrow.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerStatistics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerStatistics" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -134,38 +160,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NhanVienC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienC" />
+    <configuration name="MembershipStatistics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVien.form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="form.adminNhanVien" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="form.adminNhanVien" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="form.*" />
+          <option name="PATTERN" value="Customer.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -175,11 +175,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MembershipStatistics" />
+        <item itemvalue="Application.CustomerStatistics" />
+        <item itemvalue="Application.CustomerForm" />
         <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.BorrowUI" />
-        <item itemvalue="Application.NhanVienC" />
-        <item itemvalue="Application.NhanVien.form.adminNhanVien" />
-        <item itemvalue="Application.form.adminNhanVien" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +322,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682148256317</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="sửa GUI">
+      <created>1682149272776</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682149272776</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +346,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="origin/Nep" />
                       </list>
                     </value>
                   </entry>

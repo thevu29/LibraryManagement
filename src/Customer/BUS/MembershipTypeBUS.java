@@ -8,11 +8,12 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 public class MembershipTypeBUS {
-    private ArrayList<MembershipType> membershipTypeList = new ArrayList<>();
+    private ArrayList<MembershipType> membershipTypeList;
     private MembershipTypeDAO memDAO = new MembershipTypeDAO();
 
     public MembershipTypeBUS() {
         membershipTypeList = memDAO.getAll();
+        membershipTypeList.sort((a, b) -> a.getDiscount() - b.getDiscount());
     }
 
     public boolean validateAdd(String name, String discount) {

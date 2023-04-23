@@ -99,6 +99,26 @@ public class CustomerBUS {
         return false;
     }
 
+    public int countMembershipByMonth(int month) {
+        int cnt = 0;
+        int regisMonth = 0;
+        for (Customer customer : customerList) {
+            if (!customer.getMembership().equals("Bình thường")) {
+                regisMonth = findRegistrationMonth(customer.getRegistrationDate());
+                if (regisMonth == month) {
+                    cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+
+    public int findRegistrationMonth (String date) {
+        int month = 0;
+        month = Integer.parseInt(date.split("-")[1]);
+        return month;
+    }
+
     public boolean findCustomerById(String id) {
         for (Customer cus : customerList) {
             if (cus.getCustomerId().equals(id)) {
