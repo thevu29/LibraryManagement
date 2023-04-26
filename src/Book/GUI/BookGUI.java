@@ -4,12 +4,14 @@ import Book.*;
 import Book.BUS.BookBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
+import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BookGUI {
@@ -102,6 +104,7 @@ public class BookGUI {
     private JComboBox iIDCB;
     private JComboBox iEmailCB;
     private JButton iEmailBtn;
+    private JButton btnThongKe;
 
     private JTextField bookIDTF;
 
@@ -124,6 +127,20 @@ public class BookGUI {
         setupPublisherPane();
         setupImporterPane();
 
+//        btnThongKe.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                DefaultPieDataset dataset = bus.thonngKeTinhTrangSach();
+//                ArrayList<String> dsOpt = new ArrayList<>();
+//                dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
+//                BookChart b = new BookChart(dataset,dsOpt);
+//                JFrame frame = new JFrame("Thong Ke");
+//                frame.setContentPane(b.getMain());
+//                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//                frame.pack();
+//                frame.setVisible(true);
+//            }
+//        });
     }
 
 

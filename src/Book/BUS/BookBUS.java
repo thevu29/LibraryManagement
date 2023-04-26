@@ -5,6 +5,7 @@ import Book.DAO.*;
 import Book.DTO.*;
 import Book.GUI.*;
 import Utils.ValidationContract.Validation;
+import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
 import java.util.Arrays;
@@ -22,6 +23,7 @@ public class BookBUS {
     private final PublisherDAO publisherDAO;
     private final ImporterDataTableModel importerTableModel;
     private final ImporterDAO importerDAO;
+
     //endregion
 
     //region CONSTRUCTOR
@@ -337,6 +339,9 @@ public class BookBUS {
         frame.setVisible(true);
     }
 
+    public DefaultPieDataset thonngKeTinhTrangSach(){
+        return bookDAO.thongKeTrangThaiSach();
+    }
     public static void main(String[] args) {
         var authorModel = new AuthorDataTableModel();
         var bookModel = new BookDataTableModel();
@@ -347,6 +352,8 @@ public class BookBUS {
     public ImporterDataTableModel getImporterDataTableModel() {
         return importerTableModel;
     }
+
+
 
 
 

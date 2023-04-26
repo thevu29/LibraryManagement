@@ -5,6 +5,8 @@ import Book.DTO.BookAuthor;
 import Book.DTO.BookGenre;
 import Book.DTO.BookPublisher;
 import Core.DefaultConnection;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -128,9 +130,31 @@ public class BookDAO extends DefaultConnection {
         return smt;
     }
 
+    public DefaultPieDataset thongKeTrangThaiSach(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+
+        String sql ="SELECT COUNT(MA_SERIES) as slg, TRANG_THAI FROM `book` GROUP BY TRANG_THAI";
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                double slg = rs.getDouble("slg");
+                String tt = rs.getString("TRANG_THAI");
+                dataset.setValue(tt,slg);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+    }
+
     public static void main(String[] args) {
         BookDAO b = new BookDAO();
         b.changeTrangThaiSach("5_4","AVAILABLE");
+
+
+
     }
 
 }

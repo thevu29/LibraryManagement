@@ -1,6 +1,8 @@
 package sellBook.BUS;
 
 import Book.DAO.BookDAO;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import sellBook.DAO.CTHDDao;
 import sellBook.DTO.CTHD;
 
@@ -73,6 +75,16 @@ public class CTHDBus {
             }
         }
 
+    }
+    public DefaultCategoryDataset thongKeSlgSachBan(){
+        return cthd.thongKeSLGSachBanTheoThang();
+    }
+
+    public DefaultPieDataset thongKeSoLoaiDcBan(){
+        return cthd.thongKeSoLoaiSach();
+    }
+    public DefaultCategoryDataset thongKeSachBanTheoNam(int nam){
+        return cthd.thongKeSachBanTheoNam(nam);
     }
 
     public static void main(String[] args) {

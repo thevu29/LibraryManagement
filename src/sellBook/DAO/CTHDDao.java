@@ -1,6 +1,8 @@
 package sellBook.DAO;
 
 import Core.DefaultConnection;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import sellBook.DTO.CTHD;
 import sellBook.DTO.HoaDon;
 
@@ -113,7 +115,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public int insertCTHD(CTHD cthd){
-        String sql = "INSERT INTO SELL_TICKET_DETAILS(`MA_PHIEU`, `HE_SO`, `MA_SERIES`) VALUES (?,?,?)";
+        String sql = "INSERT INTO SELL_TICKET_DETAILS(`MA_PHIEU`, `HE_SO`, `MA_SERIES`,`IS_DELETED`) VALUES (?,?,?,?)";
         int smt=0;
         PreparedStatement pst = null;
         try {
@@ -121,6 +123,7 @@ public class CTHDDao extends DefaultConnection {
             pst.setString(1,cthd.getMa_phieu());
             pst.setDouble(2, cthd.getHe_so());
             pst.setString(3,cthd.getMa_series());
+            pst.setInt(4,0);
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -236,6 +239,91 @@ public class CTHDDao extends DefaultConnection {
 
     }
 
+    public DefaultCategoryDataset thongKeSLGSachBanTheoThang(){
+        String sql = "SELECT  COUNT(book.MA_SERIES) as slgSach,YEAR(CREATED_AT) as nam, MONTH(CREATED_AT) as thang \n" +
+                "FROM `sell_ticket_details`\n" +
+                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES\n" +
+                "INNER JOIN sell_ticket on sell_ticket.MA_PHIEU=sell_ticket_details.MA_PHIEU\n" +
+                "WHERE sell_ticket_details.IS_DELETED =0\n" +
+                "GROUP BY sell_ticket_details.MA_PHIEU,YEAR(sell_ticket.CREATED_AT), MONTH(sell_ticket.CREATED_AT)\n" +
+                "ORDER BY YEAR(sell_ticket.CREATED_AT) ASC, MONTH(sell_ticket.CREATED_AT) ASC";
+        Statement stmt = null;
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                double slg = rs.getDouble("slgSach");
+                String thang = rs.getString("thang");
+                String nam = rs.getString("nam");
+                String thangNam=thang+"/"+nam;
+                dataset.setValue(slg,"Slg Sach",thangNam);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+    }
+
+    public DefaultCategoryDataset thongKeSachBanTheoNam(int nam){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String sql ="SELECT COUNT(sell_ticket_details.MA_SERIES) as slgSach,Month(sell_ticket.CREATED_AT) as thang FROM `sell_ticket_details` \n" +
+                "INNER JOIN sell_ticket on sell_ticket_details.MA_PHIEU=sell_ticket.MA_PHIEU \n" +
+                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES \n" +
+                "WHERE Year(sell_ticket.CREATED_AT) = "+nam+" and sell_ticket_details.IS_DELETED = 0 \n" +
+                "GROUP BY Year(sell_ticket.CREATED_AT),thang";
+        Statement stmt = null;
+        String rowKey = "slgSach";
+        double[] slgSach = new double[12];
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                double slg = rs.getDouble("slgSach");
+                int thang = rs.getInt("thang");
+                slgSach[thang-1] = slg;
+            }
+            for(int i=0;i<12;i++){
+                int thang = i + 1;
+                double slg = slgSach[i];
+                System.out.println("Tháng " + thang + "/" + nam + ": " + slg + " hóa đơn");
+                String thangNam = thang+"/"+nam;
+                dataset.setValue(slg,rowKey,thangNam);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+
+        return dataset;
+    }
+
+    public DefaultPieDataset thongKeSoLoaiSach(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        String sql ="SELECT  COUNT(book_genre.MA_SERIES) as slgSach,genre.TEN_TL as tl " +
+                "FROM `sell_ticket_details` " +
+                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES " +
+                "INNER JOIN sell_ticket on sell_ticket.MA_PHIEU=sell_ticket_details.MA_PHIEU " +
+                "INNER JOIN book_genre on book.MA_SERIES = book_genre.MA_SERIES\n" +
+                "INNER JOIN genre on book_genre.MA_TL = genre.MA_TL " +
+                "WHERE sell_ticket_details.IS_DELETED =0 " +
+                "GROUP BY book_genre.MA_TL";
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                double slg = rs.getDouble("slgSach");
+                String tl = rs.getString("tl");
+                dataset.setValue(tl,slg);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+
+    }
+
 
 
     public static void main(String[] args) {
@@ -264,7 +352,20 @@ public class CTHDDao extends DefaultConnection {
 
 //        System.out.println(t.tinhTienSach("1","2"));
 //        System.out.println(t.goiYTenSach("1"));
-        System.out.println(t.layGiaSach("2"));
+//        System.out.println(t.layGiaSach("2"));
+
+        DefaultCategoryDataset dataset = t.thongKeSachBanTheoNam(1900);
+        System.out.println("Hoa Don \t Thang \t So Luong");
+        for (int i = 0; i < dataset.getRowCount(); i++) {
+            String rowKey = (String) dataset.getRowKey(i);
+            for (int j = 0; j < dataset.getColumnCount(); j++) {
+                String columnKey = (String) dataset.getColumnKey(j);
+                Number value = dataset.getValue(i, j);
+                System.out.println(rowKey + " \t " + columnKey + " \t " + value);
+            }
+        }
+
+
     }
 
 }

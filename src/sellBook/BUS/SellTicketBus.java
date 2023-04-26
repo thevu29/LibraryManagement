@@ -1,5 +1,7 @@
 package sellBook.BUS;
 
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import sellBook.DAO.SellTicketDao;
 import sellBook.DTO.HoaDon;
 
@@ -54,6 +56,22 @@ public class SellTicketBus {
     public String getNewMaHD(){
         return hd.getNewMaHD();
     }
+
+    public DefaultCategoryDataset laySoLieuTheoThang(){
+        return hd.laySoLieuTheoThang();
+    }
+    public DefaultCategoryDataset laySoLieuTheoNam(){
+        return hd.laySoLieuTheoNam();
+    }
+    public DefaultCategoryDataset thongKeSoTienTheoThang(int nam){
+        return hd.thongKeThuNhapTheoThang(nam);
+    }
+
+    public DefaultCategoryDataset thongKeTheoNam(int nam){
+        return hd.thongKeTheoNam(nam);
+    }
+
+
     public static void main(String[] args) {
 
     }
