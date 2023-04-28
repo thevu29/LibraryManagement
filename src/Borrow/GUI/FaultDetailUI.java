@@ -44,7 +44,7 @@ public class FaultDetailUI {
         faultDetailModel.setEditable(false);
 
         faultDetailModel.addTestData();
-        // table2.setModel(test);
+        // table2.setModel(testExcel);
         bookTable.setModel(faultDetailModel);
         TableRowSorter<FaultDetailModel> sorter = new TableRowSorter<>(faultDetailModel);
         bookTable.setRowSorter(sorter);

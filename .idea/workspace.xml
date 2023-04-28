@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="thêm filter by membership type trong chart">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="thêm LoginForm">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/FaultDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/FaultDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/FaultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/FaultModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,19 +70,24 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW": "true",
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "300",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement",
+    "jdk.selected.JAVA_MODULE": "temurin-18",
+    "last_opened_file_path": "C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/library/xmlbeans-5.1.1.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
@@ -91,29 +109,29 @@
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagement\Excel" />
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagement\library" />
       <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagementGUI\sql_query" />
       <recent name="J:\LapTrinhJava\LibraryManagementGUI\src\sellBook\GUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginForm">
+  <component name="RunManager" selected="Application.CustomerForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="Customer.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,12 +139,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="Customer.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,12 +178,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MembershipStatistics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
+    <configuration name="testExcel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.testExcel" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="PATTERN" value="Customer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -175,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LoginForm" />
-        <item itemvalue="Application.LoginForm (2)" />
-        <item itemvalue="Application.LoginForm (1)" />
-        <item itemvalue="Application.MembershipStatistics" />
+        <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.CustomerForm (1)" />
+        <item itemvalue="Application.testExcel" />
         <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.LoginForm" />
       </list>
     </recent_temporary>
   </component>
@@ -363,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682237220753</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="thêm LoginForm">
+      <created>1682428743932</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1682428743932</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +405,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="customer" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -401,7 +426,8 @@
     <MESSAGE value="test statistics và thêm dữ liệu vào db" />
     <MESSAGE value="thêm 1 số hàm validate" />
     <MESSAGE value="thêm filter by membership type trong chart" />
-    <option name="LAST_COMMIT_MESSAGE" value="thêm filter by membership type trong chart" />
+    <MESSAGE value="thêm LoginForm" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm LoginForm" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

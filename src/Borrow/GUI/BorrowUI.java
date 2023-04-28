@@ -238,7 +238,7 @@ public class BorrowUI {
         borrowDetailModel.setEditable(false);
 
         borrowDetailModel.addTestData();
-        // table2.setModel(test);
+        // table2.setModel(testExcel);
         borrowDetailTable.setModel(borrowDetailModel);
         TableRowSorter<BorrowDetailModel> sorterBorrowDetail = new TableRowSorter<>(borrowDetailModel);
         borrowDetailTable.setRowSorter(sorterBorrowDetail);
@@ -407,7 +407,7 @@ public class BorrowUI {
         faultDetailModel.setEditable(false);
 
         faultDetailModel.addTestData();
-        // table2.setModel(test);
+        // table2.setModel(testExcel);
         faultDetailTable.setModel(faultDetailModel);
         TableRowSorter<FaultDetailModel> sorter3 = new TableRowSorter<>(faultDetailModel);
         faultDetailTable.setRowSorter(sorter3);

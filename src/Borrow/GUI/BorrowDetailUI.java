@@ -42,7 +42,7 @@ public class BorrowDetailUI {
         borrowDetailModel.setEditable(false);
 
         borrowDetailModel.addTestData();
-        // table2.setModel(test);
+        // table2.setModel(testExcel);
         borrowDetailTable.setModel(borrowDetailModel);
         TableRowSorter<BorrowDetailModel> sorter = new TableRowSorter<>(borrowDetailModel);
         borrowDetailTable.setRowSorter(sorter);

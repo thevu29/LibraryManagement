@@ -245,6 +245,20 @@ public class CustomerForm {
                 customerSorter.setRowFilter(null);
             }
         });
+
+        btnImportExcel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        btnExportExcel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                customerBUS.exportExcel();
+            }
+        });
     }
 
     public void filterCustomer() {
@@ -281,7 +295,7 @@ public class CustomerForm {
                 suggestion.add(customer.getCustomerId());
             } else if (col == 1) {
                 suggestion.add(customer.getCustomerName());
-            } else if (col == 2) {
+            } else if (col  == 2) {
                 suggestion.add(customer.getCustomerEmail());
             } else if (col == 3) {
                 suggestion.add(customer.getMembership());
@@ -375,4 +389,6 @@ public class CustomerForm {
     private JButton btnDeleteMemName;
     private JComboBox cbxCusMembership;
     private JButton btnDeleteCusMembership;
+    private JButton btnImportExcel;
+    private JButton btnExportExcel;
 }
