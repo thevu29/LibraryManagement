@@ -127,20 +127,20 @@ public class BookGUI {
         setupPublisherPane();
         setupImporterPane();
 
-//        btnThongKe.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                DefaultPieDataset dataset = bus.thonngKeTinhTrangSach();
-//                ArrayList<String> dsOpt = new ArrayList<>();
-//                dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
-//                BookChart b = new BookChart(dataset,dsOpt);
-//                JFrame frame = new JFrame("Thong Ke");
-//                frame.setContentPane(b.getMain());
-//                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//                frame.pack();
-//                frame.setVisible(true);
-//            }
-//        });
+        btnThongKe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultPieDataset dataset = bus.thonngKeTinhTrangSach();
+                ArrayList<String> dsOpt = new ArrayList<>();
+                dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
+                BookChart b = new BookChart(dataset,dsOpt);
+                JFrame frame = new JFrame("Thong Ke");
+                frame.setContentPane(b.getMain());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
+            }
+        });
     }
 
 

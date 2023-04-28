@@ -125,29 +125,17 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public String getNewMaHD(){
-//        String sql = "SELECT CONCAT('HD', LPAD(SUBSTRING(MAX(MA_PHIEU), 3) + 1, 3, '0')) AS new_id FROM SELL_TICKET WHERE MA_PHIEU LIKE 'HD%'";
-//        Statement stmt = null;
-//        String maHD = "";
-//        try {
-//            stmt = getConnect().createStatement();
-//            ResultSet rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                maHD = rs.getString("new_id");
-//            }
-//
-//        } catch (SQLException | ClassNotFoundException e) {
-//            System.out.println(e);
-//        }
-//        return maHD;
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            var rs = stmt.executeQuery("SELECT MA_PHIEU FROM SELL_TICKET WHERE MA_PHIEU=(SELECT max(MA_PHIEU) FROM SELL_TICKET)");
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `sell_ticket` ");
             if (!rs.next()) {
                 return "HD1";
             }
-            var maHD = rs.getString("MA_PHIEU");
-            var maHDMoi = "HD" + (Integer.parseInt(maHD.split("HD")[1])+1);
+            var maHD = rs.getString("max_num");
+            int ma = Integer.parseInt(maHD)+1;
+            String maHDMoi = "HD".concat(String.valueOf(ma));
+
             return maHDMoi;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
