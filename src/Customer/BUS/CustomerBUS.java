@@ -9,21 +9,24 @@ import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CustomerBUS {
     private ArrayList<Customer> customerList;
     private CustomerDAO cusDAO = new CustomerDAO();
 
     public CustomerBUS() {
-        customerList = cusDAO.createList();
+        customerList = cusDAO.getCustomerAll();
+
+        for (Customer customer : customerList) {
+            customer.setCustomerDOB(reverseDate(customer.getCustomerDOB()));
+            customer.setRegistrationDate(reverseDate(customer.getRegistrationDate()));
+            customer.setExpirationDate(reverseDate(customer.getExpirationDate()));
+        }
     }
 
     public boolean writeExcel(SXSSFWorkbook workbook) {
@@ -167,6 +170,9 @@ public class CustomerBUS {
             return false;
         }
 
+        customer.setCustomerDOB(reverseDate(customer.getCustomerDOB()));
+        customer.setRegistrationDate(reverseDate(customer.getRegistrationDate()));
+        customer.setExpirationDate(reverseDate(customer.getExpirationDate()));
         if(cusDAO.addCustomer(customer)) {
             JOptionPane.showMessageDialog(null, "Thêm khách hàng thành công");
             return true;
@@ -190,6 +196,9 @@ public class CustomerBUS {
             return false;
         }
 
+        customer.setCustomerDOB(reverseDate(customer.getCustomerDOB()));
+        customer.setRegistrationDate(reverseDate(customer.getRegistrationDate()));
+        customer.setExpirationDate(reverseDate(customer.getExpirationDate()));
         if (cusDAO.updateCustomer(customer)) {
             JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thành công");
             return true;
@@ -197,34 +206,6 @@ public class CustomerBUS {
 
         JOptionPane.showMessageDialog(null, "Sửa thông tin khách hàng thất bại", "Error", JOptionPane.ERROR_MESSAGE);
         return false;
-    }
-
-    public boolean validateDate(String date) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        sdf.setLenient(false);
-        try {
-            Date d = sdf.parse(date);
-            return true;
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ngày phải là số có định dạng dd-mm-yyyy", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-    }
-
-    public boolean validateEmail(String email) {
-        if (!Validation.isValidEmail(email)) {
-            JOptionPane.showMessageDialog(null, "Email không hợp lệ", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        return true;
-    }
-
-    public boolean validatePhone(String phone) {
-        if (!Validation.isValidPhoneNumber(phone)) {
-            JOptionPane.showMessageDialog(null, "Số điện thoại phải là 10 chữ số", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        return true;
     }
 
     public boolean validateEmpty(String id, String name, String dob, String address, String email, String phone, String membership,
@@ -255,7 +236,7 @@ public class CustomerBUS {
                 sb.append("Ngày đăng ký không được để trống \n");
             }
             if (expirationDate.equals("")) {
-                sb.append("Ngày hết hạn không được để trosnog \n");
+                sb.append("Ngày hết hạn không được để trống \n");
             }
         }
 
@@ -273,27 +254,28 @@ public class CustomerBUS {
             return false;
         }
 
-        if (!validateDate(customer.getCustomerDOB())) {
+        if (!Validation.isValidDate(customer.getCustomerDOB())) {
+            JOptionPane.showMessageDialog(null, "Ngày sinh phải là số có định dạng dd-mm-yyyy ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        if (!validateEmail(customer.getCustomerEmail())) {{
-            return false;
-        }}
-
-        if (!validatePhone(customer.getCustomerPhone())) {
+        if (!Validation.isValidEmail(customer.getCustomerEmail())) {
+            JOptionPane.showMessageDialog(null, "Email không hợp lệ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        if (!validateDate(customer.getCustomerDOB())) {
+        if (!Validation.isValidPhoneNumber(customer.getCustomerPhone())) {
+            JOptionPane.showMessageDialog(null, "Số điện thoại phải là 10 chữ số", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        if (!validateDate(customer.getRegistrationDate())) {
+        if (!Validation.isValidDate(customer.getRegistrationDate())) {
+            JOptionPane.showMessageDialog(null, "Ngày đăng kí phải là số có định dạng dd-mm-yyyy ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        if (!validateDate(customer.getExpirationDate())) {
+        if (!Validation.isValidDate(customer.getExpirationDate())) {
+            JOptionPane.showMessageDialog(null, "Ngày hết hạn phải là số có định dạng dd-mm-yyyy ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
@@ -352,8 +334,14 @@ public class CustomerBUS {
     public void renderToTable(DefaultTableModel tblModel) {
         tblModel.setRowCount(0);
 
-        customerList = cusDAO.createList();
+        customerList = cusDAO.getCustomerAll();
+        for (Customer customer : customerList) {
+            customer.setCustomerDOB(reverseDate(customer.getCustomerDOB()));
+            customer.setRegistrationDate(reverseDate(customer.getRegistrationDate()));
+            customer.setExpirationDate(reverseDate(customer.getExpirationDate()));
+        }
         customerList.sort((a, b) -> a.getCustomerId().compareTo(b.getCustomerId()));
+
         for (Customer customer : customerList) {
             if (!customer.isDeleted()) {
                 tblModel.addRow(new Object[]{customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerEmail(),
@@ -371,6 +359,11 @@ public class CustomerBUS {
 
         String newDate = "";
         String[] arr = date.split("-");
+
+        if (arr.length < 2) {
+            return date;
+        }
+
         newDate = arr[2] + "-" + arr[1] + "-" + arr[0];
         return newDate;
     }
@@ -379,15 +372,7 @@ public class CustomerBUS {
         return customerList;
     }
 
-    public void setCustomerList(ArrayList<Customer> customerList) {
-        this.customerList = customerList;
-    }
-
     public int getCustomerListLength() {
         return customerList.size();
-    }
-
-    public int getMembershipListLength() {
-        return (int) customerList.stream().filter(cus -> !cus.getMembership().equals("Bình thường")).count();
     }
 }

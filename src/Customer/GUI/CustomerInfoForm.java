@@ -65,15 +65,15 @@ public class CustomerInfoForm extends JFrame {
     public void addCustomer() {
         String id = txtCustomerId.getText();
         String name = txtCustomerName.getText();
-        String dob = reverseDate(txtCustomerDOB.getText());
+        String dob = txtCustomerDOB.getText();
         String address = txtCustomerAddress.getText();
         String cccd = txtCCCD.getText();
         String email = txtCustomerEmail.getText();
         String phone = txtCustomerPhone.getText();
         String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
         String membership = cbxMembership.getItemAt(cbxMembership.getSelectedIndex()).toString();
-        String registrationDate = reverseDate(txtRegisDate.getText());
-        String expirationDate = reverseDate(txtExpireDate.getText());
+        String registrationDate = txtRegisDate.getText();
+        String expirationDate = txtExpireDate.getText();
 
         Customer customer = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, registrationDate, expirationDate, false);
         if (cusBus.validateAdd(customer)) {
@@ -85,32 +85,21 @@ public class CustomerInfoForm extends JFrame {
     public void updateCustomerInfo() {
         String id = txtCustomerId.getText();
         String name = txtCustomerName.getText();
-        String dob = reverseDate(txtCustomerDOB.getText());
+        String dob = txtCustomerDOB.getText();
         String address = txtCustomerAddress.getText();
         String cccd = txtCCCD.getText();
         String email = txtCustomerEmail.getText();
         String phone = txtCustomerPhone.getText();
         String gender = cbxGender.getSelectedIndex() == 0 ? "Nam" : "Nữ";
         String membership = cbxMembership.getItemAt(cbxMembership.getSelectedIndex()).toString();
-        String registrationDate = reverseDate(txtRegisDate.getText());
-        String expirationDate = reverseDate(txtExpireDate.getText());
+        String registrationDate = txtRegisDate.getText();
+        String expirationDate = txtExpireDate.getText();
 
         Customer customer = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, registrationDate, expirationDate, false);
         if (cusBus.validateUpdate(customer)) {
             dispose();
             customerForm.getCustomerBUS().renderToTable(customerForm.getTblCustomerModel());
         }
-    }
-
-    public String reverseDate(String date) {
-        if (date.equals("")) {
-            return "";
-        }
-
-        String newDate = "";
-        String[] arr = date.split("-");
-        newDate = arr[2] + "-" + arr[1] + "-" + arr[0];
-        return newDate;
     }
 
     public void showRegisAndExpireDate() {
@@ -152,8 +141,7 @@ public class CustomerInfoForm extends JFrame {
 
         txtCustomerName.setText(customer.getCustomerName());
         txtCCCD.setText(customer.getCccd());
-        String dob = reverseDate(customer.getCustomerDOB());
-        txtCustomerDOB.setText(dob);
+        txtCustomerDOB.setText(customer.getCustomerDOB());
         txtCustomerAddress.setText(customer.getCustomerAddress());
         txtCustomerEmail.setText(customer.getCustomerEmail());
         txtCustomerPhone.setText(customer.getCustomerPhone());
@@ -166,10 +154,8 @@ public class CustomerInfoForm extends JFrame {
             hideRegisAndExpireDate();
         } else {
             showRegisAndExpireDate();
-            String regisDate = reverseDate(customer.getRegistrationDate());
-            String expireDate = reverseDate(customer.getExpirationDate());
-            txtRegisDate.setText(regisDate);
-            txtExpireDate.setText(expireDate);
+            txtRegisDate.setText(customer.getRegistrationDate());
+            txtExpireDate.setText(customer.getExpirationDate());
         }
 
         btnSave.setText(btnText);

@@ -1,5 +1,8 @@
 package Utils;
 
+import javax.swing.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 public class ValidationContract {
@@ -12,6 +15,17 @@ public class ValidationContract {
 
         public static boolean isValidPhoneNumber(String phone) {
             return phone.matches("[0-9]{10}");
+        }
+
+        public static boolean isValidDate(String date) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            sdf.setLenient(false);
+            try {
+                Date d = sdf.parse(date);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
         }
     }
 }

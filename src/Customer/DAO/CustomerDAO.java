@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class CustomerDAO {
-    public ArrayList<Customer> createList() {
+    public ArrayList<Customer> getCustomerAll() {
         ArrayList<Customer> list = new ArrayList<>();
         try {
             Connection con = DefaultConnection.getConnect();
 
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("select C.MA_KH, TEN, NGAY_SINH, DIA_CHI, CCCD, EMAIL, PHONE, GIOI_TINH, M.DANG_THE, M.NGAY_DK, M.NGAY_HH, C.IS_DELETED\n" +
+            ResultSet rs = stmt.executeQuery("select C.MA_KH, TEN, NGAY_SINH, DIA_CHI, CCCD, EMAIL, PHONE, GIOI_TINH, M.DANG_THE, M.NGAY_DK, M.NGAY_HH, C.IS_DELETED " +
                     "from customer C LEFT JOIN membership M on C.MA_KH = M.MA_KH and M.IS_DELETED = 0");
 
             while (rs.next()) {
@@ -91,7 +91,7 @@ public class CustomerDAO {
             String query = "insert into membership values (?, ?, ?, ?, ?, ?)";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
-            int length = new CustomerBUS().getMembershipListLength() + 1;
+            int length = getMembershipLength() + 1;
             String id = String.format("%03d", length);
             String memId = "MEM" + id;
 
@@ -121,6 +121,47 @@ public class CustomerDAO {
 
             ptmt.setInt(1, 1);
             ptmt.setString(2, id);
+
+            if (ptmt.executeUpdate() >= 1) {
+                if (deleteMembership(id)) {
+                    res = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public boolean deleteMembership(String customerId) {
+        boolean res = false;
+        try {
+            Connection conn = DefaultConnection.getConnect();
+
+            String query = "update membership set IS_DELETED = ? " + "where MA_KH = ?";
+            PreparedStatement ptmt = conn.prepareStatement(query);
+
+            ptmt.setInt(1, 1);
+            ptmt.setString(2, customerId);
+
+            if (ptmt.executeUpdate() >= 1) {
+                res = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public boolean deleteDirectlyMembership(String customerId) {
+        boolean res = false;
+        try {
+            Connection conn = DefaultConnection.getConnect();
+
+            String query = "delete from membership where MA_KH = ?";
+            PreparedStatement ptmt = conn.prepareStatement(query);
+
+            ptmt.setString(1, customerId);
 
             if (ptmt.executeUpdate() >= 1) {
                 res = true;
@@ -165,25 +206,16 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "";
-            PreparedStatement ptmt;
-
             if (customer.getMembership().equals("Bình thường")) {
-                query = "update membership set IS_DELETED = ? " + "where MA_KH = ?";
-                ptmt = conn.prepareStatement(query);
-
-                ptmt.setInt(1, 1);
-                ptmt.setString(2, customer.getCustomerId());
-
-                if (ptmt.executeUpdate() >= 1) {
+                if (deleteDirectlyMembership(customer.getCustomerId())) {
                     res = true;
                 }
             } else {
                 boolean isMembership = new CustomerBUS().findMembershipByCustomerId(customer.getCustomerId()) != null ? true : false;
 
                 if (isMembership) {
-                    query = "update membership set DANG_THE = ?, NGAY_DK = ?, NGAY_HH = ?, IS_DELETED = 0 " + "where MA_KH = ?";
-                    ptmt = conn.prepareStatement(query);
+                    String query = "update membership set DANG_THE = ?, NGAY_DK = ?, NGAY_HH = ?, IS_DELETED = 0 " + "where MA_KH = ?";
+                    PreparedStatement ptmt = conn.prepareStatement(query);
 
                     ptmt.setString(1, customer.getMembership());
                     ptmt.setString(2, customer.getRegistrationDate());
@@ -203,5 +235,22 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return res;
+    }
+
+    public int getMembershipLength() {
+        int cnt = 0;
+        try {
+            Connection conn = DefaultConnection.getConnect();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("select count(*) as Length from membership");
+
+            if (rs.next()) {
+                cnt = rs.getInt("Length");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cnt;
     }
 }
