@@ -38,6 +38,8 @@
                   <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="XÓA CTHD"/>
                 </properties>
               </component>
@@ -51,6 +53,8 @@
                   <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="THÀNH CÔNG"/>
                 </properties>
               </component>
@@ -59,6 +63,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="THÊM CTHD"/>
                 </properties>
               </component>
@@ -67,6 +73,8 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
                   <text value="CẬP NHẬT CTHD"/>
                 </properties>
               </component>

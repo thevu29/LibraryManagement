@@ -132,6 +132,7 @@ public class CTHDGUI {
                     else{
                         JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
                         showAll();
+                        bus.updateStatusBook(maSeri,"AVAILABLE");
                     }
                 }
                 else{
@@ -156,6 +157,7 @@ public class CTHDGUI {
                     CTHD temp = ds.get(0);
                     CTHDFD dialog = new CTHDFD(temp,CTHDGUI.this);
                     dialog.pack();
+                    dialog.setLocationRelativeTo(null);
                     dialog.setVisible(true);
                 }
 
@@ -166,6 +168,7 @@ public class CTHDGUI {
             public void actionPerformed(ActionEvent e) {
                 CTHDFD dialog = new CTHDFD(CTHDGUI.this,maHD);
                 dialog.pack();
+                dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
             }
         });

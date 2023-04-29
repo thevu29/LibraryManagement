@@ -45,12 +45,17 @@ public class BookBUS {
         this.genreDAO = new GenreDAO();
         this.publisherDAO = new PublisherDAO();
         this.importerDAO = new ImporterDAO();
+        resetData();
+    }
+
+    public void resetData() {
         bookDataTableModel.setRows(bookDAO.getAllFromDatabase());
         authorDataTableModel.setRows(authorDAO.getAllFromDatabase());
         publisherDataTableModel.setRows(publisherDAO.getAllFromDatabase());
         genreDataTableModel.setRows(genreDAO.getAllFromDatabase());
         importerTableModel.setRows(importerDAO.getAllFromDatabase());
     }
+
     //endregion
 
     //region MODEL
@@ -81,6 +86,7 @@ public class BookBUS {
     private void openBookEditDialog(Book book, String title, int mode) {
         var dialog = new BookEditorDialog(book, this, title, mode);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -133,6 +139,7 @@ public class BookBUS {
     private void openAuthorEditDialog(Author author, String title) {
         var dialog = new AuthorDialog(author, authorDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -204,6 +211,7 @@ public class BookBUS {
     private void openGenreEditDialog(Genre genre, String title) {
         var dialog = new GenreDialog(genre, genreDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -259,6 +267,7 @@ public class BookBUS {
     private void openPublisherEditDialog(Publisher publisher, String title) {
         var dialog = new PublisherDialog(publisher, publisherDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -313,6 +322,7 @@ public class BookBUS {
     private void openImporterEditDialog(Importer importer, String title) {
         var dialog = new ImporterDialog(importer, importerTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 

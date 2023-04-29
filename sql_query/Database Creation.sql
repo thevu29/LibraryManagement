@@ -34,7 +34,7 @@ CREATE TABLE `AUTHOR` (
                           `GIOI_TINH` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                           `IS_DELETED` tinyint(1) NOT NULL,
                           PRIMARY KEY (`MA_TG`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +70,7 @@ CREATE TABLE `BOOK` (
                         PRIMARY KEY (`MA_SERIES`),
                         KEY `BOOK_IMPORTED_FROM_ID_fk` (`MA_NHA_NHAP`),
                         CONSTRAINT `BOOK_IMPORTED_FROM_ID_fk` FOREIGN KEY (`MA_NHA_NHAP`) REFERENCES `IMPORTED_FROM` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -87,7 +87,6 @@ UNLOCK TABLES;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -132,7 +131,7 @@ CREATE TABLE `BOOK_AUTHOR` (
                                KEY `FK_BA_AUTHOR_MATG` (`MA_TG`),
                                CONSTRAINT `FK_BA_AUTHOR_MATG` FOREIGN KEY (`MA_TG`) REFERENCES `AUTHOR` (`MA_TG`),
                                CONSTRAINT `FK_BAU_BOOK_MASACH` FOREIGN KEY (`MA_SERIES`) REFERENCES `BOOK` (`MA_SERIES`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,7 +159,7 @@ CREATE TABLE `BOOK_BOOK_FAULT` (
                                    KEY `FK_BF_BBF_MALOI` (`MA_LOI`),
                                    CONSTRAINT `FK_BF_BBF_MALOI` FOREIGN KEY (`MA_LOI`) REFERENCES `BOOK_FAULT` (`MA_LOI`),
                                    CONSTRAINT `FK_BOOK_BBF_MASERIES` FOREIGN KEY (`MA_SERIES`) REFERENCES `BOOK` (`MA_SERIES`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +184,7 @@ CREATE TABLE `BOOK_FAULT` (
                               `HE_SO` double DEFAULT NULL,
                               `IS_DELETED` int DEFAULT NULL,
                               PRIMARY KEY (`MA_LOI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +211,7 @@ CREATE TABLE `BOOK_GENRE` (
                               KEY `FK_BG_GENRE_MATL` (`MA_TL`),
                               CONSTRAINT `FK_BG_BOOK_MASACH` FOREIGN KEY (`MA_SERIES`) REFERENCES `BOOK` (`MA_SERIES`),
                               CONSTRAINT `FK_BG_GENRE_MATL` FOREIGN KEY (`MA_TL`) REFERENCES `GENRE` (`MA_TL`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,7 +239,7 @@ CREATE TABLE `BOOK_PUBLISHER` (
                                   KEY `FK_BP_PUBLISHER_MA_NXB` (`MA_NXB`),
                                   CONSTRAINT `FK_BP_BOOK_MASACH` FOREIGN KEY (`MA_SERIES`) REFERENCES `BOOK` (`MA_SERIES`),
                                   CONSTRAINT `FK_BP_PUBLISHER_MA_NXB` FOREIGN KEY (`MA_NXB`) REFERENCES `PUBLISHER` (`MA_NXB`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +272,7 @@ CREATE TABLE `BORROW_BOOK_TICKET_FAULT` (
                                             KEY `FK__C` (`MA_PHIEU`,`MA_SERIES`),
                                             CONSTRAINT `FK__C` FOREIGN KEY (`MA_PHIEU`, `MA_SERIES`) REFERENCES `BORROW_TICKET_DETAILS` (`MA_PHIEU`, `MA_SERIES`),
                                             CONSTRAINT `FK_BF_BBTF_MA_CHITIET` FOREIGN KEY (`MA_LOI`) REFERENCES `BOOK_FAULT` (`MA_LOI`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -303,7 +302,7 @@ CREATE TABLE `BORROW_TICKET` (
                                  PRIMARY KEY (`MA_PHIEU`),
                                  KEY `FK_BT_MEM_MA_THE` (`MA_THE`),
                                  CONSTRAINT `FK_BT_MEM_MA_THE` FOREIGN KEY (`MA_THE`) REFERENCES `MEMBERSHIP` (`MA_THE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -319,7 +318,6 @@ UNLOCK TABLES;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -357,7 +355,7 @@ CREATE TABLE `BORROW_TICKET_DETAILS` (
                                          KEY `FK_BTD_BT_MA_PHIEU` (`MA_PHIEU`),
                                          CONSTRAINT `FK_BTD_BOOK_MASERIES` FOREIGN KEY (`MA_SERIES`) REFERENCES `BOOK` (`MA_SERIES`),
                                          CONSTRAINT `FK_BTD_BT_MA_PHIEU` FOREIGN KEY (`MA_PHIEU`) REFERENCES `BORROW_TICKET` (`MA_PHIEU`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +385,7 @@ CREATE TABLE `CUSTOMER` (
                             `GIOI_TINH` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                             `IS_DELETED` tinyint(1) NOT NULL,
                             PRIMARY KEY (`MA_KH`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -426,7 +424,7 @@ CREATE TABLE `EMPLOYEE` (
                             PRIMARY KEY (`MA_NV`),
                             KEY `FK_EMPL_EP_CHUCVU` (`CHUC_VU`),
                             CONSTRAINT `FK_EMPL_EP_CHUCVU` FOREIGN KEY (`CHUC_VU`) REFERENCES `EMPLOYEE_PERMISSION` (`CHUC_VU`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -450,7 +448,7 @@ CREATE TABLE `EMPLOYEE_PERMISSION` (
                                        `DESCRIPTION` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                                        `IS_DELETED` tinyint(1) DEFAULT NULL,
                                        PRIMARY KEY (`CHUC_VU`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -475,7 +473,7 @@ CREATE TABLE `GENRE` (
                          `MO_TA` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                          `IS_DELETED` tinyint(1) DEFAULT NULL,
                          PRIMARY KEY (`MA_TL`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -501,7 +499,7 @@ CREATE TABLE `IMPORTED_FROM` (
                                  `DESCRIPTION` varchar(1000) DEFAULT NULL,
                                  `IS_DELETED` tinyint(1) DEFAULT NULL,
                                  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -532,7 +530,7 @@ CREATE TABLE `MEMBERSHIP` (
                               KEY `FK_MEM_CUS_MAKH` (`MA_KH`),
                               CONSTRAINT `FK_MEM_CUS_MAKH` FOREIGN KEY (`MA_KH`) REFERENCES `CUSTOMER` (`MA_KH`),
                               CONSTRAINT `FK_MEM_MEMTYPE_DANG_THE` FOREIGN KEY (`DANG_THE`) REFERENCES `MEMBERSHIP_TYPE` (`DANG_THE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -556,7 +554,7 @@ CREATE TABLE `MEMBERSHIP_TYPE` (
                                    `GIA_GIAM` int DEFAULT NULL,
                                    `IS_DELETED` tinyint(1) DEFAULT NULL,
                                    PRIMARY KEY (`DANG_THE`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -584,7 +582,7 @@ CREATE TABLE `PUBLISHER` (
                              `DESCRIPTION` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
                              `IS_DELETED` tinyint(1) DEFAULT NULL,
                              PRIMARY KEY (`MA_NXB`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -614,7 +612,7 @@ CREATE TABLE `SELL_TICKET` (
                                KEY `SELL_TICKET_EMPLOYEE_MA_NV_fk` (`MA_NV`),
                                CONSTRAINT `FK_ST_CUS_MA_KH` FOREIGN KEY (`MA_KH`) REFERENCES `CUSTOMER` (`MA_KH`),
                                CONSTRAINT `SELL_TICKET_EMPLOYEE_MA_NV_fk` FOREIGN KEY (`MA_NV`) REFERENCES `EMPLOYEE` (`MA_NV`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -630,7 +628,6 @@ UNLOCK TABLES;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
 /*!50003 SET character_set_client  = utf8mb4 */ ;
 /*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -664,7 +661,7 @@ CREATE TABLE `SELL_TICKET_DETAILS` (
                                        KEY `FK_STD_ST_MAPH` (`MA_PHIEU`),
                                        CONSTRAINT `FK_STD_BOOK_MASERIES` FOREIGN KEY (`MA_SERIES`) REFERENCES `BOOK` (`MA_SERIES`),
                                        CONSTRAINT `FK_STD_ST_MAPH` FOREIGN KEY (`MA_PHIEU`) REFERENCES `SELL_TICKET` (`MA_PHIEU`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

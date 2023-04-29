@@ -21,7 +21,7 @@ public class test {
     private JScrollPane tblCart;
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("test");
+        JFrame frame = new JFrame("testExcel");
         frame.setContentPane(new test().maintest);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

@@ -1,8 +1,11 @@
 package MainForm;
 
 import Book.BUS.BookBUS;
-import Customer.ui.CustomerForm;
-
+import Borrow.GUI.BorrowUI;
+import Customer.GUI.CustomerForm;
+import NhanVien.form.NhanVienadmin;
+import Statistics.GUI.StatisticsForm;
+import sellBook.GUI.HoaDonGUI;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -10,6 +13,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MainWindow {
+    private BookBUS bookForm;
+    private CustomerForm customerForm;
+    private NhanVienadmin employeeForm;
+    private HoaDonGUI sellForm;
+    private BorrowUI borrowForm;
+    private StatisticsForm statisticsForm;
+
     public MainWindow() {
         setMargin();
         setCursor();
@@ -23,22 +33,42 @@ public class MainWindow {
 
                 if (e.getSource() == lblBook) {
                     card.show(contentPanel, "Book");
+                    bookForm.resetData();
                 } else if (e.getSource() == lblCustomer) {
                     card.show(contentPanel, "Customer");
+                } else if (e.getSource() == lblSell) {
+                    card.show(contentPanel, "Sell");
+                } else if (e.getSource() == lblEmployee) {
+                    card.show(contentPanel, "Employee");
+                } else if (e.getSource() == lblBorrow) {
+                    card.show(contentPanel, "Borrow");
+                } else if (e.getSource() == lblStatistics) {
+                    card.show(contentPanel, "Statistics");
                 }
             }
         };
         lblBook.addMouseListener(showContent);
         lblCustomer.addMouseListener(showContent);
+        lblSell.addMouseListener(showContent);
+        lblBorrow.addMouseListener(showContent);
+        lblEmployee.addMouseListener(showContent);
+        lblStatistics.addMouseListener(showContent);
     }
 
     public void initContentPanel() {
-
-        var bookForm = new BookBUS();
-        CustomerForm customerForm = new CustomerForm();
+        bookForm = new BookBUS();
+        customerForm = new CustomerForm();
+        employeeForm = new NhanVienadmin();
+        sellForm = new HoaDonGUI();
+        borrowForm = new BorrowUI();
+        statisticsForm = new StatisticsForm();
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
+        contentPanel.add("Borrow", borrowForm.getPanel1());
+        contentPanel.add("Employee", employeeForm.getMainPanel());
+        contentPanel.add("Sell", sellForm.getMain());
+        contentPanel.add("Statistics", statisticsForm.getMainPanel());
     }
 
     public void hover() {
@@ -55,6 +85,8 @@ public class MainWindow {
                     lblBorrow.setForeground(Color.RED);
                 } else if (e.getSource() == lblSell) {
                     lblSell.setForeground(Color.RED);
+                } else if (e.getSource() == lblStatistics) {
+                    lblStatistics.setForeground(Color.RED);
                 }
             }
 
@@ -70,6 +102,8 @@ public class MainWindow {
                     lblBorrow.setForeground(Color.BLACK);
                 } else if (e.getSource() == lblSell) {
                     lblSell.setForeground(Color.BLACK);
+                } else if (e.getSource() == lblStatistics) {
+                    lblStatistics.setForeground(Color.BLACK);
                 }
             }
         };
@@ -79,6 +113,7 @@ public class MainWindow {
         lblCustomer.addMouseListener(hover);
         lblBorrow.addMouseListener(hover);
         lblSell.addMouseListener(hover);
+        lblStatistics.addMouseListener(hover);
     }
 
     public void setCursor() {
@@ -87,6 +122,7 @@ public class MainWindow {
         lblCustomer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lblBorrow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lblSell.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblStatistics.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     public void setMargin() {
@@ -96,18 +132,16 @@ public class MainWindow {
         lblCustomer.setBorder(border);
         lblBorrow.setBorder(border);
         lblSell.setBorder(border);
+        lblStatistics.setBorder(border);
     }
 
     public static void main(String[] args) {
-
-
         JFrame frame = new JFrame("MainWindow");
         frame.setContentPane(new MainWindow().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1200, 600);
+        frame.setSize(1350, 600);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
     }
 
     private JPanel mainPanel;
@@ -118,4 +152,5 @@ public class MainWindow {
     private JLabel lblCustomer;
     private JLabel lblBorrow;
     private JLabel lblSell;
+    private JLabel lblStatistics;
 }

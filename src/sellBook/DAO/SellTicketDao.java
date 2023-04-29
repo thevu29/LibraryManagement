@@ -178,7 +178,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int removeHD(String id){
-        String sql = "UPDATE `SELL_TICKET` SET `IS_DELETED`=1 WHERE MA_PHIEU = "+id;
+        String sql = "UPDATE `SELL_TICKET` SET `IS_DELETED`=1 WHERE MA_PHIEU = '"+id+"'";
         int smt = 0;
         PreparedStatement pst = null;
         try {

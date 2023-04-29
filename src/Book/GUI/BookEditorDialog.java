@@ -64,6 +64,9 @@ public class BookEditorDialog extends JDialog {
 
         this.setTitle(title);
 
+        if (mode == 0) {
+            bookSerialCB.setEnabled(false);
+        }
         confirmAndAddBtn.addActionListener( e -> {
             onAddNew();
         });

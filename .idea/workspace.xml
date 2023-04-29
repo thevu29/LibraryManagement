@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="Finished all Dialog.">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="update phần chart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/Chart.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/Chart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/TestChart.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/TestChart.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
     </list>
-    <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="sellBook" />
+        <entry key="$PROJECT_DIR$" value="Nep" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -64,121 +58,184 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "sellBook-merge",
-    "last_opened_file_path": "D:/Programming/JetBrainProjects/IDEA/LibraryManagementGUI/src/MainGUI",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.new.ui",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;300&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/library/xmlbeans-5.1.1.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "MySQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;MySQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagementGUI\src\icons" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagement\Excel" />
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagement\library" />
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagementGUI\sql_query" />
       <recent name="J:\LapTrinhJava\LibraryManagementGUI\src\sellBook\GUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien" />
-      <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\form" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HoaDonGUI">
-    <configuration name="BookBUS" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Book.BUS.BookBUS" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Book.BUS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HoaDonGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDonGUI" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sellBook.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NhanVienC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="NhanVien.form.NhanVienC" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="NhanVien.form.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SellTicketBus" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.BUS.SellTicketBus" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sellBook.BUS.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="console_9.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <script-file value="$APPLICATION_CONFIG_DIR$/consoles/db/66791b84-4605-42de-9482-7c4f1f97ed67/console_9.sql" />
-      <script-mode>FILE</script-mode>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="FilteredDateComboBoxesExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="FilteredDateComboBoxesExample" />
+      <module name="LibraryManagementGUI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainForm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatistics (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatistics" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Statistics.GUI.StatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Statistics.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.test" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HoaDonGUI" />
-        <item itemvalue="Application.BookBUS" />
-        <item itemvalue="Database Script.console_9.sql" />
-        <item itemvalue="Application.SellTicketBus" />
-        <item itemvalue="Application.NhanVienC" />
+        <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.StatisticsForm" />
+        <item itemvalue="Application.MembershipStatisticsForm" />
+        <item itemvalue="Application.MembershipStatisticsForm" />
+        <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -186,7 +243,6 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="" />
-      <changelist id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="tét" comment="tét" />
       <created>1676216910792</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -307,7 +363,98 @@
       <option name="project" value="LOCAL" />
       <updated>1681309264489</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="sửa GUI">
+      <created>1682148244261</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682148244261</updated>
+    </task>
+    <task id="LOCAL-00012" summary="sửa GUI">
+      <created>1682148256317</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1682148256317</updated>
+    </task>
+    <task id="LOCAL-00013" summary="sửa GUI">
+      <created>1682149272776</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1682149272776</updated>
+    </task>
+    <task id="LOCAL-00014" summary="test statistics và thêm dữ liệu vào db">
+      <created>1682219406256</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1682219406256</updated>
+    </task>
+    <task id="LOCAL-00015" summary="test statistics và thêm dữ liệu vào db">
+      <created>1682219496216</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682219496216</updated>
+    </task>
+    <task id="LOCAL-00016" summary="test statistics và thêm dữ liệu vào db">
+      <created>1682219553054</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1682219553054</updated>
+    </task>
+    <task id="LOCAL-00017" summary="thêm 1 số hàm validate">
+      <created>1682234843206</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1682234843206</updated>
+    </task>
+    <task id="LOCAL-00018" summary="thêm filter by membership type trong chart">
+      <created>1682237220753</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1682237220753</updated>
+    </task>
+    <task id="LOCAL-00019" summary="thêm LoginForm">
+      <created>1682428743932</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1682428743932</updated>
+    </task>
+    <task id="LOCAL-00020" summary="export excel">
+      <created>1682665916894</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1682665916894</updated>
+    </task>
+    <task id="LOCAL-00021" summary="fix thêm sửa xóa">
+      <created>1682671324909</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1682671324909</updated>
+    </task>
+    <task id="LOCAL-00022" summary="import excel">
+      <created>1682748246251</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1682748246251</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update phần chart">
+      <created>1682752357073</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1682752357073</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,7 +471,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="sellBook" />
+                        <option value="customer" />
                       </list>
                     </value>
                   </entry>
@@ -341,38 +488,18 @@
     <MESSAGE value="Add database, mysql connector." />
     <MESSAGE value="hello" />
     <MESSAGE value="xong hoa don" />
-    <option name="LAST_COMMIT_MESSAGE" value="xong hoa don" />
+    <MESSAGE value="sửa GUI" />
+    <MESSAGE value="test statistics và thêm dữ liệu vào db" />
+    <MESSAGE value="thêm 1 số hàm validate" />
+    <MESSAGE value="thêm filter by membership type trong chart" />
+    <MESSAGE value="thêm LoginForm" />
+    <MESSAGE value="export excel" />
+    <MESSAGE value="fix thêm sửa xóa" />
+    <MESSAGE value="import excel" />
+    <MESSAGE value="update phần chart" />
+    <option name="LAST_COMMIT_MESSAGE" value="update phần chart" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java</url>
-          <line>167</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java</url>
-          <line>88</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java</url>
-          <line>84</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java</url>
-          <line>206</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="sellBook.DTO.CTHD" memberName="ma_series" />
@@ -384,31 +511,10 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowBookFaultUI.ic" NAME="BorrowBookFaultUI Coverage Results" MODIFIED="1680881584980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>BookFault.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1680852476402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowInfoUI__1_.ic" NAME="BorrowInfoUI (1) Coverage Results" MODIFIED="1681088889402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$MainWindow__2_.ic" NAME="MainWindow (2) Coverage Results" MODIFIED="1681203756773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>MainForm.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$Book_FaultUI__2_.ic" NAME="Book.FaultUI (2) Coverage Results" MODIFIED="1681011774234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Book.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultDetailInfoUI.ic" NAME="FaultDetailInfoUI Coverage Results" MODIFIED="1681288272989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>BookFault.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BookGUI.ic" NAME="BookGUI Coverage Results" MODIFIED="1681012002695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Book.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$Book_FaultUI.ic" NAME="Book.FaultUI Coverage Results" MODIFIED="1681009148570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Book.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultUI.ic" NAME="FaultUI Coverage Results" MODIFIED="1680970803626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowBookFaultUI.ic" NAME="BorrowBookFaultUI Coverage Results" MODIFIED="1680881584980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>BookFault.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1680879357459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
