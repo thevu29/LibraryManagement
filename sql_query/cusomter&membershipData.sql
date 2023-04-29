@@ -1,6 +1,6 @@
-use library_management;
+use LIBRARY_MANAGEMENT;
 
-insert into customer values
+insert into `CUSTOMER` values
 ('CUS001', 'Thế Vũ', '2003-08-29', 'HCM', '01234', 'vu@gmail.com', '0123456789', 'Nam', 0),
 ('CUS002', 'Minh Trí', '2003-08-29', 'HCM', '01234', 'tri@gmail.com', '0123456789', 'Nam', 0),
 ('CUS003', 'Ngọc Huy', '2003-08-29', 'HCM', '01234', 'huy@gmail.com', '0123456789', 'Nam', 0),
@@ -32,9 +32,9 @@ insert into customer values
 ('CUS029', 'Thiên Quốc', '2003-08-29', 'HCM', '01234', 'quoc@gmail.com', '0123456789', 'Nam', 0),
 ('CUS030', 'Trung Kha', '2003-08-29', 'HCM', '01234', 'kha@gmail.com', '0123456789', 'Nam', 0);
 
-insert into membership_type values ('Bạc', 10, 0), ('Vàng', 20, 0), ('Bạch Kim', 30, 0);
+insert into `MEMBERSHIP_TYPE` values ('Bạc', 10, 0), ('Vàng', 20, 0), ('Bạch Kim', 30, 0);
 
-insert into membership values
+insert into `MEMBERSHIP` values
 ('MEM001', 'CUS001', 'Bạc', '2023-09-28', '2024-09-28', 0),
 ('MEM002', 'CUS004', 'Vàng', '2023-07-28', '2024-07-28', 0),
 ('MEM003', 'CUS005', 'Bạch Kim', '2023-08-28', '2024-07-28', 0),

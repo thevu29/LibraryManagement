@@ -14,7 +14,7 @@ public class MembershipTypeDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from membership_type");
+            ResultSet rs = stmt.executeQuery("select * from `MEMBERSHIP_TYPE`");
 
             while (rs.next()) {
                 String membershipName = rs.getString("DANG_THE");
@@ -34,7 +34,7 @@ public class MembershipTypeDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "select * from membership_type " + "where DANG_THE = " + "'" + name + "'";
+            String query = "select * from `MEMBERSHIP_TYPE` " + "where DANG_THE = " + "'" + name + "'";
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
@@ -55,7 +55,7 @@ public class MembershipTypeDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "insert into membership_type values (?, ?, ?)";
+            String query = "insert into `MEMBERSHIP_TYPE` values (?, ?, ?)";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setString(1, membershipType.getMembershipTypeName());
@@ -76,7 +76,7 @@ public class MembershipTypeDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "update membership_type set GIA_GIAM = ?, IS_DELETED = ? " + "where DANG_THE = ?";
+            String query = "update `MEMBERSHIP_TYPE` set GIA_GIAM = ?, IS_DELETED = ? " + "where DANG_THE = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setInt(1, membershipType.getDiscount());
@@ -97,7 +97,7 @@ public class MembershipTypeDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "update membership_type set IS_DELETED = ? " + "where DANG_THE = ?";
+            String query = "update `MEMBERSHIP_TYPE` set IS_DELETED = ? " + "where DANG_THE = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setInt(1, 1);
@@ -117,7 +117,7 @@ public class MembershipTypeDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "update membership_type set GIA_GIAM = ? " + "where DANG_THE = ?";
+            String query = "update `MEMBERSHIP_TYPE` set GIA_GIAM = ? " + "where DANG_THE = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setInt(1, membershipType.getDiscount());

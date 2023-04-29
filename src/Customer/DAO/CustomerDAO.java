@@ -18,7 +18,7 @@ public class CustomerDAO {
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select C.MA_KH, TEN, NGAY_SINH, DIA_CHI, CCCD, EMAIL, PHONE, GIOI_TINH, M.DANG_THE, M.NGAY_DK, M.NGAY_HH, C.IS_DELETED " +
-                    "from customer C LEFT JOIN membership M on C.MA_KH = M.MA_KH and M.IS_DELETED = 0");
+                    "from `CUSTOMER` C LEFT JOIN `MEMBERSHIP` M on C.MA_KH = M.MA_KH and M.IS_DELETED = 0");
 
             while (rs.next()) {
                 String id = rs.getString("MA_KH");
@@ -56,7 +56,7 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "insert into customer values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String query = "insert into `CUSTOMER` values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setString(1, customer.getCustomerId());
@@ -88,7 +88,7 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "insert into membership values (?, ?, ?, ?, ?, ?)";
+            String query = "insert into `MEMBERSHIP` values (?, ?, ?, ?, ?, ?)";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             int length = getMembershipLength() + 1;
@@ -116,7 +116,7 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "update customer set IS_DELETED = ? " + "where MA_KH = ?";
+            String query = "update `CUSTOMER` set IS_DELETED = ? " + "where MA_KH = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setInt(1, 1);
@@ -138,7 +138,7 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "update membership set IS_DELETED = ? " + "where MA_KH = ?";
+            String query = "update `MEMBERSHIP` set IS_DELETED = ? " + "where MA_KH = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setInt(1, 1);
@@ -158,7 +158,7 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "delete from membership where MA_KH = ?";
+            String query = "delete from `MEMBERSHIP` where MA_KH = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
             ptmt.setString(1, customerId);
@@ -177,7 +177,7 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
 
-            String query = "update customer set TEN = ?, NGAY_SINH = ?, DIA_CHI = ?, CCCD = ?, EMAIL = ?, PHONE = ?, GIOI_TINH = ? " +
+            String query = "update `CUSTOMER` set TEN = ?, NGAY_SINH = ?, DIA_CHI = ?, CCCD = ?, EMAIL = ?, PHONE = ?, GIOI_TINH = ? " +
                     "where MA_KH = ?";
             PreparedStatement ptmt = conn.prepareStatement(query);
 
@@ -214,7 +214,7 @@ public class CustomerDAO {
                 boolean isMembership = new CustomerBUS().findMembershipByCustomerId(customer.getCustomerId()) != null ? true : false;
 
                 if (isMembership) {
-                    String query = "update membership set DANG_THE = ?, NGAY_DK = ?, NGAY_HH = ?, IS_DELETED = 0 " + "where MA_KH = ?";
+                    String query = "update `MEMBERSHIP` set DANG_THE = ?, NGAY_DK = ?, NGAY_HH = ?, IS_DELETED = 0 " + "where MA_KH = ?";
                     PreparedStatement ptmt = conn.prepareStatement(query);
 
                     ptmt.setString(1, customer.getMembership());
@@ -242,7 +242,7 @@ public class CustomerDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select count(*) as Length from membership");
+            ResultSet rs = stmt.executeQuery("select count(*) as Length from `MEMBERSHIP`");
 
             if (rs.next()) {
                 cnt = rs.getInt("Length");
