@@ -128,7 +128,7 @@ public class SellTicketDao extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `sell_ticket` ");
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `SELL_TICKET` ");
             if (!rs.next()) {
                 return "HD1";
             }
@@ -224,7 +224,7 @@ public class SellTicketDao extends DefaultConnection {
     public DefaultCategoryDataset laySoLieuTheoThang(){
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         String rowKey = "Hoa Don";
-        String sql = "SELECT COUNT(MA_PHIEU) as slgHD,Month(CREATED_AT) as thang FROM `sell_ticket` WHERE IS_DELETED = 0  GROUP BY month(CREATED_AT)  ORDER BY thang ASC";
+        String sql = "SELECT COUNT(MA_PHIEU) as slgHD,Month(CREATED_AT) as thang FROM `SELL_TICKET` WHERE IS_DELETED = 0  GROUP BY month(CREATED_AT)  ORDER BY thang ASC";
         Statement stmt = null;
         try {
             stmt = getConnect().createStatement();
@@ -244,7 +244,7 @@ public class SellTicketDao extends DefaultConnection {
     public DefaultCategoryDataset laySoLieuTheoNam(){
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         String rowKey = "Hoa Don";
-        String sql = "SELECT COUNT(MA_PHIEU) as slgHD,Year(CREATED_AT) as nam FROM `sell_ticket` WHERE IS_DELETED = 0 GROUP BY YEAR(CREATED_AT) ORDER BY nam ASC";
+        String sql = "SELECT COUNT(MA_PHIEU) as slgHD,Year(CREATED_AT) as nam FROM `SELL_TICKET` WHERE IS_DELETED = 0 GROUP BY YEAR(CREATED_AT) ORDER BY nam ASC";
         Statement stmt = null;
         try {
             stmt = getConnect().createStatement();
@@ -262,7 +262,7 @@ public class SellTicketDao extends DefaultConnection {
 
     public DefaultCategoryDataset thongKeTheoNam(int nam){
         String sql = "SELECT COUNT(MA_PHIEU) as slgHD, Year(CREATED_AT) as nam, MONTH(CREATED_AT) as thang \n" +
-                "FROM `sell_ticket` \n" +
+                "FROM `SELL_TICKET` \n" +
                 "WHERE YEAR(CREATED_AT) = "+nam+" AND IS_DELETED = 0 \n" +
                 "GROUP BY Year(CREATED_AT), MONTH(CREATED_AT)\n";
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -301,10 +301,10 @@ public class SellTicketDao extends DefaultConnection {
                 "YEAR(CREATED_AT) as nam,\n" +
                 "MONTH(CREATED_AT) as thang,\n" +
                 "SUM(CAST(book.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO) as tongTien\n" +
-                "FROM sell_ticket\n" +
-                "INNER JOIN sell_ticket_details ON sell_ticket_details.MA_PHIEU = sell_ticket.MA_PHIEU\n" +
-                "INNER JOIN BOOK ON book.MA_SERIES = sell_ticket_details.MA_SERIES\n" +
-                "WHERE Year(sell_ticket.CREATED_AT) = "+nam+" and sell_ticket.IS_DELETED = 0 AND sell_ticket_details.IS_DELETED = 0\n" +
+                "FROM SELL_TICKET\n" +
+                "INNER JOIN SELL_TICKET_DETAILS ON SELL_TICKET_DETAILS.MA_PHIEU = SELL_TICKET.MA_PHIEU\n" +
+                "INNER JOIN BOOK ON book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
+                "WHERE Year(SELL_TICKET.CREATED_AT) = "+nam+" and SELL_TICKET.IS_DELETED = 0 AND SELL_TICKET_DETAILS.IS_DELETED = 0\n" +
                 "GROUP BY YEAR(CREATED_AT), MONTH(CREATED_AT)\n" +
                 "ORDER BY YEAR(CREATED_AT) ASC, MONTH(CREATED_AT) ASC;";
         Statement stmt = null;

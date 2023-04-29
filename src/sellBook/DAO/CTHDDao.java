@@ -171,7 +171,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public int hiddenCTHD(String maHD){
-        String sql = "UPDATE `sell_ticket_details` SET `IS_DELETED`=1 WHERE MA_PHIEU = ?";
+        String sql = "UPDATE `SELL_TICKET_DETAILS` SET `IS_DELETED`=1 WHERE MA_PHIEU = ?";
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -241,12 +241,12 @@ public class CTHDDao extends DefaultConnection {
 
     public DefaultCategoryDataset thongKeSLGSachBanTheoThang(){
         String sql = "SELECT  COUNT(book.MA_SERIES) as slgSach,YEAR(CREATED_AT) as nam, MONTH(CREATED_AT) as thang \n" +
-                "FROM `sell_ticket_details`\n" +
-                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES\n" +
-                "INNER JOIN sell_ticket on sell_ticket.MA_PHIEU=sell_ticket_details.MA_PHIEU\n" +
-                "WHERE sell_ticket_details.IS_DELETED =0\n" +
-                "GROUP BY sell_ticket_details.MA_PHIEU,YEAR(sell_ticket.CREATED_AT), MONTH(sell_ticket.CREATED_AT)\n" +
-                "ORDER BY YEAR(sell_ticket.CREATED_AT) ASC, MONTH(sell_ticket.CREATED_AT) ASC";
+                "FROM `SELL_TICKET_DETAILS`\n" +
+                "INNER JOIN book on book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
+                "INNER JOIN SELL_TICKET on SELL_TICKET.MA_PHIEU=SELL_TICKET_DETAILS.MA_PHIEU\n" +
+                "WHERE SELL_TICKET_DETAILS.IS_DELETED =0\n" +
+                "GROUP BY SELL_TICKET_DETAILS.MA_PHIEU,YEAR(SELL_TICKET.CREATED_AT), MONTH(SELL_TICKET.CREATED_AT)\n" +
+                "ORDER BY YEAR(SELL_TICKET.CREATED_AT) ASC, MONTH(SELL_TICKET.CREATED_AT) ASC";
         Statement stmt = null;
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         try {
@@ -267,11 +267,11 @@ public class CTHDDao extends DefaultConnection {
 
     public DefaultCategoryDataset thongKeSachBanTheoNam(int nam){
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        String sql ="SELECT COUNT(sell_ticket_details.MA_SERIES) as slgSach,Month(sell_ticket.CREATED_AT) as thang FROM `sell_ticket_details` \n" +
-                "INNER JOIN sell_ticket on sell_ticket_details.MA_PHIEU=sell_ticket.MA_PHIEU \n" +
-                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES \n" +
-                "WHERE Year(sell_ticket.CREATED_AT) = "+nam+" and sell_ticket_details.IS_DELETED = 0 \n" +
-                "GROUP BY Year(sell_ticket.CREATED_AT),thang";
+        String sql ="SELECT COUNT(SELL_TICKET_DETAILS.MA_SERIES) as slgSach,Month(SELL_TICKET.CREATED_AT) as thang FROM `SELL_TICKET_DETAILS` \n" +
+                "INNER JOIN SELL_TICKET on SELL_TICKET_DETAILS.MA_PHIEU=SELL_TICKET.MA_PHIEU \n" +
+                "INNER JOIN book on book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES \n" +
+                "WHERE Year(SELL_TICKET.CREATED_AT) = "+nam+" and SELL_TICKET_DETAILS.IS_DELETED = 0 \n" +
+                "GROUP BY Year(SELL_TICKET.CREATED_AT),thang";
         Statement stmt = null;
         String rowKey = "slgSach";
         double[] slgSach = new double[12];
@@ -301,12 +301,12 @@ public class CTHDDao extends DefaultConnection {
     public DefaultPieDataset thongKeSoLoaiSach(){
         DefaultPieDataset dataset = new DefaultPieDataset();
         String sql ="SELECT  COUNT(book_genre.MA_SERIES) as slgSach,genre.TEN_TL as tl " +
-                "FROM `sell_ticket_details` " +
-                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES " +
-                "INNER JOIN sell_ticket on sell_ticket.MA_PHIEU=sell_ticket_details.MA_PHIEU " +
+                "FROM `SELL_TICKET_DETAILS` " +
+                "INNER JOIN book on book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES " +
+                "INNER JOIN SELL_TICKET on SELL_TICKET.MA_PHIEU=SELL_TICKET_DETAILS.MA_PHIEU " +
                 "INNER JOIN book_genre on book.MA_SERIES = book_genre.MA_SERIES\n" +
                 "INNER JOIN genre on book_genre.MA_TL = genre.MA_TL " +
-                "WHERE sell_ticket_details.IS_DELETED =0 " +
+                "WHERE SELL_TICKET_DETAILS.IS_DELETED =0 " +
                 "GROUP BY book_genre.MA_TL";
         Statement stmt = null;
         try {

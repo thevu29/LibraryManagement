@@ -133,7 +133,7 @@ public class BookDAO extends DefaultConnection {
     public DefaultPieDataset thongKeTrangThaiSach(){
         DefaultPieDataset dataset = new DefaultPieDataset();
 
-        String sql ="SELECT COUNT(MA_SERIES) as slg, TRANG_THAI FROM `book` GROUP BY TRANG_THAI";
+        String sql ="SELECT COUNT(MA_SERIES) as slg, TRANG_THAI FROM `BOOK` GROUP BY TRANG_THAI";
         Statement stmt = null;
         try {
             stmt = getConnect().createStatement();
@@ -152,9 +152,6 @@ public class BookDAO extends DefaultConnection {
     public static void main(String[] args) {
         BookDAO b = new BookDAO();
         b.changeTrangThaiSach("5_4","AVAILABLE");
-
-
-
     }
 
 }
