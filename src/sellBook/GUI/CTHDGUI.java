@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class CTHDGUI {
     private JButton btnXoaMaSeri;
     private JButton btnAdd;
     private JTextField txtTongHD;
+    private JButton XEMTHỐNGKÊButton;
     private String maHD;
     DefaultTableModel dtm = new DefaultTableModel();
     CTHDBus bus = new CTHDBus();
@@ -132,6 +134,7 @@ public class CTHDGUI {
                     else{
                         JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
                         showAll();
+                        bus.updateStatusBook(maSeri,"AVAILABLE");
                     }
                 }
                 else{
@@ -156,6 +159,7 @@ public class CTHDGUI {
                     CTHD temp = ds.get(0);
                     CTHDFD dialog = new CTHDFD(temp,CTHDGUI.this);
                     dialog.pack();
+                    dialog.setLocationRelativeTo(null);
                     dialog.setVisible(true);
                 }
 
@@ -166,7 +170,26 @@ public class CTHDGUI {
             public void actionPerformed(ActionEvent e) {
                 CTHDFD dialog = new CTHDFD(CTHDGUI.this,maHD);
                 dialog.pack();
+                dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
+            }
+        });
+        XEMTHỐNGKÊButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> dsOpt = new ArrayList<>();
+                dsOpt.add("THỐNG KÊ SỐ SÁCH BÁN THEO NĂM");// COLLUMN CHART
+                dsOpt.add("THỐNG KÊ SỐ SÁCH THEO THÁNG");//PIE CHART
+                dsOpt.add("THỐNG KÊ SỐ LOẠI ĐƯỢC BÁN");//PIE CHART
+
+                int nam = Year.now().getValue();
+
+                var tk = new ChartCTHD(bus.thongKeSachBanTheoNam(nam),dsOpt);
+                JFrame frame = new JFrame("Thong Ke");
+                frame.setContentPane(tk.getMain());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
             }
         });
     }

@@ -29,4 +29,8 @@ public class BookGenre {
     public String toString() {
         return name;
     }
+
+    public String toDialogString() {
+        return id + ", " + name;
+    }
 }

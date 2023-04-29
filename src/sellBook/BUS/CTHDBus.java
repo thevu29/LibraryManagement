@@ -1,12 +1,18 @@
 package sellBook.BUS;
 
+import Book.DAO.BookDAO;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import sellBook.DAO.CTHDDao;
 import sellBook.DTO.CTHD;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CTHDBus {
     private CTHDDao cthd ;
+
+    public BookDAO book = new BookDAO();
 
     public CTHDBus() {
         this.cthd = new CTHDDao();
@@ -56,6 +62,29 @@ public class CTHDBus {
     }
     public int updateStatusBook(String MaSeri,String tt){
         return cthd.changeTrangThaiSach(MaSeri,tt);
+    }
+
+    public void xoaHD(String maHD){
+        cthd.hiddenCTHD(maHD);
+        ArrayList<CTHD> dsCthd = cthd.getDsCTHD(maHD);
+        if(!dsCthd.isEmpty()){
+            for (CTHD ct:dsCthd) {
+                System.out.println("Hello");
+                System.out.println(ct.getMa_series());
+                book.changeTrangThaiSach(ct.getMa_series(),"AVAILABLE");
+            }
+        }
+
+    }
+    public DefaultCategoryDataset thongKeSlgSachBan(){
+        return cthd.thongKeSLGSachBanTheoThang();
+    }
+
+    public DefaultPieDataset thongKeSoLoaiDcBan(){
+        return cthd.thongKeSoLoaiSach();
+    }
+    public DefaultCategoryDataset thongKeSachBanTheoNam(int nam){
+        return cthd.thongKeSachBanTheoNam(nam);
     }
 
     public static void main(String[] args) {

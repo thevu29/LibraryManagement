@@ -1,7 +1,6 @@
 package Book.DAO;
 
 import Book.DTO.Author;
-import Book.DTO.Book;
 import Core.DefaultConnection;
 
 import java.sql.PreparedStatement;
@@ -33,7 +32,7 @@ public class AuthorDAO extends DefaultConnection {
         return authors;
     }
 
-    public boolean isIDDuplicate(String id) {
+    public boolean isIDExist(String id) {
         PreparedStatement stmt = null;
         try {
             stmt = getConnection().prepareStatement("SELECT MA_TG FROM AUTHOR WHERE MA_TG=?");
@@ -48,7 +47,7 @@ public class AuthorDAO extends DefaultConnection {
     public void update(Author author) {
         PreparedStatement stmt = null;
         try {
-            if (isIDDuplicate(author.getId())) {
+            if (isIDExist(author.getId())) {
                 stmt = getConnection()
                         .prepareStatement("UPDATE AUTHOR SET TEN_TG=?, EMAIL=?,GIOI_THIEU=?,GIOI_TINH=? WHERE MA_TG=?");
                 stmt.setString(1, author.getName());
@@ -79,9 +78,9 @@ public class AuthorDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            var rs = stmt.executeQuery("SELECT MA_TG FROM AUTHOR WHERE MA_TG=(SELECT max(MA_TG) FROM AUTHOR)");
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_TG, 3) AS UNSIGNED)) AS MA_TG FROM AUTHOR");
             if (!rs.next()) {
-                return "TG0";
+                return "0";
             }
             return rs.getString("MA_TG");
         } catch (SQLException | ClassNotFoundException ex) {

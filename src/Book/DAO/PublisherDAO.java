@@ -1,6 +1,5 @@
 package Book.DAO;
 
-import Book.DTO.Genre;
 import Book.DTO.Publisher;
 import Core.DefaultConnection;
 
@@ -37,16 +36,16 @@ public class PublisherDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            var rs = stmt.executeQuery("SELECT MA_NXB FROM PUBLISHER WHERE MA_NXB=(SELECT max(MA_NXB) FROM PUBLISHER)");
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_NXB, 4) AS UNSIGNED)) AS MA_NXB FROM PUBLISHER");
             if (!rs.next()) {
-                return "NXB0";
+                return "0";
             }
             return rs.getString("MA_NXB");
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }
     }
-    public boolean isIDDuplicate(String id) {
+    public boolean isIDExist(String id) {
         PreparedStatement stmt = null;
         try {
             stmt = getConnection().prepareStatement("SELECT MA_NXB FROM PUBLISHER WHERE MA_NXB=?");
@@ -60,7 +59,7 @@ public class PublisherDAO extends DefaultConnection {
     public void update(Publisher publisher) {
         PreparedStatement stmt = null;
         try {
-            if (isIDDuplicate(publisher.getId())) {
+            if (isIDExist(publisher.getId())) {
                 stmt = getConnection()
                         .prepareStatement("UPDATE PUBLISHER SET TEN_NXB=?,EMAIL=?,DIA_CHI=?,PHONE=?,DESCRIPTION=? WHERE MA_NXB=?");
                 stmt.setString(1, publisher.getName());

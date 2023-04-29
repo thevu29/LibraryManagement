@@ -5,9 +5,10 @@ import Book.DAO.*;
 import Book.DTO.*;
 import Book.GUI.*;
 import Utils.ValidationContract.Validation;
+import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
-import java.util.Arrays;
+import java.util.Objects;
 
 public class BookBUS {
     //region FIELD
@@ -22,6 +23,7 @@ public class BookBUS {
     private final PublisherDAO publisherDAO;
     private final ImporterDataTableModel importerTableModel;
     private final ImporterDAO importerDAO;
+
     //endregion
 
     //region CONSTRUCTOR
@@ -45,12 +47,17 @@ public class BookBUS {
         this.genreDAO = new GenreDAO();
         this.publisherDAO = new PublisherDAO();
         this.importerDAO = new ImporterDAO();
+        resetData();
+    }
+
+    public void resetData() {
         bookDataTableModel.setRows(bookDAO.getAllFromDatabase());
         authorDataTableModel.setRows(authorDAO.getAllFromDatabase());
         publisherDataTableModel.setRows(publisherDAO.getAllFromDatabase());
         genreDataTableModel.setRows(genreDAO.getAllFromDatabase());
         importerTableModel.setRows(importerDAO.getAllFromDatabase());
     }
+
     //endregion
 
     //region MODEL
@@ -75,17 +82,26 @@ public class BookBUS {
 
 
     private void openNewBookDialog(Book book) {
-        openBookEditDialog(book, "Chỉnh sửa sách");
+        openBookEditDialog(book, "Chỉnh sửa sách", 0);
     }
 
-    private void openBookEditDialog(Book book, String title) {
-        var dialog = new BookEditorDialog(book, this, title);
+    private void openBookEditDialog(Book book, String title, int mode) {
+        var dialog = new BookEditorDialog(book, this, title, mode);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
+    public void openNewSubBookDialog(Book book) {
+        var series = bookDAO.getLatestSubSeries(book.getId());
+        var clonedBook = book.clone();
+        var newSeries = Integer.parseInt(series);
+        clonedBook.setId(book.getId().split("_")[0]+"_"+(newSeries+1));
+        openBookEditDialog(clonedBook, "Thêm sách", 1);
+    }
+
     public void openNewBookDialog() {
-        openBookEditDialog(Book.createBlankBook(), "Thêm sách");
+        openBookEditDialog(Book.createBlankBook(), "Thêm sách", 1);
     }
     public void openNewBookDialog(int coords) {
         var book = bookDataTableModel.get(coords);
@@ -108,7 +124,7 @@ public class BookBUS {
     //region AUTHOR
     public String getNewAuthorID() {
         var latestID = authorDAO.getLatestId();
-        var id = Integer.parseInt(latestID.split("TG")[1]);
+        var id = Integer.parseInt(latestID);
 
         return "TG"+ (id + 1);
     }
@@ -125,12 +141,13 @@ public class BookBUS {
     private void openAuthorEditDialog(Author author, String title) {
         var dialog = new AuthorDialog(author, authorDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
-    public boolean validateAuthor(Author author, int mode) {
+    public boolean validateAuthor(Author author) {
         var message = "";
-        if (mode == 0 && authorDAO.isIDDuplicate(author.getId())) {
+        if (authorDAO.isIDExist(author.getId())) {
             message += "ID trùng\n";
         }
 
@@ -179,7 +196,7 @@ public class BookBUS {
     }
 
     private String getNewGenreID() {
-        var id = Integer.parseInt(genreDAO.getLatestID().split("TL")[1]);
+        var id = Integer.parseInt(genreDAO.getLatestID());
         return "TL"+(id+1);
     }
 
@@ -196,6 +213,7 @@ public class BookBUS {
     private void openGenreEditDialog(Genre genre, String title) {
         var dialog = new GenreDialog(genre, genreDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -234,7 +252,7 @@ public class BookBUS {
     }
 
     private String getNewPublisherID() {
-        var id = Integer.parseInt(publisherDAO.getLatestID().split("NXB")[1]);
+        var id = Integer.parseInt(publisherDAO.getLatestID());
         return "NXB"+(id+1);
     }
 
@@ -251,6 +269,7 @@ public class BookBUS {
     private void openPublisherEditDialog(Publisher publisher, String title) {
         var dialog = new PublisherDialog(publisher, publisherDataTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -288,7 +307,7 @@ public class BookBUS {
     }
 
     private String getNewImporterID() {
-        var id = Integer.parseInt(importerDAO.getLatestID().split("IM")[1]);
+        var id = Integer.parseInt(importerDAO.getLatestID());
         return "IM"+(id+1);
     }
 
@@ -305,6 +324,7 @@ public class BookBUS {
     private void openImporterEditDialog(Importer importer, String title) {
         var dialog = new ImporterDialog(importer, importerTableModel, this, title);
         dialog.pack();
+        dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
@@ -337,6 +357,9 @@ public class BookBUS {
         frame.setVisible(true);
     }
 
+    public DefaultPieDataset thonngKeTinhTrangSach(){
+        return bookDAO.thongKeTrangThaiSach();
+    }
     public static void main(String[] args) {
         var authorModel = new AuthorDataTableModel();
         var bookModel = new BookDataTableModel();
@@ -349,5 +372,73 @@ public class BookBUS {
     }
 
 
+    public boolean validateBook(Book book, int mode) {
+        var message = "";
+        if (mode == 1) {
+            if (Objects.equals(book.getId(), "")) {
+                message += "Mã series không được để trống\n";
+            }
+            else if (!book.getId().contains("_")) {
+                message += "Mã series không hợp lệ\n";
+            }
 
+            if (bookDAO.isIDExist(book.getId())) {
+                message += "Mã series trùng\n";
+            }
+        }
+
+
+        for (var author: book.getAuthors()) {
+            if (Objects.equals(author.getId().trim(), "")) {
+                continue;
+            }
+
+            if (!authorDAO.isIDExist(author.getId())) {
+                message += "Mã tác giả " + author.getId() + " không hợp lệ\n";
+            }
+        }
+
+        var pub = book.getPublisher();
+        if (!Objects.equals(pub.getId().trim(), "")) {
+            if (!publisherDAO.isIDExist(pub.getId())) {
+                message += "Mã NXB " + pub.getId() + " không hợp lệ\n";
+            }
+        }
+
+        for (var genre : book.getGenre()) {
+            if (Objects.equals(genre.getId().trim(), "")) {
+                continue;
+            }
+
+            if (!genreDAO.isIDExist(genre.getId())) {
+                message += "Mã thể loại " + genre.getId() + " không hợp lệ\n";
+            }
+        }
+
+        var imp = book.getImporter();
+        if (!Objects.equals(imp.getId().trim(), "")) {
+            if (!importerDAO.isIDExist(imp.getId())) {
+                message += "Mã nhà nhập " + imp.getId() + " không hợp lệ\n";
+            }
+        }
+
+        if (Objects.equals(book.getLocation().strip(), "")) {
+            message += "Vị tri không được để trống\n";
+        }
+
+
+
+
+        if (!message.equals("")) {
+            JOptionPane.showConfirmDialog(null, message, "Giá trị nhập không hợp lệ", JOptionPane.OK_CANCEL_OPTION);
+            return false;
+        }
+
+        return true;
+    }
+
+    public void commitBook(Book book) {
+        bookDAO.update(book);
+        bookDataTableModel.setRows(bookDAO.getAllFromDatabase());
+    }
 }
