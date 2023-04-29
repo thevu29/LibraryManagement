@@ -34,9 +34,6 @@ public class FaultInfor extends JFrame {
         btnReset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!isEditMode) {
-                    txtFaultId.setText("");
-                }
                 txtTenLoi.setText("");
                 txtHeSo.setText("");
 
@@ -55,19 +52,15 @@ public class FaultInfor extends JFrame {
 
         FaultModel faultModel = BorrowUI.faultModel;
 
-        if(faultModel.checkID(id)){
-            JOptionPane.showMessageDialog(null, "Mã lỗi đã tồn tại", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
         String tenLoi = txtTenLoi.getText();
         double heSo = Double.parseDouble(txtHeSo.getText());
         int isDeleted = 1;
 
-        faultModel.addData(id,tenLoi,heSo);
         faultBUS.insert(new Fault(id,tenLoi,heSo));
+        faultModel.initModelTable(faultBUS.getDsLoi());
         JOptionPane.showMessageDialog(null, "Thêm lỗi thành công");
         dispose();
+        txtFaultId.setEnabled(true);
     }
 
     public void editFault() {
@@ -89,31 +82,35 @@ public class FaultInfor extends JFrame {
     }
 
     public boolean validateEmpty() {
-//        StringBuilder sb = new StringBuilder();
-//
-//        if (txtFaultId.getText().equals("")) {
-//            sb.append("Mã khách hàng không được để trống \n");
-//        }
-//        if (txtTenLoi.getText().equals("")) {
-//            sb.append("Tên khách hàng không được để trống \n");
-//        }
-//        if (txtHeSo.getText().equals("")) {
-//            sb.append("Ngày sinh không được để trống \n");
-//        }
-//        if (txtCustomerAddress.getText().equals("")) {
-//            sb.append("Địa chỉ không được để trống \n");
-//        }
-//        if (txtCustomerEmail.getText().equals("")) {
-//            sb.append("Email không được để trống \n");
-//        }
-//        if (txtCustomerPhone.getText().equals("")) {
-//            sb.append("Số điện thoại không được để trống \n");
-//        }
-//
-//        if (sb.length() > 0) {
-//            JOptionPane.showMessageDialog(null, sb.toString(), "Warning", JOptionPane.WARNING_MESSAGE);
-//            return false;
-//        }
+        StringBuilder sb = new StringBuilder();
+
+        if (txtFaultId.getText().equals("")) {
+            sb.append("Mã lỗi không được để trống \n");
+        }
+        if (txtTenLoi.getText().equals("")) {
+            sb.append("Tên lỗi không được để trống \n");
+        }
+        if (txtHeSo.getText().equals("")) {
+            sb.append("Hệ số không được để trống \n");
+        }else{
+            try
+            {
+                double heSo = Double.parseDouble(txtHeSo.getText());
+                if(heSo<=0){
+                    sb.append("Hệ số không hợp lệ \n");
+                }
+            }
+            catch (NumberFormatException e)
+            {
+                sb.append("Hệ số không hợp lệ \n");
+            }
+        }
+
+
+        if (sb.length() > 0) {
+            JOptionPane.showMessageDialog(null, sb.toString(), "Warning", JOptionPane.WARNING_MESSAGE);
+            return false;
+        }
         return true;
     }
     
@@ -130,10 +127,8 @@ public class FaultInfor extends JFrame {
         txtTenLoi.setText(tenLoi);
         txtHeSo.setText(heSo);
 
-        txtFaultId.setEnabled(!isEditMode);
+        txtFaultId.setEnabled(false);
     }
-
-
 
     public JPanel getContentPane() {
         return panel1;

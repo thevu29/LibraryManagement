@@ -1,5 +1,6 @@
 package Borrow;
 
+import Borrow.DTO.Fault;
 import Borrow.DTO.FaultDetail;
 import Utils.AbstractTableModelWithFilters;
 
@@ -9,13 +10,13 @@ import java.util.Objects;
 
 public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail> {
     private final String[] cols = {
-            "Mã Lỗi Chi Tiết",
-            "Mã Mượn Chi Tiết",
-            "Tên Độc Giả",
+            "Mã Phiếu Mượn",
+            "Mã Sách",
             "Tên Sách",
+            "Mã Lỗi",
             "Tên Lỗi",
             "Số Lượng",
-            "Tiền Đền",
+            "Tiền Phạt",
     };
 
     private boolean isEditable = true;
@@ -31,46 +32,39 @@ public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail>
         super();
     }
 
-    // add data test
-    public void addBlank() {
-         rows.add(FaultDetail.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public void addTestData() {
-         rows.add(FaultDetail.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public void deleteTestData(String id){
-        int index = 0;
-        for(FaultDetail row : rows) {
-            if(row.getMaChiTiet().equals(id)){
-                rows.remove(index);
-                return;
-            }
-            index++;
+    public void initModelTable(ArrayList<FaultDetail> dsLoiCT){
+        rows.clear();
+        for (FaultDetail item: dsLoiCT) {
+            rows.add(item);
+            fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
         }
+        fireTableDataChanged();
     }
 
-    public void renderTable(){
-        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+    public boolean checkTrung(String maSach,String maLoi){
+        for (FaultDetail item:
+             rows) {
+            if(item.getMaSach().equals(maSach)&&item.getMaLoi().equals(maLoi)){
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean isEditable() {
-        return isEditable;
+    public boolean checkTrungCN(String maSachTruoc,String maLoiTruoc,String maSach,String maLoi){
+        System.out.println(maSachTruoc+maLoiTruoc+maSach+maLoi);
+        for (FaultDetail item:
+                rows) {
+            boolean check = !item.getMaSach().equals(maSachTruoc)||!item.getMaLoi().equals(maLoiTruoc);
+            if(check&&item.getMaSach().equals(maSach)&&item.getMaLoi().equals(maLoi)){
+                return true;
+            }
+        }
+        return false;
     }
 
-    public void setEditable(boolean editable) {
-        isEditable = editable;
-    }
-
-    // chưa hiểu
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 6) {
-            return Integer.class;
-        }
         return super.getColumnClass(columnIndex);
     }
 
@@ -83,10 +77,6 @@ public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail>
         return isEditable;
     }
 
-    public void setValueAt(Object value, int row, int col) {
-        // rows.get(row).set(col, (String) value);
-        fireTableCellUpdated(row, col);
-    }
 
     @Override
     public int getRowCount() {
@@ -102,7 +92,6 @@ public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail>
     public Object getValueAt(int rowIndex, int columnIndex) {
         var borrowBookFault = rows.get(rowIndex);
         return translateValue(borrowBookFault, columnIndex);
-
     }
 
     @Override
@@ -111,28 +100,28 @@ public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail>
                 columnIndex)).toList();
     }
 
-    public Object translateValue(FaultDetail borrowBookFault, int columnIndex) {
+    public Object translateValue(FaultDetail faultDetail, int columnIndex) {
          switch (columnIndex) {
-         case 0 -> {
-         return borrowBookFault.getMaChiTiet();
-         }
-         case 1 -> {
-         return borrowBookFault.getMaLoi();
-         }
-         case 2 -> {
-         return borrowBookFault.getTenDocGia();
-         }
+             case 0 -> {
+                return faultDetail.getMaPhieuMuon();
+             }
+             case 1 -> {
+                return faultDetail.getMaSach();
+             }
+             case 2 -> {
+                return faultDetail.getTenSach();
+             }
              case 3 -> {
-                 return borrowBookFault.getTenSach();
+                 return faultDetail.getMaLoi();
              }
              case 4 -> {
-                 return borrowBookFault.getTenLoi();
+                 return faultDetail.getTenLoi();
              }
              case 5 -> {
-                 return borrowBookFault.getSoLuong();
+                 return faultDetail.getSoLuong();
              }
              case 6 -> {
-                 return borrowBookFault.getTienDen();
+                 return faultDetail.getTongTien();
              }
          }
         return null;
@@ -140,15 +129,8 @@ public class FaultDetailModel extends AbstractTableModelWithFilters<FaultDetail>
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        switch (col) {
-            case 2, 3, 4 -> {
-                var item = new ArrayList<String>();
-                rows.stream().map(book -> Objects.toString(translateValue(book, col))).forEach((elem) ->
-                        item.addAll(List.of(elem.split(","))));
-                return item;
-            }
-        }
         return rows.stream().map(book -> Objects.toString(translateValue(book, col))).toList();
     }
+
 
 }

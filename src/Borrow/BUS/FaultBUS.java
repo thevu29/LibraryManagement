@@ -13,26 +13,7 @@ public class FaultBUS {
     public ArrayList<Fault> getDsLoi(){
         return faultDAO.getDsLoi();
     }
-//    public List<String> getAllMaHD(){
-//        return hd.getMaHD();
-//    }
-//    public List<String> getAllMaNV(){
-//        return hd.getMaNV();
-//    }
-//    public List<String> getAllMaKH(){
-//        return hd.getMaKH();
-//    }
-//
-//    public List<HoaDon> filterMaHD(String maHD){
-//        return hd.locMaHD(maHD);
-//    }
-//    public List<HoaDon> filterMaNV(String maNV){
-//        return hd.locMaNV(maNV);
-//    }
-//    public List<HoaDon> filterMaKH(String maKH){
-//        return hd.locMaKH(maKH);
-//    }
-//
+
     public int insert(Fault fault){
         return faultDAO.insert(fault);
     }
@@ -49,5 +30,9 @@ public class FaultBUS {
         for (Fault fault: ds) {
             System.out.println(fault.getTenLoi());
         }
+    }
+
+    public String getML(){
+        return faultDAO.getML();
     }
 }

@@ -1,45 +1,36 @@
 package Borrow.DTO;
 
+import Borrow.BUS.BorrowBUS;
+
 public class BorrowDetail {
-    static int priceCounter = 0;
-    private String id;
-    private String maPhieuMuon;
+    private String maPhieu;
+    private String maSach;
     private String tenSach;
-    private String tenLoi;
-    private String soLuong;
-    private String giaTien;
+    private double tienTamTinh;
+    private double tienTong;
 
-    public BorrowDetail(String id, String maPhieuMuon, String tenSach, String tenLoi, String soLuong, String giaTien) {
-        this.id = id;
-        this.maPhieuMuon = maPhieuMuon;
+    public BorrowDetail(String maPhieu, String maSach, String tenSach, double tienTamTinh, double tienTong) {
+        this.maPhieu = maPhieu;
+        this.maSach = maSach;
         this.tenSach = tenSach;
-        this.tenLoi = tenLoi;
-        this.soLuong = soLuong;
-        this.giaTien = giaTien;
+        this.tienTamTinh = tienTamTinh;
+        this.tienTong = tienTong;
     }
 
-    public static int getPriceCounter() {
-        return priceCounter;
+    public String getMaPhieu() {
+        return maPhieu;
     }
 
-    public static void setPriceCounter(int priceCounter) {
-        BorrowDetail.priceCounter = priceCounter;
+    public void setMaPhieu(String maPhieu) {
+        this.maPhieu = maPhieu;
     }
 
-    public String getId() {
-        return id;
+    public String getMaSach() {
+        return maSach;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getMaPhieuMuon() {
-        return maPhieuMuon;
-    }
-
-    public void setMaPhieuMuon(String maPhieuMuon) {
-        this.maPhieuMuon = maPhieuMuon;
+    public void setMaSach(String maSach) {
+        this.maSach = maSach;
     }
 
     public String getTenSach() {
@@ -50,33 +41,19 @@ public class BorrowDetail {
         this.tenSach = tenSach;
     }
 
-    public String getTenLoi() {
-        return tenLoi;
+    public double getTienTamTinh() {
+        return tienTamTinh;
     }
 
-    public void setTenLoi(String tenLoi) {
-        this.tenLoi = tenLoi;
+    public void setTienTamTinh(double tienTamTinh) {
+        this.tienTamTinh = tienTamTinh;
     }
 
-    public String getSoLuong() {
-        return soLuong;
+    public double getTienTong() {
+        return tienTong;
     }
 
-    public void setSoLuong(String soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public String getGiaTien() {
-        return giaTien;
-    }
-
-    public void setGiaTien(String giaTien) {
-        this.giaTien = giaTien;
-    }
-
-    public static BorrowDetail createTestBook() {
-
-        return new BorrowDetail(String.valueOf(priceCounter),"Ma phieu "+priceCounter,"Tensach"+priceCounter,
-                "tenloi"+priceCounter,"soluong","giatien"+priceCounter++);
+    public void setTienTong(double tienTong) {
+        this.tienTong = tienTong;
     }
 }

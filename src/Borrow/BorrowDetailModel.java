@@ -1,5 +1,6 @@
 package Borrow;
 
+import Borrow.DTO.Borrow;
 import Borrow.DTO.BorrowDetail;
 import Utils.AbstractTableModelWithFilters;
 
@@ -9,15 +10,34 @@ import java.util.Objects;
 
 public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetail> {
     private final String[] cols = {
-            "Mã Chi Tiết",
             "Mã Phiếu Mượn",
+            "Mã Sách",
             "Tên Sách",
-            "Tên Lỗi",
-            "Số Lượng",
-            "Giá Tiền",
+            "Tiền Tạm Tính",
+            "Tiền Tổng",
     };
 
     private boolean isEditable = true;
+
+    public  boolean checkIdAdd(String maPhieu,String maSach){
+        for (BorrowDetail item:
+             rows) {
+            if(item.getMaPhieu().equals(maPhieu)&&item.getMaSach().equals(maSach)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public  boolean checkIdUpdate(String maSachTruoc,String maPhieu,String maSach){
+        for (BorrowDetail item:
+                rows) {
+            if(!item.getMaSach().equals(maSachTruoc) && item.getMaPhieu().equals(maPhieu)&&item.getMaSach().equals(maSach)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     // Contructor
     public BorrowDetailModel(boolean isEditable) {
@@ -30,32 +50,16 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
         super();
     }
 
-    // add data test
-    public void addBlank() {
-//         rows.add(BorrowDetail.createTestBook());
-        rows.add(BorrowDetail.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+    public void initModelTable(ArrayList<BorrowDetail> dsMuonCT){
+        rows.clear();
+        for (BorrowDetail borrowDetail: dsMuonCT) {
+            rows.add(borrowDetail);
+            fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
+        }
+        fireTableDataChanged();
     }
-
-    public void addTestData() {
-         rows.add(BorrowDetail.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public boolean isEditable() {
-        return isEditable;
-    }
-
-    public void setEditable(boolean editable) {
-        isEditable = editable;
-    }
-
-    // chưa hiểu
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 6) {
-            return Integer.class;
-        }
         return super.getColumnClass(columnIndex);
     }
 
@@ -69,7 +73,6 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
     }
 
     public void setValueAt(Object value, int row, int col) {
-        // rows.get(row).set(col, (String) value);
         fireTableCellUpdated(row, col);
     }
 
@@ -86,22 +89,19 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
     public Object translateValue(BorrowDetail borrowDetail, int columnIndex) {
         switch (columnIndex) {
             case 0 -> {
-                return borrowDetail.getId();
+                return borrowDetail.getMaPhieu();
             }
             case 1 -> {
-                return borrowDetail.getMaPhieuMuon();
+                return borrowDetail.getMaSach();
             }
             case 2 -> {
                 return borrowDetail.getTenSach();
             }
             case 3 -> {
-                return borrowDetail.getTenLoi();
+                return borrowDetail.getTienTamTinh();
             }
             case 4 -> {
-                return borrowDetail.getSoLuong();
-            }
-            case 5 -> {
-                return borrowDetail.getGiaTien();
+                return borrowDetail.getTienTong();
             }
         }
         return null;
@@ -126,14 +126,6 @@ public class BorrowDetailModel extends AbstractTableModelWithFilters<BorrowDetai
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        switch (col) {
-            case 2, 3, 4 -> {
-                var item = new ArrayList<String>();
-                rows.stream().map(book -> Objects.toString(translateValue(book, col)))
-                        .forEach((elem) -> item.addAll(List.of(elem.split(","))));
-                return item;
-            }
-        }
         return rows.stream().map(book -> Objects.toString(translateValue(book,
                 col))).toList();
     }

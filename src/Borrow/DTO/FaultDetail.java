@@ -3,55 +3,38 @@ package Borrow.DTO;
 import java.util.ArrayList;
 
 public class FaultDetail {
-    static int priceCounter = 0;
-    private String maChiTiet;
-    private String maLoi;
-    private String tenDocGia;
+    private String maPhieuMuon;
+    private String maSach;
     private String tenSach;
+    private String maLoi;
     private String tenLoi;
-    private String soLuong;
-    private String tienDen;
+    private int soLuong;
+    private double tongTien;
 
-    public FaultDetail(String maChiTiet, String maLoi, String tenDocGia, String tenSach, String tenLoi, String soLuong, String tienDen) {
-        this.maChiTiet = maChiTiet;
-        this.maLoi = maLoi;
-        this.tenDocGia = tenDocGia;
+    public FaultDetail(String maPhieuMuon, String maSach, String tenSach, String maLoi, String tenLoi, int soLuong, double tongTien) {
+        this.maPhieuMuon = maPhieuMuon;
+        this.maSach = maSach;
         this.tenSach = tenSach;
+        this.maLoi = maLoi;
         this.tenLoi = tenLoi;
         this.soLuong = soLuong;
-        this.tienDen = tienDen;
+        this.tongTien = tongTien;
     }
 
-    public static int getPriceCounter() {
-        return priceCounter;
+    public String getMaPhieuMuon() {
+        return maPhieuMuon;
     }
 
-    public static void setPriceCounter(int priceCounter) {
-        FaultDetail.priceCounter = priceCounter;
+    public void setMaPhieuMuon(String maPhieuMuon) {
+        this.maPhieuMuon = maPhieuMuon;
     }
 
-    public String getMaChiTiet() {
-        return maChiTiet;
+    public String getMaSach() {
+        return maSach;
     }
 
-    public void setMaChiTiet(String maChiTiet) {
-        this.maChiTiet = maChiTiet;
-    }
-
-    public String getMaLoi() {
-        return maLoi;
-    }
-
-    public void setMaLoi(String maLoi) {
-        this.maLoi = maLoi;
-    }
-
-    public String getTenDocGia() {
-        return tenDocGia;
-    }
-
-    public void setTenDocGia(String tenDocGia) {
-        this.tenDocGia = tenDocGia;
+    public void setMaSach(String maSach) {
+        this.maSach = maSach;
     }
 
     public String getTenSach() {
@@ -62,6 +45,14 @@ public class FaultDetail {
         this.tenSach = tenSach;
     }
 
+    public String getMaLoi() {
+        return maLoi;
+    }
+
+    public void setMaLoi(String maLoi) {
+        this.maLoi = maLoi;
+    }
+
     public String getTenLoi() {
         return tenLoi;
     }
@@ -70,26 +61,19 @@ public class FaultDetail {
         this.tenLoi = tenLoi;
     }
 
-    public String getSoLuong() {
+    public int getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(String soLuong) {
+    public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
     }
 
-    public String getTienDen() {
-        return tienDen;
+    public double getTongTien() {
+        return tongTien;
     }
 
-    public void setTienDen(String tienDen) {
-        this.tienDen = tienDen;
-    }
-
-    public static FaultDetail createTestBook() {
-        ArrayList<String> authors = new ArrayList<>();
-
-        return new FaultDetail(String.valueOf(priceCounter), "maloi"+priceCounter,"docgia"+priceCounter,
-                "tensach"+priceCounter,"tenLoi"+priceCounter,"soluong"+priceCounter,"tienden"+priceCounter++);
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
     }
 }

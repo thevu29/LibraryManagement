@@ -34,52 +34,10 @@ public class FaultDAO extends DefaultConnection {
 
 
     public  ArrayList<Fault> getDsLoi() {
-        String sql = "SELECT * FROM book_fault WHERE IS_DELETED = 1";
+        String sql = "SELECT * FROM book_fault WHERE IS_DELETED = 0";
         return getDanhSach(sql);
     }
-//
-//    public ArrayList<String> getMaHD(){
-//        Set<String> maHDSet = new HashSet<>();
-//        ArrayList<HoaDon> dsHoaDon = getDsHoaDon();
-//        for (HoaDon hd : dsHoaDon) {
-//            maHDSet.add(hd.getMa_phieu());
-//        }
-//        ArrayList<String> sortedMaHDList = new ArrayList<>(maHDSet);
-//        Collections.sort(sortedMaHDList);
-//        return sortedMaHDList;
-//    }
-//
-//    public ArrayList<String> getMaNV(){
-//        Set<String> maNVSet = new HashSet<>();
-//        ArrayList<HoaDon> dsHoaDon = getDsHoaDon();
-//        for (HoaDon hd : dsHoaDon) {
-//            maNVSet.add(hd.getMa_nv());
-//        }
-//        return new ArrayList<>(maNVSet);
-//    }
-//
-//    public ArrayList<String> getMaKH(){
-//        Set<String> maKHSet = new HashSet<>();
-//        ArrayList<HoaDon> dsHoaDon = getDsHoaDon();
-//        for (HoaDon hd : dsHoaDon) {
-//            maKHSet.add(hd.getMa_nv());
-//        }
-//        return new ArrayList<>(maKHSet);
-//    }
-//
-//    public List<HoaDon> locMaHD(String ma){
-//        String sql = "SELECT * FROM sell_ticket where MA_PHIEU = "+ma;
-//        return getDs(sql);
-//    }
-//    public List<HoaDon> locMaNV(String ma){
-//        String sql = "SELECT * FROM sell_ticket where MA_NV = "+ma;
-//        return getDs(sql);
-//    }
-//    public List<HoaDon> locMaKH(String ma){
-//        String sql = "SELECT * FROM sell_ticket where MA_KH = "+ma;
-//        return getDs(sql);
-//    }
-//
+
     public int insert(Fault fault){
         String sql ="INSERT INTO `book_fault`(`MA_LOI`, `TEN_LOI`, `HE_SO` , `IS_DELETED`) VALUES (?,?,?,?)";
         int smt=0;
@@ -89,7 +47,7 @@ public class FaultDAO extends DefaultConnection {
             pst.setString(1, fault.getId());
             pst.setString(2, fault.getTenLoi());
             pst.setDouble(3, fault.getHeSo());
-            pst.setInt(4, 1);
+            pst.setInt(4, 0);
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -100,7 +58,7 @@ public class FaultDAO extends DefaultConnection {
     }
 //
     public int remove(String id){
-        String sql = "UPDATE `book_fault` SET IS_DELETED=0 WHERE MA_LOI=?";
+        String sql = "UPDATE `book_fault` SET IS_DELETED=1 WHERE MA_LOI=?";
         int smt = 0;
 
         PreparedStatement pst = null;
@@ -135,5 +93,25 @@ public class FaultDAO extends DefaultConnection {
 
         return smt;
     }
+
+    public String getML() {
+        Statement stmt = null;
+        String sql = "SELECT count(*) as soluong FROM book_fault";
+
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            int maHD = 0;
+            while (rs.next()) {
+                maHD = rs.getInt("soluong");
+            }
+            var maHDMoi = "ML" +(maHD+1);
+            return maHDMoi;
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
 
 }

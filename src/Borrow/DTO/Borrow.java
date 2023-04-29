@@ -3,18 +3,30 @@ package Borrow.DTO;
 import java.util.ArrayList;
 
 public class Borrow {
-    static int priceCounter = 0;
     private String id;
-    private String tenNhanVien;
+    private String ma_nv_muon;
+
+    private String tenNhanVienMuon;
+    private String ma_nv_tra;
+
+    private String tenNhanVienTra;
+    private String ma_the;
+
     private String tenDocGia;
     private String ngayMuon;
     private String ngayHenTra;
     private String ngayTra;
-    private String tongTien;
 
-    public Borrow(String id, String tenNhanVien, String tenDocGia, String ngayMuon, String ngayHenTra, String ngayTra, String tongTien) {
+    private Long tongTien;
+
+    public Borrow(String id, String ma_nv_muon, String tenNhanVienMuon, String ma_nv_tra, String tenNhanVienTra,
+                  String ma_the, String tenDocGia, String ngayMuon, String ngayHenTra, String ngayTra, Long tongTien) {
         this.id = id;
-        this.tenNhanVien = tenNhanVien;
+        this.ma_nv_muon = ma_nv_muon;
+        this.tenNhanVienMuon = tenNhanVienMuon;
+        this.ma_nv_tra = ma_nv_tra;
+        this.tenNhanVienTra = tenNhanVienTra;
+        this.ma_the = ma_the;
         this.tenDocGia = tenDocGia;
         this.ngayMuon = ngayMuon;
         this.ngayHenTra = ngayHenTra;
@@ -30,20 +42,28 @@ public class Borrow {
         this.id = id;
     }
 
-    public String getTenNhanVien() {
-        return tenNhanVien;
+    public String getMa_nv_muon() {
+        return ma_nv_muon;
     }
 
-    public void setTenNhanVien(String tenNhanVien) {
-        this.tenNhanVien = tenNhanVien;
+    public void setMa_nv_muon(String ma_nv_muon) {
+        this.ma_nv_muon = ma_nv_muon;
     }
 
-    public String getTenDocGia() {
-        return tenDocGia;
+    public String getMa_nv_tra() {
+        return ma_nv_tra;
     }
 
-    public void setTenDocGia(String tenDocGia) {
-        this.tenDocGia = tenDocGia;
+    public void setMa_nv_tra(String ma_nv_tra) {
+        this.ma_nv_tra = ma_nv_tra;
+    }
+
+    public String getMa_the() {
+        return ma_the;
+    }
+
+    public void setMa_the(String ma_the) {
+        this.ma_the = ma_the;
     }
 
     public String getNgayMuon() {
@@ -70,28 +90,35 @@ public class Borrow {
         this.ngayTra = ngayTra;
     }
 
-    public String getTongTien() {
+    public String getTenNhanVienMuon() {
+        return tenNhanVienMuon;
+    }
+
+    public void setTenNhanVienMuon(String tenNhanVienMuon) {
+        this.tenNhanVienMuon = tenNhanVienMuon;
+    }
+
+    public String getTenNhanVienTra() {
+        return tenNhanVienTra;
+    }
+
+    public void setTenNhanVienTra(String tenNhanVienTra) {
+        this.tenNhanVienTra = tenNhanVienTra;
+    }
+
+    public String getTenDocGia() {
+        return tenDocGia;
+    }
+
+    public void setTenDocGia(String tenDocGia) {
+        this.tenDocGia = tenDocGia;
+    }
+
+    public Long getTongTien() {
         return tongTien;
     }
 
-    public void setTongTien(String tongTien) {
+    public void setTongTien(Long tongTien) {
         this.tongTien = tongTien;
-    }
-
-    public static int getPriceCounter() {
-        return priceCounter;
-    }
-
-    public static void setPriceCounter(int priceCounter) {
-        Borrow.priceCounter = priceCounter;
-    }
-
-
-
-    public static Borrow createTestBook() {
-        ArrayList<String> authors = new ArrayList<>();
-
-        return new Borrow(String.valueOf(priceCounter),"NhanVien "+priceCounter,"Doc gia "+priceCounter,"Ngaymuon"+priceCounter,"Ngay hen tra"+priceCounter,"ngayTra"+priceCounter,
-                "Tong tien "+priceCounter++);
     }
 }
