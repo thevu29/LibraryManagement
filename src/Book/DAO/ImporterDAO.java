@@ -35,7 +35,7 @@ public class ImporterDAO extends DefaultConnection {
 
 
 
-    public boolean isIDDuplicate(String id) {
+    public boolean isIDExist(String id) {
         PreparedStatement stmt = null;
         try {
             stmt = getConnection().prepareStatement("SELECT ID FROM IMPORTED_FROM WHERE ID=?");
@@ -50,7 +50,7 @@ public class ImporterDAO extends DefaultConnection {
     public void update(Importer publisher) {
         PreparedStatement stmt = null;
         try {
-            if (isIDDuplicate(publisher.getId())) {
+            if (isIDExist(publisher.getId())) {
                 stmt = getConnection()
                         .prepareStatement("UPDATE IMPORTED_FROM SET NAME=?,PHONE=?,ADDRESS=?,EMAIL=?,DESCRIPTION=? WHERE ID=?");
                 stmt.setString(1, publisher.getName());
@@ -81,9 +81,9 @@ public class ImporterDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            var rs = stmt.executeQuery("SELECT ID FROM IMPORTED_FROM WHERE ID=(SELECT max(ID) FROM IMPORTED_FROM)");
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(ID, 3) AS UNSIGNED)) AS ID FROM IMPORTED_FROM;");
             if (!rs.next()) {
-                return "IM0";
+                return "0";
             }
             return rs.getString("ID");
         } catch (SQLException | ClassNotFoundException ex) {

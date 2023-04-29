@@ -1,10 +1,11 @@
 package Book.DTO;
 
-public class BookGenre {
+public class BookImporter {
     private String id;
     private String name;
 
-    public BookGenre(String id, String name) {
+
+    public BookImporter(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -25,12 +26,7 @@ public class BookGenre {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
-
-    public String toDialogString() {
+    public String getDialogString() {
         return id + ", " + name;
     }
 }

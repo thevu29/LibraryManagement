@@ -16,6 +16,7 @@ import java.util.Objects;
 public class BookEditorDialog extends JDialog {
     private final BookDataTableModel bookDataTableModel;
     private final BookBUS bus;
+    private final int mode;
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -37,7 +38,8 @@ public class BookEditorDialog extends JDialog {
     private JComboBox<String> totalPageCB;
     private JComboBox locationCB;
     private JPanel genrePanel;
-    private JButton xácNhậnButton;
+    private JButton confirmAndAddBtn;
+    private JComboBox<String> importerCB;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -52,14 +54,19 @@ public class BookEditorDialog extends JDialog {
     private Book book;
     private Book clonedBook;
 
-    public BookEditorDialog(Book book, BookBUS bus, String title) {
+    public BookEditorDialog(Book book, BookBUS bus, String title, int mode) {
         this.bookDataTableModel = bus.getBookDataTableModel();
         this.bus = bus;
+        this.mode = mode;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
         this.setTitle(title);
+
+        confirmAndAddBtn.addActionListener( e -> {
+            onAddNew();
+        });
 
 
         var clonedBook = book.clone();
@@ -69,7 +76,7 @@ public class BookEditorDialog extends JDialog {
         var bookSerialField = AutoSuggestComboBox.create(bookSerialCB, 0, bookDataTableModel::getColumnValueToString);
         bookSerialField.setText(clonedBook.getId());
         bookSerialField.getDocument().addDocumentListener(new BindingListener<>(bookSerialField,clonedBook,
-                clonedBook::setId, "[0-9]+"));
+                clonedBook::setId));
 
         var bookNameField = AutoSuggestComboBox.create(bookNameCB, 0, bookDataTableModel::getColumnValueToString);
         bookNameField.setText(clonedBook.getName());
@@ -90,16 +97,40 @@ public class BookEditorDialog extends JDialog {
 
         var locationField = AutoSuggestComboBox.create(locationCB, 8, bookDataTableModel::getColumnValueToString);
         locationField.setText(String.valueOf(clonedBook.getLocation()));
-        locationField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setLocation));
+        locationField.getDocument().addDocumentListener(new BindingListener<>(locationField,clonedBook, clonedBook::setLocation));
 
         var publisherField = AutoSuggestComboBox.create(publisherCB, 110, bus.getPublisherDataTableModel()::getColumnValueToString);
         publisherField.setText(String.valueOf(clonedBook.getPublisher().toDialogString()));
-        publisherField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setLocation));
-
+        publisherField.getDocument().addDocumentListener(new BindingListener<>(publisherField,clonedBook, s -> {
+            var idName = s.split(",");
+            if (idName.length == 2) {
+                clonedBook.setPublisher(idName[0], idName[1]);
+            }
+            else {
+                clonedBook.setPublisher("", "");
+            }
+        }));
 
         var yearField = AutoSuggestComboBox.create(publishYearCB, 9, bookDataTableModel::getColumnValueToString);
         yearField.setText(String.valueOf(clonedBook.getPublishYear()));
-        yearField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setPublishYear));
+        yearField.getDocument().addDocumentListener(new BindingListener<>(yearField,clonedBook, clonedBook::setPublishYear));
+
+        var importerField = AutoSuggestComboBox.create(importerCB, 10, bus.getImporterDataTableModel()::getColumnValueToString);
+        importerField.setText(String.valueOf(clonedBook.getImporter().getDialogString()));
+        importerField.getDocument().addDocumentListener(new BindingListener<>(importerField,clonedBook, s -> {
+            var idName = s.split(",");
+            if (idName.length == 2) {
+                clonedBook.setImporter(idName[0], idName[1]);
+            }
+            else {
+                clonedBook.setImporter("", "");
+            }
+        }
+        ));
+
+        var totalPageField = AutoSuggestComboBox.create(totalPageCB, 9, bookDataTableModel::getColumnValueToString);
+        totalPageField.setText(String.valueOf(clonedBook.getTotalPage()));
+        totalPageField.getDocument().addDocumentListener(new BindingListener<>(totalPageField,clonedBook, clonedBook::setTotalPage));
 
 
         descriptionField.setText(String.valueOf(clonedBook.getDescription()));
@@ -225,14 +256,14 @@ public class BookEditorDialog extends JDialog {
     }
 
     private void setupGenreField(JComboBox<String> genreCB, int pos) {
-        var genreField = AutoSuggestComboBox.create(genreCB, 1, bus.getGenreDataTableModel()::getColumnValueToString);
+        var genreField = AutoSuggestComboBox.create(genreCB, 10, bus.getGenreDataTableModel()::getColumnValueToString);
         var genre = clonedBook.getGenre().get(pos);
         if (Objects.isNull(genre)) {
             genreField.setText("");
             clonedBook.getAuthors().add(new BookAuthor("", ""));
         }
         else {
-            genreField.setText(genre.toString());
+            genreField.setText(genre.toDialogString());
         }
 
         genreField.getDocument().addDocumentListener(new BindingListener<>(genreField, clonedBook, s -> {
@@ -271,9 +302,20 @@ public class BookEditorDialog extends JDialog {
 
     private void onOK() {
         // add your code here
-        this.book.cloneFrom(this.clonedBook);
-        this.bookDataTableModel.fireTableDataChanged();
-        dispose();
+        if (bus.validateBook(clonedBook, mode)) {
+            book.cloneFrom(clonedBook);
+            bus.commitBook(book);
+            dispose();
+        }
+    }
+
+    private void onAddNew() {
+        if (bus.validateBook(clonedBook, mode)) {
+            book.cloneFrom(clonedBook);
+            bus.commitBook(book);
+            dispose();
+            bus.openNewSubBookDialog(clonedBook);
+        }
     }
 
     private void onCancel() {
