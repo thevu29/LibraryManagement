@@ -2,12 +2,11 @@ package sellBook.DAO;
 
 import Book.DTO.Author;
 import Core.DefaultConnection;
+import org.jfree.data.category.DefaultCategoryDataset;
 import sellBook.DTO.HoaDon;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.Instant;
 import java.util.*;
 
 public class SellTicketDao extends DefaultConnection {
@@ -126,29 +125,17 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public String getNewMaHD(){
-//        String sql = "SELECT CONCAT('HD', LPAD(SUBSTRING(MAX(MA_PHIEU), 3) + 1, 3, '0')) AS new_id FROM SELL_TICKET WHERE MA_PHIEU LIKE 'HD%'";
-//        Statement stmt = null;
-//        String maHD = "";
-//        try {
-//            stmt = getConnect().createStatement();
-//            ResultSet rs = stmt.executeQuery(sql);
-//            while (rs.next()) {
-//                maHD = rs.getString("new_id");
-//            }
-//
-//        } catch (SQLException | ClassNotFoundException e) {
-//            System.out.println(e);
-//        }
-//        return maHD;
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            var rs = stmt.executeQuery("SELECT MA_PHIEU FROM SELL_TICKET WHERE MA_PHIEU=(SELECT max(MA_PHIEU) FROM SELL_TICKET)");
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `SELL_TICKET` ");
             if (!rs.next()) {
                 return "HD1";
             }
-            var maHD = rs.getString("MA_PHIEU");
-            var maHDMoi = "HD" + (Integer.parseInt(maHD.split("HD")[1])+1);
+            var maHD = rs.getString("max_num");
+            int ma = Integer.parseInt(maHD)+1;
+            String maHDMoi = "HD".concat(String.valueOf(ma));
+
             return maHDMoi;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
@@ -156,7 +143,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public int insertHD(HoaDon hd){
-        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`) VALUES (?,?,?,0)";
+        String sql ="INSERT INTO `SELL_TICKET`(`MA_PHIEU`, `MA_NV`, `MA_KH`,`IS_DELETED`,`CREATED_AT`) VALUES (?,?,?,0,?)";
         int smt=0;
 
         SellTicketDao temp = new SellTicketDao();
@@ -168,6 +155,7 @@ public class SellTicketDao extends DefaultConnection {
             pst.setString(1, maHD);
             pst.setString(2,hd.getMa_nv());
             pst.setString(3,hd.getMa_KH());
+            pst.setTimestamp(4, Timestamp.from(Instant.now()));
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -191,6 +179,8 @@ public class SellTicketDao extends DefaultConnection {
         }
         return smt;
     }
+
+
 
     public int updateHD(HoaDon hd){
         String sql = "UPDATE `SELL_TICKET` SET MA_NV=?,`MA_KH`=? WHERE MA_PHIEU=?";
@@ -230,6 +220,119 @@ public class SellTicketDao extends DefaultConnection {
     }
 
 
+
+    public DefaultCategoryDataset laySoLieuTheoThang(){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String rowKey = "Hoa Don";
+        String sql = "SELECT COUNT(MA_PHIEU) as slgHD,Month(CREATED_AT) as thang FROM `SELL_TICKET` WHERE IS_DELETED = 0  GROUP BY month(CREATED_AT)  ORDER BY thang ASC";
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Double soLieu = rs.getDouble("slgHD");
+                String thang = rs.getString("thang");
+                dataset.setValue(soLieu,rowKey,thang);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+    }
+
+
+    public DefaultCategoryDataset laySoLieuTheoNam(){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String rowKey = "Hoa Don";
+        String sql = "SELECT COUNT(MA_PHIEU) as slgHD,Year(CREATED_AT) as nam FROM `SELL_TICKET` WHERE IS_DELETED = 0 GROUP BY YEAR(CREATED_AT) ORDER BY nam ASC";
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Double soLieu = rs.getDouble("slgHD");
+                String thang = rs.getString("nam");
+                dataset.setValue(soLieu,rowKey,thang);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+    }
+
+    public DefaultCategoryDataset thongKeTheoNam(int nam){
+        String sql = "SELECT COUNT(MA_PHIEU) as slgHD, Year(CREATED_AT) as nam, MONTH(CREATED_AT) as thang \n" +
+                "FROM `SELL_TICKET` \n" +
+                "WHERE YEAR(CREATED_AT) = "+nam+" AND IS_DELETED = 0 \n" +
+                "GROUP BY Year(CREATED_AT), MONTH(CREATED_AT)\n";
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String rowKey = "Hoa Don";
+        Statement stmt = null;
+        double[] slgHDs = new double[12];
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Double soLieu = rs.getDouble("slgHD");
+                int thang = rs.getInt("thang");
+//                String thangNam = thang+"/"+nam;
+//                dataset.setValue(soLieu,rowKey,thang);
+                slgHDs[thang -1] = soLieu;
+            }
+            for (int i = 0; i < 12; i++) {
+                int thang = i + 1;
+                double slgHD = slgHDs[i];
+                System.out.println("Tháng " + thang + "/" + nam + ": " + slgHD + " hóa đơn");
+                String thangNam = thang+"/"+nam;
+                dataset.setValue(slgHD,rowKey,thangNam);
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+
+        return dataset;
+    }
+
+    public DefaultCategoryDataset thongKeThuNhapTheoThang(int nam){
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String rowKey = "Hoa Don";
+        String sql = "SELECT\n" +
+                "YEAR(CREATED_AT) as nam,\n" +
+                "MONTH(CREATED_AT) as thang,\n" +
+                "SUM(CAST(book.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO) as tongTien\n" +
+                "FROM SELL_TICKET\n" +
+                "INNER JOIN SELL_TICKET_DETAILS ON SELL_TICKET_DETAILS.MA_PHIEU = SELL_TICKET.MA_PHIEU\n" +
+                "INNER JOIN BOOK ON book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
+                "WHERE Year(SELL_TICKET.CREATED_AT) = "+nam+" and SELL_TICKET.IS_DELETED = 0 AND SELL_TICKET_DETAILS.IS_DELETED = 0\n" +
+                "GROUP BY YEAR(CREATED_AT), MONTH(CREATED_AT)\n" +
+                "ORDER BY YEAR(CREATED_AT) ASC, MONTH(CREATED_AT) ASC;";
+        Statement stmt = null;
+        double[] thuNhap = new double[12];
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Double soLieu = rs.getDouble("tongTien");
+                int thang = rs.getInt("thang");
+                String thangNam = thang+"/"+nam;
+                thuNhap[thang-1] = soLieu;
+            }
+            for (int i = 0; i < 12; i++) {
+                int thang = i + 1;
+                double tien = thuNhap[i];
+                System.out.println("Tháng " + thang + "/" + nam + ": " + tien + " hóa đơn");
+                String thangNam = thang+"/"+nam;
+                dataset.setValue(tien,rowKey,thangNam);
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+    }
+
+
     public static void main(String[] args) {
         SellTicketDao t = new SellTicketDao();
 //        List<HoaDon> dshd  = t.getDsHoaDon();
@@ -259,6 +362,18 @@ public class SellTicketDao extends DefaultConnection {
 //        System.out.println(t.tinhTongHoaDon("1"));
 //        System.out.println(t.goiYTenKH("4"));
 
-        System.out.println(t.locMaHD("1").size());
+//        System.out.println(t.locMaHD("1").size());
+
+//        DefaultCategoryDataset dataset = t.thongKeThuNhapTheoThang();
+//        System.out.println("Hoa Don \t Thang \t So Luong");
+//        for (int i = 0; i < dataset.getRowCount(); i++) {
+//            String rowKey = (String) dataset.getRowKey(i);
+//            for (int j = 0; j < dataset.getColumnCount(); j++) {
+//                String columnKey = (String) dataset.getColumnKey(j);
+//                Number value = dataset.getValue(i, j);
+//                System.out.println(rowKey + " \t " + columnKey + " \t " + value);
+//            }
+//        }
+//        t.thongKeTheoNam(1900);
     }
 }

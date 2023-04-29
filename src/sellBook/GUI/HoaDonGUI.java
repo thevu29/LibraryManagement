@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +33,7 @@ public class HoaDonGUI {
     private JComboBox cboMaNV;
     private JComboBox cboMaKH;
     private JButton btnXoaMaKH;
+    private JButton btnThongKe;
 
     DefaultTableModel dtm = new DefaultTableModel();
     public static List<HoaDon> dshd = new ArrayList<>();
@@ -160,15 +162,20 @@ public class HoaDonGUI {
                     JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
                 }
                 else{
-                    String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
-                    int smt =bus.remove(maHD);
-                    if(smt>0){
-                        JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
-                        showAll();
+                    int dialogResult = JOptionPane.showConfirmDialog(null,"Bạn có muốn xóa không ?","Remove", JOptionPane.YES_NO_OPTION);
+                    if(dialogResult == JOptionPane.YES_OPTION){
+                        String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
+                        int smt =bus.remove(maHD);
+                        if(smt>0){
+                            JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
+                            showAll();
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                        }
                     }
-                    else{
-                        JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
-                    }
+
+
                 }
 
 
@@ -206,6 +213,21 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 dshd =  bus.getAllSellTicket();
                 changeTable(dshd);
+            }
+        });
+        btnThongKe.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> dsOpt = new ArrayList<>();
+                dsOpt.add("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM");
+                dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
+                int nam = Year.now().getValue();
+                var tk = new Chart(bus.thongKeTheoNam(nam),"Month",dsOpt);
+                JFrame frame = new JFrame("Thong Ke");
+                frame.setContentPane(tk.getMain());
+                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
             }
         });
     }

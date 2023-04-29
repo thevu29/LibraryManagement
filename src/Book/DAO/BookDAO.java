@@ -2,6 +2,8 @@ package Book.DAO;
 
 import Book.DTO.*;
 import Core.DefaultConnection;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -255,4 +257,47 @@ public class BookDAO extends DefaultConnection {
             throw new RuntimeException(e);
         }
     }
+
+    public int changeTrangThaiSach(String maSeri,String tt){
+        String sql = "UPDATE `BOOK` SET `TRANG_THAI`=? WHERE MA_SERIES = ? ";
+        int smt = 0;
+        PreparedStatement pst = null;
+        try {
+            pst = getConnect().prepareStatement(sql);
+            pst.setString(1,tt);
+            pst.setString(2, maSeri);
+            smt = pst.executeUpdate();
+            System.out.println("Hello 1");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return smt;
+    }
+
+    public DefaultPieDataset thongKeTrangThaiSach(){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+
+        String sql ="SELECT COUNT(MA_SERIES) as slg, TRANG_THAI FROM `BOOK` GROUP BY TRANG_THAI";
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                double slg = rs.getDouble("slg");
+                String tt = rs.getString("TRANG_THAI");
+                dataset.setValue(tt,slg);
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+    }
+
+    public static void main(String[] args) {
+        BookDAO b = new BookDAO();
+        b.changeTrangThaiSach("5_4","AVAILABLE");
+    }
+
 }
