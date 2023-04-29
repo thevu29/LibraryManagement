@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="import excel">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="update phần chart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +111,7 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MembershipStatistics (2)">
+  <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -124,12 +125,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MembershipStatistics (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -137,7 +138,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MembershipStatistics (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MembershipStatistics (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatistics" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -163,6 +164,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Statistics.GUI.StatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Statistics.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Customer.test" />
       <module name="LibraryManagementGUI" />
@@ -178,11 +231,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MembershipStatistics (2)" />
-        <item itemvalue="Application.MembershipStatistics" />
+        <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.StatisticsForm" />
+        <item itemvalue="Application.MembershipStatisticsForm" />
+        <item itemvalue="Application.MembershipStatisticsForm" />
         <item itemvalue="Application.test" />
-        <item itemvalue="Application.MembershipStatistics (1)" />
-        <item itemvalue="Application.FilteredDateComboBoxesExample" />
       </list>
     </recent_temporary>
   </component>
@@ -394,7 +447,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682748246251</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="update phần chart">
+      <created>1682752357073</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1682752357073</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +496,8 @@
     <MESSAGE value="export excel" />
     <MESSAGE value="fix thêm sửa xóa" />
     <MESSAGE value="import excel" />
-    <option name="LAST_COMMIT_MESSAGE" value="import excel" />
+    <MESSAGE value="update phần chart" />
+    <option name="LAST_COMMIT_MESSAGE" value="update phần chart" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

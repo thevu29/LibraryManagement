@@ -16,14 +16,14 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.time.LocalDate;
 
-public class MembershipStatistics {
+public class MembershipStatisticsForm {
     private JFreeChart barChart;
     private ChartPanel chartPanel;
     private DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     private MembershipTypeBUS membershipTypeBUS = new MembershipTypeBUS();
     private CustomerBUS customerBUS = new CustomerBUS();
 
-    public MembershipStatistics() {
+    public MembershipStatisticsForm() {
         initComboboxvalues();
         initChart();
 
@@ -84,9 +84,13 @@ public class MembershipStatistics {
         lblTotalMembership.setText("Tổng thành viên trong năm " + year + ": " + customerBUS.countMembershipInYear(year));
     }
 
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("CustomerStatistics");
-        frame.setContentPane(new MembershipStatistics().mainPanel);
+        frame.setContentPane(new MembershipStatisticsForm().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 500);
         frame.setLocationRelativeTo(null);
