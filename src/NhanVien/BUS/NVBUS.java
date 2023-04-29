@@ -8,6 +8,9 @@ import NhanVien.GUI.NhanVienC;
 import NhanVien.GUI.NhanVienadmin;
 import NhanVien.arraylistNV.NVDataTableModel;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 public class NVBUS {
 
     private NVDataTableModel NVs;
@@ -21,6 +24,25 @@ public class NVBUS {
 //        NVGUI = new NhanVienadmin();
 //        var NCDAO = new NhanVienDAO();
         NVs.setRows(NVDAO.getAllFromDatabase());
+    }
+
+    public void AddNV(nhanVien nv){
+        getNVDAO().AddNV(nv);
+    }
+
+    public ArrayList<nhanVien> getAllFromDatabase(){
+        return getNVDAO().getAllFromDatabase();
+    }
+    public void EditNV(nhanVien nv){
+        getNVDAO().EditNV(nv);
+    }
+
+    public void removeNV(String id){
+        getNVDAO().removeNV(id);
+    }
+
+    public int contNV() throws SQLException {
+        return getNVDAO().contNV();
     }
 
 

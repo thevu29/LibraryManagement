@@ -85,7 +85,7 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
                 return NV.getPassword();
             }
             case 5 -> {
-                return NV.getPosition() == 0 ? "librarian"  : "Manager";
+                return NV.getPosition() == 0 ? "Librarian"  : "Manager";
             }
             case 6 -> {
                 return NV.getSalary()*NV.getDaywork()*1000;

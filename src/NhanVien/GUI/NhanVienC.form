@@ -237,8 +237,8 @@
         </constraints>
         <properties>
           <model>
-            <item value="male"/>
-            <item value="female"/>
+            <item value="Male"/>
+            <item value="Female"/>
           </model>
         </properties>
       </component>
@@ -248,8 +248,8 @@
         </constraints>
         <properties>
           <model>
-            <item value="librarian"/>
-            <item value="manager"/>
+            <item value="Librarian"/>
+            <item value="Manager"/>
           </model>
         </properties>
       </component>
