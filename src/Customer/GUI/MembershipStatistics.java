@@ -12,36 +12,50 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.time.LocalDate;
 
 public class MembershipStatistics {
-    JFreeChart barChart;
-    ChartPanel chartPanel;
-    DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    MembershipTypeBUS membershipTypeBUS = new MembershipTypeBUS();
-    CustomerBUS customerBUS = new CustomerBUS();
+    private JFreeChart barChart;
+    private ChartPanel chartPanel;
+    private DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+    private MembershipTypeBUS membershipTypeBUS = new MembershipTypeBUS();
+    private CustomerBUS customerBUS = new CustomerBUS();
 
     public MembershipStatistics() {
         initComboboxvalues();
-        initChart("Tất cả");
+        initChart();
 
-        cbxMembershipType.addActionListener(new ActionListener() {
+        cbxYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String type = cbxMembershipType.getSelectedItem().toString();
-                initChart(type);
+                int year = Integer.parseInt(cbxYear.getSelectedItem().toString());
+                lblTotalMembership.setText("Tổng thành viên trong năm " + year + ": " + customerBUS.countMembershipInYear(year));
             }
         });
+
+        ItemListener itemListener = new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                initChart();
+            }
+        };
+        cbxMembershipType.addItemListener(itemListener);
+        cbxYear.addItemListener(itemListener);
     }
 
-    public void createDataset(String type) {
+    public void createDataset() {
+        String type = cbxMembershipType.getSelectedItem().toString();
+        int year = Integer.parseInt(cbxYear.getSelectedItem().toString());
+
         for (int i = 1; i <= 12; i++) {
-            dataset.setValue(customerBUS.countMembershipByMonth(i, type), "Số khách hàng", i + "");
+            dataset.setValue(customerBUS.countMembershipByMonth(i, year, type), "Số khách hàng", i + "");
         }
     }
 
-    public void initChart(String type) {
-        createDataset(type);
+    public void initChart() {
+        createDataset();
 
         barChart = ChartFactory.createBarChart(
                 "",
@@ -62,12 +76,12 @@ public class MembershipStatistics {
             cbxMembershipType.addItem(membershipType.getMembershipTypeName());
         }
 
-        LocalDate now = LocalDate.now();
-        int year = now.getYear();
-        for (int i = 2023; i <= year; i++) {
+        int year = LocalDate.now().getYear();
+        for (int i = 2022; i <= year; i++) {
             cbxYear.addItem(i);
         }
         cbxYear.setSelectedIndex(cbxYear.getItemCount() - 1);
+        lblTotalMembership.setText("Tổng thành viên trong năm " + year + ": " + customerBUS.countMembershipInYear(year));
     }
 
     public static void main(String[] args) {
@@ -83,4 +97,5 @@ public class MembershipStatistics {
     private JPanel chart;
     private JComboBox cbxMembershipType;
     private JComboBox cbxYear;
+    private JLabel lblTotalMembership;
 }

@@ -403,35 +403,6 @@ public class CustomerBUS {
         return true;
     }
 
-    public int countMembershipByMonth(int month, String type) {
-        int cnt = 0;
-        int regisMonth = 0;
-        for (Customer customer : customerList) {
-            if (type.equals("Tất cả")) {
-                if (!customer.getMembership().equals("Bình thường")) {
-                    regisMonth = findRegistrationMonth(customer.getRegistrationDate());
-                    if (regisMonth == month) {
-                        cnt++;
-                    }
-                }
-            } else {
-                if (customer.getMembership().equals(type)) {
-                    regisMonth = findRegistrationMonth(customer.getRegistrationDate());
-                    if (regisMonth == month) {
-                        cnt++;
-                    }
-                }
-            }
-        }
-        return cnt;
-    }
-
-    public int findRegistrationMonth(String date) {
-        int month = 0;
-        month = Integer.parseInt(date.split("-")[1]);
-        return month;
-    }
-
     public Customer findCustomerById(String id) {
         for (Customer cus : customerList) {
             if (cus.getCustomerId().equals(id)) {
@@ -450,6 +421,58 @@ public class CustomerBUS {
             }
         }
         return null;
+    }
+
+    public int countMembershipInYear(int year) {
+        int cnt = 0;
+        int regisYear = 0;
+        for (Customer customer : customerList) {
+            if (!customer.getMembership().equals("Bình thường")) {
+                regisYear = findRegistrationYear(customer.getRegistrationDate());
+                if (regisYear == year) {
+                    cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+
+    public int countMembershipByMonth(int month, int year, String type) {
+        int cnt = 0;
+        int regisMonth = 0;
+        int regisYear = 0;
+        for (Customer customer : customerList) {
+            if (type.equals("Tất cả") || type.equals("")) {
+                if (!customer.getMembership().equals("Bình thường")) {
+                    regisMonth = findRegistrationMonth(customer.getRegistrationDate());
+                    regisYear = findRegistrationYear(customer.getRegistrationDate());
+                    if (regisYear == year && regisMonth == month) {
+                        cnt++;
+                    }
+                }
+            } else {
+                if (customer.getMembership().equals(type)) {
+                    regisMonth = findRegistrationMonth(customer.getRegistrationDate());
+                    regisYear = findRegistrationYear(customer.getRegistrationDate());
+                    if (regisYear == year && regisMonth == month) {
+                        cnt++;
+                    }
+                }
+            }
+        }
+        return cnt;
+    }
+
+    public int findRegistrationMonth(String date) {
+        int month = 0;
+        month = Integer.parseInt(date.split("-")[1]);
+        return month;
+    }
+
+    public int findRegistrationYear(String date) {
+        int year = 0;
+        year = Integer.parseInt(date.split("-")[2]);
+        return year;
     }
 
     public void renderToTable(DefaultTableModel tblModel) {
