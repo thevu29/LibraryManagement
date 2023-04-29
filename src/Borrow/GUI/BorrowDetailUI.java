@@ -4,28 +4,23 @@ import Borrow.BUS.BorrowBUS;
 import Borrow.BUS.BorrowDetailBUS;
 import Borrow.BorrowDetailModel;
 import Borrow.BorrowModel;
+import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
+import Utils.TableUtils;
 
 import javax.swing.*;
+import javax.swing.table.TableColumn;
 import java.awt.event.*;
-import java.util.ArrayList;
+import java.util.Iterator;
 
 public class BorrowDetailUI extends JFrame {
     private JTable borrowDetailTable;
     private JButton bookDeleteAllButton;
     private JButton bookFilterButton;
     private JTabbedPane tabbedPane2;
-    private JButton IDDelBtn;
-    private JComboBox IDComboBox;
-    private JButton maPhieuMuonDelBtn;
-    private JComboBox maPhieuMuonCB;
+    private JButton maSachDelBtn;
+    private JComboBox maSachCbx;
     private JButton tenSachDelBtn;
-    private JComboBox tenSachCB;
-    private JButton tenLoiDelBtn;
-    private JComboBox tenLoiCB;
-    private JButton soLuongDelBtn;
-    private JComboBox soLuongCB;
-    private JButton giaTienDelBtn;
-    private JComboBox giaTienCB;
+    private JComboBox tenSachCbx;
     private JButton btnAdd;
     private JButton btnDelete;
     private JButton btnUpdate;
@@ -56,8 +51,6 @@ public class BorrowDetailUI extends JFrame {
     public static BorrowDetailBUS borrowDetailBUS = new BorrowDetailBUS();
 
     public BorrowBUS borrowBUS = new BorrowBUS();
-
-
 
 
     public BorrowDetailUI(String id,String maThe,long soNgayMuon) {
@@ -125,7 +118,11 @@ public class BorrowDetailUI extends JFrame {
 
                 String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
                 String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
-                System.out.println(id);
+
+                if(borrowDetailBUS.checkContainBookFault(id,maSach)){
+                    JOptionPane.showMessageDialog(null, "Tồn tại lỗi của sách trong phiếu mượn!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
 
                 borrowDetailBUS.delete(id,maSach);
                 borrowDetailModel.initModelTable(borrowDetailBUS.getDsMuonCT(id));
@@ -136,9 +133,37 @@ public class BorrowDetailUI extends JFrame {
             }
         });
 
+        borrowDetailTable.getTableHeader().setReorderingAllowed(false);
+
+
+        var maSachCBTF = AutoSuggestComboBox.createWithDeleteBtn(maSachCbx, 1, borrowDetailModel::getColumnValueToString,
+                maSachDelBtn);
+        var tenSachCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenSachCbx, 2,
+                borrowDetailModel::getColumnValueToString,
+                tenSachDelBtn);
+
+        bookDeleteAllButton.addActionListener(e -> {
+            maSachCBTF.setText("");
+            tenSachCBTF.setText("");
+        });
+
+        borrowDetailModel.setFilterField(1, maSachCBTF);
+        borrowDetailModel.setFilterField(2, tenSachCBTF);
+
+
+        for (Iterator<TableColumn> it = borrowDetailTable.getColumnModel().getColumns().asIterator(); it.hasNext();) {
+            var column = it.next();
+            column.setMinWidth(100);
+        }
+
+        bookFilterButton.addActionListener(e -> {
+            TableUtils.filter(borrowDetailTable);
+        });
+
     }
 
     public JPanel getContentPane() {
         return panel1;
     }
+
 }

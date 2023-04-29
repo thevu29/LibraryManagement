@@ -17,10 +17,10 @@ public class Borrow {
     private String ngayHenTra;
     private String ngayTra;
 
-    private Long tongTien;
+    private double tongTienPhat;
+    private double tongTienMuon;
 
-    public Borrow(String id, String ma_nv_muon, String tenNhanVienMuon, String ma_nv_tra, String tenNhanVienTra,
-                  String ma_the, String tenDocGia, String ngayMuon, String ngayHenTra, String ngayTra, Long tongTien) {
+    public Borrow(String id, String ma_nv_muon, String tenNhanVienMuon, String ma_nv_tra, String tenNhanVienTra, String ma_the, String tenDocGia, String ngayMuon, String ngayHenTra, String ngayTra, double tongTienPhat, double tongTienMuon) {
         this.id = id;
         this.ma_nv_muon = ma_nv_muon;
         this.tenNhanVienMuon = tenNhanVienMuon;
@@ -31,7 +31,8 @@ public class Borrow {
         this.ngayMuon = ngayMuon;
         this.ngayHenTra = ngayHenTra;
         this.ngayTra = ngayTra;
-        this.tongTien = tongTien;
+        this.tongTienPhat = tongTienPhat;
+        this.tongTienMuon = tongTienMuon;
     }
 
     public String getId() {
@@ -50,6 +51,14 @@ public class Borrow {
         this.ma_nv_muon = ma_nv_muon;
     }
 
+    public String getTenNhanVienMuon() {
+        return tenNhanVienMuon;
+    }
+
+    public void setTenNhanVienMuon(String tenNhanVienMuon) {
+        this.tenNhanVienMuon = tenNhanVienMuon;
+    }
+
     public String getMa_nv_tra() {
         return ma_nv_tra;
     }
@@ -58,12 +67,28 @@ public class Borrow {
         this.ma_nv_tra = ma_nv_tra;
     }
 
+    public String getTenNhanVienTra() {
+        return tenNhanVienTra;
+    }
+
+    public void setTenNhanVienTra(String tenNhanVienTra) {
+        this.tenNhanVienTra = tenNhanVienTra;
+    }
+
     public String getMa_the() {
         return ma_the;
     }
 
     public void setMa_the(String ma_the) {
         this.ma_the = ma_the;
+    }
+
+    public String getTenDocGia() {
+        return tenDocGia;
+    }
+
+    public void setTenDocGia(String tenDocGia) {
+        this.tenDocGia = tenDocGia;
     }
 
     public String getNgayMuon() {
@@ -90,35 +115,19 @@ public class Borrow {
         this.ngayTra = ngayTra;
     }
 
-    public String getTenNhanVienMuon() {
-        return tenNhanVienMuon;
+    public double getTongTienPhat() {
+        return tongTienPhat;
     }
 
-    public void setTenNhanVienMuon(String tenNhanVienMuon) {
-        this.tenNhanVienMuon = tenNhanVienMuon;
+    public void setTongTienPhat(double tongTienPhat) {
+        this.tongTienPhat = tongTienPhat;
     }
 
-    public String getTenNhanVienTra() {
-        return tenNhanVienTra;
+    public double getTongTienMuon() {
+        return tongTienMuon;
     }
 
-    public void setTenNhanVienTra(String tenNhanVienTra) {
-        this.tenNhanVienTra = tenNhanVienTra;
-    }
-
-    public String getTenDocGia() {
-        return tenDocGia;
-    }
-
-    public void setTenDocGia(String tenDocGia) {
-        this.tenDocGia = tenDocGia;
-    }
-
-    public Long getTongTien() {
-        return tongTien;
-    }
-
-    public void setTongTien(Long tongTien) {
-        this.tongTien = tongTien;
+    public void setTongTienMuon(double tongTienMuon) {
+        this.tongTienMuon = tongTienMuon;
     }
 }

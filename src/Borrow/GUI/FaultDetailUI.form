@@ -97,51 +97,16 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <grid id="40066" layout-manager="GridBagLayout">
-                    <constraints>
-                      <tabbedpane title="Mã chi tiết"/>
-                    </constraints>
-                    <properties>
-                      <foreground color="-5194043"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="d83d3" class="javax.swing.JButton" binding="maChiTietDelBtn">
-                        <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <background color="-11107086"/>
-                          <foreground color="-1"/>
-                          <text value="Xóa"/>
-                        </properties>
-                      </component>
-                      <component id="7fc9e" class="javax.swing.JComboBox" binding="maChiTietCB">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                          <gridbag weightx="3.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <background color="-13382401"/>
-                          <editable value="true"/>
-                          <foreground color="-5194043"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
                   <grid id="7c10e" layout-manager="GridBagLayout">
                     <constraints>
-                      <tabbedpane title="Mã lỗi"/>
+                      <tabbedpane title="Mã sách"/>
                     </constraints>
                     <properties>
                       <foreground color="-5194043"/>
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="d960b" class="javax.swing.JButton" binding="maLoiDelBtn">
+                      <component id="d960b" class="javax.swing.JButton" binding="maSachDelBtn">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                           <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
@@ -152,7 +117,7 @@
                           <text value="Xóa"/>
                         </properties>
                       </component>
-                      <component id="81839" class="javax.swing.JComboBox" binding="maLoiCB">
+                      <component id="81839" class="javax.swing.JComboBox" binding="maSachCbx">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -168,14 +133,14 @@
                   </grid>
                   <grid id="ed0b7" layout-manager="GridBagLayout">
                     <constraints>
-                      <tabbedpane title="Tên độc giả"/>
+                      <tabbedpane title="Tên sách"/>
                     </constraints>
                     <properties>
                       <foreground color="-5194043"/>
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="31ee2" class="javax.swing.JButton" binding="tenDocGiaDelBtn">
+                      <component id="31ee2" class="javax.swing.JButton" binding="tenSachDelBtn">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                           <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
@@ -186,7 +151,7 @@
                           <text value="Xóa"/>
                         </properties>
                       </component>
-                      <component id="ff569" class="javax.swing.JComboBox" binding="tenDocGiaCB">
+                      <component id="ff569" class="javax.swing.JComboBox" binding="tenSachCbx">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -202,14 +167,14 @@
                   </grid>
                   <grid id="42859" layout-manager="GridBagLayout">
                     <constraints>
-                      <tabbedpane title="Tên sách"/>
+                      <tabbedpane title="Mã lỗi"/>
                     </constraints>
                     <properties>
                       <foreground color="-5194043"/>
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="54ecd" class="javax.swing.JButton" binding="tenSachDelBtn">
+                      <component id="54ecd" class="javax.swing.JButton" binding="maLoiDelBtn">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                           <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
@@ -220,7 +185,7 @@
                           <text value="Xóa"/>
                         </properties>
                       </component>
-                      <component id="cbcc" class="javax.swing.JComboBox" binding="tenSachCB">
+                      <component id="cbcc" class="javax.swing.JComboBox" binding="maLoiCbx">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -254,75 +219,7 @@
                           <text value="Xóa"/>
                         </properties>
                       </component>
-                      <component id="1bd86" class="javax.swing.JComboBox" binding="tenLoiCB">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                          <gridbag weightx="3.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <background color="-13382401"/>
-                          <editable value="true"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
-                  <grid id="8bd57" layout-manager="GridBagLayout">
-                    <constraints>
-                      <tabbedpane title="Số lượng"/>
-                    </constraints>
-                    <properties>
-                      <foreground color="-5194043"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="1896d" class="javax.swing.JButton" binding="soLuongDelBtn">
-                        <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <background color="-11107086"/>
-                          <foreground color="-1"/>
-                          <text value="Xóa"/>
-                        </properties>
-                      </component>
-                      <component id="6c3ae" class="javax.swing.JComboBox" binding="soLuongCB">
-                        <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                          <gridbag weightx="3.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <background color="-13382401"/>
-                          <editable value="true"/>
-                        </properties>
-                      </component>
-                    </children>
-                  </grid>
-                  <grid id="6a617" layout-manager="GridBagLayout">
-                    <constraints>
-                      <tabbedpane title="Tiền đền"/>
-                    </constraints>
-                    <properties>
-                      <foreground color="-5194043"/>
-                    </properties>
-                    <border type="none"/>
-                    <children>
-                      <component id="b23f8" class="javax.swing.JButton" binding="tienDenDelBtn">
-                        <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                          <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                        </constraints>
-                        <properties>
-                          <background color="-11107086"/>
-                          <foreground color="-1"/>
-                          <text value="Xóa"/>
-                        </properties>
-                      </component>
-                      <component id="4010c" class="javax.swing.JComboBox" binding="tienDenCB">
+                      <component id="1bd86" class="javax.swing.JComboBox" binding="tenLoiCbx">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>

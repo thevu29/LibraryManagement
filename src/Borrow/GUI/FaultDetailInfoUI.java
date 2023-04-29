@@ -1,6 +1,8 @@
 package Borrow.GUI;
 
+import Borrow.BUS.BorrowBUS;
 import Borrow.BUS.FaultDetailBUS;
+import Borrow.BorrowModel;
 import Borrow.FaultDetailModel;
 
 import javax.swing.*;
@@ -27,7 +29,11 @@ public class FaultDetailInfoUI extends JFrame {
     private boolean isEditMode;
 
     private FaultDetailBUS faultDetailBUS = new FaultDetailBUS();
+
+    private BorrowBUS borrowBUS = new BorrowBUS();
     private FaultDetailModel faultDetailModel = FaultDetailUI.faultDetailModel;
+
+    public BorrowModel borrowModel = BorrowUI.borrowModel;
 
     public FaultDetailInfoUI(String id, String maSach,String tenSach,String maLoi,String tenLoi,int soLuong,double tongTien,String btnText) {
 
@@ -105,6 +111,7 @@ public class FaultDetailInfoUI extends JFrame {
 
         faultDetailBUS.addField(maPhieu,maSeri,maLoi,so_luong);
         faultDetailModel.initModelTable(faultDetailBUS.getDsLoiCT(maPhieu));
+        borrowModel.initModelTable(borrowBUS.getDsMuon());
 
         JOptionPane.showMessageDialog(null, "Thêm chi tiết lỗi thành công");
         dispose();
@@ -127,6 +134,7 @@ public class FaultDetailInfoUI extends JFrame {
 
         faultDetailBUS.updateField(maSachTruoc,maLoiTruoc,maPhieu,maSeri,maLoi,so_luong);
         faultDetailModel.initModelTable(faultDetailBUS.getDsLoiCT(maPhieu));
+        borrowModel.initModelTable(borrowBUS.getDsMuon());
 
         JOptionPane.showMessageDialog(null, "Cập nhập chi tiết lỗi thành công");
         dispose();

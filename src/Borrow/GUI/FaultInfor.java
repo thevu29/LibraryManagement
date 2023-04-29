@@ -1,6 +1,8 @@
 package Borrow.GUI;
 
+import Borrow.BUS.BorrowBUS;
 import Borrow.BUS.FaultBUS;
+import Borrow.BorrowModel;
 import Borrow.DTO.Fault;
 import Borrow.FaultModel;
 
@@ -14,6 +16,8 @@ public class FaultInfor extends JFrame {
     private boolean isEditMode;
 
     private FaultBUS faultBUS = new FaultBUS();
+    private BorrowBUS borrowBUS = new BorrowBUS();
+    public BorrowModel borrowModel = BorrowUI.borrowModel;
 
     public FaultInfor(BorrowUI borrowUI, String id, String tenLoi, String heSo,String btnText) {
         this.borrowUI = borrowUI;
@@ -58,6 +62,7 @@ public class FaultInfor extends JFrame {
 
         faultBUS.insert(new Fault(id,tenLoi,heSo));
         faultModel.initModelTable(faultBUS.getDsLoi());
+        borrowModel.initModelTable(borrowBUS.getDsMuon());
         JOptionPane.showMessageDialog(null, "Thêm lỗi thành công");
         dispose();
         txtFaultId.setEnabled(true);
@@ -77,6 +82,7 @@ public class FaultInfor extends JFrame {
 
         faultBUS.update(new Fault(id,tenLoi,heSo));
         faultModel.initModelTable(faultBUS.getDsLoi());
+        borrowModel.initModelTable(borrowBUS.getDsMuon());
         JOptionPane.showMessageDialog(null, "Cập nhập lỗi thành công");
         dispose();
     }

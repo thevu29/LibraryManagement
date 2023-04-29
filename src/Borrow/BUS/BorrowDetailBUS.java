@@ -12,11 +12,11 @@ public class BorrowDetailBUS {
         return BorrowDetailDAO.getNameBook(maSach);
     }
 
-    public Long getPriceBook(String maSach){
+    public double getPriceBook(String maSach){
         return BorrowDetailDAO.getPriceBook(maSach);
     }
 
-    public double getTienTamTinh(Long giaSach, int soNgayMuon){
+    public double getTienTamTinh(double giaSach, int soNgayMuon){
         return dao.getTienTamTinh(giaSach,soNgayMuon);
     }
 
@@ -38,6 +38,10 @@ public class BorrowDetailBUS {
 
     public ArrayList<String> getDsMaSach(){
         return dao.getDsMaSach();
+    }
+
+    public boolean checkContainBookFault(String id,String maSach ){
+        return dao.checkContainBookFault(id,maSach );
     }
     public ArrayList<BorrowDetail> getDsMuonCT(String maPhieuMuon){
         return dao.getDsMuonCT(maPhieuMuon);

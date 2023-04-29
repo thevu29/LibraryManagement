@@ -10,17 +10,18 @@ import java.util.Objects;
 
 public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
     private final String[] cols = {
-            "Mã Phiếu Mượn",
-            "Mã Nhân Viên XN Mượn",
-            "Tên Nhân Viên XN Mượn",
-            "Mã Nhân Viên XN Trả",
-            "Tên Nhân Viên XN Trả",
-            "Thẻ độc giả",
-            "Tên Độc Giả",
+            "Mã PM",
+            "Mã NVXN Mượn",
+            "Tên NVXN Mượn",
+            "Mã NVXN Trả",
+            "Tên NVXN Trả",
+            "Thẻ DG",
+            "Tên DG",
             "Ngày Mượn",
             "Ngày hẹn trả",
             "Ngày Trả",
-            "Tổng Tiền",
+            "TT Phạt",
+            "TT Mượn",
     };
 
     private boolean isEditable = true;
@@ -34,6 +35,18 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
 
     public BorrowModel() {
         super();
+    }
+
+    public boolean checkBorrow(String id){
+        for (Borrow item:
+             rows) {
+            if(item.getId().equals(id)){
+                if(item.getNgayTra()!=null){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 
@@ -104,9 +117,13 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
             case 9 -> {
                 return borrow.getNgayTra();
             }
-            case 10 ->{
-                return borrow.getTongTien()+"";
+            case 10 -> {
+                return borrow.getTongTienPhat()+"";
             }
+            case 11 -> {
+                return borrow.getTongTienMuon()+"";
+            }
+
         }
         return null;
     }

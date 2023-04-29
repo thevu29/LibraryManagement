@@ -5,28 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="xong hoa don">
-      <change afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailInfo.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/BUS/BorrowBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BUS/BorrowBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BUS/FaultBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BUS/FaultBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BUS/BorrowDetailBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BUS/BorrowDetailBUS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BorrowModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDetailDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/FaultDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/FaultDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/FaultDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/FaultDetailDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/DTO/Borrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/Borrow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/DTO/BorrowDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/BorrowDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/DTO/Fault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/Fault.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/DTO/FaultDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DTO/FaultDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/FaultDetailModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/FaultDetailModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/FaultModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/FaultModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.java" afterDir="false" />
@@ -121,6 +113,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;362&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;sellBook-merge&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Workspace/2_HK2/Java/baiTap&quot;,
@@ -168,12 +161,12 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="BorrowUI (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
+    <configuration name="BorrowDetailDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.DAO.BorrowDetailDAO" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Borrow.GUI.*" />
+          <option name="PATTERN" value="Borrow.DAO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -181,7 +174,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BorrowUI (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="BorrowUI (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -236,10 +229,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BorrowUI" />
+        <item itemvalue="Application.BorrowDetailDAO" />
         <item itemvalue="Application.FaultDetailDAO" />
         <item itemvalue="Application.BorrowUI (1)" />
         <item itemvalue="Application.FaultDetailUI" />
-        <item itemvalue="Application.BorrowUI (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -467,14 +460,14 @@
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1682476236443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.GUI.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1682587114949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1682784418016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.GUI.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailDAO.ic" NAME="BorrowDetailDAO Coverage Results" MODIFIED="1682499255351" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.DAO.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__2_.ic" NAME="BorrowUI (2) Coverage Results" MODIFIED="1682561250040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailDAO.ic" NAME="BorrowDetailDAO Coverage Results" MODIFIED="1682756254833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.DAO.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__5_.ic" NAME="BorrowUI (5) Coverage Results" MODIFIED="1682496916252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.GUI.*</FILTER>

@@ -2,9 +2,7 @@ package Borrow.GUI;
 
 import Borrow.BUS.BorrowBUS;
 import Borrow.BUS.FaultBUS;
-import Borrow.BorrowDetailModel;
 import Borrow.BorrowModel;
-import Borrow.DTO.Borrow;
 import Borrow.FaultDetailModel;
 import Borrow.FaultModel;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
@@ -20,7 +18,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
@@ -32,18 +29,18 @@ public class BorrowUI {
     private JButton borrowDeleteAllButton;
     private JButton borrowFilterButton;
     private JTabbedPane borrowTabbedPane2;
-    private JButton borrowIDDelBtn;
-    private JComboBox borrowIDCB;
-    private JButton tenNhanVienDelBtn;
-    private JComboBox tenNhanVienCB;
-    private JButton tenDocGiaDelBtn;
-    private JComboBox tenDocGiaCB;
-    private JButton ngayMuonDelBtn;
-    private JComboBox ngayMuonCB;
-    private JButton ngayTraDelBtn;
-    private JComboBox ngayTraCB;
-    private JButton tongTienDelBtn;
-    private JComboBox tongTienCB;
+    private JButton borrowIdDelBtn;
+    private JComboBox borrowIdCbx;
+    private JButton maNvxnMuonDelBtn;
+    private JComboBox maNvxnMuonCbx;
+    private JButton tenNvxnMuonDelBtn;
+    private JComboBox tenNvxnMuonCbx;
+    private JButton maNvxnTraDelBtn;
+    private JComboBox maNvxnTraCbx;
+    private JButton tenNvxnTraDelBtn;
+    private JComboBox tenNvxnTraCbx;
+    private JButton maTheMuonDelBtn;
+    private JComboBox maTheMuonCbx;
     private JButton addBorrowButton;
     private JButton deleteBorrowButton;
     private JButton editBorrowButton;
@@ -69,21 +66,23 @@ public class BorrowUI {
     private JButton editFaultButton;
     private JButton btnViewBorrowDetail;
     private JButton btnViewFaultDetail;
+    private JButton tenDocGiaDelBtn;
+    private JComboBox tenDocGiaCbx;
+    private JButton btnSubmitBorrow;
 
-    //    các model cần thiết
-    public  static BorrowModel borrowModel = new BorrowModel();
-
+    // các model cần thiết
+    public static BorrowModel borrowModel = new BorrowModel();
 
     public static FaultModel faultModel = new FaultModel();
 
     public static FaultDetailModel faultDetailModel = new FaultDetailModel();
 
-//    cac BUS can thiet
+    // cac BUS can thiet
     private FaultBUS faultBUS = new FaultBUS();
     private BorrowBUS borrowBUS = new BorrowBUS();
 
-    public void showBorrowInfo(String id, String maThe,String tenDocGia,int soNgayMuon, String btnText) {
-        BorrowInfoUI borrowInfoUI = new BorrowInfoUI(new BorrowUI(),id,maThe,tenDocGia,soNgayMuon, btnText);
+    public void showBorrowInfo(String id, String maThe, String tenDocGia, int soNgayMuon, String btnText) {
+        BorrowInfoUI borrowInfoUI = new BorrowInfoUI(new BorrowUI(), id, maThe, tenDocGia, soNgayMuon, btnText);
         borrowInfoUI.setContentPane(borrowInfoUI.getContentPane());
         borrowInfoUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         borrowInfoUI.setSize(500, 300);
@@ -91,15 +90,16 @@ public class BorrowUI {
         borrowInfoUI.setVisible(true);
     }
 
-    public void showBorrowDetail(String id,String maThe,long soNgayMuon){
-        BorrowDetailUI borrowDetailUI = new BorrowDetailUI(id,maThe,soNgayMuon);
+    public void showBorrowDetail(String id, String maThe, long soNgayMuon) {
+        BorrowDetailUI borrowDetailUI = new BorrowDetailUI(id, maThe, soNgayMuon);
         borrowDetailUI.setContentPane(borrowDetailUI.getContentPane());
         borrowDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         borrowDetailUI.setSize(500, 300);
         borrowDetailUI.setLocationRelativeTo(null);
         borrowDetailUI.setVisible(true);
     }
-    public void showFaultInfo(String id, String tenLoi, String heSo,String btnText) {
+
+    public void showFaultInfo(String id, String tenLoi, String heSo, String btnText) {
         FaultInfor faultDetailUI = new FaultInfor(this, id, tenLoi, heSo, btnText);
         faultDetailUI.setContentPane(faultDetailUI.getContentPane());
         faultDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -108,7 +108,7 @@ public class BorrowUI {
         faultDetailUI.setVisible(true);
     }
 
-    public void showFaultDetail(String id){
+    public void showFaultDetail(String id) {
         FaultDetailUI faultDetailUI = new FaultDetailUI(id);
         faultDetailUI.setContentPane(faultDetailUI.getContentPane());
         faultDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -117,12 +117,8 @@ public class BorrowUI {
         faultDetailUI.setVisible(true);
     }
 
-
-
-
-
     public BorrowUI() {
-//        xu ly phieu muon
+        // xu ly phieu muon
         borrowModel.setEditable(false);
         borrowModel.initModelTable(borrowBUS.getDsMuon());
 
@@ -132,7 +128,6 @@ public class BorrowUI {
         borrowTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         borrowTable.getTableHeader().setBackground(Color.WHITE);
 
-
         borrowTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -141,14 +136,15 @@ public class BorrowUI {
                     System.out.println("double clicked");
                     int[] pos = { borrowTable.getSelectedRow(), borrowTable.getSelectedColumn() };
                     System.out.println(pos[0] + " " + pos[1]);
-//                    borrowEditSelected();
+                    // borrowEditSelected();
 
                     int selectedRow = borrowTable.getSelectedRow();
                     if (selectedRow < 0) {
-                        JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn sửa thông tin", "Warning",
+                                JOptionPane.WARNING_MESSAGE);
                         return;
                     }
-//
+                    //
                     String id = borrowTable.getValueAt(selectedRow, 0).toString();
                     String maThe = borrowTable.getValueAt(selectedRow, 5).toString();
                     String tenDocGia = borrowTable.getValueAt(selectedRow, 6).toString();
@@ -157,48 +153,56 @@ public class BorrowUI {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                     long diff = 0;
-                    try{
+                    try {
                         Date firstDate = sdf.parse(ngayMuon);
                         Date secondDate = sdf.parse(ngayHenTra);
                         long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
                         diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-                    }catch (ParseException ex){
+                    } catch (ParseException ex) {
                         System.out.println("Co loi");
                     }
-                    showBorrowInfo(id,maThe,tenDocGia,(int)diff,"Lưu thông tin");
+                    showBorrowInfo(id, maThe, tenDocGia, (int) diff, "Lưu thông tin");
                 }
 
             }
         });
         borrowTable.getTableHeader().setReorderingAllowed(false);
 
-        var IDCBTF = AutoSuggestComboBox.createWithDeleteBtn(borrowIDCB, 0, borrowModel::getColumnValueToString, borrowIDDelBtn);
-        var tenNhanVienCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenNhanVienCB, 1,
-                borrowModel::getColumnValueToString, tenNhanVienDelBtn);
-        var tenDocGiaCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenDocGiaCB, 2, borrowModel::getColumnValueToString,
+        var IDCBTF = AutoSuggestComboBox.createWithDeleteBtn(borrowIdCbx, 0, borrowModel::getColumnValueToString,
+                borrowIdDelBtn);
+        var maNVMuonCBTF = AutoSuggestComboBox.createWithDeleteBtn(maNvxnMuonCbx, 1,
+                borrowModel::getColumnValueToString,
+                maNvxnMuonDelBtn);
+        var tenNVMuonCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenNvxnMuonCbx, 2,
+                borrowModel::getColumnValueToString,
+                tenNvxnMuonDelBtn);
+        var maNVTraCBTF = AutoSuggestComboBox.createWithDeleteBtn(maNvxnTraCbx, 3, borrowModel::getColumnValueToString,
+                maNvxnTraDelBtn);
+        var tenNVTraCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenNvxnTraCbx, 4,
+                borrowModel::getColumnValueToString,
+                tenNvxnTraDelBtn);
+        var maTheCBTF = AutoSuggestComboBox.createWithDeleteBtn(maTheMuonCbx, 5, borrowModel::getColumnValueToString,
+                maTheMuonDelBtn);
+        var tenDgCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenDocGiaCbx, 6, borrowModel::getColumnValueToString,
                 tenDocGiaDelBtn);
-        var ngayMuonCBTF = AutoSuggestComboBox.createWithDeleteBtn(ngayMuonCB, 3, borrowModel::getColumnValueToString,
-                ngayMuonDelBtn);
-        var ngayTraCBTF = AutoSuggestComboBox.createWithDeleteBtn(ngayTraCB, 4, borrowModel::getColumnValueToString,
-                ngayTraDelBtn);
-        var tongTienCBTF = AutoSuggestComboBox.createWithDeleteBtn(tongTienCB, 5, borrowModel::getColumnValueToString,
-                tongTienDelBtn);
 
         borrowDeleteAllButton.addActionListener(e -> {
             IDCBTF.setText("");
-            tenNhanVienCBTF.setText("");
-            tenDocGiaCBTF.setText("");
-            ngayMuonCBTF.setText("");
-            ngayTraCBTF.setText("");
-            tongTienCBTF.setText("");
+            maNVMuonCBTF.setText("");
+            tenNVMuonCBTF.setText("");
+            maNVTraCBTF.setText("");
+            tenNVTraCBTF.setText("");
+            maTheCBTF.setText("");
+            tenDgCBTF.setText("");
         });
 
         borrowModel.setFilterField(0, IDCBTF);
-        borrowModel.setFilterField(1, tenNhanVienCBTF);
-        borrowModel.setFilterField(2, tenDocGiaCBTF);
-        borrowModel.setFilterField(3, ngayMuonCBTF);
-        borrowModel.setFilterField(4, ngayTraCBTF);
-        borrowModel.setFilterField(5, tongTienCBTF);
+        borrowModel.setFilterField(1, maNVMuonCBTF);
+        borrowModel.setFilterField(2, tenNVMuonCBTF);
+        borrowModel.setFilterField(3, maNVTraCBTF);
+        borrowModel.setFilterField(4, tenNVTraCBTF);
+        borrowModel.setFilterField(5, maTheCBTF);
+        borrowModel.setFilterField(6, tenDgCBTF);
 
         for (Iterator<TableColumn> it = borrowTable.getColumnModel().getColumns().asIterator(); it.hasNext();) {
             var column = it.next();
@@ -213,7 +217,7 @@ public class BorrowUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String maPhieu = borrowBUS.getNewPM();
-                showBorrowInfo(maPhieu,"","",0,"Thêm phiếu mượn");
+                showBorrowInfo(maPhieu, "", "", 0, "Thêm phiếu mượn");
             }
         });
 
@@ -222,7 +226,8 @@ public class BorrowUI {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowTable.getSelectedRow();
                 if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn sửa thông tin", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
@@ -234,15 +239,15 @@ public class BorrowUI {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                 long diff = 0;
-                try{
+                try {
                     Date firstDate = sdf.parse(ngayMuon);
                     Date secondDate = sdf.parse(ngayHenTra);
                     long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
                     diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-                }catch (ParseException ex){
+                } catch (ParseException ex) {
                     System.out.println("Co loi");
                 }
-                showBorrowInfo(id,maThe,tenDocGia,(int)diff,"Lưu thông tin");
+                showBorrowInfo(id, maThe, tenDocGia, (int) diff, "Lưu thông tin");
             }
         });
         deleteBorrowButton.addActionListener(new ActionListener() {
@@ -250,17 +255,24 @@ public class BorrowUI {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowTable.getSelectedRow();
                 if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xóa", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xóa", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa phiếu mượn này không?", "Question", JOptionPane.YES_NO_OPTION);
+                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa phiếu mượn này không?", "Question",
+                        JOptionPane.YES_NO_OPTION);
                 if (choice != JOptionPane.YES_OPTION) {
                     return;
                 }
 
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
-                System.out.println(id);
+
+                if(!borrowModel.checkBorrow(id)){
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn chưa đc trả", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
 
                 borrowBUS.delete(id);
                 borrowModel.initModelTable(borrowBUS.getDsMuon());
@@ -270,12 +282,46 @@ public class BorrowUI {
             }
         });
 
+        btnSubmitBorrow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = borrowTable.getSelectedRow();
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xác nhận trả", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn xác nhận trả không?", "Question",
+                        JOptionPane.YES_NO_OPTION);
+                if (choice != JOptionPane.YES_OPTION) {
+                    return;
+                }
+
+
+
+                String id = borrowTable.getValueAt(selectedRow, 0).toString();
+
+                if (borrowModel.checkBorrow(id)) {
+                    JOptionPane.showMessageDialog(null, "Phiếu đã đươc xác nhận trả!", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                borrowBUS.submitBorrow(id);
+                borrowModel.initModelTable(borrowBUS.getDsMuon());
+
+                JOptionPane.showMessageDialog(null, "Xác nhận trả thành công!");
+            }
+        });
+
         btnViewBorrowDetail.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowTable.getSelectedRow();
                 if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xem chi tiết", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
@@ -285,17 +331,17 @@ public class BorrowUI {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                 long diff = 0;
-                try{
+                try {
                     Date firstDate = sdf.parse(ngayMuon);
                     Date secondDate = sdf.parse(ngayHenTra);
                     long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
                     diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-                }catch (ParseException ex){
+                } catch (ParseException ex) {
                     System.out.println("Co loi");
                 }
 
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
-                showBorrowDetail(id,maThe,diff);
+                showBorrowDetail(id, maThe, diff);
             }
         });
 
@@ -304,7 +350,8 @@ public class BorrowUI {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowTable.getSelectedRow();
                 if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xem chi tiết", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xem chi tiết", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
@@ -318,20 +365,16 @@ public class BorrowUI {
             }
         });
 
-
-
-//        xu ly lỗi
+        // xu ly lỗi
         faultModel.setEditable(false);
         faultModel.initModelTable(faultBUS.getDsLoi());
 
         faultTable.setModel(faultModel);
         faultTable.setDefaultEditor(Object.class, null);
-        TableRowSorter<FaultModel> sorterFault
-                = new TableRowSorter<>(faultModel);
+        TableRowSorter<FaultModel> sorterFault = new TableRowSorter<>(faultModel);
         faultTable.setRowSorter(sorterFault);
         faultTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         faultTable.getTableHeader().setBackground(Color.WHITE);
-
 
         faultTable.addMouseListener(new MouseAdapter() {
             @Override
@@ -339,26 +382,30 @@ public class BorrowUI {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                     System.out.println("double clicked fault");
-                    int[] pos = {faultTable.getSelectedRow(), faultTable.getSelectedColumn()};
+                    int[] pos = { faultTable.getSelectedRow(), faultTable.getSelectedColumn() };
                     System.out.println(pos[0] + " " + pos[1]);
                     int selectedRow = faultTable.getSelectedRow();
                     if (selectedRow < 0) {
-                        JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning",
+                                JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
                     String id = faultTable.getValueAt(selectedRow, 0).toString();
                     String tenLoi = faultTable.getValueAt(selectedRow, 1).toString();
                     String heSo = faultTable.getValueAt(selectedRow, 2).toString();
-                    showFaultInfo(id, tenLoi,heSo,"Lưu thông tin");
+                    showFaultInfo(id, tenLoi, heSo, "Lưu thông tin");
                 }
             }
         });
         faultTable.getTableHeader().setReorderingAllowed(false);
 
-        var faultIDTF = AutoSuggestComboBox.createWithDeleteBtn(faultIDComboBox, 0 ,faultModel::getColumnValueToString, faultIDDelBtn);
-        var faultNameTF = AutoSuggestComboBox.createWithDeleteBtn(faultNameCB, 1,  faultModel::getColumnValueToString, faultNameDelBtn);
-        var heSoTF = AutoSuggestComboBox.createWithDeleteBtn(heSoLoiCB, 2,  faultModel::getColumnValueToString, heSoLoiDelBtn);
+        var faultIDTF = AutoSuggestComboBox.createWithDeleteBtn(faultIDComboBox, 0, faultModel::getColumnValueToString,
+                faultIDDelBtn);
+        var faultNameTF = AutoSuggestComboBox.createWithDeleteBtn(faultNameCB, 1, faultModel::getColumnValueToString,
+                faultNameDelBtn);
+        var heSoTF = AutoSuggestComboBox.createWithDeleteBtn(heSoLoiCB, 2, faultModel::getColumnValueToString,
+                heSoLoiDelBtn);
 
         faultDeleteAllButton.addActionListener(e -> {
             faultIDTF.setText("");
@@ -370,7 +417,7 @@ public class BorrowUI {
         faultModel.setFilterField(1, faultNameTF);
         faultModel.setFilterField(2, heSoTF);
 
-        for (Iterator<TableColumn> it = faultTable.getColumnModel().getColumns().asIterator(); it.hasNext(); ) {
+        for (Iterator<TableColumn> it = faultTable.getColumnModel().getColumns().asIterator(); it.hasNext();) {
             var column = it.next();
             column.setMinWidth(100);
         }
@@ -382,7 +429,7 @@ public class BorrowUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String maLoi = faultBUS.getML();
-                showFaultInfo(maLoi,"","","Thêm lỗi");
+                showFaultInfo(maLoi, "", "", "Thêm lỗi");
             }
         });
         editFaultButton.addActionListener(new ActionListener() {
@@ -390,14 +437,15 @@ public class BorrowUI {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = faultTable.getSelectedRow();
                 if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
                 String id = faultTable.getValueAt(selectedRow, 0).toString();
                 String tenLoi = faultTable.getValueAt(selectedRow, 1).toString();
                 String heSo = faultTable.getValueAt(selectedRow, 2).toString();
-                showFaultInfo(id, tenLoi,heSo,"Lưu thông tin");
+                showFaultInfo(id, tenLoi, heSo, "Lưu thông tin");
 
             }
         });
@@ -406,11 +454,13 @@ public class BorrowUI {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = faultTable.getSelectedRow();
                 if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn xóa", "Warning", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn xóa", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa lỗi này không?", "Question", JOptionPane.YES_NO_OPTION);
+                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa lỗi này không?", "Question",
+                        JOptionPane.YES_NO_OPTION);
                 if (choice != JOptionPane.YES_OPTION) {
                     return;
                 }
@@ -424,6 +474,7 @@ public class BorrowUI {
 
         });
 
+
     }
 
     public JPanel getPanel1() {
@@ -435,6 +486,7 @@ public class BorrowUI {
         frame.setContentPane(new BorrowUI().panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setSize(1000, 600);
         frame.setVisible(true);
     }
 }

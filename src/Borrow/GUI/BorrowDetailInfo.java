@@ -69,7 +69,7 @@ public class BorrowDetailInfo extends JFrame {
                 String tenSach = "";
                 if (!selectedItem.equals("Chọn sách")) {
                     tenSach = borrowDetailBUS.getNameBook(selectedItem);
-                    long giaSach =  borrowDetailBUS.getPriceBook(selectedItem);
+                    double giaSach =  borrowDetailBUS.getPriceBook(selectedItem);
                     double tienTamTinh = borrowDetailBUS.getTienTamTinh(giaSach,(int)soNgayMuon);
                     txtTienTamTinh.setText(tienTamTinh+"");
                     int giaGiam = borrowDetailBUS.getGiaGiam(maThe);
@@ -170,7 +170,7 @@ public class BorrowDetailInfo extends JFrame {
 
         txtTenSach.setText(tenSach);
 
-        long giaSach = maSach == "" ? 0 : borrowDetailBUS.getPriceBook(maSach);
+        double giaSach = maSach == "" ? 0 : borrowDetailBUS.getPriceBook(maSach);
         double tienTamTinh = borrowDetailBUS.getTienTamTinh(giaSach,(int)soNgayMuon);
         txtTienTamTinh.setText(tienTamTinh+"");
         int giaGiam = borrowDetailBUS.getGiaGiam(maThe);
