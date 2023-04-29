@@ -3,17 +3,20 @@ package Customer.BUS;
 import Customer.DAO.CustomerDAO;
 import Customer.DTO.Customer;
 import Utils.ValidationContract.Validation;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CustomerBUS {
     private ArrayList<Customer> customerList;
@@ -29,15 +32,120 @@ public class CustomerBUS {
         }
     }
 
-    public boolean writeExcel(SXSSFWorkbook workbook) {
+    public void importExcel(String path) {
+        int cnt = 0;
         try {
-            OutputStream os = new FileOutputStream("./Excel/customer.xlsx");
-            workbook.write(os);
-            return true;
+            FileInputStream fis = new FileInputStream(path);
+            Workbook workbook = getWorkBook(fis, path);
+            Sheet sheet = workbook.getSheetAt(0);
+
+            Iterator<Row> iterator = sheet.iterator();
+            while (iterator.hasNext()) {
+                Row nextRow = iterator.next();
+                if (nextRow.getRowNum() == 0) {
+                    continue;
+                }
+
+                Customer customer = new Customer();
+
+                Iterator<Cell> cellIterator = nextRow.cellIterator();
+                while (cellIterator.hasNext()) {
+                    Cell cell = cellIterator.next();
+                    Object cellValue = getCellValue(cell);
+
+                    switch (cell.getColumnIndex()) {
+                        case 0:
+                            customer.setCustomerId(cellValue.toString());
+                            break;
+                        case 1:
+                            customer.setCustomerName(cellValue.toString());
+                            break;
+                        case 2:
+                            customer.setCustomerDOB(reverseDate(cellValue.toString()));
+                            break;
+                        case 3:
+                            customer.setCustomerAddress(cellValue.toString());
+                            break;
+                        case 4:
+                            customer.setCccd(cellValue.toString());
+                            break;
+                        case 5:
+                            customer.setCustomerEmail(cellValue.toString());
+                            break;
+                        case 6:
+                            customer.setCustomerPhone(cellValue.toString());
+                            break;
+                        case 7:
+                            customer.setCustomerGender(cellValue.toString());
+                            break;
+                        case 8:
+                            customer.setMembership(cellValue.toString());
+                            break;
+                        case 9:
+                            customer.setRegistrationDate(reverseDate(cellValue.toString()));
+                            break;
+                        case 10:
+                            customer.setExpirationDate(reverseDate(cellValue.toString()));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                if (customer.getMembership().equals("Bình thường")) {
+                    customer.setRegistrationDate("");
+                    customer.setExpirationDate("");
+                }
+
+                if (cusDAO.addCustomer(customer)) {
+                    cnt++;
+                }
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            JOptionPane.showMessageDialog(null, "Không thể mở file", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
+
+        if (cnt > 0) {
+            JOptionPane.showMessageDialog(null, "Đã import " + cnt + " dòng excel");
+        } else {
+            JOptionPane.showMessageDialog(null, "Import excel thất bại", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public Object getCellValue(Cell cell) {
+        Object cellValue = null;
+        CellType cellType = cell.getCellType();
+
+        switch (cellType) {
+            case STRING:
+                cellValue = cell.getStringCellValue();
+                break;
+            case NUMERIC:
+                cellValue = cell.getNumericCellValue();
+                break;
+            case _NONE:
+            case BLANK:
+                cellValue = "";
+                break;
+            default:
+                break;
+        }
+
+        return cellValue;
+    }
+
+    public Workbook getWorkBook(FileInputStream fis, String path) throws IOException {
+        Workbook workbook = null;
+        if (path.endsWith("xlsx")) {
+            workbook = new XSSFWorkbook(fis);
+        } else if (path.endsWith("xls")) {
+            workbook = new HSSFWorkbook(fis);
+        } else {
+            JOptionPane.showMessageDialog(null, "File excel không hợp lệ", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return workbook;
     }
 
     public void exportExcel() {
@@ -50,9 +158,11 @@ public class CustomerBUS {
         writeExcelTitle(sheet, rowIndex);
 
         for (Customer customer : customerList) {
-            rowIndex++;
-            SXSSFRow row = sheet.createRow(rowIndex);
-            writeExcelData(customer, row);
+            if (!customer.isDeleted()) {
+                rowIndex++;
+                SXSSFRow row = sheet.createRow(rowIndex);
+                writeExcelData(customer, row);
+            }
         }
 
         autoResizeColumn(sheet, 11);
@@ -61,6 +171,17 @@ public class CustomerBUS {
             JOptionPane.showMessageDialog(null, "Xuất danh sách khách hàng thành file excel thành công");
         } else {
             JOptionPane.showMessageDialog(null, "Xuất danh sách khách hàng thành file excel thất bại", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public boolean writeExcel(SXSSFWorkbook workbook) {
+        try {
+            FileOutputStream fos = new FileOutputStream("./Excel/customer.xlsx");
+            workbook.write(fos);
+            return true;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 
@@ -127,7 +248,7 @@ public class CustomerBUS {
         cell.setCellValue(customer.getCustomerName());
 
         cell = row.createCell(2);
-        cell.setCellValue(reverseDate(customer.getCustomerDOB()));
+        cell.setCellValue(customer.getCustomerDOB());
 
         cell = row.createCell(3);
         cell.setCellValue(customer.getCustomerAddress());
@@ -148,10 +269,10 @@ public class CustomerBUS {
         cell.setCellValue(customer.getMembership());
 
         cell = row.createCell(9);
-        cell.setCellValue(reverseDate(customer.getRegistrationDate()));
+        cell.setCellValue(customer.getRegistrationDate());
 
         cell = row.createCell(10);
-        cell.setCellValue(reverseDate(customer.getExpirationDate()));
+        cell.setCellValue(customer.getExpirationDate());
     }
 
     public void autoResizeColumn(SXSSFSheet sheet, int columns) {

@@ -6,11 +6,13 @@ import Customer.BUS.MembershipTypeBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Customer.DTO.Customer;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 public class CustomerForm {
@@ -249,7 +251,16 @@ public class CustomerForm {
         btnImportExcel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel Files", "xlsx");
+                fileChooser.setFileFilter(filter);
 
+                int res = fileChooser.showOpenDialog(null);
+                if (res == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    customerBUS.importExcel(selectedFile.getAbsolutePath());
+                    customerBUS.renderToTable(tblCustomerModel);
+                }
             }
         });
 
