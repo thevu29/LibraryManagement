@@ -145,9 +145,9 @@ public class BookBUS {
         dialog.setVisible(true);
     }
 
-    public boolean validateAuthor(Author author, int mode) {
+    public boolean validateAuthor(Author author) {
         var message = "";
-        if (mode == 0 && authorDAO.isIDExist(author.getId())) {
+        if (authorDAO.isIDExist(author.getId())) {
             message += "ID trùng\n";
         }
 
