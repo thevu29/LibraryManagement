@@ -41,7 +41,7 @@ public class NVBUS {
         getNVDAO().removeNV(id);
     }
 
-    public int contNV() throws SQLException {
+    public int contNV() {
         return getNVDAO().contNV();
     }
 

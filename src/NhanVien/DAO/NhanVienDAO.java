@@ -17,7 +17,7 @@ public class NhanVienDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM `employee` WHERE `IS_DELETED` = 1 ");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM `EMPLOYEE` WHERE `IS_DELETED` = 1 ");
             while (rs.next()) {
 
                 var id = rs.getString("MA_NV");
@@ -44,7 +44,7 @@ public class NhanVienDAO extends DefaultConnection {
     }
 
     public int AddNV(nhanVien nv){
-        String sql ="INSERT INTO `employee` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql ="INSERT INTO `EMPLOYEE` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`, `CCCD`, `IS_DELETED`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,0,0)";
         int smt=0;
         PreparedStatement pst = null;
         try {
@@ -74,7 +74,7 @@ public class NhanVienDAO extends DefaultConnection {
     }
 
     public int removeNV(String id){
-        String sql ="UPDATE `employee` SET `IS_DELETED`=? WHERE    `MA_NV`=?";;
+        String sql ="UPDATE `EMPLOYEE` SET `IS_DELETED`=? WHERE    `MA_NV`=?";;
 
         int smt = 0;
         PreparedStatement pst = null;
@@ -92,8 +92,8 @@ public class NhanVienDAO extends DefaultConnection {
         return smt;
     }
 
-    public int contNV() throws SQLException {
-        String sql="select count(*) con from employee";
+    public int contNV(){
+        String sql="select count(*) con from EMPLOYEE";
         Statement stmt = null;
         ResultSet rs = null;
 
@@ -102,19 +102,18 @@ public class NhanVienDAO extends DefaultConnection {
 //            pst = getConnection().prepareStatement(sql);
             rs = stmt.executeQuery(sql);
 //            smt = pst.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+            if(rs.next())
+                return rs.getInt(1)+1;
+
+            return 1;
+
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        if(rs.next())
-        return rs.getInt(1)+1;
-        return 1;
-
     }
 
     public int EditNV(nhanVien nv){
-        String sql ="UPDATE `employee` SET `TEN`=?,`CA`=?,`CHUC_VU`=?,`SO_NGAY_LAM_VIEC`=?,`NOI_LAM_VIEC`=?,`PASSWORD`=?,`NGAY_SINH`=?,`DIA_CHI`=?,`PHONE`=?,`GIOI_TINH`=?,`LUONG`=?,`EMAIL`=? WHERE `MA_NV`=?";;
+        String sql ="UPDATE `EMPLOYEE` SET `TEN`=?,`CA`=?,`CHUC_VU`=?,`SO_NGAY_LAM_VIEC`=?,`NOI_LAM_VIEC`=?,`PASSWORD`=?,`NGAY_SINH`=?,`DIA_CHI`=?,`PHONE`=?,`GIOI_TINH`=?,`LUONG`=?,`EMAIL`=? WHERE `MA_NV`=?";;
 
         int smt = 0;
         PreparedStatement pst = null;

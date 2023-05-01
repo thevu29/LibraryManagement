@@ -37,7 +37,9 @@ public class NhanVienadmin {
     private JComboBox<String> comboBox1;
     private JButton delFliterNameButton;
 
-
+    public JPanel getMain() {
+        return main;
+    }
 
     private  NVBUS NVBUS = new NVBUS();
 
@@ -50,7 +52,7 @@ public class NhanVienadmin {
 //        if(nv.getID().getText().toString().equals("")){}
 //    }
 
-    public NhanVienadmin() throws SQLException {
+    public NhanVienadmin()  {
 
         NVmodel.setEditable(false);
         NVmodel.setRows(NVBUS.getAllFromDatabase());
