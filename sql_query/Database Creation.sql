@@ -1,6 +1,3 @@
-DROP DATABASE IF EXISTS LIBRARY_MANAGEMENT;
-CREATE DATABASE LIBRARY_MANAGEMENT;
-USE LIBRARY_MANAGEMENT;
 -- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: LIBRARY_MANAGEMENT
@@ -298,6 +295,7 @@ CREATE TABLE `BORROW_TICKET` (
                                  `DATE_TO_GIVE_BACK` date DEFAULT NULL,
                                  `DATE_GIVE_BACK` date DEFAULT NULL,
                                  PRIMARY KEY (`MA_PHIEU`),
+                                 UNIQUE KEY `MA_PHIEU` (`MA_PHIEU`),
                                  KEY `FK_BT_MEM_MA_THE` (`MA_THE`),
                                  CONSTRAINT `FK_BT_MEM_MA_THE` FOREIGN KEY (`MA_THE`) REFERENCES `MEMBERSHIP` (`MA_THE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -404,9 +402,9 @@ CREATE TABLE `EMPLOYEE` (
                             `MA_NV` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                             `TEN` varchar(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                             `CA` int DEFAULT NULL,
-                            `CHUC_VU` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                            `CHUC_VU` int DEFAULT NULL,
                             `SO_NGAY_LAM_VIEC` int DEFAULT NULL,
-                            `NOI_LAM_VIEC` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+                            `NOI_LAM_VIEC` int DEFAULT NULL,
                             `HE_SO` double DEFAULT NULL,
                             `PASSWORD` varchar(100) DEFAULT NULL,
                             `NGAY_NHAN_CHUC` date DEFAULT NULL,
@@ -429,7 +427,6 @@ CREATE TABLE `EMPLOYEE` (
 
 LOCK TABLES `EMPLOYEE` WRITE;
 /*!40000 ALTER TABLE `EMPLOYEE` DISABLE KEYS */;
-INSERT INTO `EMPLOYEE` VALUES ('NV001','Vo Minh Tri',1,'ADMIN',30,' ',1,' ','2023-04-15','2023-04-15',' ',' ','vominhtri13@gmail.com','0393406364',0,0,NULL);
 /*!40000 ALTER TABLE `EMPLOYEE` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -497,14 +494,14 @@ DROP TABLE IF EXISTS `MEMBERSHIP`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `MEMBERSHIP` (
                               `MA_THE` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-                              `MA_KH` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
-                              `DANG_THE` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+                              `MA_KH` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+                              `DANG_THE` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
                               `NGAY_DK` date NOT NULL,
                               `NGAY_HH` date NOT NULL,
                               `IS_DELETED` tinyint(1) DEFAULT NULL,
-                              PRIMARY KEY (`MA_THE`),
+                              PRIMARY KEY (`MA_KH`,`DANG_THE`),
+                              KEY `MA_THE` (`MA_THE`),
                               KEY `FK_MEM_MEMTYPE_DANG_THE` (`DANG_THE`),
-                              KEY `FK_MEM_CUS_MAKH` (`MA_KH`),
                               CONSTRAINT `FK_MEM_CUS_MAKH` FOREIGN KEY (`MA_KH`) REFERENCES `CUSTOMER` (`MA_KH`),
                               CONSTRAINT `FK_MEM_MEMTYPE_DANG_THE` FOREIGN KEY (`DANG_THE`) REFERENCES `MEMBERSHIP_TYPE` (`DANG_THE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -516,7 +513,7 @@ CREATE TABLE `MEMBERSHIP` (
 
 LOCK TABLES `MEMBERSHIP` WRITE;
 /*!40000 ALTER TABLE `MEMBERSHIP` DISABLE KEYS */;
-INSERT INTO `MEMBERSHIP` VALUES ('MEM001','CUS001','Bạc','2023-09-28','2024-09-28',0),('MEM002','CUS004','Vàng','2023-07-28','2024-07-28',0),('MEM003','CUS005','Bạch Kim','2023-08-28','2024-07-28',0),('MEM004','CUS007','Bạch Kim','2023-04-28','2024-07-28',0),('MEM005','CUS012','Bạch Kim','2023-05-28','2024-07-28',0),('MEM006','CUS030','Bạch Kim','2023-06-28','2024-07-28',0),('MEM007','CUS029','Bạc','2023-06-28','2024-07-28',0),('MEM008','CUS015','Bạc','2023-06-28','2024-07-28',0),('MEM009','CUS002','Vàng','2023-01-28','2024-07-28',0),('MEM010','CUS003','Bạc','2023-01-28','2024-07-28',0),('MEM011','CUS008','Vàng','2023-03-28','2024-07-28',0),('MEM012','CUS013','Bạch Kim','2023-03-28','2024-07-28',0),('MEM013','CUS014','Bạc','2023-10-28','2024-07-28',0),('MEM014','CUS018','Bạc','2023-12-28','2024-07-28',0),('MEM015','CUS011','Vàng','2023-10-28','2024-07-28',0),('MEM016','CUS006','Vàng','2023-11-28','2024-07-28',0),('MEM017','CUS022','Bạc','2023-09-28','2024-07-28',0),('MEM018','CUS023','Bạc','2023-04-28','2024-07-28',0),('MEM019','CUS025','Vàng','2023-04-28','2024-07-28',0),('MEM020','CUS027','Bạc','2023-04-28','2024-07-28',0);
+INSERT INTO `MEMBERSHIP` VALUES ('MEM001','CUS001','Bạc','2023-09-28','2024-09-28',0),('MEM009','CUS002','Vàng','2023-01-28','2024-07-28',0),('MEM010','CUS003','Bạc','2023-01-28','2024-07-28',0),('MEM002','CUS004','Vàng','2023-07-28','2024-07-28',0),('MEM003','CUS005','Bạch Kim','2023-08-28','2024-07-28',0),('MEM016','CUS006','Vàng','2023-11-28','2024-07-28',0),('MEM004','CUS007','Bạch Kim','2023-04-28','2024-07-28',0),('MEM011','CUS008','Vàng','2023-03-28','2024-07-28',0),('MEM015','CUS011','Vàng','2023-10-28','2024-07-28',0),('MEM005','CUS012','Bạch Kim','2023-05-28','2024-07-28',0),('MEM012','CUS013','Bạch Kim','2023-03-28','2024-07-28',0),('MEM013','CUS014','Bạc','2023-10-28','2024-07-28',0),('MEM008','CUS015','Bạc','2023-06-28','2024-07-28',0),('MEM014','CUS018','Bạc','2023-12-28','2024-07-28',0),('MEM017','CUS022','Bạc','2023-09-28','2024-07-28',0),('MEM018','CUS023','Bạc','2023-04-28','2024-07-28',0),('MEM019','CUS025','Vàng','2023-04-28','2024-07-28',0),('MEM020','CUS027','Bạc','2023-04-28','2024-07-28',0),('MEM007','CUS029','Bạc','2023-06-28','2024-07-28',0),('MEM006','CUS030','Bạch Kim','2023-06-28','2024-07-28',0);
 /*!40000 ALTER TABLE `MEMBERSHIP` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -601,7 +598,6 @@ CREATE TABLE `SELL_TICKET` (
 
 LOCK TABLES `SELL_TICKET` WRITE;
 /*!40000 ALTER TABLE `SELL_TICKET` DISABLE KEYS */;
-INSERT INTO `SELL_TICKET` VALUES ('HD1','NV001','KH001',1,NULL),('HD2','NV001','KH001',0,'2023-04-29 19:43:27');
 /*!40000 ALTER TABLE `SELL_TICKET` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -652,7 +648,6 @@ CREATE TABLE `SELL_TICKET_DETAILS` (
 
 LOCK TABLES `SELL_TICKET_DETAILS` WRITE;
 /*!40000 ALTER TABLE `SELL_TICKET_DETAILS` DISABLE KEYS */;
-INSERT INTO `SELL_TICKET_DETAILS` VALUES ('HD1',1,'3_2',1),('HD2',1,'3_2',0);
 /*!40000 ALTER TABLE `SELL_TICKET_DETAILS` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -665,4 +660,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-04-29 13:46:18
+-- Dump completed on 2023-05-01  6:10:24
