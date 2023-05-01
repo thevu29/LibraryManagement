@@ -72,7 +72,7 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public static double getTongTienPhat(String maPhieu) {
-        String sql = "SELECT * FROM borrow_book_ticket_fault \n" +
+        String sql = "SELECT * FROM `BORROW_BOOK_TICKET_FAULT` \n" +
                 "WHERE ma_phieu = '" + maPhieu + "'";
         double tongTien = 0;
         Statement stmt = null;
@@ -97,8 +97,8 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public static double getTongTien(String maLoi, String maSach, int soLuong) {
-        String sql = "SELECT book.GIA, book_fault.HE_SO FROM book,book_fault\n" +
-                "WHERE book.MA_SERIES = '" + maSach + "' AND book_fault.MA_LOI = '" + maLoi + "'";
+        String sql = "SELECT `BOOK`.GIA, `BOOK_FAULT`.HE_SO FROM `BOOK`,`BOOK_FAULT`\n" +
+                "WHERE `BOOK`.MA_SERIES = '" + maSach + "' AND `BOOK_FAULT`.MA_LOI = '" + maLoi + "'";
         double tongTien = 0;
         Statement stmt = null;
         try {
@@ -121,13 +121,13 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public ArrayList<Borrow> getDsMuon() {
-        String sql = "SELECT * FROM borrow_ticket WHERE IS_DELETED = 0";
+        String sql = "SELECT * FROM `BORROW_TICKET` WHERE IS_DELETED = 0";
         return getDanhSach(sql);
     }
 
     //
     public int delete(String id) {
-        String sql = "UPDATE `borrow_ticket` SET IS_DELETED=1 WHERE MA_PHIEU=?";
+        String sql = "UPDATE `BORROW_TICKET` SET IS_DELETED=1 WHERE MA_PHIEU=?";
         int smt = 0;
 
         PreparedStatement pst = null;
@@ -148,7 +148,7 @@ public class BorrowDAO extends DefaultConnection {
 
     public String getNewMaPhieuMuon() {
         Statement stmt = null;
-        String sql = "SELECT COUNT(*) AS soluong FROM borrow_ticket";
+        String sql = "SELECT COUNT(*) AS soluong FROM `BORROW_TICKET`";
 
         try {
             Connection connect = getConnect();
@@ -170,7 +170,7 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public static String getNameMember(String maThe) {
-        String sql = "SELECT customer.TEN  FROM membership,customer WHERE membership.MA_KH = customer.MA_KH AND membership.ma_the = '"
+        String sql = "SELECT `CUSTOMER`.TEN  FROM `MEMBERSHIP`,`CUSTOMER` WHERE `MEMBERSHIP`.MA_KH = `CUSTOMER`.MA_KH AND `MEMBERSHIP`.ma_the = '"
                 + maThe + "'";
         Statement stmt = null;
 
@@ -197,7 +197,7 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public static String getNameNv(String maNV) {
-        String sql = "SELECT TEN from employee WHERE  MA_NV = '" + maNV + "'";
+        String sql = "SELECT TEN from `EMPLOYEE` WHERE  MA_NV = '" + maNV + "'";
 
         Statement stmt = null;
 
@@ -224,9 +224,8 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public static String getTongTien(String maPhieuMuon) {
-        String sql = "SELECT tien_tong AS tongtien FROM borrow_ticket_details\n" +
-                "WHERE ma_phieu = '" + maPhieuMuon + "'\n" +
-                "GROUP BY ma_phieu";
+        String sql = "SELECT TIEN_TONG AS tongtien FROM `BORROW_TICKET_DETAILS`" +
+                "WHERE ma_phieu = '" + maPhieuMuon  + "' GROUP BY ma_phieu, TIEN_TONG";
 
         Statement stmt = null;
 
@@ -251,7 +250,7 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public ArrayList<String> getDsMaThe() {
-        String sql = "select * from membership";
+        String sql = "select * from `MEMBERSHIP`";
         Statement stmt = null;
         ArrayList<String> dsThe = new ArrayList<String>();
         try {
@@ -273,7 +272,7 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public int add(String id, String maThe, String maNhanVien, int soNgayMuon) {
-        String sql = "INSERT INTO `borrow_ticket`(`MA_PHIEU`, `MA_NV_MUON`,`MA_NV_TRA`, `MA_THE` , `DATE_BORROW`,`DATE_TO_GIVE_BACK`,`IS_DELETED`) "
+        String sql = "INSERT INTO `BORROW_TICKET`(`MA_PHIEU`, `MA_NV_MUON`,`MA_NV_TRA`, `MA_THE` , `DATE_BORROW`,`DATE_TO_GIVE_BACK`,`IS_DELETED`) "
                 +
                 "VALUES (?,?,?,?,?,?,?)";
         int smt = 0;
@@ -306,7 +305,7 @@ public class BorrowDAO extends DefaultConnection {
 
     public static ArrayList<String> getDsMaSach(String maPhieuMuon) {
         ArrayList<String> dsTen = new ArrayList<String>();
-        String sql = "select MA_SERIES from borrow_ticket_details where MA_PHIEU = '" + maPhieuMuon + "'";
+        String sql = "select MA_SERIES from `BORROW_TICKET_DETAILS` where MA_PHIEU = '" + maPhieuMuon + "'";
         Statement stmt = null;
 
         try {
@@ -328,7 +327,7 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public static double getPriceBook(String maSach) {
-        String sql = "SELECT GIA from book WHERE  MA_SERIES = '" + maSach + "'";
+        String sql = "SELECT GIA from `BOOK` WHERE  MA_SERIES = '" + maSach + "'";
 
         Statement stmt = null;
 
@@ -354,7 +353,7 @@ public class BorrowDAO extends DefaultConnection {
 
     public int updateField(String id, String maThe, int soNgayMuon) {
         String sql = "UPDATE `BORROW_TICKET` SET `MA_THE`=?,`DATE_TO_GIVE_BACK`=? WHERE `MA_PHIEU`=?";
-        // String sql ="update `borrow_ticket` set `MA_THE` = ? ,`DATE_TO_GIVE_BACK` = ?
+        // String sql ="update `BORROW_TICKET` set `MA_THE` = ? ,`DATE_TO_GIVE_BACK` = ?
         // where `MA_PHIEU` = ? ";
         ArrayList<Borrow> ds = getDsMuon();
 
@@ -399,7 +398,7 @@ public class BorrowDAO extends DefaultConnection {
     }
 
     public int updateStatusBookBorrow(String maSach, String trangThai) {
-        String sql = "UPDATE `book` SET TRANG_THAI = ?   WHERE MA_SERIES = ?";
+        String sql = "UPDATE `BOOK` SET TRANG_THAI = ?   WHERE MA_SERIES = ?";
 
         int smt = 0;
 

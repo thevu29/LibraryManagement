@@ -40,12 +40,12 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public ArrayList<BorrowDetail> getDsMuonCT(String maPhieuMuon) {
-        String sql = "SELECT * FROM borrow_ticket_details WHERE MA_PHIEU = '" + maPhieuMuon + "' ";
+        String sql = "SELECT * FROM BORROW_TICKET_DETAILS WHERE MA_PHIEU = '" + maPhieuMuon + "' ";
         return getDanhSach(sql);
     }
 
     public static String getTenSach(String maSeri) {
-        String sql = "SELECT TEN_SACH from book WHERE  MA_SERIES = '" + maSeri + "'";
+        String sql = "SELECT TEN_SACH from BOOK WHERE  MA_SERIES = '" + maSeri + "'";
 
         Statement stmt = null;
 
@@ -71,7 +71,7 @@ public class BorrowDetailDAO extends DefaultConnection {
 
     public ArrayList<String> getDsMaSach() {
         ArrayList<String> dsTen = new ArrayList<String>();
-        String sql = "select MA_SERIES from book where TRANG_THAI = 'AVAILABLE' and is_deleted = 0";
+        String sql = "select MA_SERIES from BOOK where TRANG_THAI = 'AVAILABLE' and is_deleted = 0";
         Statement stmt = null;
 
         try {
@@ -93,7 +93,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public static String getNameBook(String maSach) {
-        String sql = "SELECT TEN_SACH from book WHERE  MA_SERIES = '" + maSach + "'";
+        String sql = "SELECT TEN_SACH from BOOK WHERE  MA_SERIES = '" + maSach + "'";
 
         Statement stmt = null;
 
@@ -118,7 +118,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public static double getPriceBook(String maSach) {
-        String sql = "SELECT GIA from book WHERE  MA_SERIES = '" + maSach + "'";
+        String sql = "SELECT GIA from BOOK WHERE  MA_SERIES = '" + maSach + "'";
 
         Statement stmt = null;
 
@@ -147,7 +147,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public int getGiaGiam(String maThe) {
-        String sql = "SELECT GIA_GIAM from membership,membership_type WHERE  membership.DANG_THE = membership_type.DANG_THE"
+        String sql = "SELECT GIA_GIAM from MEMBERSHIP,MEMBERSHIP_TYPE WHERE  MEMBERSHIP.DANG_THE = MEMBERSHIP_TYPE.DANG_THE"
                 +
                 " and MA_THE = '" + maThe + "'";
 
@@ -174,7 +174,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public int insert(BorrowDetail borrowDetail) {
-        String sql = "INSERT INTO `borrow_ticket_details`(`MA_PHIEU`, `MA_SERIES`, `TIEN_TAM_TINH`,`TIEN_TONG` ) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO `BORROW_TICKET_DETAILS`(`MA_PHIEU`, `MA_SERIES`, `TIEN_TAM_TINH`,`TIEN_TONG` ) VALUES (?,?,?,?)";
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -199,7 +199,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public int update(BorrowDetail borrowDetail, String maSachTruoc) {
-        String sql = "UPDATE `borrow_ticket_details` SET MA_SERIES=?,TIEN_TAM_TINH=?,TIEN_TONG=? WHERE MA_PHIEU=? and MA_SERIES = ?";
+        String sql = "UPDATE `BORROW_TICKET_DETAILS` SET MA_SERIES=?,TIEN_TAM_TINH=?,TIEN_TONG=? WHERE MA_PHIEU=? and MA_SERIES = ?";
         int smt = 0;
 
         PreparedStatement pst = null;
@@ -228,7 +228,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public int updateStatusBookBorrow(String maSach, String trangThai) {
-        String sql = "UPDATE `book` SET TRANG_THAI = ?   WHERE MA_SERIES = ?";
+        String sql = "UPDATE `BOOK` SET TRANG_THAI = ?   WHERE MA_SERIES = ?";
 
         int smt = 0;
 
@@ -249,7 +249,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public int delete(String maPhieu, String maSach) {
-        String sql = "delete from `borrow_ticket_details` WHERE MA_PHIEU=? and MA_SERIES = ?";
+        String sql = "delete from `BORROW_TICKET_DETAILS` WHERE MA_PHIEU=? and MA_SERIES = ?";
         int smt = 0;
 
         PreparedStatement pst = null;
@@ -274,7 +274,7 @@ public class BorrowDetailDAO extends DefaultConnection {
     }
 
     public boolean checkContainBookFault(String id, String maSach) {
-        String sql = "select * from borrow_book_ticket_fault where MA_PHIEU = '" + id + "' and MA_SERIES='" + maSach
+        String sql = "select * from BORROW_BOOK_TICKET_FAULT where MA_PHIEU = '" + id + "' and MA_SERIES='" + maSach
                 + "'";
         Statement stmt = null;
         try {

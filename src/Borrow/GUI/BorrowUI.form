@@ -49,7 +49,7 @@
                         <constraints/>
                         <properties>
                           <autoCreateRowSorter value="true"/>
-                          <autoResizeMode value="4"/>
+                          <autoResizeMode value="0"/>
                           <font size="16"/>
                           <rowHeight value="24"/>
                         </properties>
