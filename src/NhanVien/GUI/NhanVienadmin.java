@@ -54,7 +54,7 @@ public class NhanVienadmin {
         return main;
     }
 
-    public NhanVienadmin() throws SQLException {
+    public NhanVienadmin() {
 
         NVmodel.setEditable(false);
         NVmodel.setRows(NVBUS.getAllFromDatabase());
