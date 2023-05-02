@@ -26,18 +26,19 @@ public class NVBUS {
         NVs.setRows(NVDAO.getAllFromDatabase());
     }
 
-    public void AddNV(nhanVien nv){
+    public void AddNV(nhanVien nv) {
         getNVDAO().AddNV(nv);
     }
 
-    public ArrayList<nhanVien> getAllFromDatabase(){
+    public ArrayList<nhanVien> getAllFromDatabase() {
         return getNVDAO().getAllFromDatabase();
     }
-    public void EditNV(nhanVien nv){
+
+    public void EditNV(nhanVien nv) {
         getNVDAO().EditNV(nv);
     }
 
-    public void removeNV(String id){
+    public void removeNV(String id) {
         getNVDAO().removeNV(id);
     }
 
@@ -53,7 +54,6 @@ public class NVBUS {
     public NVDataTableModel getNVs() {
         return NVs;
     }
-
 
 
     public NhanVienadmin getNVGUI() {

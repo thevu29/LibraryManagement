@@ -27,5 +27,9 @@ public class ValidationContract {
                 return false;
             }
         }
+
+        public static boolean isValidCCCD(String cccd) {
+            return cccd.matches("[0-9]{12}");
+        }
     }
 }

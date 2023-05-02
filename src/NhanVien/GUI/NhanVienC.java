@@ -2,6 +2,8 @@ package NhanVien.GUI;
 
 import NhanVien.DTO.nhanVien;
 import NhanVien.arraylistNV.NVDataTableModel;
+import Utils.ValidationContract;
+import Utils.ValidationContract.Validation;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -167,8 +169,9 @@ public class NhanVienC {
         this.NVDataTableModel = NVDataTableModel;
     }
 
-    private  NVDataTableModel NVDataTableModel = new NVDataTableModel();
-//    public NhanVienC(nhanVien nvs, NVDataTableModel NVDataTableModel, String title){
+    private NVDataTableModel NVDataTableModel = new NVDataTableModel();
+
+    //    public NhanVienC(nhanVien nvs, NVDataTableModel NVDataTableModel, String title){
 //        this.NVDataTableModel = NVDataTableModel;
 //        setContentPane(contentPane);
 //        setModal(true);
@@ -202,33 +205,33 @@ public class NhanVienC {
 
     }
 
-    public  boolean check(){
-        if(ID.getText().equals("")&&name.getText().equals("")&&salary.getText().equals("")&&getDaywork().getText().equals("")&&getBrith().getText().equals("")&&email.getText().equals("")&&address.getText().equals("")&&password1.getText().equals("")&&password2.getText().equals("")&&password2.getText().equals("")&&phone.getText().equals("")){
+    public boolean check() {
+        if (ID.getText().equals("") && name.getText().equals("") && salary.getText().equals("") && getDaywork().getText().equals("") && getBrith().getText().equals("") && email.getText().equals("") && address.getText().equals("") && password1.getText().equals("") && password2.getText().equals("") && password2.getText().equals("") && phone.getText().equals("")) {
 
             JOptionPane.showMessageDialog(null, "Bạn không được để trống vị trí thông tin nào!!", "thông báo", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        if (!password2.getText().matches("[0-9]{14}")){
-            JOptionPane.showMessageDialog(null, "CCCD phải có 14 số!", "thông báo", JOptionPane.WARNING_MESSAGE);
-            return  false;
+        if (!Validation.isValidCCCD(password2.getText())) {
+            JOptionPane.showMessageDialog(null, "CCCD phải có 12 số!", "thông báo", JOptionPane.WARNING_MESSAGE);
+            return false;
         }
-        if(!email.getText().matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")){
+        if (!Validation.isValidEmail(email.getText())) {
             JOptionPane.showMessageDialog(null, "Nhập email sai định dạng", "thông báo", JOptionPane.WARNING_MESSAGE);
-            return  false;
+            return false;
         }
-        if(!brith.getText().matches("^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$")){
+        if (!brith.getText().matches("^[0-9]{4}-[0-9]{1,2}-[0-9]{1,2}$")) {
             JOptionPane.showMessageDialog(null, "Nhập ngày sinh dạng : YYYY-MM-DD và hợp lý", "thông báo", JOptionPane.WARNING_MESSAGE);
-            return  false;
+            return false;
         }
-        if(!salary.getText().matches("[0-9]+")&&!daywork.getText().matches("[0-9]+")){
+        if (!salary.getText().matches("[0-9]+") && !daywork.getText().matches("[0-9]+")) {
             JOptionPane.showMessageDialog(null, "Nhập Số điện thoại từ đúng định dạng 0 và 9-10 số liện sau", "thông báo", JOptionPane.WARNING_MESSAGE);
-            return  false;
+            return false;
         }
-        if(!phone.getText().matches("^0[0-9]{9,10}")){
+        if (!Validation.isValidPhoneNumber(phone.getText())) {
             JOptionPane.showMessageDialog(null, "Nhập Số điện thoại từ đúng định dạng 0 và 9-10 số liện sau", "thông báo", JOptionPane.WARNING_MESSAGE);
-            return  false;
+            return false;
         }
-        return  true;
+        return true;
     }
 
     public static void main(String[] args) {
