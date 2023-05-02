@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix customerBUS">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix GUI và format chữ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/NVDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/NVDataTableModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,58 +111,19 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HoaDonGUI (1)">
+  <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="HoaDonGUI (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDonGUI" />
+    <configuration name="MainWindow (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sellBook.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HoaDonGUI (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDonGUI" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sellBook.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HoaDonGUI (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDonGUI" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sellBook.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HoaDonGUI (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDonGUI" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="sellBook.GUI.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -200,12 +157,38 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
+    <configuration name="NhanVienadmin (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NhanVien.GUI.NhanVienadmin" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="PATTERN" value="NhanVien.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NhanVienadmin (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NhanVien.GUI.NhanVienadmin" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="NhanVien.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NhanVienadmin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="NhanVien.GUI.NhanVienadmin" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="NhanVien.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -215,11 +198,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HoaDonGUI (1)" />
         <item itemvalue="Application.MainWindow" />
-        <item itemvalue="Application.HoaDonGUI (5)" />
-        <item itemvalue="Application.HoaDonGUI (4)" />
-        <item itemvalue="Application.HoaDonGUI (3)" />
+        <item itemvalue="Application.NhanVienadmin (2)" />
+        <item itemvalue="Application.NhanVienadmin" />
+        <item itemvalue="Application.MainWindow (1)" />
+        <item itemvalue="Application.NhanVienadmin (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -452,7 +435,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682925058149</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix GUI và format chữ">
+      <created>1682926916923</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1682926916923</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -497,7 +487,8 @@
     <MESSAGE value="update phần chart" />
     <MESSAGE value="thêm trang thống kê vô MainForm" />
     <MESSAGE value="fix customerBUS" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix customerBUS" />
+    <MESSAGE value="fix GUI và format chữ" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix GUI và format chữ" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

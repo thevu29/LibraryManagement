@@ -41,7 +41,7 @@
                   <grid id="f62c7" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <tabbedpane title="Mã Nhân Viên"/>
+                      <tabbedpane title="Mã nhân viên"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -80,7 +80,7 @@
                               <background color="-11107086"/>
                               <enabled value="true"/>
                               <foreground color="-1"/>
-                              <text value="Xóa fliter ID"/>
+                              <text value="Xóa filter mã"/>
                             </properties>
                             <clientProperties>
                               <html.disable class="java.lang.Boolean" value="true"/>
@@ -93,7 +93,7 @@
                   <grid id="6e443" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <tabbedpane title="Tên Nhân Viên"/>
+                      <tabbedpane title="Tên nhân viên"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -134,7 +134,7 @@
                             <properties>
                               <background color="-11107086"/>
                               <foreground color="-1"/>
-                              <text value="Xóa fliter Tên"/>
+                              <text value="Xóa filter tên"/>
                             </properties>
                           </component>
                         </children>
@@ -144,7 +144,7 @@
                   <grid id="59418" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
-                      <tabbedpane title="Chức Vụ"/>
+                      <tabbedpane title="Chức vụ"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -183,7 +183,7 @@
                               <background color="-11107086"/>
                               <foreground color="-1"/>
                               <hideActionText value="true"/>
-                              <text value="Xóa fliter Chức vụ"/>
+                              <text value="Xóa filter chức vụ"/>
                             </properties>
                           </component>
                         </children>
@@ -270,9 +270,7 @@
         <children>
           <component id="ec493" class="javax.swing.JButton" binding="findButton">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-              </grid>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-11107086"/>
@@ -282,26 +280,22 @@
           </component>
           <component id="a43d7" class="javax.swing.JButton" binding="delButton">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-              </grid>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-11107086"/>
               <foreground color="-1"/>
-              <text value="Xóa"/>
+              <text value="Xóa nhân viên"/>
             </properties>
           </component>
           <component id="6a977" class="javax.swing.JButton" binding="editButton">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-              </grid>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-11107086"/>
               <foreground color="-1"/>
-              <text value="Sửa"/>
+              <text value="Sửa thông tin"/>
             </properties>
           </component>
           <vspacer id="427b">
@@ -311,14 +305,12 @@
           </vspacer>
           <component id="5402a" class="javax.swing.JButton" binding="addButton">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false">
-                <minimum-size width="-1" height="40"/>
-              </grid>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-11107086"/>
               <foreground color="-1"/>
-              <text value="Thêm"/>
+              <text value="Thêm nhân viên"/>
             </properties>
           </component>
         </children>
