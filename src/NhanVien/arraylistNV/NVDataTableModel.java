@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
-    private final String[] cols = {"ID", "Tên Nhân viên","Giới tính", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc","Địa chỉ","email","Ngày sinh","Ngày làm việc"};
+    private final String[] cols = {"ID", "Tên Nhân viên","Giới tính", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc","Địa chỉ","email","Ngày sinh","Ngày làm việc","Căng cước công dân"};
 
     private boolean isEditable = true;
 
@@ -108,6 +108,9 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
             case 12 -> {
                 return NV.getDaywork();
             }
+            case 13 -> {
+                return NV.getCCCD();
+            }
         }
         return null;
     }
@@ -119,14 +122,6 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        switch (col) {
-            case 2, 3, 4 -> {
-                var item = new ArrayList<String>();
-                rows.stream().map(NV -> Objects.toString(translateValue(NV, col))).forEach((elem) ->
-                        item.addAll(List.of(elem.split(","))));
-                return item;
-            }
-        }
         return rows.stream().map(book -> Objects.toString(translateValue(book, col))).toList();
     }
 

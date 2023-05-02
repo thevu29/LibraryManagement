@@ -16,11 +16,13 @@ public class nhanVien {
     private int work;
     private int daywork;
     private int Salary;
+
+	private String CCCD;
     
 	public nhanVien() {
 	}
 	public nhanVien(String iD, String name, String phone, String birth, String address, String email, String password,
-					int shift, int position, int gender, int work, int daywork, int salary) {
+					int shift, int position, int gender, int work, int daywork, int salary,String CCCD) {
 		super();
 		ID = iD;
 		this.name = name;
@@ -35,7 +37,17 @@ public class nhanVien {
 		this.work = work;
 		this.daywork = daywork;
 		Salary = salary;
+		this.CCCD=CCCD;
 	}
+
+	public String getCCCD() {
+		return CCCD;
+	}
+
+	public void setCCCD(String CCCD) {
+		this.CCCD = CCCD;
+	}
+
 	public int getWork() {
 		return work;
 	}

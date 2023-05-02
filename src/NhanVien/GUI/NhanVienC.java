@@ -208,8 +208,8 @@ public class NhanVienC {
             JOptionPane.showMessageDialog(null, "Bạn không được để trống vị trí thông tin nào!!", "thông báo", JOptionPane.WARNING_MESSAGE);
             return false;
         }
-        if (!password2.getText().equals(password1.getText())){
-            JOptionPane.showMessageDialog(null, "mật khẩu cần trùng khớp với nhau", "thông báo", JOptionPane.WARNING_MESSAGE);
+        if (!password2.getText().matches("[0-9]{14}")){
+            JOptionPane.showMessageDialog(null, "CCCD phải có 14 số!", "thông báo", JOptionPane.WARNING_MESSAGE);
             return  false;
         }
         if(!email.getText().matches("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")){
