@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="main" layout-manager="GridLayoutManager" row-count="25" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="20" bottom="10" right="20"/>
     <constraints>
-      <xy x="20" y="20" width="619" height="661"/>
+      <xy x="20" y="20" width="673" height="661"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -148,7 +148,7 @@
         </constraints>
         <properties>
           <font size="16"/>
-          <text value="Mật khẩu "/>
+          <text value="Căng cước công dân"/>
         </properties>
       </component>
       <component id="3afd2" class="javax.swing.JTextField" binding="ID">

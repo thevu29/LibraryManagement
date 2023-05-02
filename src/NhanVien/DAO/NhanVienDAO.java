@@ -33,9 +33,10 @@ public class NhanVienDAO extends DefaultConnection {
                 var NS = rs.getString("NGAY_SINH");
                 var email = rs.getString("Email");
                 var dc = rs.getString("DIA_CHI");
+                var CCCD = rs.getString("CCCD");
 
 
-                NV.add(new nhanVien(id,name,SDT,NS,dc,email,PASSWORD,Ca,CV,GT,NLV,NL,Luong));
+                NV.add(new nhanVien(id,name,SDT,NS,dc,email,PASSWORD,Ca,CV,GT,NLV,NL,Luong,CCCD));
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("Không thể kết nối");
@@ -44,7 +45,7 @@ public class NhanVienDAO extends DefaultConnection {
     }
 
     public int AddNV(nhanVien nv){
-        String sql ="INSERT INTO `employee` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql ="INSERT INTO `employee` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`,`CCCD`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         int smt=0;
         PreparedStatement pst = null;
         try {
@@ -62,6 +63,7 @@ public class NhanVienDAO extends DefaultConnection {
             pst.setInt(11,nv.getGender());
             pst.setInt(12,nv.getSalary());
             pst.setString(13, nv.getEmail());
+            pst.setString(14, nv.getCCCD());
 
             smt = pst.executeUpdate();
         } catch (SQLException e) {
@@ -114,13 +116,13 @@ public class NhanVienDAO extends DefaultConnection {
     }
 
     public int EditNV(nhanVien nv){
-        String sql ="UPDATE `employee` SET `TEN`=?,`CA`=?,`CHUC_VU`=?,`SO_NGAY_LAM_VIEC`=?,`NOI_LAM_VIEC`=?,`PASSWORD`=?,`NGAY_SINH`=?,`DIA_CHI`=?,`PHONE`=?,`GIOI_TINH`=?,`LUONG`=?,`EMAIL`=? WHERE `MA_NV`=?";;
+        String sql ="UPDATE `employee` SET `TEN`=?,`CA`=?,`CHUC_VU`=?,`SO_NGAY_LAM_VIEC`=?,`NOI_LAM_VIEC`=?,`PASSWORD`=?,`NGAY_SINH`=?,`DIA_CHI`=?,`PHONE`=?,`GIOI_TINH`=?,`LUONG`=?,`EMAIL`=? , `CCCD`=? WHERE `MA_NV`=?";;
 
         int smt = 0;
         PreparedStatement pst = null;
         try {
             pst = getConnection().prepareStatement(sql);
-            pst.setString(13, nv.getID());
+            pst.setString(14, nv.getID());
             pst.setString(1,nv.getName());
             pst.setInt(2,nv.getShift());
             pst.setInt(3, nv.getPosition());
@@ -133,6 +135,7 @@ public class NhanVienDAO extends DefaultConnection {
             pst.setInt(10,nv.getGender());
             pst.setInt(11,nv.getSalary());
             pst.setString(12, nv.getEmail());
+            pst.setString(13, nv.getCCCD());
             smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
