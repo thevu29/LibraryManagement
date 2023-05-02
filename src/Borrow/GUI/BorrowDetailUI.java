@@ -1,97 +1,155 @@
 package Borrow.GUI;
 
+import Borrow.BUS.BorrowBUS;
+import Borrow.BUS.BorrowDetailBUS;
 import Borrow.BorrowDetailModel;
+import Borrow.BorrowModel;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableRowSorter;
-import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.Iterator;
 
-public class BorrowDetailUI {
-    private JTabbedPane tabbedPane1;
+public class BorrowDetailUI extends JFrame {
     private JTable borrowDetailTable;
     private JButton bookDeleteAllButton;
     private JButton bookFilterButton;
     private JTabbedPane tabbedPane2;
-    private JButton IDDelBtn;
-    private JComboBox IDComboBox;
-    private JButton maPhieuMuonDelBtn;
-    private JComboBox maPhieuMuonCB;
+    private JButton maSachDelBtn;
+    private JComboBox maSachCbx;
     private JButton tenSachDelBtn;
-    private JComboBox tenSachCB;
-    private JButton tenLoiDelBtn;
-    private JComboBox tenLoiCB;
-    private JButton soLuongDelBtn;
-    private JComboBox soLuongCB;
-    private JButton giaTienDelBtn;
-    private JComboBox giaTienCB;
-    private JButton addRowButton;
-    private JButton thêmPhiếuMượnButton;
-    private JButton xóaPhiếuMượnButton;
-    private JButton chỉnhSửaPhiếuMượnButton;
+    private JComboBox tenSachCbx;
+    private JButton btnAdd;
+    private JButton btnDelete;
+    private JButton btnUpdate;
     private JPanel panel1;
 
-    private static BorrowDetailModel borrowDetailModel = new BorrowDetailModel();
+    private BorrowUI borrowUI;
 
-    public BorrowDetailUI() {
-        borrowDetailModel.setEditable(false);
 
-        borrowDetailModel.addTestData();
-        // table2.setModel(testExcel);
+
+    public BorrowDetailUI(){
+
+        borrowDetailTable.addComponentListener(new ComponentAdapter() {
+        });
+    }
+    public void showBorrowDetailInfo(String maPhieu,String maSach,String tenSach,String maThe,long soNgayMon,String btnText) {
+        BorrowDetailInfo borrowDetailInfo = new BorrowDetailInfo(new BorrowUI(),maPhieu,maSach,tenSach,maThe,soNgayMon, btnText);
+        borrowDetailInfo.setContentPane(borrowDetailInfo.getContentPane());
+        borrowDetailInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        borrowDetailInfo.setSize(500, 300);
+        borrowDetailInfo.setLocationRelativeTo(null);
+        borrowDetailInfo.setVisible(true);
+    }
+
+    public static BorrowDetailModel borrowDetailModel = new BorrowDetailModel();
+
+    public BorrowModel borrowModel = BorrowUI.borrowModel;
+
+    public static BorrowDetailBUS borrowDetailBUS = new BorrowDetailBUS();
+
+    public BorrowBUS borrowBUS = new BorrowBUS();
+
+
+    public BorrowDetailUI(String id,String maThe,long soNgayMuon) {
         borrowDetailTable.setModel(borrowDetailModel);
-        TableRowSorter<BorrowDetailModel> sorter = new TableRowSorter<>(borrowDetailModel);
-        borrowDetailTable.setRowSorter(sorter);
-        borrowDetailTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
-        borrowDetailTable.getTableHeader().setBackground(Color.WHITE);
+        borrowDetailTable.setDefaultEditor(Object.class, null);
 
-        addRowButton.addActionListener(e -> borrowDetailModel.addTestData());
+        borrowDetailModel.initModelTable(borrowDetailBUS.getDsMuonCT(id));
 
         borrowDetailTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
-                    System.out.println("double clicked");
-                    int[] pos = { borrowDetailTable.getSelectedRow(), borrowDetailTable.getSelectedColumn() };
+                    System.out.println("double clicked fault");
+                    int[] pos = {borrowDetailTable.getSelectedRow(), borrowDetailTable.getSelectedColumn()};
                     System.out.println(pos[0] + " " + pos[1]);
+                    int selectedRow = borrowDetailTable.getSelectedRow();
+                    if (selectedRow < 0) {
+                        JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                        return;
+                    }
+
+                    String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
+                    String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
+                    String tenSach = borrowDetailTable.getValueAt(selectedRow, 2).toString();
+                    showBorrowDetailInfo(id, maSach,tenSach,maThe,soNgayMuon,"Lưu thông tin");
                 }
             }
         });
-        borrowDetailTable.getTableHeader().setReorderingAllowed(false);
 
-        var maChiTietIDTF = AutoSuggestComboBox.createWithDeleteBtn(IDComboBox, 0,
-                borrowDetailModel::getColumnValueToString, IDDelBtn);
-        var maPhieuMuonIDTF = AutoSuggestComboBox.createWithDeleteBtn(maPhieuMuonCB, 1,
-                borrowDetailModel::getColumnValueToString, maPhieuMuonDelBtn);
-        var tenSachIDTF = AutoSuggestComboBox.createWithDeleteBtn(tenSachCB, 2, borrowDetailModel::getColumnValueToString,
-                tenSachDelBtn);
-        var tenLoiIDTF = AutoSuggestComboBox.createWithDeleteBtn(tenLoiCB, 3, borrowDetailModel::getColumnValueToString,
-                tenLoiDelBtn);
-        var soLuongIDTF = AutoSuggestComboBox.createWithDeleteBtn(soLuongCB, 4, borrowDetailModel::getColumnValueToString,
-                soLuongDelBtn);
-        var giaTienIDTF = AutoSuggestComboBox.createWithDeleteBtn(giaTienCB, 5, borrowDetailModel::getColumnValueToString,
-                giaTienDelBtn);
 
-        bookDeleteAllButton.addActionListener(e -> {
-            maChiTietIDTF.setText("");
-            maPhieuMuonIDTF.setText("");
-            tenSachIDTF.setText("");
-            tenLoiIDTF.setText("");
-            soLuongIDTF.setText("");
-            giaTienIDTF.setText("");
+        btnAdd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showBorrowDetailInfo(id,"","",maThe,soNgayMuon,"Thêm sách mượn");
+            }
+        });
+        btnUpdate.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = borrowDetailTable.getSelectedRow();
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn sửa ", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+//
+                String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
+                String tenSach = borrowDetailTable.getValueAt(selectedRow, 2).toString();
+                showBorrowDetailInfo(id,maSach,tenSach,maThe,soNgayMuon,"Lưu thông tin");
+            }
+        });
+        btnDelete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = borrowDetailTable.getSelectedRow();
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn sách mượn muốn xóa", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn chắc muốn xóa?", "Question", JOptionPane.YES_NO_OPTION);
+                if (choice != JOptionPane.YES_OPTION) {
+                    return;
+                }
+
+                String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
+                String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
+
+                if(borrowDetailBUS.checkContainBookFault(id,maSach)){
+                    JOptionPane.showMessageDialog(null, "Tồn tại lỗi của sách trong phiếu mượn!", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                borrowDetailBUS.delete(id,maSach);
+                borrowDetailModel.initModelTable(borrowDetailBUS.getDsMuonCT(id));
+                borrowModel.initModelTable(borrowBUS.getDsMuon());
+
+                JOptionPane.showMessageDialog(null, "Xóa phiếu mượn thành công");
+
+            }
         });
 
-        borrowDetailModel.setFilterField(0, maChiTietIDTF);
-        borrowDetailModel.setFilterField(1, maPhieuMuonIDTF);
-        borrowDetailModel.setFilterField(2, tenSachIDTF);
-        borrowDetailModel.setFilterField(3, tenLoiIDTF);
-        borrowDetailModel.setFilterField(4, soLuongIDTF);
-        borrowDetailModel.setFilterField(5, giaTienIDTF);
+        borrowDetailTable.getTableHeader().setReorderingAllowed(false);
+
+
+        var maSachCBTF = AutoSuggestComboBox.createWithDeleteBtn(maSachCbx, 1, borrowDetailModel::getColumnValueToString,
+                maSachDelBtn);
+        var tenSachCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenSachCbx, 2,
+                borrowDetailModel::getColumnValueToString,
+                tenSachDelBtn);
+
+        bookDeleteAllButton.addActionListener(e -> {
+            maSachCBTF.setText("");
+            tenSachCBTF.setText("");
+        });
+
+        borrowDetailModel.setFilterField(1, maSachCBTF);
+        borrowDetailModel.setFilterField(2, tenSachCBTF);
+
 
         for (Iterator<TableColumn> it = borrowDetailTable.getColumnModel().getColumns().asIterator(); it.hasNext();) {
             var column = it.next();
@@ -101,17 +159,11 @@ public class BorrowDetailUI {
         bookFilterButton.addActionListener(e -> {
             TableUtils.filter(borrowDetailTable);
         });
+
     }
 
-    public JPanel getPanel1() {
+    public JPanel getContentPane() {
         return panel1;
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Book");
-        frame.setContentPane(new BorrowDetailUI().panel1);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
-    }
 }

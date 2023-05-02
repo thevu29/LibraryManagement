@@ -1,6 +1,5 @@
 package Book.DTO;
 
-import NhanVien.arraylistNV.Gender;
 import Utils.EGender;
 
 public class Author implements Cloneable {

@@ -1,6 +1,7 @@
 package Borrow;
 
 import Borrow.DTO.Borrow;
+import Borrow.DTO.Fault;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;
@@ -9,13 +10,18 @@ import java.util.Objects;
 
 public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
     private final String[] cols = {
-            "Mã Phiếu Mượn",
-            "Tên Nhân Viên",
-            "Tên Độc Giả",
+            "Mã PM",
+            "Mã NVXN Mượn",
+            "Tên NVXN Mượn",
+            "Mã NVXN Trả",
+            "Tên NVXN Trả",
+            "Thẻ DG",
+            "Tên DG",
             "Ngày Mượn",
             "Ngày hẹn trả",
             "Ngày Trả",
-            "Tổng Tiền",
+            "TT Phạt",
+            "TT Mượn",
     };
 
     private boolean isEditable = true;
@@ -25,93 +31,42 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
     public BorrowModel(boolean isEditable) {
         this();
         this.isEditable = isEditable;
-
     }
 
     public BorrowModel() {
         super();
     }
 
-    // add data testExcel
-    public void addBlank() {
-         rows.add(Borrow.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public void addTestData() {
-         rows.add(Borrow.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public boolean checkID(String id){
-        for(Borrow row : rows) {
-            if(row.getId().equals(id)){
-                return true;
+    public boolean checkBorrow(String id){
+        for (Borrow item:
+             rows) {
+            if(item.getId().equals(id)){
+                if(item.getNgayTra()!=null){
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    public void addData(String maLoi,String tenDocGia,String ngayMuon,String ngayTra,ArrayList<String> sach){
-//        rows.add(new Borrow(id,tenLoi,heSo));
-        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
 
-//    public void updateData(String id,String tenLoi,double heSo){
-//        for(Fault row : rows) {
-//            if(row.getId().equals(id)){
-//                row.setTenLoi(tenLoi);
-//                row.setHeSo(heSo);
-//                fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-//                return;
-//            }
-//        }
-//    }
-
-    public void deleteTestData(String id){
-        int index = 0;
-        for(Borrow row : rows) {
-            if(row.getId().equals(id)){
-                rows.remove(index);
-                return;
-            }
-            index++;
+    public void initModelTable(ArrayList<Borrow> dsMuon){
+        rows.clear();
+        for (Borrow borrow: dsMuon) {
+            rows.add(borrow);
+            fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
         }
+        fireTableDataChanged();
     }
 
-    public void renderTable(){
-        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public boolean isEditable() {
-        return isEditable;
-    }
-
-    public void setEditable(boolean editable) {
-        isEditable = editable;
-    }
-
-    // chưa hiểu
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 6) {
-            return Integer.class;
-        }
         return super.getColumnClass(columnIndex);
     }
 
     @Override
     public String getColumnName(int column) {
         return cols[column];
-    }
-
-    public boolean isCellEditable(int row, int column) {
-        return isEditable;
-    }
-
-    public void setValueAt(Object value, int row, int col) {
-        // rows.get(row).set(col, (String) value);
-        fireTableCellUpdated(row, col);
     }
 
     @Override
@@ -136,23 +91,39 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
                 return borrow.getId();
             }
             case 1 -> {
-                return borrow.getTenNhanVien();
+                return borrow.getMa_nv_muon();
             }
             case 2 -> {
-                return borrow.getTenDocGia();
+                return borrow.getTenNhanVienMuon();
             }
             case 3 -> {
-                return borrow.getNgayMuon();
+                return borrow.getMa_nv_tra();
             }
             case 4 -> {
-                return borrow.getNgayHenTra();
+                return borrow.getTenNhanVienTra();
             }
             case 5 -> {
-                return borrow.getNgayTra();
+                return borrow.getMa_the();
             }
             case 6 -> {
-                return borrow.getTongTien();
+                return borrow.getTenDocGia();
             }
+            case 7 -> {
+                return borrow.getNgayMuon();
+            }
+            case 8 -> {
+                return borrow.getNgayHenTra();
+            }
+            case 9 -> {
+                return borrow.getNgayTra();
+            }
+            case 10 -> {
+                return borrow.getTongTienPhat()+"";
+            }
+            case 11 -> {
+                return borrow.getTongTienMuon()+"";
+            }
+
         }
         return null;
     }
@@ -165,15 +136,7 @@ public class BorrowModel extends AbstractTableModelWithFilters<Borrow> {
 
     @Override
     public List<String> getColumnValueToString(int col) {
-         switch (col) {
-         case 2, 3, 4 -> {
-         var item = new ArrayList<String>();
-         rows.stream().map(book -> Objects.toString(translateValue(book, col)))
-         .forEach((elem) -> item.addAll(List.of(elem.split(","))));
-         return item;
-         }
-         }
-         return rows.stream().map(book -> Objects.toString(translateValue(book,
+         return rows.stream().map(borrow -> Objects.toString(translateValue(borrow,
          col))).toList();
     }
 }
