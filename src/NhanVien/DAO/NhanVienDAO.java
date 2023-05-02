@@ -11,7 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class NhanVienDAO extends DefaultConnection {
-
     public ArrayList<nhanVien> getAllFromDatabase() {
         ArrayList<nhanVien> NV = new ArrayList<>();
         Statement stmt = null;
@@ -146,6 +145,4 @@ public class NhanVienDAO extends DefaultConnection {
 
         return smt;
     }
-
-
 }

@@ -1,21 +1,33 @@
 package Login.GUI;
 
+import Login.BUS.LoginBUS;
+import MainForm.MainWindow;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class LoginForm {
+    private MainWindow mainWindow = new MainWindow();
+    private LoginBUS loginBUS = new LoginBUS();
+
     public LoginForm() {
         setInset();
-    }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("LoginForm");
-        frame.setContentPane(new LoginForm().mainPanel);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 500);
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        btnLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String username = txtUsername.getText();
+                String password = txtPassword.getText();
+
+                if(loginBUS.login(username, password)) {
+                    mainWindow.openMainWindow();
+                    JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
+                    frame.dispose();
+                }
+            }
+        });
     }
 
     public void setInset() {
@@ -23,6 +35,16 @@ public class LoginForm {
         txtUsername.setMargin(inset);
         txtPassword.setMargin(inset);
         btnLogin.setMargin(inset);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("LoginForm");
+        frame.setContentPane(new LoginForm().mainPanel);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(1000, 500);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 
     private JPanel mainPanel;

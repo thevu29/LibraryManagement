@@ -12,11 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NVBUS {
-
     private NVDataTableModel NVs;
-
     private NhanVienadmin NVGUI;
-
     private NhanVienDAO NVDAO = new NhanVienDAO();
 
     public NVBUS() {
