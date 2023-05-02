@@ -284,7 +284,7 @@
         <properties>
           <background color="-15400718"/>
           <foreground color="-1"/>
-          <text value="reset"/>
+          <text value="Reset"/>
         </properties>
       </component>
       <component id="5d6cb" class="javax.swing.JButton" binding="lưuButton" default-binding="true">
