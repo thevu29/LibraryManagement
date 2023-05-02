@@ -83,23 +83,23 @@ public class CTHDFD extends JDialog {
                 ct.setHe_so(heSo);
                 ct.setTenSach(txtTenSach.getText());
                 if(ct.getTenSach().isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Ma series chua dung");
+                    JOptionPane.showMessageDialog(null,"Mã series không hợp lệ");
                 }
                 else{
                     int smt = bus.insert(ct);
                     if(smt>0){
 
-                        JOptionPane.showMessageDialog(null,"Them CTHD THANH CONG");
+                        JOptionPane.showMessageDialog(null,"Thêm CTHD thành công");
                         gui.showAll();
 
                         //Cap Nhat Trang Thai Sach
                         smt = bus.updateStatusBook(ct.getMa_series(),"SOLD");
                         if(smt==0){
-                            JOptionPane.showMessageDialog(null,"Cap Nhat Trang Thai Sach Loi");
+                            JOptionPane.showMessageDialog(null,"Cập nhật trạng thái sách không thành công");
                         }
                     }
                     else{
-                        JOptionPane.showMessageDialog(null,"Them San Pham khong thanh cong");
+                        JOptionPane.showMessageDialog(null,"Thêm CTHD không thành công");
                     }
                 }
 
@@ -108,7 +108,6 @@ public class CTHDFD extends JDialog {
         eventTxtMaSeri();
         eventTxtHeSo();
     }
-
 
     public CTHDFD(CTHD cthd,CTHDGUI gui) {
         setContentPane(contentPane);
@@ -145,17 +144,17 @@ public class CTHDFD extends JDialog {
 
                 long tienSach = bus.tinhTienSach(maHD,maSeri);
                 if(txtTenSach.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Ma Seri Khong Dung");
+                    JOptionPane.showMessageDialog(null,"Mã series không hợp lệ");
                 }
                 else{
                     CTHD ct = new CTHD(maHD,heSo,maSeri);
                     int smt = bus.update(ct);
                     if(smt>0){
-                        JOptionPane.showMessageDialog(null,"Cap Nhat CTHD THANH CONG");
+                        JOptionPane.showMessageDialog(null,"Cập nhật CTHD thành công");
                         gui.showAll();
                     }
                     else{
-                        JOptionPane.showMessageDialog(null,"Cap Nhat San Pham khong thanh cong");
+                        JOptionPane.showMessageDialog(null,"Cập nhật CTHD không thành công");
                     }
                 }
 
@@ -169,17 +168,17 @@ public class CTHDFD extends JDialog {
                 String maSeri = txtMaSeri.getText();
                 int smt = bus.remove(maHD,maSeri);
                 if(smt>0){
-                    JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
+                    JOptionPane.showMessageDialog(null,"Xóa CTHD thành công");
 
                     gui.showAll();
                     smt = bus.updateStatusBook(maSeri,"AVAILABLE");
                     if(smt==0){
-                        JOptionPane.showMessageDialog(null,"Cap Nhat Trang Thai Sach Loi");
+                        JOptionPane.showMessageDialog(null,"Cập nhật trạng thái sách không thành công");
                     }
                     onCancel();
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Xoa CTHD KHONG THANH CONG");
+                    JOptionPane.showMessageDialog(null,"Xóa CTHD không thành công");
                 }
             }
         });

@@ -134,6 +134,7 @@ public class SellTicketDao extends DefaultConnection {
             if (Objects.isNull(maHD)) {
                 return "HD1";
             }
+
             int ma = Integer.parseInt(maHD)+1;
             String maHDMoi = "HD".concat(String.valueOf(ma));
 
@@ -180,8 +181,6 @@ public class SellTicketDao extends DefaultConnection {
         }
         return smt;
     }
-
-
 
     public int updateHD(HoaDon hd){
         String sql = "UPDATE `SELL_TICKET` SET MA_NV=?,`MA_KH`=? WHERE MA_PHIEU=?";

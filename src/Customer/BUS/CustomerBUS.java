@@ -390,14 +390,16 @@ public class CustomerBUS {
             return false;
         }
 
-        if (!Validation.isValidDate(customer.getRegistrationDate())) {
-            JOptionPane.showMessageDialog(null, "Ngày đăng kí phải là số có định dạng dd-mm-yyyy ", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
+        if (!customer.getMembership().equals("Bình thường")) {
+            if (!Validation.isValidDate(customer.getRegistrationDate())) {
+                JOptionPane.showMessageDialog(null, "Ngày đăng kí phải là số có định dạng dd-mm-yyyy ", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
 
-        if (!Validation.isValidDate(customer.getExpirationDate())) {
-            JOptionPane.showMessageDialog(null, "Ngày hết hạn phải là số có định dạng dd-mm-yyyy ", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            if (!Validation.isValidDate(customer.getExpirationDate())) {
+                JOptionPane.showMessageDialog(null, "Ngày hết hạn phải là số có định dạng dd-mm-yyyy ", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
         }
 
         return true;
