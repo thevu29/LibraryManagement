@@ -1,14 +1,16 @@
 package Book.DTO;
 
-import NhanVien.arraylistNV.Gender;
+
 import Utils.EGender;
 
-public class Author {
+public class Author implements Cloneable {
     private String id;
     private String name;
     private String email;
     private EGender gender;
     private String description;
+
+    public static int totalID = 1;
 
     public Author(String id, String name, String email, String gender, String description) {
         this.id = id;
@@ -16,6 +18,11 @@ public class Author {
         this.email = email;
         setGender(gender);
         this.description = description;
+    }
+
+
+    public static Author createBlankAuthor() {
+        return new Author("", "", "", "NAM", "");
     }
 
     public String getId() {
@@ -65,5 +72,24 @@ public class Author {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public Author clone() {
+        try {
+            Author clone = (Author) super.clone();
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
+
+    public void cloneFrom(Author cloner) {
+        this.id = cloner.getId();
+        this.name = cloner.getName();
+        this.email = cloner.getEmail();
+        setGender(cloner.gender);
+        this.description = cloner.getDescription();
     }
 }

@@ -21,6 +21,9 @@ public class GenreDataTableModel extends AbstractTableModelWithFilters<Genre> {
             case 2 -> {
                 return value.getDescription();
             }
+            case 10 -> {
+                return value.getId() +", " + value.getName();
+            }
         }
         return null;
     }

@@ -29,4 +29,8 @@ public class BookAuthor {
     public String toString() {
         return name;
     }
+
+    public String toDetailString() {
+        return id + ", " + name;
+    }
 }

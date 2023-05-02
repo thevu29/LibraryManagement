@@ -1,17 +1,22 @@
 package Book.GUI;
 
+import Book.BUS.BookBUS;
 import Book.DTO.Book;
+import Book.DTO.BookAuthor;
+import Book.DTO.BookGenre;
 import Utils.BindingListener;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Book.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class BookEditorDialog extends JDialog {
     private final BookDataTableModel bookDataTableModel;
+    private final BookBUS bus;
+    private final int mode;
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -32,6 +37,9 @@ public class BookEditorDialog extends JDialog {
     private JComboBox<String> languageCB;
     private JComboBox<String> totalPageCB;
     private JComboBox locationCB;
+    private JPanel genrePanel;
+    private JButton confirmAndAddBtn;
+    private JComboBox<String> importerCB;
 
     public JPanel getMainPanel() {
         return mainPanel;
@@ -39,20 +47,29 @@ public class BookEditorDialog extends JDialog {
 
     //TODO Add Author and Publisher model
 
-    public BookEditorDialog() {
-        this(Book.createBlankBook(), new BookDataTableModel(), "Chỉnh sửa sách");
-    }
+//    public BookEditorDialog() {
+//        this(Book.createBlankBook(), , "Chỉnh sửa sách");
+//    }
 
     private Book book;
     private Book clonedBook;
 
-    public BookEditorDialog(Book book, BookDataTableModel bookDataTableModel, String title) {
-        this.bookDataTableModel = bookDataTableModel;
+    public BookEditorDialog(Book book, BookBUS bus, String title, int mode) {
+        this.bookDataTableModel = bus.getBookDataTableModel();
+        this.bus = bus;
+        this.mode = mode;
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
         this.setTitle(title);
+
+        if (mode == 0) {
+            bookSerialCB.setEnabled(false);
+        }
+        confirmAndAddBtn.addActionListener( e -> {
+            onAddNew();
+        });
 
 
         var clonedBook = book.clone();
@@ -62,7 +79,7 @@ public class BookEditorDialog extends JDialog {
         var bookSerialField = AutoSuggestComboBox.create(bookSerialCB, 0, bookDataTableModel::getColumnValueToString);
         bookSerialField.setText(clonedBook.getId());
         bookSerialField.getDocument().addDocumentListener(new BindingListener<>(bookSerialField,clonedBook,
-                clonedBook::setId, "[0-9]+"));
+                clonedBook::setId));
 
         var bookNameField = AutoSuggestComboBox.create(bookNameCB, 0, bookDataTableModel::getColumnValueToString);
         bookNameField.setText(clonedBook.getName());
@@ -81,8 +98,50 @@ public class BookEditorDialog extends JDialog {
         languageField.setText(String.valueOf(clonedBook.getLanguage()));
         languageField.getDocument().addDocumentListener(new BindingListener<>(languageField,clonedBook, clonedBook::setLanguage));
 
+        var locationField = AutoSuggestComboBox.create(locationCB, 8, bookDataTableModel::getColumnValueToString);
+        locationField.setText(String.valueOf(clonedBook.getLocation()));
+        locationField.getDocument().addDocumentListener(new BindingListener<>(locationField,clonedBook, clonedBook::setLocation));
+
+        var publisherField = AutoSuggestComboBox.create(publisherCB, 110, bus.getPublisherDataTableModel()::getColumnValueToString);
+        publisherField.setText(String.valueOf(clonedBook.getPublisher().toDialogString()));
+        publisherField.getDocument().addDocumentListener(new BindingListener<>(publisherField,clonedBook, s -> {
+            var idName = s.split(",");
+            if (idName.length == 2) {
+                clonedBook.setPublisher(idName[0], idName[1]);
+            }
+            else {
+                clonedBook.setPublisher("", "");
+            }
+        }));
+
+        var yearField = AutoSuggestComboBox.create(publishYearCB, 9, bookDataTableModel::getColumnValueToString);
+        yearField.setText(String.valueOf(clonedBook.getPublishYear()));
+        yearField.getDocument().addDocumentListener(new BindingListener<>(yearField,clonedBook, clonedBook::setPublishYear));
+
+        var importerField = AutoSuggestComboBox.create(importerCB, 10, bus.getImporterDataTableModel()::getColumnValueToString);
+        importerField.setText(String.valueOf(clonedBook.getImporter().getDialogString()));
+        importerField.getDocument().addDocumentListener(new BindingListener<>(importerField,clonedBook, s -> {
+            var idName = s.split(",");
+            if (idName.length == 2) {
+                clonedBook.setImporter(idName[0], idName[1]);
+            }
+            else {
+                clonedBook.setImporter("", "");
+            }
+        }
+        ));
+
+        var totalPageField = AutoSuggestComboBox.create(totalPageCB, 9, bookDataTableModel::getColumnValueToString);
+        totalPageField.setText(String.valueOf(clonedBook.getTotalPage()));
+        totalPageField.getDocument().addDocumentListener(new BindingListener<>(totalPageField,clonedBook, clonedBook::setTotalPage));
+
+
         descriptionField.setText(String.valueOf(clonedBook.getDescription()));
         descriptionField.getDocument().addDocumentListener(new BindingListener<>(descriptionField, clonedBook, clonedBook::setDescription));
+
+        setupAuthorCB();
+        setupGenreCB();
+
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -113,38 +172,153 @@ public class BookEditorDialog extends JDialog {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createAuthorCB();
+                createNewCB();
+            }
+        });
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createGenreCB();
             }
         });
     }
 
-    private void createAuthorCB() {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.gridx = 0;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.anchor = GridBagConstraints.LINE_START;
-        var comboBox = new JComboBox<String>();
-        comboBox.setEditable(true);
-        tacGiaPanel.add(comboBox, constraints);
-        tacGiaPanel.revalidate();
+
+    private void setupAuthorCB() {
+        setupAuthorField(authorCB1,0);
+
+        for (int i = 1; i < clonedBook.getAuthors().size(); i++) {
+            setupAuthorPos(i);
+        }
     }
 
-    private void createAuthorCB(String value, ArrayList<String> authorList) {
+    private void setupGenreCB() {
+        setupGenreField(genreCB1,0);
+
+        for (int i = 1; i < clonedBook.getGenre().size(); i++) {
+            setupGenrePos(i);
+        }
+    }
+
+    private void setupAuthorField(JComboBox<String> authorCB, int pos) {
+        var authorField = AutoSuggestComboBox.create(authorCB, 99, bus.getAuthorDataTableModel()::getColumnValueToString);
+        var author = clonedBook.getAuthors().get(pos);
+        if (Objects.isNull(author)) {
+            authorField.setText("");
+            clonedBook.getAuthors().add(new BookAuthor("", ""));
+        }
+        else {
+            authorField.setText(author.toDetailString());
+        }
+
+        authorField.getDocument().addDocumentListener(new BindingListener<>(authorField, clonedBook, s -> {
+            var idName = s.split(",");
+            if (idName.length == 2) {
+                clonedBook.setAuthor(pos, idName[0], idName[1]);
+                System.out.println(Arrays.toString(idName));
+            }
+            else {
+                clonedBook.setAuthor(pos, "", "");
+            }
+        }));
+    }
+
+    private void setupAuthorPos(int pos) {
+        var newCB = createAuthorCB(clonedBook.getAuthors().get(pos).toDetailString());
+        setupAuthorField(newCB, pos);
+    }
+
+    private void setupGenrePos(int pos) {
+        var newCB = createGenreCB(clonedBook.getGenre().get(pos).toString());
+        setupGenreField(newCB, pos);
+    }
+
+    private void createNewCB() {
+        clonedBook.getAuthors().add(new BookAuthor("", ""));
+        setupAuthorPos(clonedBook.getAuthors().size()-1);
+    }
+
+    private void createGenreCB() {
+        clonedBook.getGenre().add(new BookGenre("", ""));
+        setupGenrePos(clonedBook.getGenre().size()-1);
+    }
+
+
+    private JComboBox<String> createGenreCB(String val) {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.gridx = 0;
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.anchor = GridBagConstraints.LINE_START;
         var comboBox = new JComboBox<String>();
         comboBox.setEditable(true);
+        var tf = (JTextField) comboBox.getEditor().getEditorComponent();
+        tf.setText(val);
+        genrePanel.add(comboBox, constraints);
+        genrePanel.revalidate();
+        return comboBox;
+    }
+
+    private void setupGenreField(JComboBox<String> genreCB, int pos) {
+        var genreField = AutoSuggestComboBox.create(genreCB, 10, bus.getGenreDataTableModel()::getColumnValueToString);
+        var genre = clonedBook.getGenre().get(pos);
+        if (Objects.isNull(genre)) {
+            genreField.setText("");
+            clonedBook.getAuthors().add(new BookAuthor("", ""));
+        }
+        else {
+            genreField.setText(genre.toDialogString());
+        }
+
+        genreField.getDocument().addDocumentListener(new BindingListener<>(genreField, clonedBook, s -> {
+            var idName = s.split(",");
+            if (idName.length == 2) {
+                clonedBook.getGenre().get(pos).setId(idName[0]);
+                clonedBook.getGenre().get(pos).setName(idName[1]);
+            }
+            else {
+                clonedBook.getGenre().get(pos).setId("");
+                clonedBook.getGenre().get(pos).setName("");
+            }
+        }));
+    }
+
+
+
+
+    private JComboBox<String> createAuthorCB() {
+        return createAuthorCB("");
+    }
+
+    private JComboBox<String> createAuthorCB(String value) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.anchor = GridBagConstraints.LINE_START;
+        var comboBox = new JComboBox<String>();
+        comboBox.setEditable(true);
+        var tf = (JTextField) comboBox.getEditor().getEditorComponent();
+        tf.setText(value);
         tacGiaPanel.add(comboBox, constraints);
         tacGiaPanel.revalidate();
+        return comboBox;
     }
 
     private void onOK() {
         // add your code here
-        this.book.cloneFrom(this.clonedBook);
-        this.bookDataTableModel.fireTableDataChanged();
-        dispose();
+        if (bus.validateBook(clonedBook, mode)) {
+            book.cloneFrom(clonedBook);
+            bus.commitBook(book);
+            dispose();
+        }
+    }
+
+    private void onAddNew() {
+        if (bus.validateBook(clonedBook, mode)) {
+            book.cloneFrom(clonedBook);
+            bus.commitBook(book);
+            dispose();
+            bus.openNewSubBookDialog(clonedBook);
+        }
     }
 
     private void onCancel() {
@@ -152,10 +326,4 @@ public class BookEditorDialog extends JDialog {
         dispose();
     }
 
-    public static void main(String[] args) {
-        BookEditorDialog dialog = new BookEditorDialog();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
-    }
 }

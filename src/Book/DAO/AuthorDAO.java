@@ -1,9 +1,9 @@
 package Book.DAO;
 
 import Book.DTO.Author;
-import Book.DTO.Book;
 import Core.DefaultConnection;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,7 +15,7 @@ public class AuthorDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM AUTHOR");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM AUTHOR WHERE IS_DELETED=0");
             while (rs.next()) {
 
                 var id = rs.getString("MA_TG");
@@ -32,4 +32,71 @@ public class AuthorDAO extends DefaultConnection {
         return authors;
     }
 
+    public boolean isIDExist(String id) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = getConnection().prepareStatement("SELECT MA_TG FROM AUTHOR WHERE MA_TG=?");
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public void update(Author author) {
+        PreparedStatement stmt = null;
+        try {
+            if (isIDExist(author.getId())) {
+                stmt = getConnection()
+                        .prepareStatement("UPDATE AUTHOR SET TEN_TG=?, EMAIL=?,GIOI_THIEU=?,GIOI_TINH=? WHERE MA_TG=?");
+                stmt.setString(1, author.getName());
+                stmt.setString(2, author.getEmail());
+                stmt.setString(3, author.getDescription());
+                stmt.setString(4, String.valueOf(author.getGender()));
+                stmt.setString(5, author.getId());
+                stmt.executeUpdate();
+            }
+            else {
+                stmt = getConnection()
+                        .prepareStatement("INSERT INTO AUTHOR(MA_TG, TEN_TG, EMAIL, GIOI_THIEU, GIOI_TINH, IS_DELETED) VALUE " +
+                                "(?,?,?,?,?,0)");
+                stmt.setString(1, author.getId());
+                stmt.setString(2, author.getName());
+                stmt.setString(3, author.getEmail());
+                stmt.setString(4, author.getDescription());
+                stmt.setString(5, String.valueOf(author.getGender()));
+                stmt.executeUpdate();
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public String getLatestId() {
+        Statement stmt = null;
+        try {
+            stmt = getConnection().createStatement();
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_TG, 3) AS UNSIGNED)) AS MA_TG FROM AUTHOR");
+            if (!rs.next()) {
+                return "0";
+            }
+            return rs.getString("MA_TG");
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public void delete(Author author) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = getConnection().prepareStatement("UPDATE AUTHOR SET IS_DELETED=1 WHERE MA_TG=?");
+            stmt.setString(1, author.getId());
+            stmt.executeUpdate();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

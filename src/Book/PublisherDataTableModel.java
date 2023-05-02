@@ -31,6 +31,9 @@ public class PublisherDataTableModel extends AbstractTableModelWithFilters<Publi
             case 5 -> {
                 return value.getDescription();
             }
+            case 110 -> {
+                return value.getId() +", " + value.getName();
+            }
         }
         return null;
     }

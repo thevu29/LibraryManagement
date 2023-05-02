@@ -50,6 +50,10 @@ public class NhanVienadmin {
 //        if(nv.getID().getText().toString().equals("")){}
 //    }
 
+    public JPanel getMain(){
+        return main;
+    }
+
     public NhanVienadmin() throws SQLException {
 
         NVmodel.setEditable(false);
