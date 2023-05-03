@@ -32,7 +32,7 @@ public class GenreDAO extends DefaultConnection {
 
 
 
-    public boolean isIDDuplicate(String id) {
+    public boolean isIDExist(String id) {
         PreparedStatement stmt = null;
         try {
             stmt = getConnection().prepareStatement("SELECT MA_TL FROM GENRE WHERE MA_TL=?");
@@ -59,7 +59,7 @@ public class GenreDAO extends DefaultConnection {
     public void update(Genre genre) {
         PreparedStatement stmt = null;
         try {
-            if (isIDDuplicate(genre.getId())) {
+            if (isIDExist(genre.getId())) {
                 stmt = getConnection()
                         .prepareStatement("UPDATE GENRE SET TEN_TL=?,MO_TA=? WHERE MA_TL=?");
                 stmt.setString(1, genre.getName());
@@ -85,9 +85,9 @@ public class GenreDAO extends DefaultConnection {
         Statement stmt = null;
         try {
             stmt = getConnection().createStatement();
-            var rs = stmt.executeQuery("SELECT MA_TL FROM GENRE WHERE MA_TL=(SELECT max(MA_TL) FROM GENRE)");
+            var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_TL, 3) AS UNSIGNED)) AS MA_TL FROM GENRE");
             if (!rs.next()) {
-                return "TL0";
+                return "0";
             }
             return rs.getString("MA_TL");
         } catch (SQLException | ClassNotFoundException ex) {

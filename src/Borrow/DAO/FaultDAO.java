@@ -38,12 +38,12 @@ public class FaultDAO extends DefaultConnection {
     }
 
     public ArrayList<Fault> getDsLoi() {
-        String sql = "SELECT * FROM book_fault WHERE IS_DELETED = 0";
+        String sql = "SELECT * FROM `BOOK_FAULT` WHERE IS_DELETED = 0";
         return getDanhSach(sql);
     }
 
     public int insert(Fault fault) {
-        String sql = "INSERT INTO `book_fault`(`MA_LOI`, `TEN_LOI`, `HE_SO` , `IS_DELETED`) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO `BOOK_FAULT`(`MA_LOI`, `TEN_LOI`, `HE_SO` , `IS_DELETED`) VALUES (?,?,?,?)";
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -66,7 +66,7 @@ public class FaultDAO extends DefaultConnection {
 
     //
     public int remove(String id) {
-        String sql = "UPDATE `book_fault` SET IS_DELETED=1 WHERE MA_LOI=?";
+        String sql = "UPDATE `BOOK_FAULT` SET IS_DELETED=1 WHERE MA_LOI=?";
         int smt = 0;
 
         PreparedStatement pst = null;
@@ -86,7 +86,7 @@ public class FaultDAO extends DefaultConnection {
     }
 
     public int update(Fault fault) {
-        String sql = "UPDATE `book_fault` SET TEN_LOI=?,`HE_SO`=? WHERE MA_LOI=?";
+        String sql = "UPDATE `BOOK_FAULT` SET TEN_LOI=?,`HE_SO`=? WHERE MA_LOI=?";
         int smt = 0;
 
         PreparedStatement pst = null;
@@ -110,7 +110,7 @@ public class FaultDAO extends DefaultConnection {
 
     public String getML() {
         Statement stmt = null;
-        String sql = "SELECT count(*) as soluong FROM book_fault";
+        String sql = "SELECT count(*) as soluong FROM `BOOK_FAULT`";
 
         try {
             Connection connect = getConnect();

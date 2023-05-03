@@ -20,10 +20,11 @@ public class Book implements Cloneable {
 
     private int publishYear;
     private int totalPage;
+    private BookImporter importer;
 
     public Book(String id, String name, ArrayList<BookAuthor> authors, BookPublisher publisher,
                 ArrayList<BookGenre> genre, String location, long price, String bookStatus, String language,
-                String description, int publishYear, int totalPage) {
+                String description, int publishYear, int totalPage, BookImporter importer) {
         this.id = id;
         this.name = name;
         this.authors = authors;
@@ -36,6 +37,7 @@ public class Book implements Cloneable {
         this.description = description;
         this.publishYear = publishYear;
         this.totalPage = totalPage;
+        this.importer = importer;
     }
 
     public String getId() {
@@ -155,7 +157,7 @@ public class Book implements Cloneable {
         return new Book(String.valueOf(priceCounter),
                 "HelloA" + priceCounter,
                 authors, publisher, genre, "Nep",
-                priceCounter++, String.valueOf(EBookStatus.AVAILABLE), "English", "Ok", 2003, 10);
+                priceCounter++, String.valueOf(EBookStatus.AVAILABLE), "English", "Ok", 2003, 10, new BookImporter("", ""));
     }
 
     public static Book createBlankBook() {
@@ -164,7 +166,7 @@ public class Book implements Cloneable {
         ArrayList<BookGenre> genre = new ArrayList<>();
         genre.add(new BookGenre("", ""));
         return new Book("", "", authors, new BookPublisher("", ""), genre, "", -1,
-                String.valueOf(EBookStatus.AVAILABLE), "", "", -1, -1);
+                String.valueOf(EBookStatus.AVAILABLE), "", "", -1, -1, new BookImporter("", ""));
     }
 
     @Override
@@ -189,7 +191,12 @@ public class Book implements Cloneable {
         this.location = book.location;
         this.price = book.price;
         this.bookStatus = book.bookStatus;
+        this.language = book.language;
         this.description = book.description;
+        this.publishYear = book.publishYear;
+        this.totalPage = book.totalPage;
+        this.importer = book.importer;
+
     }
 
     @Override
@@ -235,7 +242,34 @@ public class Book implements Cloneable {
         return totalPage;
     }
 
+
+    public void setTotalPage(String totalPage) {
+        try {
+            this.totalPage = Integer.parseInt(totalPage);
+        }
+        catch (Exception ex) {
+            this.totalPage = 0;
+        }
+    }
     public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
+    }
+
+    public BookImporter getImporter() {
+        return importer;
+    }
+
+    public void setImporter(BookImporter importer) {
+        this.importer = importer;
+    }
+
+    public void setImporter(String id, String name) {
+        this.importer.setId(id);
+        this.importer.setName(name);
+    }
+
+    public void setPublisher(String id, String name) {
+        publisher.setId(id);
+        publisher.setName(id);
     }
 }

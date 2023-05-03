@@ -1,7 +1,7 @@
 package NhanVien.arraylistNV;
 
 
-import NhanVien.form.NhanVienC;
+import NhanVien.DTO.nhanVien;
 import Utils.AbstractTableModelWithFilters;
 
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
-    private final String[] cols = {"ID", "Tên Nhân viên", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc"};
+    private final String[] cols = {"ID", "Tên Nhân viên","Giới tính", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc","Địa chỉ","email","Ngày sinh","Ngày làm việc","Căng cước công dân"};
 
     private boolean isEditable = true;
 
@@ -76,22 +76,40 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
                 return NV.getName();
             }
             case 2 -> {
-                return NV.getPhone();
+                return NV.getGender()== 0 ? "Nam" : "Nữ" ;
             }
             case 3 -> {
-                return NV.getPassword();
+                return NV.getPhone();
             }
             case 4 -> {
-                return NV.getPosition();
+                return NV.getPassword();
             }
             case 5 -> {
-                return NV.getSalary();
+                return NV.getPosition() == 0 ? "Librarian"  : "Manager";
             }
             case 6 -> {
-                return NV.getWork();
+                return NV.getSalary()*NV.getDaywork()*1000;
             }
             case 7 -> {
-                return NV.getShift();
+                return NV.getWork() == 0 ? "CS1"  : NV.getWork() == 1 ? "CS2" : "CS3"  ;
+            }
+            case 8 -> {
+                return NV.getShift() == 0 ? "C1"  : NV.getShift() == 1 ? "C2" : "C3"    ;
+            }
+            case 9 -> {
+                return NV.getAddress();
+            }
+            case 10 -> {
+                return NV.getEmail();
+            }
+            case 11 -> {
+                return NV.getBirth();
+            }
+            case 12 -> {
+                return NV.getDaywork();
+            }
+            case 13 -> {
+                return NV.getCCCD();
             }
         }
         return null;
@@ -104,15 +122,9 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        switch (col) {
-            case 2, 3, 4 -> {
-                var item = new ArrayList<String>();
-                rows.stream().map(NV -> Objects.toString(translateValue(NV, col))).forEach((elem) ->
-                        item.addAll(List.of(elem.split(","))));
-                return item;
-            }
-        }
         return rows.stream().map(book -> Objects.toString(translateValue(book, col))).toList();
     }
+
+
 
 }

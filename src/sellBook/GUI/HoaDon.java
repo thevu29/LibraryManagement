@@ -33,7 +33,7 @@ public class HoaDon {
     private JComboBox priceCB;
     private JButton statusDelBtn;
     private JComboBox statusCB;
-    HDTableModel hdTBL ;
+    HDTableModel hdTBL = new HDTableModel();
     DefaultTableModel dtm = new DefaultTableModel();
     private List<sellBook.DTO.HoaDon> dshd  ;
     private SellTicketBus sellTicketBus;
@@ -50,8 +50,6 @@ public class HoaDon {
         initTable();
         var txtId = AutoSuggestComboBox.createWithDeleteBtn(cboIdHD,0,hdTBL::getColumnValueToString,btnIdXoa);
         var txtTenKH = AutoSuggestComboBox.createWithDeleteBtn(cboTenKH,1,hdTBL::getColumnValueToString,btnXoaTenKH);
-
-
 
         hdTBL.setFilterField(0,txtId);
         hdTBL.setFilterField(1,txtTenKH);

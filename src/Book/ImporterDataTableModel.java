@@ -32,6 +32,9 @@ public class ImporterDataTableModel extends AbstractTableModelWithFilters<Import
             case 5 -> {
                 return value.getDescription();
             }
+            case 10 -> {
+                return value.getId() + ", " + value.getName();
+            }
         }
         return null;
     }

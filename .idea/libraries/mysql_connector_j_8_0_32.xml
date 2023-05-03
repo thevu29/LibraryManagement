@@ -3,6 +3,18 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/library/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar!/" />
       <root url="jar://$PROJECT_DIR$/library/jfreechart-1.5.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/commons-codec-1.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/commons-collections4-4.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/commons-compress-1.21.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/commons-io-2.11.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/commons-math3-3.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/curvesapi-1.07.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/log4j-api-2.18.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/poi-5.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/poi-ooxml-5.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/poi-ooxml-lite-5.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/SparseBitSet-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/xmlbeans-5.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
