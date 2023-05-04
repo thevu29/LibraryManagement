@@ -193,6 +193,7 @@ public class HoaDonFD extends JDialog {
                     JOptionPane.showMessageDialog(null,"Cap Nhat Hoa Don thanh cong");
                     dispose();
                     gui.showAll();
+                    dispose();
                 }
                 else {
                     JOptionPane.showMessageDialog(null,"Cap Nhat Hoa Don KHONG THANH CONG");

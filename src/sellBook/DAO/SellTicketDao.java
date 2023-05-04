@@ -75,7 +75,7 @@ public class SellTicketDao extends DefaultConnection {
 
     public long tinhTongHoaDon(String maHD){
         String sql = """
-                    SELECT SUM(CAST(BOOK.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO) as tongTien
+                    SELECT SUM(CAST(BOOK.GIA AS UNSIGNED) *( 1.0 - SELL_TICKET_DETAILS.HE_SO)) as tongTien
                     FROM `SELL_TICKET` INNER JOIN SELL_TICKET_DETAILS on SELL_TICKET.MA_PHIEU = SELL_TICKET_DETAILS.MA_PHIEU 
                     INNER JOIN BOOK on SELL_TICKET_DETAILS.MA_SERIES = BOOK.MA_SERIES
                     WHERE SELL_TICKET.MA_PHIEU = '%s'""".formatted(maHD);

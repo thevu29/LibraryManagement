@@ -153,6 +153,7 @@ public class CTHDFD extends JDialog {
                     if(smt>0){
                         JOptionPane.showMessageDialog(null,"Cap Nhat CTHD THANH CONG");
                         gui.showAll();
+                        dispose();
                     }
                     else{
                         JOptionPane.showMessageDialog(null,"Cap Nhat San Pham khong thanh cong");
