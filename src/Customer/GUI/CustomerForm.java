@@ -289,7 +289,7 @@ public class CustomerForm {
                 String rowMember = entry.getStringValue(3).toLowerCase();
 
                 if (membership.equals("")) {
-                    return true;
+                    return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email);
                 }
 
                 return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email) && rowMember.equals(membership);
@@ -302,14 +302,16 @@ public class CustomerForm {
     public ArrayList<String> initCustomerSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
         for (Customer customer : customerBUS.getCustomerList()) {
-            if (col == 0) {
-                suggestion.add(customer.getCustomerId());
-            } else if (col == 1) {
-                suggestion.add(customer.getCustomerName());
-            } else if (col  == 2) {
-                suggestion.add(customer.getCustomerEmail());
-            } else if (col == 3) {
-                suggestion.add(customer.getMembership());
+            if (!customer.isDeleted()) {
+                if (col == 0) {
+                    suggestion.add(customer.getCustomerId());
+                } else if (col == 1) {
+                    suggestion.add(customer.getCustomerName());
+                } else if (col  == 2) {
+                    suggestion.add(customer.getCustomerEmail());
+                } else if (col == 3) {
+                    suggestion.add(customer.getMembership());
+                }
             }
         }
         return suggestion;
