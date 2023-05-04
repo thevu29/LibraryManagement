@@ -216,7 +216,7 @@ public class HoaDonGUI {
                 dsOpt.add("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM");
                 dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
                 int nam = Year.now().getValue();
-                var tk = new Chart(bus.thongKeTheoNam(nam),"Month",dsOpt);
+                var tk = new SellChart(bus.thongKeTheoNam(nam),"Month",dsOpt);
                 JFrame frame = new JFrame("Thong Ke");
                 frame.setContentPane(tk.getMain());
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

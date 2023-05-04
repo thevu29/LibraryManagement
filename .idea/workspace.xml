@@ -4,11 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="thêm logout">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix logout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookChart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login/BUS/LoginBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/BUS/LoginBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/Chart.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/SellChart.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/SellChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/ColumnChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/ColumnChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/PieChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/PieChart.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,14 +117,27 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginForm (4)">
+  <component name="RunManager" selected="Application.MainWindow (1)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="HoaDonGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDonGUI" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="sellBook.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -130,38 +150,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="MainWindow (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -182,13 +176,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="StatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Statistics.GUI.StatisticsForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Statistics.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LoginForm (4)" />
-        <item itemvalue="Application.LoginForm (3)" />
-        <item itemvalue="Application.LoginForm (2)" />
+        <item itemvalue="Application.MainWindow (1)" />
+        <item itemvalue="Application.StatisticsForm" />
         <item itemvalue="Application.MainWindow" />
-        <item itemvalue="Application.LoginForm (1)" />
+        <item itemvalue="Application.LoginForm" />
+        <item itemvalue="Application.HoaDonGUI (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -477,7 +484,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683165187595</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="fix logout">
+      <created>1683166178304</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1683166178304</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -494,7 +508,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Nep" />
+                        <option value="customer" />
                       </list>
                     </value>
                   </entry>
@@ -530,7 +544,8 @@
     <MESSAGE value="phân quyền nhân viên" />
     <MESSAGE value="fix filter customer" />
     <MESSAGE value="thêm logout" />
-    <option name="LAST_COMMIT_MESSAGE" value="thêm logout" />
+    <MESSAGE value="fix logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix logout" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

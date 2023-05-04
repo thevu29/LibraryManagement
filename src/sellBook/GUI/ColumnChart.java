@@ -7,7 +7,7 @@ public class ColumnChart extends JFrame {
     private int[] values;
 
     public ColumnChart() {
-        super("Column Chart");
+        super("Column SellChart");
 
         // Initialize the data for the chart
         values = new int[]{10, 5, 8, 12};

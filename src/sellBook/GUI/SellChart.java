@@ -17,7 +17,7 @@ import java.awt.event.KeyEvent;
 import java.time.Year;
 import java.util.ArrayList;
 
-public class Chart {
+public class SellChart {
 
     SellTicketBus bus = new SellTicketBus();
 
@@ -28,16 +28,16 @@ public class Chart {
 
     DefaultCategoryDataset newDataset = null;
 
-    public Chart(DefaultCategoryDataset dataset, String tkTheo, ArrayList<String> dsOpt) {
+    public SellChart(DefaultCategoryDataset dataset, String tkTheo, ArrayList<String> dsOpt) {
         this.newDataset = dataset;
         for(int i=0;i<dsOpt.size();i++){
             cboOption.addItem(dsOpt.get(i));
         }
         // create chart
         JFreeChart chart = ChartFactory.createBarChart(
-                "Hoa Don", // Chart title
+                "Phiếu bán", // SellChart title
                 tkTheo, // X-Axis Label
-                "Number of Hoa Don", // Y-Axis Label
+                "Số lượng phiếu bán", // Y-Axis Label
                 dataset, // Dataset
                 PlotOrientation.VERTICAL, // Plot orientation
                 false, // Show legend
@@ -54,7 +54,7 @@ public class Chart {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedOption = cboOption.getSelectedItem().toString();
-                 if (selectedOption.equals("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM")) {
+                 if (selectedOption.equals("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM")) {
 
                     txtNam.setEditable(true);
                     int nam = Year.now().getValue();
@@ -105,9 +105,9 @@ public class Chart {
 
     public JFreeChart createBarChart(String selectedOption){
         JFreeChart newChart = ChartFactory.createBarChart(
-                "Hoa Don", // Chart title
+                "Phiếu bán", // SellChart title
                 selectedOption, // X-Axis Label
-                "Number of Hoa Don", // Y-Axis Label
+                "Số lượng phiếu bán", // Y-Axis Label
                 newDataset, // New dataset
                 PlotOrientation.VERTICAL, // Plot orientation
                 false, // Show legend
@@ -119,7 +119,7 @@ public class Chart {
 
     public JFreeChart createPieChart(DefaultPieDataset dataset,String title){
         JFreeChart chart = ChartFactory.createPieChart(
-                title, // Chart title
+                title, // SellChart title
                 dataset, // Dataset
                 true, // Show legend
                 true, // Use tooltips
@@ -139,8 +139,8 @@ public class Chart {
         this.main = main;
     }
     //    public static void main(String[] args) {
-//        JFrame frame = new JFrame("Chart");
-//        frame.setContentPane(new Chart().main);
+//        JFrame frame = new JFrame("SellChart");
+//        frame.setContentPane(new SellChart().main);
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //        frame.pack();
 //        frame.setVisible(true);

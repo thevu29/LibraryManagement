@@ -1,14 +1,41 @@
 package Statistics.GUI;
 
+import Book.BUS.BookBUS;
+import Book.GUI.BookChart;
 import Customer.GUI.MembershipStatisticsForm;
+import org.jfree.data.general.DefaultPieDataset;
+import sellBook.BUS.SellTicketBus;
+import sellBook.GUI.SellChart;
 
 import javax.swing.*;
+import java.time.Year;
+import java.util.ArrayList;
 
 public class StatisticsForm {
-    private MembershipStatisticsForm membershipStatisticsForm = new MembershipStatisticsForm();
+    private MembershipStatisticsForm membershipStatisticsForm;
+    private BookChart bookChart;
+    private SellChart sellChart;
+    private BookBUS bookBUS;
+    private SellTicketBus sellTicketBus;
 
     public StatisticsForm() {
+        membershipStatisticsForm = new MembershipStatisticsForm();
         membershipPanel.add(membershipStatisticsForm.getMainPanel());
+
+        bookBUS = new BookBUS();
+        DefaultPieDataset dataset = bookBUS.thonngKeTinhTrangSach();
+        ArrayList<String> dsOpt = new ArrayList<>();
+        dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
+        bookChart = new BookChart(dataset, dsOpt);
+        bookPanel.add(bookChart.getMain());
+
+        sellTicketBus = new SellTicketBus();
+        dsOpt.clear();
+        dsOpt.add("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM");
+        dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
+        int nam = Year.now().getValue();
+        sellChart = new SellChart(sellTicketBus.thongKeTheoNam(nam), "Tháng", dsOpt);
+        sellPanel.add(sellChart.getMain());
     }
 
     public JPanel getMainPanel() {
@@ -27,4 +54,6 @@ public class StatisticsForm {
     private JPanel mainPanel;
     private JTabbedPane tabbedPane1;
     private JPanel membershipPanel;
+    private JPanel bookPanel;
+    private JPanel sellPanel;
 }

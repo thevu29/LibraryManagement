@@ -1,6 +1,5 @@
 package Login.BUS;
 
-import Login.GUI.LoginForm;
 import NhanVien.DAO.NhanVienDAO;
 import NhanVien.DTO.nhanVien;
 import javax.swing.*;
