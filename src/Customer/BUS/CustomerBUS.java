@@ -380,6 +380,11 @@ public class CustomerBUS {
             return false;
         }
 
+        if (!Validation.isValidCCCD(customer.getCccd())) {
+            JOptionPane.showMessageDialog(null, "CCCD phải là 12 chữ số", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
         if (!Validation.isValidEmail(customer.getCustomerEmail())) {
             JOptionPane.showMessageDialog(null, "Email không hợp lệ", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
