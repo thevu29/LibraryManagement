@@ -62,6 +62,14 @@ public class MainWindow {
             lblEmployee.setVisible(false);
             lblStatistics.setVisible(false);
         }
+
+        lblLogout.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
+                loginBUS.logout(frame);
+            }
+        });
     }
 
     public void initContentPanel() {
@@ -96,6 +104,8 @@ public class MainWindow {
                     lblSell.setForeground(Color.RED);
                 } else if (e.getSource() == lblStatistics) {
                     lblStatistics.setForeground(Color.RED);
+                } else if (e.getSource() == lblLogout) {
+                    lblLogout.setForeground(Color.RED);
                 }
             }
 
@@ -113,16 +123,18 @@ public class MainWindow {
                     lblSell.setForeground(Color.BLACK);
                 } else if (e.getSource() == lblStatistics) {
                     lblStatistics.setForeground(Color.BLACK);
+                } else if (e.getSource() == lblLogout) {
+                    lblLogout.setForeground(Color.BLACK);
                 }
             }
         };
-
         lblBook.addMouseListener(hover);
         lblEmployee.addMouseListener(hover);
         lblCustomer.addMouseListener(hover);
         lblBorrow.addMouseListener(hover);
         lblSell.addMouseListener(hover);
         lblStatistics.addMouseListener(hover);
+        lblLogout.addMouseListener(hover);
     }
 
     public void setCursor() {
@@ -132,6 +144,7 @@ public class MainWindow {
         lblBorrow.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lblSell.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         lblStatistics.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblLogout.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }
 
     public void setMargin() {
@@ -142,22 +155,23 @@ public class MainWindow {
         lblBorrow.setBorder(border);
         lblSell.setBorder(border);
         lblStatistics.setBorder(border);
+        lblLogout.setBorder(BorderFactory.createEmptyBorder(0, 0, 24, 0));
     }
 
     public void openMainWindow(String employeeId) {
         JFrame frame = new JFrame("MainWindow");
         frame.setContentPane(new MainWindow(employeeId).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1350, 600);
+        frame.setSize(1350, 650);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainWindow");
-        frame.setContentPane(new MainWindow("NV001").mainPanel);
+        frame.setContentPane(new MainWindow("NV002").mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1350, 600);
+        frame.setSize(1350, 650);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
@@ -171,4 +185,5 @@ public class MainWindow {
     private JLabel lblBorrow;
     private JLabel lblSell;
     private JLabel lblStatistics;
+    private JLabel lblLogout;
 }

@@ -38,6 +38,16 @@ public class LoginForm {
         btnLogin.setMargin(inset);
     }
 
+    public void openLoginForm() {
+        JFrame frame = new JFrame("LoginForm");
+        frame.setContentPane(new LoginForm().mainPanel);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(1000, 500);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("LoginForm");
         frame.setContentPane(new LoginForm().mainPanel);
