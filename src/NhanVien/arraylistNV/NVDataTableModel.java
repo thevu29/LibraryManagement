@@ -85,16 +85,16 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
                 return NV.getPassword();
             }
             case 5 -> {
-                return NV.getPosition() == 0 ? "Thủ thư"  : "Quản lý";
+                return NV.getPosition() == 0 ? "Thủ thư" : "Quản lý";
             }
             case 6 -> {
                 return NV.getSalary()*NV.getDaywork()*1000;
             }
             case 7 -> {
-                return NV.getWork() == 0 ? "CS1"  : NV.getWork() == 1 ? "CS2" : "CS3"  ;
+                return NV.getWork() == 0 ? "CS1" : NV.getWork() == 1 ? "CS2" : "CS3"  ;
             }
             case 8 -> {
-                return NV.getShift() == 0 ? "C1"  : NV.getShift() == 1 ? "C2" : "C3"    ;
+                return NV.getShift() == 0 ? "C1" : NV.getShift() == 1 ? "C2" : "C3"    ;
             }
             case 9 -> {
                 return NV.getAddress();

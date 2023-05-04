@@ -3,6 +3,7 @@ package MainForm;
 import Book.BUS.BookBUS;
 import Borrow.GUI.BorrowUI;
 import Customer.GUI.CustomerForm;
+import Login.BUS.LoginBUS;
 import NhanVien.GUI.NhanVienadmin;
 import Statistics.GUI.StatisticsForm;
 import sellBook.GUI.HoaDonGUI;
@@ -19,8 +20,11 @@ public class MainWindow {
     private HoaDonGUI sellForm;
     private BorrowUI borrowForm;
     private StatisticsForm statisticsForm;
+    private LoginBUS loginBUS = new LoginBUS();
+    private String employeeId;
 
-    public MainWindow() {
+    public MainWindow(String employeeId) {
+        this.employeeId = employeeId;
         setMargin();
         setCursor();
         hover();
@@ -53,6 +57,11 @@ public class MainWindow {
         lblBorrow.addMouseListener(showContent);
         lblEmployee.addMouseListener(showContent);
         lblStatistics.addMouseListener(showContent);
+
+        if (!loginBUS.findNhanVienChucVu(this.employeeId).equals("Quản lý")) {
+            lblEmployee.setVisible(false);
+            lblStatistics.setVisible(false);
+        }
     }
 
     public void initContentPanel() {
@@ -135,9 +144,9 @@ public class MainWindow {
         lblStatistics.setBorder(border);
     }
 
-    public void openMainWindow() {
+    public void openMainWindow(String employeeId) {
         JFrame frame = new JFrame("MainWindow");
-        frame.setContentPane(new MainWindow().mainPanel);
+        frame.setContentPane(new MainWindow(employeeId).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1350, 600);
         frame.setLocationRelativeTo(null);
@@ -146,7 +155,7 @@ public class MainWindow {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainWindow");
-        frame.setContentPane(new MainWindow().mainPanel);
+        frame.setContentPane(new MainWindow("NV001").mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1350, 600);
         frame.setLocationRelativeTo(null);

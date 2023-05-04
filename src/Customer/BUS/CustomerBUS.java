@@ -329,34 +329,36 @@ public class CustomerBUS {
         return false;
     }
 
-    public boolean validateEmpty(String id, String name, String dob, String address, String email, String phone, String membership,
-                                 String registrationDate, String expirationDate) {
+    public boolean validateEmpty(Customer customer) {
         StringBuilder sb = new StringBuilder();
 
-        if (id.equals("")) {
+        if (customer.getCustomerId().equals("")) {
             sb.append("Mã khách hàng không được để trống \n");
         }
-        if (name.equals("")) {
+        if (customer.getCustomerName().equals("")) {
             sb.append("Tên khách hàng không được để trống \n");
         }
-        if (dob.equals("")) {
+        if (customer.getCustomerDOB().equals("")) {
             sb.append("Ngày sinh không được để trống \n");
         }
-        if (address.equals("")) {
+        if (customer.getCccd().equals("")) {
+            sb.append("CCCD không được để trống \n");
+        }
+        if (customer.getCustomerAddress().equals("")) {
             sb.append("Địa chỉ không được để trống \n");
         }
-        if (email.equals("")) {
+        if (customer.getCustomerEmail().equals("")) {
             sb.append("Email không được để trống \n");
         }
-        if (phone.equals("")) {
+        if (customer.getCustomerPhone().equals("")) {
             sb.append("Số điện thoại không được để trống \n");
         }
 
-        if (!membership.equals("Bình thường")) {
-            if (registrationDate.equals("")) {
+        if (!customer.getMembership().equals("Bình thường")) {
+            if (customer.getRegistrationDate().equals("")) {
                 sb.append("Ngày đăng ký không được để trống \n");
             }
-            if (expirationDate.equals("")) {
+            if (customer.getExpirationDate().equals("")) {
                 sb.append("Ngày hết hạn không được để trống \n");
             }
         }
@@ -369,9 +371,7 @@ public class CustomerBUS {
     }
 
     public boolean validateCustomerInfo(Customer customer) {
-        if (!validateEmpty(customer.getCustomerId(), customer.getCustomerName(), customer.getCustomerDOB(), customer.getCustomerAddress(),
-                customer.getCustomerEmail(), customer.getCustomerPhone(), customer.getMembership(), customer.getRegistrationDate(),
-                customer.getExpirationDate())) {
+        if (!validateEmpty(customer)) {
             return false;
         }
 

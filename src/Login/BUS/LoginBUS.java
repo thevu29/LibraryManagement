@@ -58,4 +58,13 @@ public class LoginBUS {
         }
         return null;
     }
+
+    public String findNhanVienChucVu(String id) {
+        for (nhanVien nv : nvList) {
+            if (nv.getID().equals(id)) {
+                return nv.getPosition() == 0 ? "Thủ thư" : "Quản lý";
+            }
+        }
+        return "";
+    }
 }
