@@ -4,6 +4,7 @@ import Book.BUS.BookBUS;
 import Borrow.GUI.BorrowUI;
 import Customer.GUI.CustomerForm;
 import Login.BUS.LoginBUS;
+import Login.GUI.LoginForm;
 import NhanVien.GUI.NhanVienadmin;
 import Statistics.GUI.StatisticsForm;
 import sellBook.GUI.HoaDonGUI;
@@ -68,6 +69,8 @@ public class MainWindow {
             public void mouseClicked(MouseEvent e) {
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
                 loginBUS.logout(frame);
+                LoginForm loginForm = new LoginForm();
+                loginForm.openLoginForm();
             }
         });
     }

@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginForm {
-    private MainWindow mainWindow;
     private LoginBUS loginBUS = new LoginBUS();
 
     public LoginForm() {
@@ -22,7 +21,7 @@ public class LoginForm {
                 String password = txtPassword.getText();
 
                 if(loginBUS.login(username, password)) {
-                    mainWindow = new MainWindow(username);
+                    MainWindow mainWindow = new MainWindow(username);
                     mainWindow.openMainWindow(username);
                     JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
                     frame.dispose();

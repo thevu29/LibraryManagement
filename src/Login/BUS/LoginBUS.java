@@ -7,7 +7,6 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class LoginBUS {
-    private LoginForm loginForm;
     private NhanVienDAO nhanVienDAO = new NhanVienDAO();
     private ArrayList<nhanVien> nvList;
 
@@ -54,8 +53,6 @@ public class LoginBUS {
 
     public void logout(JFrame frame) {
         frame.dispose();
-        loginForm = new LoginForm();
-        loginForm.openLoginForm();
     }
 
     public nhanVien findNhanVienById(String id) {

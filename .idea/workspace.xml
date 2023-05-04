@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix filter customer">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="thêm logout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login/BUS/LoginBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/BUS/LoginBUS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -471,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683164448699</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="thêm logout">
+      <created>1683165187595</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1683165187595</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -523,7 +529,8 @@
     <MESSAGE value="validate customer cccd" />
     <MESSAGE value="phân quyền nhân viên" />
     <MESSAGE value="fix filter customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix filter customer" />
+    <MESSAGE value="thêm logout" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm logout" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
