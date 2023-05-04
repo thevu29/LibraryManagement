@@ -129,10 +129,11 @@ public class SellTicketDao extends DefaultConnection {
         try {
             stmt = getConnection().createStatement();
             var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `SELL_TICKET` ");
-            if (!rs.next()) {
+            rs.next();
+            var maHD = rs.getString("max_num");
+            if (Objects.isNull(maHD)) {
                 return "HD1";
             }
-            var maHD = rs.getString("max_num");
             int ma = Integer.parseInt(maHD)+1;
             String maHDMoi = "HD".concat(String.valueOf(ma));
 

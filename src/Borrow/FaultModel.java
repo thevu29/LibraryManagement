@@ -35,75 +35,11 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
             rows.add(fault);
             fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
         }
+        fireTableDataChanged();
     }
 
-    // add data testExcel
-    public void addBlank() {
-         rows.add(Fault.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public void addTestData() {
-         rows.add(Fault.createTestBook());
-         fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public void addData(String id,String tenLoi,double heSo){
-        rows.add(new Fault(id,tenLoi,heSo));
-        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public void updateData(String id,String tenLoi,double heSo){
-        for(Fault row : rows) {
-            if(row.getId().equals(id)){
-                row.setTenLoi(tenLoi);
-                row.setHeSo(heSo);
-                fireTableCellUpdated(rows.size() - 1, rows.size() - 1);
-                return;
-            }
-        }
-    }
-
-    public void deleteTestData(String id){
-        int index = 0;
-        for(Fault row : rows) {
-            if(row.getId().equals(id)){
-                rows.remove(index);
-                return;
-            }
-            index++;
-        }
-    }
-
-    public void renderTable(){
-        fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
-    }
-
-    public boolean checkID(String id){
-        for(Fault row : rows) {
-            if(row.getId().equals(id)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
-
-    public boolean isEditable() {
-        return isEditable;
-    }
-
-    public void setEditable(boolean editable) {
-        isEditable = editable;
-    }
-
-    // chưa hiểu
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 6) {
-            return Integer.class;
-        }
         return super.getColumnClass(columnIndex);
     }
 
@@ -117,7 +53,6 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
     }
 
     public void setValueAt(Object value, int row, int col) {
-        // rows.get(row).set(col, (String) value);
         fireTableCellUpdated(row, col);
     }
 
@@ -161,14 +96,6 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
 
     @Override
     public List<String> getColumnValueToString(int col) {
-        switch (col) {
-            case 2, 3, 4 -> {
-                var item = new ArrayList<String>();
-                rows.stream().map(book -> Objects.toString(translateValue(book, col))).forEach((elem) ->
-                        item.addAll(List.of(elem.split(","))));
-                return item;
-            }
-        }
         return rows.stream().map(book -> Objects.toString(translateValue(book, col))).toList();
     }
 }

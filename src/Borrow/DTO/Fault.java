@@ -8,8 +8,6 @@ public class Fault {
     private String tenLoi;
     private double heSo;
 
-
-
     public Fault(){
 
     }
@@ -44,19 +42,4 @@ public class Fault {
         this.heSo = heSo;
     }
 
-
-
-    //    public String getTrangThai() {
-//        return trangThai;
-//    }
-//
-//    public void setTrangThai(String trangThai){
-//        this.trangThai = trangThai;
-//    }
-
-    public static Fault createTestBook() {
-        ArrayList<String> authors = new ArrayList<>();
-
-        return new Fault(String.valueOf(priceCounter), "Loi "+priceCounter,priceCounter++);
-    }
 }

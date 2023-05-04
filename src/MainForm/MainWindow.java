@@ -3,7 +3,7 @@ package MainForm;
 import Book.BUS.BookBUS;
 import Borrow.GUI.BorrowUI;
 import Customer.GUI.CustomerForm;
-import NhanVien.form.NhanVienadmin;
+import NhanVien.GUI.NhanVienadmin;
 import Statistics.GUI.StatisticsForm;
 import sellBook.GUI.HoaDonGUI;
 import javax.swing.*;
@@ -66,7 +66,7 @@ public class MainWindow {
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
         contentPanel.add("Borrow", borrowForm.getPanel1());
-        contentPanel.add("Employee", employeeForm.getMainPanel());
+        contentPanel.add("Employee", employeeForm.getMain());
         contentPanel.add("Sell", sellForm.getMain());
         contentPanel.add("Statistics", statisticsForm.getMainPanel());
     }
