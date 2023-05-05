@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix logout">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix GUI và thêm các thống kê vô StatisticsForm">
+      <change afterPath="$PROJECT_DIR$/library/flatlaf-3.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/library/flatlaf-intellij-themes-3.1.1.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/BUS/LoginBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/BUS/LoginBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/Chart.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/SellChart.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/SellChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/ColumnChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/ColumnChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/PieChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/PieChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +74,7 @@
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;300&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/library/xmlbeans-5.1.1.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/library/flatlaf-intellij-themes-3.1.1.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -102,6 +97,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagement\library" />
       <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagementGUI\src\icons" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
@@ -117,7 +113,7 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainWindow (1)">
+  <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -191,11 +187,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.MainWindow (1)" />
         <item itemvalue="Application.StatisticsForm" />
-        <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.LoginForm" />
-        <item itemvalue="Application.HoaDonGUI (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -491,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683166178304</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="fix GUI và thêm các thống kê vô StatisticsForm">
+      <created>1683184787843</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1683184787843</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +510,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="customer" />
+                        <option value="borrow" />
                       </list>
                     </value>
                   </entry>
@@ -545,7 +547,8 @@
     <MESSAGE value="fix filter customer" />
     <MESSAGE value="thêm logout" />
     <MESSAGE value="fix logout" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix logout" />
+    <MESSAGE value="fix GUI và thêm các thống kê vô StatisticsForm" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix GUI và thêm các thống kê vô StatisticsForm" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

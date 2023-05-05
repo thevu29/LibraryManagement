@@ -15,6 +15,8 @@
       <root url="jar://$PROJECT_DIR$/library/poi-ooxml-lite-5.2.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/library/SparseBitSet-1.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/library/xmlbeans-5.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/flatlaf-3.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/library/flatlaf-intellij-themes-3.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
