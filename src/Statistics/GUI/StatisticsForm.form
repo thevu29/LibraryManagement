@@ -43,7 +43,7 @@
           </grid>
           <grid id="72840" binding="pnlCTHD" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <tabbedpane title="Chi Tiết Hóa Đơn"/>
+              <tabbedpane title="Sách Bán"/>
             </constraints>
             <properties/>
             <border type="none"/>
