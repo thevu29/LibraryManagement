@@ -181,7 +181,7 @@ public class CustomerForm {
         membershipBUS.renderToTable(tblMembershipModel);
 
         txtMembershipId = AutoSuggestComboBox.createWithDeleteBtn(cbxMembershipId, 0, this::initMembershipSuggestion, btnDeleteMemId);
-        txtCusId = AutoSuggestComboBox.createWithDeleteBtn(cbxCusId, 1, this::initMembershipSuggestion, btnDeleteCustomerId);
+        txtCustomerId = AutoSuggestComboBox.createWithDeleteBtn(cbxCusId, 1, this::initMembershipSuggestion, btnDeleteCustomerId);
         txtTypeId = AutoSuggestComboBox.createWithDeleteBtn(cbxTypeId, 2, this::initMembershipSuggestion, btnDeleteTypeId);
 
         btnFilterMembership.addActionListener(new ActionListener() {
@@ -195,7 +195,7 @@ public class CustomerForm {
             @Override
             public void actionPerformed(ActionEvent e) {
                 txtMembershipId.setText("");
-                txtCusId.setText("");
+                txtCustomerId.setText("");
                 txtTypeId.setText("");
                 membershipSorter.setRowFilter(null);
             }
@@ -207,7 +207,7 @@ public class CustomerForm {
         tblMemberships.setRowSorter(membershipSorter);
 
         String memId = txtMembershipId.getText().toLowerCase();
-        String cusId = txtCusId.getText().toLowerCase();
+        String cusId = txtCustomerId.getText().toLowerCase();
         String typeId = txtTypeId.getText().toLowerCase();
 
         RowFilter<DefaultTableModel, Object> rowFilter = new RowFilter<DefaultTableModel, Object>() {
