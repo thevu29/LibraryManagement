@@ -1,6 +1,8 @@
 package Customer.GUI;
 
 import Customer.BUS.CustomerBUS;
+import Customer.BUS.MembershipBUS;
+import Customer.DTO.Membership;
 import Customer.DTO.MembershipType;
 import Customer.BUS.MembershipTypeBUS;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
@@ -9,7 +11,9 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -24,6 +28,13 @@ public class CustomerForm {
     private JTextField txtCusEmail;
     private JTextField txtCusMembership;
 
+    private MembershipBUS membershipBUS = new MembershipBUS();
+    private DefaultTableModel tblMembershipModel;
+    private TableRowSorter<DefaultTableModel> membershipSorter;
+    private JTextField txtMembershipId;
+    private JTextField txtCustomerId;
+    private JTextField txtTypeId;
+
     private MembershipTypeBUS membershipTypeBUS = new MembershipTypeBUS();
     private DefaultTableModel tblMembershipTypeModel;
     private TableRowSorter<DefaultTableModel> membershipTypeSorter;
@@ -32,24 +43,25 @@ public class CustomerForm {
     public CustomerForm() {
         handleCustomer();
         handleMembership();
+        handleMembershipType();
     }
 
-    public void handleMembership() {
-        initMembershipTable();
+    public void handleMembershipType() {
+        initMembershipTypeTable();
         membershipTypeBUS.renderToTable(tblMembershipTypeModel);
 
         btnAddMember.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MembershipType membershipType = new MembershipType("", 0, false);
-                showMembershipInfo(membershipType, "Thêm loại thành viên");
+                showMembershipTypeInfo(membershipType, "Thêm loại thành viên");
             }
         });
 
         btnDeleteMember.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int selectedRow = tblMemberships.getSelectedRow();
+                int selectedRow = tblMembershipTypes.getSelectedRow();
                 if (selectedRow < 0) {
                     JOptionPane.showMessageDialog(null, "Vui lòng chọn loại thành viên muốn xóa", "Warning", JOptionPane.WARNING_MESSAGE);
                     return;
@@ -60,7 +72,7 @@ public class CustomerForm {
                     return;
                 }
 
-                String name = tblMemberships.getValueAt(selectedRow, 0).toString();
+                String name = tblMembershipTypes.getValueAt(selectedRow, 0).toString();
                 if (membershipTypeBUS.validateDelete(name)) {
                     membershipTypeBUS.renderToTable(tblMembershipTypeModel);
                 }
@@ -70,26 +82,26 @@ public class CustomerForm {
         btnEditMember.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int selectedRow = tblMemberships.getSelectedRow();
+                int selectedRow = tblMembershipTypes.getSelectedRow();
                 if (selectedRow < 0) {
                     JOptionPane.showMessageDialog(null, "Vui lòng chọn loại thành viên muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                String name = tblMemberships.getValueAt(selectedRow, 0).toString();
-                int discount = Integer.parseInt(tblMemberships.getValueAt(selectedRow, 1).toString());
+                String name = tblMembershipTypes.getValueAt(selectedRow, 0).toString();
+                int discount = Integer.parseInt(tblMembershipTypes.getValueAt(selectedRow, 1).toString());
 
                 MembershipType membershipType = new MembershipType(name, discount, false);
-                showMembershipInfo(membershipType, "Lưu thông tin");
+                showMembershipTypeInfo(membershipType, "Lưu thông tin");
             }
         });
 
-        txtMembershipTypeName = AutoSuggestComboBox.createWithDeleteBtn(cbxMemName, 0, this::initMembershipSuggestion, btnDeleteMemName);
+        txtMembershipTypeName = AutoSuggestComboBox.createWithDeleteBtn(cbxMemName, 0, this::initMembershipTypeSuggestion, btnDeleteMemName);
 
-        btnFilterMembership.addActionListener(new ActionListener() {
+        btnFilterMembershipType.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                filterMembership();
+                filterMembershipType();
             }
         });
 
@@ -102,9 +114,9 @@ public class CustomerForm {
         });
     }
 
-    public void filterMembership() {
+    public void filterMembershipType() {
         membershipTypeSorter = new TableRowSorter<DefaultTableModel>(tblMembershipTypeModel);
-        tblMemberships.setRowSorter(membershipTypeSorter);
+        tblMembershipTypes.setRowSorter(membershipTypeSorter);
 
         String name = txtMembershipTypeName.getText().toLowerCase();
 
@@ -124,15 +136,17 @@ public class CustomerForm {
         membershipTypeSorter.setRowFilter(rowFilter);
     }
 
-    public ArrayList<String> initMembershipSuggestion(int col) {
+    public ArrayList<String> initMembershipTypeSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
-        for (MembershipType membership : membershipTypeBUS.getMembershipTypeList()) {
-            suggestion.add(membership.getMembershipTypeName());
+        for (MembershipType membershipType : membershipTypeBUS.getMembershipTypeList()) {
+            if (!membershipType.isDeleted()) {
+                suggestion.add(membershipType.getMembershipTypeName());
+            }
         }
         return suggestion;
     }
 
-    public void showMembershipInfo(MembershipType membershipType, String btnText) {
+    public void showMembershipTypeInfo(MembershipType membershipType, String btnText) {
         MembershipInfoForm membershipInfoForm = new MembershipInfoForm(this, membershipType, btnText);
         membershipInfoForm.setContentPane(membershipInfoForm.getContentPane());
         membershipInfoForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -141,7 +155,7 @@ public class CustomerForm {
         membershipInfoForm.setVisible(true);
     }
 
-    public void initMembershipTable() {
+    public void initMembershipTypeTable() {
         tblMembershipTypeModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -152,7 +166,97 @@ public class CustomerForm {
         String[] cols = new String[]{"Tên loại thành viên", "Giảm giá(%)"};
         tblMembershipTypeModel.setColumnIdentifiers(cols);
 
-        tblMemberships.setModel(tblMembershipTypeModel);
+        tblMembershipTypes.setModel(tblMembershipTypeModel);
+        tblMembershipTypes.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
+
+        DefaultTableCellRenderer center = new DefaultTableCellRenderer();
+        center.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < cols.length; i++) {
+            tblMembershipTypes.getColumnModel().getColumn(i).setCellRenderer(center);
+        }
+    }
+
+    public void handleMembership() {
+        initMembershipTable();
+        membershipBUS.renderToTable(tblMembershipModel);
+
+        txtMembershipId = AutoSuggestComboBox.createWithDeleteBtn(cbxMembershipId, 0, this::initMembershipSuggestion, btnDeleteMemId);
+        txtCusId = AutoSuggestComboBox.createWithDeleteBtn(cbxCusId, 1, this::initMembershipSuggestion, btnDeleteCustomerId);
+        txtTypeId = AutoSuggestComboBox.createWithDeleteBtn(cbxTypeId, 2, this::initMembershipSuggestion, btnDeleteTypeId);
+
+        btnFilterMembership.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterMembership();
+            }
+        });
+
+        btnResetMembership.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                txtMembershipId.setText("");
+                txtCusId.setText("");
+                txtTypeId.setText("");
+                membershipSorter.setRowFilter(null);
+            }
+        });
+    }
+
+    public void filterMembership() {
+        membershipSorter = new TableRowSorter<DefaultTableModel>(tblMembershipModel);
+        tblMemberships.setRowSorter(membershipSorter);
+
+        String memId = txtMembershipId.getText().toLowerCase();
+        String cusId = txtCusId.getText().toLowerCase();
+        String typeId = txtTypeId.getText().toLowerCase();
+
+        RowFilter<DefaultTableModel, Object> rowFilter = new RowFilter<DefaultTableModel, Object>() {
+            @Override
+            public boolean include(Entry<? extends DefaultTableModel, ?> entry) {
+                String rowMemId = entry.getStringValue(0).toLowerCase();
+                String rowCusId = entry.getStringValue(1).toLowerCase();
+                String rowTypeId = entry.getStringValue(2).toLowerCase();
+
+                if (typeId.equals("")) {
+                    return rowMemId.contains(memId) && rowCusId.contains(cusId);
+                }
+
+                return rowMemId.contains(memId) && rowCusId.contains(cusId) && rowTypeId.equals(typeId);
+            }
+        };
+
+        membershipSorter.setRowFilter(rowFilter);
+    }
+
+    public ArrayList<String> initMembershipSuggestion(int col) {
+        ArrayList<String> suggestion = new ArrayList<>();
+        for (Membership membership : membershipBUS.getMembershipList()) {
+            if (!membership.isDeleted()) {
+                if (col == 0) {
+                    suggestion.add(membership.getMembershipId());
+                } else if (col == 1) {
+                    suggestion.add(membership.getCustomerId());
+                } else if (col == 2) {
+                    suggestion.add(membership.getMembershipTypeName());
+                }
+            }
+        }
+        return suggestion;
+    }
+
+    public void initMembershipTable() {
+        tblMembershipModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        String[] cols = new String[]{"Mã thẻ", "Mã khách hàng", "Dạng thẻ", "Ngày đăng ký", "Ngày hết hạn"};
+        tblMembershipModel.setColumnIdentifiers(cols);
+
+        tblMemberships.setModel(tblMembershipModel);
+        tblMemberships.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(JLabel.CENTER);
@@ -289,7 +393,7 @@ public class CustomerForm {
                 String rowMember = entry.getStringValue(3).toLowerCase();
 
                 if (membership.equals("")) {
-                    return true;
+                    return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email);
                 }
 
                 return rowId.contains(id) && rowName.contains(name) && rowEmail.contains(email) && rowMember.equals(membership);
@@ -302,14 +406,16 @@ public class CustomerForm {
     public ArrayList<String> initCustomerSuggestion(int col) {
         ArrayList<String> suggestion = new ArrayList<>();
         for (Customer customer : customerBUS.getCustomerList()) {
-            if (col == 0) {
-                suggestion.add(customer.getCustomerId());
-            } else if (col == 1) {
-                suggestion.add(customer.getCustomerName());
-            } else if (col  == 2) {
-                suggestion.add(customer.getCustomerEmail());
-            } else if (col == 3) {
-                suggestion.add(customer.getMembership());
+            if (!customer.isDeleted()) {
+                if (col == 0) {
+                    suggestion.add(customer.getCustomerId());
+                } else if (col == 1) {
+                    suggestion.add(customer.getCustomerName());
+                } else if (col  == 2) {
+                    suggestion.add(customer.getCustomerEmail());
+                } else if (col == 3) {
+                    suggestion.add(customer.getMembership());
+                }
             }
         }
         return suggestion;
@@ -336,6 +442,7 @@ public class CustomerForm {
         tblCustomerModel.setColumnIdentifiers(columns);
 
         tblCustomers.setModel(tblCustomerModel);
+        tblCustomers.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);
@@ -393,13 +500,22 @@ public class CustomerForm {
     private JButton btnDeleteMember;
     private JButton btnEditMember;
     private JButton btnResetMember;
-    private JTable tblMemberships;
+    private JTable tblMembershipTypes;
     private JTabbedPane tabbedPane3;
-    private JButton btnFilterMembership;
+    private JButton btnFilterMembershipType;
     private JComboBox cbxMemName;
     private JButton btnDeleteMemName;
     private JComboBox cbxCusMembership;
     private JButton btnDeleteCusMembership;
     private JButton btnImportExcel;
     private JButton btnExportExcel;
+    private JTable tblMemberships;
+    private JButton btnDeleteMemId;
+    private JButton btnDeleteCustomerId;
+    private JButton btnDeleteTypeId;
+    private JButton btnResetMembership;
+    private JButton btnFilterMembership;
+    private JComboBox cbxMembershipId;
+    private JComboBox cbxCusId;
+    private JComboBox cbxTypeId;
 }

@@ -10,7 +10,7 @@ import org.jfree.data.general.DefaultPieDataset;
 public class PieChart extends JFrame {
 
     public PieChart() {
-        setTitle("Pie Chart Example");
+        setTitle("Pie SellChart Example");
         setSize(500, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,7 +23,7 @@ public class PieChart extends JFrame {
 
         // Create chart
         JFreeChart chart = ChartFactory.createPieChart(
-                "Fruit Distribution", // Chart title
+                "Fruit Distribution", // SellChart title
                 dataset, // Dataset
                 true, // Show legend
                 true, // Use tooltips

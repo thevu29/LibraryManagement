@@ -5,7 +5,7 @@ import java.sql.Date;
 public class nhanVien {
     private String ID;
     private String name;
-    private  String phone;
+    private String phone;
     private String birth;
     private String address;
     private String email;

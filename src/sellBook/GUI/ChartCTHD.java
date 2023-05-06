@@ -91,7 +91,7 @@ public class ChartCTHD {
 
     public JFreeChart createPieChart(String title) {
         JFreeChart chart = ChartFactory.createPieChart3D(
-                title, // Chart title
+                title, // SellChart title
                 pieDataset, // Dataset
                 true, // Show legend
                 true, // Use tooltips
@@ -122,7 +122,7 @@ public class ChartCTHD {
 
     public JFreeChart createBarChart(String selectedOption) {
         JFreeChart newChart = ChartFactory.createBarChart(
-                "Hoa Don", // Chart title
+                "Hoa Don", // SellChart title
                 selectedOption, // X-Axis Label
                 "Number of Hoa Don", // Y-Axis Label
                 categoryDataset, // New dataset

@@ -6,7 +6,7 @@ import Utils.AbstractTableModelWithFilters;
 public class AuthorDataTableModel extends AbstractTableModelWithFilters<Author> {
 
     public AuthorDataTableModel() {
-        String[] cols = {"Id", "Tên", "Giới Tính", "Email", "Mô Tả"};
+        String[] cols = {"Mã tác giả", "Tên", "Giới Tính", "Email", "Mô Tả"};
         setCols(cols);
     }
     @Override

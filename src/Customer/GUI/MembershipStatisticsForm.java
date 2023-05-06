@@ -50,7 +50,7 @@ public class MembershipStatisticsForm {
         int year = Integer.parseInt(cbxYear.getSelectedItem().toString());
 
         for (int i = 1; i <= 12; i++) {
-            dataset.setValue(customerBUS.countMembershipByMonth(i, year, type), "Số khách hàng", i + "");
+            dataset.setValue(customerBUS.countMembershipByMonth(i, year, type), "Số khách hàng thành viên", i + "");
         }
     }
 
