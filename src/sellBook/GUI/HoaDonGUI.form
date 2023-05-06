@@ -15,7 +15,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="940b6" layout-manager="GridLayoutManager" row-count="6" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="940b6" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -26,7 +26,7 @@
             <children>
               <component id="e9378" class="javax.swing.JButton" binding="btnRemove">
                 <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-11107086"/>
@@ -36,22 +36,12 @@
               </component>
               <vspacer id="cecd7">
                 <constraints>
-                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="69d38" class="javax.swing.JButton" binding="btnCapNhat">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-11107086"/>
-                  <foreground color="-1"/>
-                  <text value="Cập nhật hóa đơn"/>
-                </properties>
-              </component>
               <component id="be9f7" class="javax.swing.JButton" binding="THÀNHCÔNGButton" default-binding="true">
                 <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-11107086"/>
@@ -61,7 +51,7 @@
               </component>
               <component id="350f9" class="javax.swing.JButton" binding="btnAdd">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-11107086"/>
@@ -69,12 +59,14 @@
                   <text value="Thêm hóa đơn"/>
                 </properties>
               </component>
-              <component id="3041f" class="javax.swing.JButton" binding="btnThongKe">
+              <component id="69d38" class="javax.swing.JButton" binding="btnCapNhat">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Xem Thống Kê"/>
+                  <background color="-11107086"/>
+                  <foreground color="-1"/>
+                  <text value="Cập nhật hóa đơn"/>
                 </properties>
               </component>
             </children>
@@ -164,41 +156,6 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <grid id="659f6" layout-manager="GridBagLayout">
-                        <constraints>
-                          <tabbedpane title="Mã hóa đơn"/>
-                        </constraints>
-                        <properties>
-                          <foreground color="-5194043"/>
-                        </properties>
-                        <border type="none"/>
-                        <children>
-                          <component id="934b9" class="javax.swing.JComboBox" binding="cboMaHD">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                              <gridbag weightx="3.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-13382401"/>
-                              <editable value="true"/>
-                              <foreground color="-15000805"/>
-                            </properties>
-                          </component>
-                          <component id="55947" class="javax.swing.JButton" binding="btnXoaMaHD">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                              <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-11107086"/>
-                              <foreground color="-1"/>
-                              <text value="Xóa"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
                       <grid id="7db5" layout-manager="GridBagLayout">
                         <constraints>
                           <tabbedpane title="Mã nhân viên"/>
@@ -208,17 +165,6 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="fdfaf" class="javax.swing.JButton" binding="btnXoaMaNV">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                              <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-11107086"/>
-                              <foreground color="-1"/>
-                              <text value="Xóa"/>
-                            </properties>
-                          </component>
                           <component id="8cd71" class="javax.swing.JComboBox" binding="cboMaNV">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -228,7 +174,7 @@
                             </constraints>
                             <properties>
                               <background color="-13382401"/>
-                              <editable value="true"/>
+                              <editable value="false"/>
                             </properties>
                           </component>
                         </children>
@@ -242,17 +188,6 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="cea8f" class="javax.swing.JButton" binding="btnXoaMaKH">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                              <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-11107086"/>
-                              <foreground color="-1"/>
-                              <text value="Xóa"/>
-                            </properties>
-                          </component>
                           <component id="dfad7" class="javax.swing.JComboBox" binding="cboMaKH">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -262,7 +197,7 @@
                             </constraints>
                             <properties>
                               <background color="-13382401"/>
-                              <editable value="true"/>
+                              <editable value="false"/>
                             </properties>
                           </component>
                         </children>

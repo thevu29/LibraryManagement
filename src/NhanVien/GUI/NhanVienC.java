@@ -202,7 +202,6 @@ public class NhanVienC {
                 salary.setText("");
             }
         });
-
     }
 
     public boolean check() {

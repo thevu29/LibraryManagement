@@ -26,8 +26,9 @@ public class SellTicketDao extends DefaultConnection {
                 var maKh = rs.getString("MA_KH");
                 var tenKH = rs.getString("tenKH");
                 var tenNV = rs.getString("tenNV");
+                var ngay = rs.getDate("CREATED_AT");
                 var total = temp.tinhTongHoaDon(maPhieu);
-                dshd.add(new HoaDon(maPhieu, maNv,  maKh,tenNV,tenKH,total));
+                dshd.add(new HoaDon(maPhieu, maNv,  maKh,tenNV,tenKH,total,ngay));
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
@@ -73,19 +74,19 @@ public class SellTicketDao extends DefaultConnection {
         return new ArrayList<>(maKHSet);
     }
 
-    public long tinhTongHoaDon(String maHD){
+    public double tinhTongHoaDon(String maHD){
         String sql = """
-                    SELECT SUM(CAST(BOOK.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO) as tongTien
+                    SELECT ROUND( SUM(CAST(BOOK.GIA AS UNSIGNED) *( 1.0 - SELL_TICKET_DETAILS.HE_SO)),2 )as tongTien
                     FROM `SELL_TICKET` INNER JOIN SELL_TICKET_DETAILS on SELL_TICKET.MA_PHIEU = SELL_TICKET_DETAILS.MA_PHIEU 
                     INNER JOIN BOOK on SELL_TICKET_DETAILS.MA_SERIES = BOOK.MA_SERIES
                     WHERE SELL_TICKET.MA_PHIEU = '%s'""".formatted(maHD);
         Statement stmt = null;
-        long total = 0;
+        double total = 0;
         try {
             stmt = getConnect().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                total = rs.getLong("tongTien");
+                total = rs.getDouble("tongTien");
             }
         } catch (SQLException | ClassNotFoundException e) {
             return 0;
@@ -100,27 +101,20 @@ public class SellTicketDao extends DefaultConnection {
                 "FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH " +
                 "INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV " +
                 "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_PHIEU = '"+ma+"'";
-        System.out.println(ma);
-//        var a = """
-//                SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV\s
-//                FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH\s
-//                INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV\s
-//                where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_PHIEU = '%s'
-//                """.formatted(ma);
         return getDs(sql);
     }
     public List<HoaDon> locMaNV(String ma){
         String sql = "SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV  " +
                 "FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH " +
                 "INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV " +
-                "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_NV = "+ma;
+                "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_NV = '"+ma+"'";
         return getDs(sql);
     }
     public List<HoaDon> locMaKH(String ma){
         String sql = "SELECT SELL_TICKET.*,CUSTOMER.TEN as tenKH,EMPLOYEE.TEN as tenNV  " +
                 "FROM SELL_TICKET INNER JOIN CUSTOMER on SELL_TICKET.MA_KH = CUSTOMER.MA_KH " +
                 "INNER JOIN EMPLOYEE on SELL_TICKET.MA_NV = EMPLOYEE.MA_NV " +
-                "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_KH = "+ma;
+                "where SELL_TICKET.IS_DELETED = 0  AND SELL_TICKET.MA_KH = '"+ma+"'";
         return getDs(sql);
     }
 
@@ -129,11 +123,14 @@ public class SellTicketDao extends DefaultConnection {
         try {
             stmt = getConnection().createStatement();
             var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `SELL_TICKET` ");
-            rs.next();
+            if (!rs.next()) {
+                return "HD1";
+            }
             var maHD = rs.getString("max_num");
             if (Objects.isNull(maHD)) {
                 return "HD1";
             }
+
             int ma = Integer.parseInt(maHD)+1;
             String maHDMoi = "HD".concat(String.valueOf(ma));
 
@@ -181,8 +178,6 @@ public class SellTicketDao extends DefaultConnection {
         return smt;
     }
 
-
-
     public int updateHD(HoaDon hd){
         String sql = "UPDATE `SELL_TICKET` SET MA_NV=?,`MA_KH`=? WHERE MA_PHIEU=?";
         int smt = 0;
@@ -204,7 +199,7 @@ public class SellTicketDao extends DefaultConnection {
     }
 
     public String goiYTenKH(String maKH){
-        String sql = "SELECT  `TEN` FROM `CUSTOMER` WHERE MA_KH LIKE '%"+maKH+"%'";
+        String sql = "SELECT  `TEN` FROM `CUSTOMER` WHERE MA_KH LIKE '"+maKH+"'";
         Statement stmt = null;
         String tenKH = "";
         try {
@@ -222,24 +217,6 @@ public class SellTicketDao extends DefaultConnection {
 
 
 
-    public DefaultCategoryDataset laySoLieuTheoThang(){
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        String rowKey = "Hoa Don";
-        String sql = "SELECT COUNT(MA_PHIEU) as slgHD,Month(CREATED_AT) as thang FROM `SELL_TICKET` WHERE IS_DELETED = 0  GROUP BY month(CREATED_AT)  ORDER BY thang ASC";
-        Statement stmt = null;
-        try {
-            stmt = getConnect().createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                Double soLieu = rs.getDouble("slgHD");
-                String thang = rs.getString("thang");
-                dataset.setValue(soLieu,rowKey,thang);
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            System.out.println(e);
-        }
-        return dataset;
-    }
 
 
     public DefaultCategoryDataset laySoLieuTheoNam(){
@@ -261,12 +238,11 @@ public class SellTicketDao extends DefaultConnection {
         return dataset;
     }
 
-    public DefaultCategoryDataset thongKeTheoNam(int nam){
+    public double[] thongKeTheoNam(int nam){
         String sql = "SELECT COUNT(MA_PHIEU) as slgHD, Year(CREATED_AT) as nam, MONTH(CREATED_AT) as thang \n" +
                 "FROM `SELL_TICKET` \n" +
                 "WHERE YEAR(CREATED_AT) = "+nam+" AND IS_DELETED = 0 \n" +
                 "GROUP BY Year(CREATED_AT), MONTH(CREATED_AT)\n";
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         String rowKey = "Hoa Don";
         Statement stmt = null;
         double[] slgHDs = new double[12];
@@ -276,23 +252,13 @@ public class SellTicketDao extends DefaultConnection {
             while (rs.next()) {
                 Double soLieu = rs.getDouble("slgHD");
                 int thang = rs.getInt("thang");
-//                String thangNam = thang+"/"+nam;
-//                dataset.setValue(soLieu,rowKey,thang);
                 slgHDs[thang -1] = soLieu;
-            }
-            for (int i = 0; i < 12; i++) {
-                int thang = i + 1;
-                double slgHD = slgHDs[i];
-                System.out.println("Tháng " + thang + "/" + nam + ": " + slgHD + " hóa đơn");
-                String thangNam = thang+"/"+nam;
-                dataset.setValue(slgHD,rowKey,thangNam);
-
             }
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println(e);
         }
 
-        return dataset;
+        return slgHDs;
     }
 
     public DefaultCategoryDataset thongKeThuNhapTheoThang(int nam){
@@ -301,10 +267,10 @@ public class SellTicketDao extends DefaultConnection {
         String sql = "SELECT\n" +
                 "YEAR(CREATED_AT) as nam,\n" +
                 "MONTH(CREATED_AT) as thang,\n" +
-                "SUM(CAST(book.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO) as tongTien\n" +
+                "SUM(CAST(`BOOK`.GIA AS SIGNED) * (1 - SELL_TICKET_DETAILS.HE_SO)) as tongTien\n" +
                 "FROM SELL_TICKET\n" +
                 "INNER JOIN SELL_TICKET_DETAILS ON SELL_TICKET_DETAILS.MA_PHIEU = SELL_TICKET.MA_PHIEU\n" +
-                "INNER JOIN BOOK ON book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
+                "INNER JOIN BOOK ON `BOOK`.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
                 "WHERE Year(SELL_TICKET.CREATED_AT) = "+nam+" and SELL_TICKET.IS_DELETED = 0 AND SELL_TICKET_DETAILS.IS_DELETED = 0\n" +
                 "GROUP BY YEAR(CREATED_AT), MONTH(CREATED_AT)\n" +
                 "ORDER BY YEAR(CREATED_AT) ASC, MONTH(CREATED_AT) ASC;";
@@ -332,6 +298,10 @@ public class SellTicketDao extends DefaultConnection {
         }
         return dataset;
     }
+
+
+
+
 
 
     public static void main(String[] args) {

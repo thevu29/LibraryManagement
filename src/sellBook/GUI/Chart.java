@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.Year;
-import java.util.ArrayList;
 
 public class Chart {
 
@@ -28,22 +27,14 @@ public class Chart {
 
     DefaultCategoryDataset newDataset = null;
 
-    public Chart(DefaultCategoryDataset dataset, String tkTheo, ArrayList<String> dsOpt) {
-        this.newDataset = dataset;
-        for(int i=0;i<dsOpt.size();i++){
-            cboOption.addItem(dsOpt.get(i));
-        }
+    public Chart() {
+        int nam = Year.now().getValue();
+        this.newDataset = bus.thongKeTheoNam(nam);
+
+        cboOption.addItem("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM");
+        cboOption.addItem("THỐNG KÊ THU NHẬP THEO NĂM");
         // create chart
-        JFreeChart chart = ChartFactory.createBarChart(
-                "Hoa Don", // Chart title
-                tkTheo, // X-Axis Label
-                "Number of Hoa Don", // Y-Axis Label
-                dataset, // Dataset
-                PlotOrientation.VERTICAL, // Plot orientation
-                false, // Show legend
-                true, // Use tooltips
-                false // Generate URLs
-        );
+        JFreeChart chart = createBarChart(String.valueOf(cboOption.getSelectedItem()) );
 
         // create chart panel and add it to the chart JPanel
         ChartPanel chartPanel = new ChartPanel(chart);
@@ -55,8 +46,6 @@ public class Chart {
             public void actionPerformed(ActionEvent e) {
                 String selectedOption = cboOption.getSelectedItem().toString();
                  if (selectedOption.equals("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM")) {
-
-                    txtNam.setEditable(true);
                     int nam = Year.now().getValue();
                     if(txtNam.getText().isEmpty()){
                         newDataset = bus.thongKeTheoNam(nam);
@@ -76,15 +65,13 @@ public class Chart {
                 JFreeChart newChart = createBarChart(selectedOption);
                 // update the chart panel with the new chart
                 chartPanel.setChart(newChart);
-//                chart1.add(chartPanel);
             }
         });
         txtNam.addKeyListener(new KeyAdapter() {
-            DefaultCategoryDataset newDataset = null;
             @Override
             public void keyPressed(KeyEvent e) {
+                String selectedOpt = String.valueOf(cboOption.getSelectedItem());
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    txtNam.setEditable(true);
                     int nam = Year.now().getValue();
 
                     System.out.println(txtNam.getText());
@@ -94,7 +81,7 @@ public class Chart {
                     else{
                         newDataset = bus.thongKeTheoNam(Integer.parseInt(txtNam.getText()));
                     }
-                    JFreeChart newChart = createBarChart("Thống kê theo năm");
+                    JFreeChart newChart = createBarChart(selectedOpt);
                     // update the chart panel with the new chart
                     chartPanel.setChart(newChart);
                 }
@@ -105,9 +92,9 @@ public class Chart {
 
     public JFreeChart createBarChart(String selectedOption){
         JFreeChart newChart = ChartFactory.createBarChart(
-                "Hoa Don", // Chart title
+                "Hóa đơn", // SellChart title
                 selectedOption, // X-Axis Label
-                "Number of Hoa Don", // Y-Axis Label
+                "Số lượng hóa đơn", // Y-Axis Label
                 newDataset, // New dataset
                 PlotOrientation.VERTICAL, // Plot orientation
                 false, // Show legend
@@ -138,11 +125,11 @@ public class Chart {
     public void setMain(JPanel main) {
         this.main = main;
     }
-    //    public static void main(String[] args) {
-//        JFrame frame = new JFrame("Chart");
-//        frame.setContentPane(new Chart().main);
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.pack();
-//        frame.setVisible(true);
-//    }
+        public static void main(String[] args) {
+        JFrame frame = new JFrame("Chart");
+        frame.setContentPane(new Chart().main);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+    }
 }

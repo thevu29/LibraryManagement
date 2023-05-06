@@ -20,21 +20,17 @@ public class CTHDGUI {
     private JPanel main;
     private JButton btnRemove;
     private JButton btnUpdate;
-    private JButton btnFinish;
     private JTable tblCTHD;
     private JButton bookDeleteAllButton;
     private JButton btnFilter;
     private JTabbedPane tab;
     private JComboBox cboMaCTHD;
-    private JButton btnXoaMaHD;
     private JComboBox cboMaHD;
-    private JButton btnXoaHeSo;
     private JComboBox cboHeSo;
     private JComboBox cboMaSeri;
-    private JButton btnXoaMaSeri;
     private JButton btnAdd;
     private JTextField txtTongHD;
-    private JButton XEMTHỐNGKÊButton;
+    private JButton btnXuatPDF;
     private String maHD;
     DefaultTableModel dtm = new DefaultTableModel();
     CTHDBus bus = new CTHDBus();
@@ -42,7 +38,7 @@ public class CTHDGUI {
     public static List<CTHD> dsCTHD = new ArrayList<>();
 
 
-    public CTHDGUI(String maHD) {
+    public CTHDGUI(String maHD,HoaDonGUI guiHd) {
         tblCTHD.setDefaultEditor(Object.class, null);
         this.maHD = maHD;
         initTable();
@@ -126,19 +122,22 @@ public class CTHDGUI {
                 if(tblCTHD.getSelectedRow()!=-1){
                     String maHD = String.valueOf(tblCTHD.getValueAt(pos[0],0)) ;
                     String maSeri = String.valueOf(tblCTHD.getValueAt(pos[0],2)) ;
-                    int smt = bus.remove(maHD,maSeri);
-                    if(smt==0){
-                        JOptionPane.showMessageDialog(null,"Xoa CTHD khong thanh cong! :>>");
+                    int dialogResult = JOptionPane.showConfirmDialog(null,"Bạn có muốn xóa không ?","Remove", JOptionPane.YES_NO_OPTION);
+                    if(dialogResult == JOptionPane.YES_OPTION) {
+                        int smt = bus.remove(maHD, maSeri);
+                        if (smt == 0) {
+                            JOptionPane.showMessageDialog(null, "Xóa CTHD không thành công!");
 
-                    }
-                    else{
-                        JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
-                        showAll();
-                        bus.updateStatusBook(maSeri,"AVAILABLE");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Xóa CTHD thành công");
+                            guiHd.showAll();
+                            showAll();
+                            bus.updateStatusBook(maSeri, "AVAILABLE");
+                        }
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Can chon dong truoc khi xoa");
+                    JOptionPane.showMessageDialog(null,"Chọn CTHD trước khi xóa");
                 }
 
             }
@@ -149,7 +148,7 @@ public class CTHDGUI {
             public void actionPerformed(ActionEvent e) {
 
                 if(tblCTHD.getSelectedRow()==-1){
-                    JOptionPane.showMessageDialog(null,"Can Chon 1 Hang De Cap Nhat");
+                    JOptionPane.showMessageDialog(null,"Chọn CTHD để cập nhật");
                 }
                 else{
                     int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
@@ -157,7 +156,7 @@ public class CTHDGUI {
                     System.out.println(maSeri);
                     List<CTHD> ds = bus.filterMaCTHD(maHD,maSeri);
                     CTHD temp = ds.get(0);
-                    CTHDFD dialog = new CTHDFD(temp,CTHDGUI.this);
+                    CTHDFD dialog = new CTHDFD(temp,CTHDGUI.this,guiHd);
                     dialog.pack();
                     dialog.setLocationRelativeTo(null);
                     dialog.setVisible(true);
@@ -168,50 +167,43 @@ public class CTHDGUI {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CTHDFD dialog = new CTHDFD(CTHDGUI.this,maHD);
+                CTHDFD dialog = new CTHDFD(CTHDGUI.this,maHD,guiHd);
                 dialog.pack();
                 dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
             }
         });
-        XEMTHỐNGKÊButton.addActionListener(new ActionListener() {
+        btnXuatPDF.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ArrayList<String> dsOpt = new ArrayList<>();
-                dsOpt.add("THỐNG KÊ SỐ SÁCH BÁN THEO NĂM");// COLLUMN CHART
-                dsOpt.add("THỐNG KÊ SỐ SÁCH THEO THÁNG");//PIE CHART
-                dsOpt.add("THỐNG KÊ SỐ LOẠI ĐƯỢC BÁN");//PIE CHART
 
-                int nam = Year.now().getValue();
+                int i =  bus.xuatPDF(maHD);
+                if(i==1){
+                    JOptionPane.showMessageDialog(null,"Xuất PDF thành công");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Xuất PDF thất bại");
 
-                var tk = new ChartCTHD(bus.thongKeSachBanTheoNam(nam),dsOpt);
-                JFrame frame = new JFrame("Thong Ke");
-                frame.setContentPane(tk.getMain());
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
+                }
             }
         });
-    }
-
-
-
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("CTHDGUI");
-        frame.setContentPane(new CTHDGUI("1").main);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
+        bookDeleteAllButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showAll();
+            }
+        });
     }
 
     public void showAll(){
         dsCTHD = bus.getDsCTHD(maHD);
         changeTable();
+        initTab();
     }
 
     private void changeTable(){
         dtm.setRowCount(0);
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Hệ số","Mã series","Tên sách","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
         for (CTHD ct : dsCTHD) {
             Object[] t = { ct.getMa_phieu(), ct.getHe_so(), ct.getMa_series(),ct.getTenSach(),ct.getTienSach()};
@@ -248,13 +240,49 @@ public class CTHDGUI {
             });
 
         }
+        else if (tab.getSelectedIndex() == 1) {
+            cboHeSo.removeAllItems();
+            List<Double> heSo = bus.getAllHeSo(maHD);
+            for (Double so : heSo) {
+                cboHeSo.addItem(so);
+            }
+//                    btnFilter.removeActionListener(btnFilter.getActionListeners()[0]);
+            rmvListerBtnFilter();
+
+            btnFilter.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Double selected = Double.valueOf(cboHeSo.getSelectedItem().toString());
+                    dsCTHD = bus.filterHeSo(maHD, selected);
+                    changeTable();
+                }
+            });
+        }
+
+        else if (tab.getSelectedIndex() == 2) {
+            cboMaSeri.removeAllItems();
+            List<String> maSeries = bus.getAllMaSeries(maHD);
+            for (String seri : maSeries) {
+                cboMaSeri.addItem(seri);
+            }
+            rmvListerBtnFilter();
+
+            btnFilter.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selected = cboMaSeri.getSelectedItem().toString();
+                    dsCTHD = bus.filterMaSeri(maHD, selected);
+                    changeTable();
+                }
+            });
+        }
         SellTicketDao temp = new SellTicketDao();
         txtTongHD.setText(String.valueOf(temp.tinhTongHoaDon(maHD)));
     }
     private void initTable(){
         List<CTHD> dsct = bus.getDsCTHD(maHD);
 
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Hệ số","Mã series","Tên sách","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
 
         for(CTHD ct:dsct){

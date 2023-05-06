@@ -57,9 +57,7 @@ public class SellTicketBus {
         return hd.getNewMaHD();
     }
 
-    public DefaultCategoryDataset laySoLieuTheoThang(){
-        return hd.laySoLieuTheoThang();
-    }
+
     public DefaultCategoryDataset laySoLieuTheoNam(){
         return hd.laySoLieuTheoNam();
     }
@@ -68,8 +66,21 @@ public class SellTicketBus {
     }
 
     public DefaultCategoryDataset thongKeTheoNam(int nam){
-        return hd.thongKeTheoNam(nam);
+        double[] slgHDs = hd.thongKeTheoNam(nam);
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        String rowKey = "Hoa Don";
+        for (int i = 0; i < 12; i++) {
+            int thang = i + 1;
+            double slgHD = slgHDs[i];
+            System.out.println("Tháng " + thang + "/" + nam + ": " + slgHD + " hóa đơn");
+            String thangNam = thang+"/"+nam;
+            dataset.setValue(slgHD,rowKey,thangNam);
+
+        }
+        return dataset;
+
     }
+
 
 
     public static void main(String[] args) {

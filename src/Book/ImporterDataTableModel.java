@@ -6,7 +6,7 @@ import Utils.AbstractTableModelWithFilters;
 public class ImporterDataTableModel extends AbstractTableModelWithFilters<Importer> {
 
     public ImporterDataTableModel() {
-        String[] cols = {"ID", "Tên", "SĐT", "Email","Địa chỉ", "Mô tả"};
+        String[] cols = {"Mã NCC", "Tên", "SĐT", "Email","Địa chỉ", "Mô tả"};
         setCols(cols);
 
     }

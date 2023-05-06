@@ -19,7 +19,6 @@ public class HoaDonFD extends JDialog {
     private JButton btnUpdate;
     private JPanel tacGiaPanel;
     private JTextField txtTenKH;
-
     private HoaDonGUI gui ;
 
     SellTicketBus bus = new SellTicketBus();
@@ -36,15 +35,6 @@ public class HoaDonFD extends JDialog {
         //Không cho nhấn nut update hoặc xóa
         btnUpdate.setEnabled(false);
         btnRemove.setEnabled(false);
-
-
-
-        btnRemove.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
         btnCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -76,22 +66,21 @@ public class HoaDonFD extends JDialog {
                 hd.setMa_phieu(maPhieu);
                 hd.setMa_nv(maNV);
                 if(txtTenKH.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Ma KH Sai Roi");
+                    JOptionPane.showMessageDialog(null,"Mã khách hàng không hợp lệ");
                     return;
                 }
                 else{
                     hd.setTenKH(txtTenKH.getText());
                 }
 
-
                 int smt = bus.insert(hd);
                 if(smt>0){
-                    JOptionPane.showMessageDialog(null,"Them Hoa Don thanh cong");
+                    JOptionPane.showMessageDialog(null,"Thêm hóa đơn thành công");
                     gui.showAll();
                     txtMaPhieu.setText(bus.getNewMaHD());
                 }
                 else {
-                    JOptionPane.showMessageDialog(null,"Them Hoa Don KHONG THANH CONG");
+                    JOptionPane.showMessageDialog(null,"Thêm hóa đơn thất bại");
                 }
             }
         });
@@ -107,11 +96,11 @@ public class HoaDonFD extends JDialog {
     }
 
     public HoaDonFD(String maHD,HoaDonGUI gui){
-
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnRemove);
         this.gui = gui;
+
 
         List<HoaDon>  bill = bus.filterMaHD(maHD);
         System.out.println(maHD+"  "+bill.size());
@@ -122,9 +111,21 @@ public class HoaDonFD extends JDialog {
         txtMaNV.setText(ticket.getMa_nv());
         txtTenKH.setText(ticket.getTenKH());
 
+        btnAdd.setEnabled(false);
+
         btnRemove.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                int dialogResult = JOptionPane.showConfirmDialog(null,"Bạn có muốn xóa không ?","Remove", JOptionPane.YES_NO_OPTION);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                    int smt =bus.remove(maHD);
+                    if(smt>0){
+                        JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
+                        gui.showAll();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                    }
+                }
             }
         });
 
@@ -148,26 +149,7 @@ public class HoaDonFD extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        btnAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String maPhieu = txtMaPhieu.getText();
-                String maNV = txtMaNV.getText();
-                String maKH = txtMaKH.getText();
-                HoaDon hd =new HoaDon();
-                hd.setMa_KH(maKH);
-                hd.setMa_phieu(maPhieu);
-                hd.setMa_nv(maNV);
-                int smt = bus.insert(hd);
-                if(smt>0){
-                    JOptionPane.showMessageDialog(null,"Them Hoa Don thanh cong");
-                    gui.showAll();
-                }
-                else {
-                    JOptionPane.showMessageDialog(null,"Them Hoa Don KHONG THANH CONG");
-                }
-            }
-        });
+
 
         btnUpdate.addActionListener(new ActionListener() {
             @Override
@@ -180,22 +162,22 @@ public class HoaDonFD extends JDialog {
                 hd.setMa_phieu(maHD);
                 hd.setMa_KH(maKH);
                 if(txtTenKH.getText().isEmpty()){
-                    JOptionPane.showMessageDialog(null,"Ma KH Sai Roi");
+                    JOptionPane.showMessageDialog(null,"Mã khách hàng không hợp lệ");
                     return;
                 }
                 else{
                     hd.setTenKH(txtTenKH.getText());
                 }
 
-
                 int smt = bus.update(hd);
                 if(smt>0){
-                    JOptionPane.showMessageDialog(null,"Cap Nhat Hoa Don thanh cong");
+                    JOptionPane.showMessageDialog(null,"Cập nhật hóa đơn thành công");
                     dispose();
                     gui.showAll();
+                    dispose();
                 }
                 else {
-                    JOptionPane.showMessageDialog(null,"Cap Nhat Hoa Don KHONG THANH CONG");
+                    JOptionPane.showMessageDialog(null,"Cập nhật hóa đơn thất bại");
                 }
             }
         });

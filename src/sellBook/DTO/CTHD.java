@@ -4,7 +4,7 @@ public class CTHD {
     private String ma_phieu;
     private double he_so;
     private String ma_series;
-    private long tienSach;
+    private double tienSach;
     private String tenSach;
 
     public CTHD() {
@@ -23,7 +23,7 @@ public class CTHD {
 //        this.tienSach = tienSach;
 //    }
 
-    public CTHD(String ma_phieu, double he_so, String ma_series, long tienSach, String tenSach) {
+    public CTHD(String ma_phieu, double he_so, String ma_series, double tienSach, String tenSach) {
         this.ma_phieu = ma_phieu;
         this.he_so = he_so;
         this.ma_series = ma_series;
@@ -55,11 +55,11 @@ public class CTHD {
         this.ma_series = ma_series;
     }
 
-    public long getTienSach() {
+    public double getTienSach() {
         return tienSach;
     }
 
-    public void setTienSach(long tienSach) {
+    public void setTienSach(double tienSach) {
         this.tienSach = tienSach;
     }
 

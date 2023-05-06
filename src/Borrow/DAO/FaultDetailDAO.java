@@ -24,7 +24,7 @@ public class FaultDetailDAO extends DefaultConnection {
             while (rs.next()) {
                 String maPhieu = rs.getString("MA_PHIEU");
                 String maSach = rs.getString("MA_SERIES");
-                String tenSach = rs.getString("ten_sach");
+                String tenSach = rs.getString("`TEN_SACH`");
                 double gia = rs.getDouble("gia");
                 String maLoi = rs.getString("MA_LOI");
                 String tenLoi = rs.getString("ten_loi");
@@ -44,15 +44,15 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public ArrayList<FaultDetail> getDsLoiCT(String maPhieuMuon) {
-        String sql = "SELECT ma_phieu,book_fault.*,book.ma_series,book.ten_sach,\n" +
-                "book.GIA,borrow_book_ticket_fault.SO_LUONG FROM borrow_book_ticket_fault,book,\n" +
-                "book_fault WHERE borrow_book_ticket_fault.MA_SERIES = book.MA_SERIES \n" +
-                "AND borrow_book_ticket_fault.MA_LOI = book_fault.MA_LOI and ma_phieu='" + maPhieuMuon + "'";
+        String sql = "SELECT MA_PHIEU,`BOOK_FAULT`.*,`BOOK`.`MA_SERIES`,`BOOK`.`TEN_SACH`," +
+                "`BOOK`.GIA,`BORROW_BOOK_TICKET_FAULT`.SO_LUONG FROM `BORROW_BOOK_TICKET_FAULT`,`BOOK`," +
+                "`BOOK_FAULT` WHERE `BORROW_BOOK_TICKET_FAULT`.MA_SERIES = `BOOK`.MA_SERIES " +
+                "AND `BORROW_BOOK_TICKET_FAULT`.MA_LOI = `BOOK_FAULT`.MA_LOI and MA_PHIEU='" + maPhieuMuon + "'";
         return getDanhSach(sql);
     }
 
     public static String getTenSach(String maSeri) {
-        String sql = "SELECT TEN_SACH from book WHERE  MA_SERIES = '" + maSeri + "'";
+        String sql = "SELECT TEN_SACH from `BOOK` WHERE  MA_SERIES = '" + maSeri + "'";
 
         Statement stmt = null;
 
@@ -77,7 +77,7 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public static String getTenLoi(String maLoi) {
-        String sql = "SELECT TEN_LOI from book_fault WHERE  MA_LOI = '" + maLoi + "'";
+        String sql = "SELECT TEN_LOI from `BOOK_FAULT` WHERE  MA_LOI = '" + maLoi + "'";
 
         Statement stmt = null;
 
@@ -103,7 +103,7 @@ public class FaultDetailDAO extends DefaultConnection {
 
     public ArrayList<String> getDsMaSach(String maPhieu) {
         ArrayList<String> dsTen = new ArrayList<String>();
-        String sql = "select MA_SERIES from borrow_ticket_details where ma_phieu = '" + maPhieu + "'";
+        String sql = "select MA_SERIES from `BORROW_TICKET_DETAILS` where MA_PHIEU = '" + maPhieu + "'";
         Statement stmt = null;
 
         try {
@@ -128,7 +128,7 @@ public class FaultDetailDAO extends DefaultConnection {
 
     public ArrayList<String> getDsMaLoi() {
         ArrayList<String> dsTen = new ArrayList<String>();
-        String sql = "select ma_loi from book_fault where is_deleted = 0";
+        String sql = "select ma_loi from `BOOK_FAULT` where is_deleted = 0";
         Statement stmt = null;
 
         try {
@@ -153,7 +153,7 @@ public class FaultDetailDAO extends DefaultConnection {
 
     //
     public static String getNameBook(String maSach) {
-        String sql = "SELECT TEN_SACH from book WHERE  MA_SERIES = '" + maSach + "'";
+        String sql = "SELECT TEN_SACH from `BOOK` WHERE  MA_SERIES = '" + maSach + "'";
 
         Statement stmt = null;
 
@@ -178,8 +178,8 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public double getTongTien(String maLoi, String maSach, int soLuong) {
-        String sql = "SELECT book.GIA, book_fault.HE_SO FROM book,book_fault\n" +
-                "WHERE book.MA_SERIES = '" + maSach + "' AND book_fault.MA_LOI = '" + maLoi + "'";
+        String sql = "SELECT `BOOK`.GIA, `BOOK_FAULT`.HE_SO FROM `BOOK`,`BOOK_FAULT`\n" +
+                "WHERE `BOOK`.MA_SERIES = '" + maSach + "' AND `BOOK_FAULT`.MA_LOI = '" + maLoi + "'";
         double tongTien = 0;
         Statement stmt = null;
         try {
@@ -203,7 +203,7 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public int addField(String maPhieu, String maSach, String maLoi, int soLuong) {
-        String sql = "INSERT INTO `borrow_book_ticket_fault`(`MA_PHIEU`, `MA_SERIES`,`MA_LOI`,`SO_LUONG`) " +
+        String sql = "INSERT INTO `BORROW_BOOK_TICKET_FAULT`(`MA_PHIEU`, `MA_SERIES`,`MA_LOI`,`SO_LUONG`) " +
                 "VALUES (?,?,?,?)";
         int smt = 0;
         PreparedStatement pst = null;
@@ -227,7 +227,7 @@ public class FaultDetailDAO extends DefaultConnection {
 
     public int updateField(String maSachTruoc, String maLoiTruoc, String maPhieu, String maSach, String maLoi,
             int soLuong) {
-        String sql = "update `borrow_book_ticket_fault` set  `MA_SERIES` = ?,`MA_LOI`=?,`SO_LUONG`=? " +
+        String sql = "update `BORROW_BOOK_TICKET_FAULT` set  `MA_SERIES` = ?,`MA_LOI`=?,`SO_LUONG`=? " +
                 "where `MA_PHIEU` = ? and `MA_SERIES` = ? and `MA_LOI`=?";
         int smt = 0;
         PreparedStatement pst = null;
@@ -252,7 +252,7 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public int deleteField(String maPhieu, String maSach, String maLoi) {
-        String sql = "delete from `borrow_book_ticket_fault` " +
+        String sql = "delete from `BORROW_BOOK_TICKET_FAULT` " +
                 "where `MA_PHIEU` = ? and `MA_SERIES` = ? and `MA_LOI`=?";
         int smt = 0;
         PreparedStatement pst = null;

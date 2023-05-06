@@ -29,10 +29,8 @@ public class HoaDonGUI {
     private JTabbedPane tab;
     private JButton btnXoaMaHD;
     private JComboBox cboMaHD;
-    private JButton btnXoaMaNV;
     private JComboBox cboMaNV;
     private JComboBox cboMaKH;
-    private JButton btnXoaMaKH;
     private JButton btnThongKe;
 
     DefaultTableModel dtm = new DefaultTableModel();
@@ -52,7 +50,7 @@ public class HoaDonGUI {
                     int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
                     String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
                     //Khoi tao
-                    var cthd = new CTHDGUI(maHD);
+                    var cthd = new CTHDGUI(maHD,HoaDonGUI.this);
                     JFrame frame = new JFrame("ChiTietHoaDon");
                     frame.setContentPane(cthd.getMain());
                     frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -68,27 +66,6 @@ public class HoaDonGUI {
             @Override
             public void stateChanged(ChangeEvent e) {
                 if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
-                    // Clear existing items in maHDComboBox
-
-                    cboMaHD.removeAllItems();
-
-                    // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
-                    List<String> maHDs = bus.getAllMaHD();
-                    for (String maHD : maHDs) {
-                        cboMaHD.addItem(maHD);
-                    }
-                    rmvListenerBtnFilter();
-                    btnFilter.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
-                            changeTable(bus.filterMaHD(selected));
-                        }
-
-                    });
-
-                }
-                else if (tab.getSelectedIndex() == 1) { // Check if maHD tab is selected
                     // Clear existing items in maHDComboBox
                     cboMaNV.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
@@ -110,7 +87,7 @@ public class HoaDonGUI {
                         }
                     });
                 }
-                else if (tab.getSelectedIndex() == 2) { // Check if maHD tab is selected
+                else if (tab.getSelectedIndex() == 1) { // Check if maHD tab is selected
                     // Clear existing items in maHDComboBox
                     cboMaKH.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
@@ -131,8 +108,6 @@ public class HoaDonGUI {
                             changeTable(bus.filterMaKH(idKH));
                         }
                     });
-
-
                 }
             }
         });
@@ -159,7 +134,7 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCheckOut.getSelectedRow(), 0};
                 if(pos[0]==-1){
-                    JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
+                    JOptionPane.showMessageDialog(null,"Hãy chọn hóa đơn muốn xóa");
                 }
                 else{
                     int dialogResult = JOptionPane.showConfirmDialog(null,"Bạn có muốn xóa không ?","Remove", JOptionPane.YES_NO_OPTION);
@@ -167,18 +142,14 @@ public class HoaDonGUI {
                         String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
                         int smt =bus.remove(maHD);
                         if(smt>0){
-                            JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
+                            JOptionPane.showMessageDialog(null,"Xóa hóa đơn thành công");
                             showAll();
                         }
                         else{
-                            JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                            JOptionPane.showMessageDialog(null,"Xóa hóa đơn thất bại");
                         }
                     }
-
-
                 }
-
-
             }
         });
         btnCapNhat.addActionListener(new ActionListener() {
@@ -186,7 +157,7 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
                 if(pos[0]==-1){
-                    JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
+                    JOptionPane.showMessageDialog(null,"Hãy chọn hóa đơn muốn cập nhật");
                 }
                 else {
                     String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0));
@@ -198,16 +169,6 @@ public class HoaDonGUI {
 
             }
         });
-        btnXoaMaHD.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int index = cboMaHD.getSelectedIndex();
-                if (index != -1) {
-                    cboMaHD.removeItemAt(index);
-
-                }
-            }
-        });
         bookDeleteAllButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -215,21 +176,7 @@ public class HoaDonGUI {
                 changeTable(dshd);
             }
         });
-        btnThongKe.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ArrayList<String> dsOpt = new ArrayList<>();
-                dsOpt.add("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM");
-                dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
-                int nam = Year.now().getValue();
-                var tk = new Chart(bus.thongKeTheoNam(nam),"Month",dsOpt);
-                JFrame frame = new JFrame("Thong Ke");
-                frame.setContentPane(tk.getMain());
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-            }
-        });
+
     }
 
     public JPanel getMain() {
@@ -245,6 +192,7 @@ public class HoaDonGUI {
         frame.setContentPane(new HoaDonGUI().main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     private void rmvListenerBtnFilter(){
@@ -255,27 +203,58 @@ public class HoaDonGUI {
         }
     }
     private void initTabPane(){
-        cboMaHD.removeAllItems();
-
-        // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
-        List<String> maHDs = bus.getAllMaHD();
-        for (String maHD : maHDs) {
-            cboMaHD.addItem(maHD);
-        }
-        btnFilter.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
-                changeTable(bus.filterMaHD(selected));
+        if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
+            // Clear existing items in maHDComboBox
+            cboMaNV.removeAllItems();
+            // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
+            List<HoaDon> dshd = bus.getAllSellTicket();
+            Map<String, String> mapNV = new HashMap<>();
+            for(HoaDon hd:dshd){
+                mapNV.put(hd.getTenNV(),hd.getMa_nv());
             }
+            for(String tenNV:mapNV.keySet()){
+                cboMaNV.addItem(tenNV);
+            }
+            rmvListenerBtnFilter();
+            btnFilter.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selected = String.valueOf(cboMaNV.getSelectedItem()) ;
+                    String idNV = mapNV.get(selected);
+                    changeTable(bus.filterMaNV(idNV));
+                }
+            });
+        }
+        else if (tab.getSelectedIndex() == 1) { // Check if maHD tab is selected
+            // Clear existing items in maHDComboBox
+            cboMaKH.removeAllItems();
+            // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
+            List<HoaDon> dshd = bus.getAllSellTicket();
+            Map<String, String> mapKH = new HashMap<>();
+            for(HoaDon hd:dshd){
+                mapKH.put(hd.getTenKH(),hd.getMa_KH());
+            }
+            for(String tenKH:mapKH.keySet()){
+                cboMaKH.addItem(tenKH);
+            }
+            rmvListenerBtnFilter();
+            btnFilter.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selected = String.valueOf(cboMaKH.getSelectedItem()) ;
+                    String idKH = mapKH.get(selected);
+                    changeTable(bus.filterMaKH(idKH));
+                }
+            });
 
-        });
+
+        }
     }
 
     private void changeTable(List<HoaDon> dshd){
 
         dtm.setRowCount(0);
-        String[] columns = {"Mã Phieu", "Ma Nhan Vien","Ten Nhan Vien", "Ma Khach Hang","Ten Khach Hang","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
         if(!dshd.isEmpty()){
             for(HoaDon hd:dshd){
@@ -287,7 +266,7 @@ public class HoaDonGUI {
         tblCheckOut.setModel(dtm);
     }
     private void initTable(){
-        String[] columns = {"Mã Phieu", "Ma Nhan Vien","Ten Nhan Vien", "Ma Khach Hang","Ten Khach Hang","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
 
         dshd =  bus.getAllSellTicket();
@@ -297,11 +276,10 @@ public class HoaDonGUI {
                 dtm.addRow(t);
             }
         }
-
         tblCheckOut.setModel(dtm);
     }
     public void showAll(){
         changeTable(bus.getAllSellTicket());
+        initTabPane();
     }
-
 }
