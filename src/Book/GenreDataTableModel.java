@@ -5,7 +5,7 @@ import Utils.AbstractTableModelWithFilters;
 
 public class GenreDataTableModel extends AbstractTableModelWithFilters<Genre> {
     public GenreDataTableModel() {
-        String[] cols = {"ID", "Tên", "Mô tả"};
+        String[] cols = {"Mã loại", "Tên", "Mô tả"};
         setCols(cols);
     }
 

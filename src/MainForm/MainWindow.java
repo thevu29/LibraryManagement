@@ -7,12 +7,7 @@ import Login.BUS.LoginBUS;
 import Login.GUI.LoginForm;
 import NhanVien.GUI.NhanVienadmin;
 import Statistics.GUI.StatisticsForm;
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.FlatArcDarkIJTheme;
-import com.formdev.flatlaf.intellijthemes.FlatLightFlatIJTheme;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import sellBook.GUI.HoaDonGUI;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -79,8 +74,6 @@ public class MainWindow {
                 loginForm.openLoginForm();
             }
         });
-
-
     }
 
     public void initContentPanel() {
@@ -170,6 +163,11 @@ public class MainWindow {
     }
 
     public void openMainWindow(String employeeId) {
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch( Exception ex ) {
+            System.err.println( "Failed to initialize LaF" );
+        }
         JFrame frame = new JFrame("MainWindow");
         frame.setContentPane(new MainWindow(employeeId).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
