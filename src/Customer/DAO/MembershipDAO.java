@@ -13,7 +13,7 @@ public class MembershipDAO {
         try {
             Connection conn = DefaultConnection.getConnect();
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from membership");
+            ResultSet rs = stmt.executeQuery("select * from `MEMBERSHIP`");
 
             while (rs.next()) {
                 String membershipId = rs.getString("MA_THE");
