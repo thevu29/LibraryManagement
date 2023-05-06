@@ -29,9 +29,9 @@ public class FaultModel extends AbstractTableModelWithFilters<Fault> {
         super();
     }
 
-    public void initModelTable(ArrayList<Fault> dsLoi){
+    public void initModelTable(ArrayList<Fault> dsLoi) {
         rows.clear();
-        for (Fault fault: dsLoi) {
+        for (Fault fault : dsLoi) {
             rows.add(fault);
             fireTableRowsInserted(rows.size() - 1, rows.size() - 1);
         }
