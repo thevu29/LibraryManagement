@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
-    private final String[] cols = {"ID", "Tên Nhân viên","Giới tính", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc","Địa chỉ","email","Ngày sinh","Ngày làm việc","Căng cước công dân"};
+    private final String[] cols = {"Mã nhân viên", "Tên Nhân viên","Giới tính", "SDT", "Mật khẩu", "Chức Vụ", "Lương", "Nơi làm việc", "Ca làm việc","Địa chỉ","Email","Ngày sinh","Ngày làm việc","CCCD"};
 
     private boolean isEditable = true;
 
@@ -85,7 +85,7 @@ public class NVDataTableModel extends AbstractTableModelWithFilters<nhanVien> {
                 return NV.getPassword();
             }
             case 5 -> {
-                return NV.getPosition() == 0 ? "Librarian"  : "Manager";
+                return NV.getPosition() == 0 ? "Thủ thư"  : "Quản lý";
             }
             case 6 -> {
                 return NV.getSalary()*NV.getDaywork()*1000;

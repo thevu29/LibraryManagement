@@ -5,116 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="xong hoa don">
-      <change afterPath="$PROJECT_DIR$/Excel/customer.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/SparseBitSet-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/commons-codec-1.15.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/commons-collections4-4.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/commons-compress-1.21.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/commons-io-2.11.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/commons-math3-3.6.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/curvesapi-1.07.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/log4j-api-2.18.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/poi-5.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/poi-ooxml-5.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/poi-ooxml-lite-5.2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/xmlbeans-5.1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sql_query/cusomter&amp;membershipData.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/DTO/BookImporter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/GUI/BookChart.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Book/GUI/BookChart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/BUS/MembershipTypeBUS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/DAO/CustomerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/DAO/MembershipTypeDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/DTO/MembershipType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NhanVien/BUS/NVBUS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NhanVien/DAO/NhanVienDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/borrow_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/login_banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/sell_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/statistics_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/Chart.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/Chart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/PieChart.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sellBook/GUI/PieChart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Login/BUS/LoginBUS.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_query/Database Creation.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query/Database Creation.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BUS/BookBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BUS/BookBUS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DAO/AuthorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DAO/AuthorDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DAO/BookDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DAO/BookDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DAO/GenreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DAO/GenreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DAO/ImporterDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DAO/ImporterDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DAO/PublisherDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DAO/PublisherDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DTO/Author.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DTO/Author.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DTO/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DTO/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/DTO/BookGenre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/DTO/BookGenre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/AuthorDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/AuthorDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/AuthorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/AuthorDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookEditorDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookEditorDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookEditorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookEditorDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/GenreDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/GenreDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/ImporterDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/ImporterDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/PublisherDialog.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/PublisherDialog.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GenreDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GenreDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/ImporterDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/ImporterDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDetailDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/FaultDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/FaultDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/DTO/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/CustomerList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/Membership.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/model/MembershipList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipInfoForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/ui/MembershipInfoForm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/BUS/CustomerBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerInfoForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/GUI/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/DefaultConnectionModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/ArraylistNhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/ArraylistNhanVien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Gender.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/BUS/NVBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/BUS/NVBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/DAO/NhanVienDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/DAO/NhanVienDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/DTO/nhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/DTO/nhanVien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/NVDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/arraylistNV/NVDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Position.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Shift.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/Workplace.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/arraylistNV/nhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/DTO/nhanVien.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienC.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienadmin.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/form/NhanVienadmin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/ValidationContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/ValidationContract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/BUS/SellTicketBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/BUS/SellTicketBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" />
     </list>
     <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
@@ -249,12 +162,25 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginForm">
+  <component name="RunManager" selected="Application.LoginForm (1)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
+    </configuration>
+    <configuration name="LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
@@ -334,25 +260,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.test" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LoginForm" />
+        <item itemvalue="Application.LoginForm (1)" />
         <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.StatisticsForm" />
-        <item itemvalue="Application.MembershipStatisticsForm" />
         <item itemvalue="Application.MembershipStatisticsForm" />
       </list>
     </recent_temporary>
@@ -629,7 +542,7 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$MainWindow.ic" NAME="MainWindow Coverage Results" MODIFIED="1683128653160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$MainWindow.ic" NAME="MainWindow Coverage Results" MODIFIED="1683129945057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>MainForm.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowBookFaultUI.ic" NAME="BorrowBookFaultUI Coverage Results" MODIFIED="1680881584980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -676,6 +589,9 @@
     </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__3_.ic" NAME="BorrowUI (3) Coverage Results" MODIFIED="1682432632808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$LoginForm.ic" NAME="LoginForm Coverage Results" MODIFIED="1683129862124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Login.GUI.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDAO.ic" NAME="BorrowDAO Coverage Results" MODIFIED="1682440438434" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.DAO.*</FILTER>

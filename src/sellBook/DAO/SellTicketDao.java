@@ -129,11 +129,14 @@ public class SellTicketDao extends DefaultConnection {
         try {
             stmt = getConnection().createStatement();
             var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `SELL_TICKET` ");
-            rs.next();
+            if (!rs.next()) {
+                return "HD1";
+            }
             var maHD = rs.getString("max_num");
             if (Objects.isNull(maHD)) {
                 return "HD1";
             }
+
             int ma = Integer.parseInt(maHD)+1;
             String maHDMoi = "HD".concat(String.valueOf(ma));
 
@@ -180,8 +183,6 @@ public class SellTicketDao extends DefaultConnection {
         }
         return smt;
     }
-
-
 
     public int updateHD(HoaDon hd){
         String sql = "UPDATE `SELL_TICKET` SET MA_NV=?,`MA_KH`=? WHERE MA_PHIEU=?";

@@ -135,6 +135,15 @@ public class MainWindow {
         lblStatistics.setBorder(border);
     }
 
+    public void openMainWindow() {
+        JFrame frame = new JFrame("MainWindow");
+        frame.setContentPane(new MainWindow().mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1350, 600);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("MainWindow");
         frame.setContentPane(new MainWindow().mainPanel);

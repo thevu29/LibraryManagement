@@ -36,11 +36,9 @@ public class CTHDGUI {
     private JTextField txtTongHD;
     private JButton XEMTHỐNGKÊButton;
     private String maHD;
-    DefaultTableModel dtm = new DefaultTableModel();
-    CTHDBus bus = new CTHDBus();
-
+    private DefaultTableModel dtm = new DefaultTableModel();
+    private CTHDBus bus = new CTHDBus();
     public static List<CTHD> dsCTHD = new ArrayList<>();
-
 
     public CTHDGUI(String maHD) {
         tblCTHD.setDefaultEditor(Object.class, null);
@@ -128,17 +126,17 @@ public class CTHDGUI {
                     String maSeri = String.valueOf(tblCTHD.getValueAt(pos[0],2)) ;
                     int smt = bus.remove(maHD,maSeri);
                     if(smt==0){
-                        JOptionPane.showMessageDialog(null,"Xoa CTHD khong thanh cong! :>>");
+                        JOptionPane.showMessageDialog(null,"Xóa CTHD không thành công!");
 
                     }
                     else{
-                        JOptionPane.showMessageDialog(null,"Xoa CTHD THANH CONG");
+                        JOptionPane.showMessageDialog(null,"Xóa CTHD thành công");
                         showAll();
                         bus.updateStatusBook(maSeri,"AVAILABLE");
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Can chon dong truoc khi xoa");
+                    JOptionPane.showMessageDialog(null,"Chọn CTHD trước khi xóa");
                 }
 
             }
@@ -149,7 +147,7 @@ public class CTHDGUI {
             public void actionPerformed(ActionEvent e) {
 
                 if(tblCTHD.getSelectedRow()==-1){
-                    JOptionPane.showMessageDialog(null,"Can Chon 1 Hang De Cap Nhat");
+                    JOptionPane.showMessageDialog(null,"Chọn CTHD để cập nhật");
                 }
                 else{
                     int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
@@ -194,8 +192,6 @@ public class CTHDGUI {
         });
     }
 
-
-
     public static void main(String[] args) {
         JFrame frame = new JFrame("CTHDGUI");
         frame.setContentPane(new CTHDGUI("1").main);
@@ -211,7 +207,7 @@ public class CTHDGUI {
 
     private void changeTable(){
         dtm.setRowCount(0);
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Hệ số","Mã series","Tên sách","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
         for (CTHD ct : dsCTHD) {
             Object[] t = { ct.getMa_phieu(), ct.getHe_so(), ct.getMa_series(),ct.getTenSach(),ct.getTienSach()};
@@ -254,7 +250,7 @@ public class CTHDGUI {
     private void initTable(){
         List<CTHD> dsct = bus.getDsCTHD(maHD);
 
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Hệ số","Mã series","Tên sách","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
 
         for(CTHD ct:dsct){
