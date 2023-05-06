@@ -11,7 +11,9 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableRowSorter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -165,6 +167,7 @@ public class CustomerForm {
         tblMembershipTypeModel.setColumnIdentifiers(cols);
 
         tblMembershipTypes.setModel(tblMembershipTypeModel);
+        tblMembershipTypes.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(JLabel.CENTER);
@@ -249,10 +252,11 @@ public class CustomerForm {
             }
         };
 
-        String[] cols = new String[]{"Mã thành viên", "Mã khách hàng", "Dạng thẻ", "Ngày đăng ký", "Ngày hết hạn"};
+        String[] cols = new String[]{"Mã thẻ", "Mã khách hàng", "Dạng thẻ", "Ngày đăng ký", "Ngày hết hạn"};
         tblMembershipModel.setColumnIdentifiers(cols);
 
         tblMemberships.setModel(tblMembershipModel);
+        tblMemberships.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
 
         DefaultTableCellRenderer center = new DefaultTableCellRenderer();
         center.setHorizontalAlignment(JLabel.CENTER);
@@ -438,6 +442,7 @@ public class CustomerForm {
         tblCustomerModel.setColumnIdentifiers(columns);
 
         tblCustomers.setModel(tblCustomerModel);
+        tblCustomers.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(JLabel.CENTER);

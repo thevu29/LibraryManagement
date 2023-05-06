@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix GUI, combobox color">
-      <change afterPath="$PROJECT_DIR$/src/Customer/BUS/MembershipBUS.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/DAO/MembershipDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Customer/DTO/Membership.java" afterDir="false" />
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="thêm Membership gui, bus, dao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +110,7 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.CustomerForm">
+  <component name="RunManager" selected="Application.MainWindow (2)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -160,6 +156,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainForm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
@@ -173,26 +182,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Statistics.GUI.StatisticsForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Statistics.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.CustomerForm" />
+        <item itemvalue="Application.MainWindow (2)" />
         <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.CustomerForm" />
         <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.MainWindow (1)" />
-        <item itemvalue="Application.StatisticsForm" />
       </list>
     </recent_temporary>
   </component>
@@ -509,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683353640117</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="thêm Membership gui, bus, dao">
+      <created>1683357840434</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1683357840434</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -539,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="hello" />
     <MESSAGE value="xong hoa don" />
     <MESSAGE value="sửa GUI" />
     <MESSAGE value="test statistics và thêm dữ liệu vào db" />
@@ -564,7 +566,8 @@
     <MESSAGE value="fix GUI và thêm các thống kê vô StatisticsForm" />
     <MESSAGE value="add flatlaf" />
     <MESSAGE value="fix GUI, combobox color" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix GUI, combobox color" />
+    <MESSAGE value="thêm Membership gui, bus, dao" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm Membership gui, bus, dao" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
