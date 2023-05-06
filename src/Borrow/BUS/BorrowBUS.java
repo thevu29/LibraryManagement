@@ -3,6 +3,8 @@ package Borrow.BUS;
 import Borrow.DAO.BorrowDAO;
 import Borrow.DTO.Borrow;
 import Borrow.DTO.Fault;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,10 +42,37 @@ public class BorrowBUS {
     }
 
 
+    public DefaultCategoryDataset laySoLieuPhieuMuon(int nam){
+        return dao.laySoLuongPhieuMuon(nam);
+    }
 
+    public int tongSoPhieuMuon(int nam){
+        DefaultCategoryDataset dataset = dao.laySoLuongPhieuMuon(nam);
+        int tong  = 0;
+        for (int i = 0; i < dataset.getRowCount(); i++) {
+            for (int j = 0; j < dataset.getColumnCount(); j++) {
+                String columnKey = (String) dataset.getColumnKey(j);
+                Number value = dataset.getValue(i, j);
+                System.out.println(" \t " + columnKey + " \t " + value);
+                tong+=value.intValue();
+            }
+        }
+        return tong;
+    }
 
+    public DefaultPieDataset thongKeLoi(int nam){
+        return dao.thongKeLoiSach(nam);
+    }
+    public DefaultCategoryDataset thongKeSachMuon(int nam){
+        return dao.laySoLuongSachMuon(nam);
+    }
 
     public int delete(String id){
         return dao.delete(id);
+    }
+
+    public static void main(String[] args) {
+        BorrowBUS bus = new BorrowBUS();
+        bus.tongSoPhieuMuon(2023);
     }
 }

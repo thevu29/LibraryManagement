@@ -69,6 +69,7 @@ public class BorrowUI {
     private JButton tenDocGiaDelBtn;
     private JComboBox tenDocGiaCbx;
     private JButton btnSubmitBorrow;
+    private JButton btnThongKe;
 
     // các model cần thiết
     public static BorrowModel borrowModel = new BorrowModel();

@@ -4,6 +4,7 @@ import Core.DefaultConnection;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import sellBook.DTO.CTHD;
+import sellBook.DTO.HDPDF;
 import sellBook.DTO.HoaDon;
 
 import java.sql.PreparedStatement;
@@ -63,7 +64,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public List<Double> getHeSo(String ma){
-        String sql= "SELECT DISTINCT HE_SO FROM SELL_TICKET_DETAILS  WHERE  MA_PHIEU = "+ma;
+        String sql= "SELECT DISTINCT HE_SO FROM SELL_TICKET_DETAILS  WHERE  MA_PHIEU = '"+ma+"'";
 
         List<Double> dshs = new ArrayList<>();
         Statement stmt = null;
@@ -92,7 +93,7 @@ public class CTHDDao extends DefaultConnection {
         return CTHDDao.getDs(sql);
     }
     public List<CTHD> locMaSeri(String id,String ma){
-        String sql = "select SELL_TICKET_DETAILS.*,BOOK.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN BOOK on BOOK.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES   WHERE  MA_PHIEU = "+id+" and SELL_TICKET_DETAILS.MA_SERIES = '"+ma+"'";
+        String sql = "select SELL_TICKET_DETAILS.*,BOOK.TEN_SACH from SELL_TICKET_DETAILS  INNER JOIN BOOK on BOOK.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES   WHERE  MA_PHIEU = '"+id+"' and SELL_TICKET_DETAILS.MA_SERIES = '"+ma+"'";
         return CTHDDao.getDs(sql);
     }
 
@@ -186,17 +187,17 @@ public class CTHDDao extends DefaultConnection {
         return smt;
     }
 
-    public long tinhTienSach(String maHD,String maSeri){
-        String sql = "SELECT CAST(BOOK.GIA AS UNSIGNED) * SELL_TICKET_DETAILS.HE_SO as total FROM SELL_TICKET_DETAILS " +
+    public double tinhTienSach(String maHD,String maSeri){
+        String sql = "SELECT CAST(BOOK.GIA AS UNSIGNED) *(1.0 - SELL_TICKET_DETAILS.HE_SO) as total FROM SELL_TICKET_DETAILS " +
                 "INNER JOIN BOOK on SELL_TICKET_DETAILS.MA_SERIES = BOOK.MA_SERIES " +
                 "WHERE MA_PHIEU = '"+maHD+"' and BOOK.MA_SERIES = '"+maSeri+"'";
         Statement stmt = null;
-        long total = 0;
+        double total = 0;
         try {
             stmt = getConnect().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                total = rs.getLong("total");
+                total = rs.getDouble("total");
             }
         } catch (SQLException | ClassNotFoundException e) {
             return 0;
@@ -204,15 +205,15 @@ public class CTHDDao extends DefaultConnection {
         return total;
     }
 
-    public long layGiaSach(String maSeri){
+    public double layGiaSach(String maSeri){
         String sql ="SELECT GIA FROM `BOOK` WHERE MA_SERIES = '"+maSeri+"'";
         Statement stmt = null;
-        long total = 0;
+        double total = 0;
         try {
             stmt = getConnect().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                total = rs.getLong("GIA");
+                total = rs.getDouble("GIA");
             }
         } catch (SQLException | ClassNotFoundException e) {
             return 0;
@@ -326,6 +327,55 @@ public class CTHDDao extends DefaultConnection {
 
 
 
+    public List<HDPDF> xuatCTHDPDF(String maHD){
+        String sql = "SELECT ROUND(CAST(BOOK.GIA AS UNSIGNED) *(1.0 - SELL_TICKET_DETAILS.HE_SO),2) as total," +
+                "book.TEN_SACH,book.MA_SERIES,sell_ticket_details.HE_SO " +
+                "FROM `sell_ticket_details` " +
+                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES " +
+                "WHERE sell_ticket_details.IS_DELETED = 0 and sell_ticket_details.MA_PHIEU = '"+maHD+"'";
+        List<HDPDF> dsCTHD = new ArrayList<>();
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                var heSo = Double.valueOf(rs.getString("HE_SO"));
+                var maSeri = rs.getString("MA_SERIES");
+                var tienSach = rs.getDouble("total");
+                var tenSach = rs.getString("TEN_SACH");
+                dsCTHD.add(new HDPDF(maHD,maSeri,tenSach, heSo,tienSach));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dsCTHD;
+    }
+
+    public double layHeSo(String maSach){
+        String sql = "SELECT SUM(book_fault.HE_SO*borrow_book_ticket_fault.SO_LUONG) as tongHS \n" +
+                "FROM `borrow_book_ticket_fault` \n" +
+                "INNER JOIN book_fault on borrow_book_ticket_fault.MA_LOI = book_fault.MA_LOI  \n" +
+                "WHERE MA_SERIES = '"+maSach+"' \n" +
+                "GROUP BY borrow_book_ticket_fault.MA_SERIES";
+        Statement stmt = null;
+        double hs = 0 ;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                hs = rs.getDouble("tongHS");
+                break;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        if(hs>0.5){
+            return 0.5;
+        }
+        return hs;
+    }
+
+
     public static void main(String[] args) {
         CTHDDao t = new CTHDDao();
 //        List<CTHD> dsct = t.locCTHD("1","1_1");
@@ -354,17 +404,22 @@ public class CTHDDao extends DefaultConnection {
 //        System.out.println(t.goiYTenSach("1"));
 //        System.out.println(t.layGiaSach("2"));
 
-        DefaultCategoryDataset dataset = t.thongKeSachBanTheoNam(1900);
-        System.out.println("Hoa Don \t Thang \t So Luong");
-        for (int i = 0; i < dataset.getRowCount(); i++) {
-            String rowKey = (String) dataset.getRowKey(i);
-            for (int j = 0; j < dataset.getColumnCount(); j++) {
-                String columnKey = (String) dataset.getColumnKey(j);
-                Number value = dataset.getValue(i, j);
-                System.out.println(rowKey + " \t " + columnKey + " \t " + value);
-            }
-        }
+//        DefaultCategoryDataset dataset = t.thongKeSachBanTheoNam(1900);
+//        System.out.println("Hoa Don \t Thang \t So Luong");
+//        for (int i = 0; i < dataset.getRowCount(); i++) {
+//            String rowKey = (String) dataset.getRowKey(i);
+//            for (int j = 0; j < dataset.getColumnCount(); j++) {
+//                String columnKey = (String) dataset.getColumnKey(j);
+//                Number value = dataset.getValue(i, j);
+//                System.out.println(rowKey + " \t " + columnKey + " \t " + value);
+//            }
+//        }
 
+
+        List<HDPDF> ds = t.xuatCTHDPDF("HD2");
+        for(HDPDF hd:ds){
+            System.out.println(hd.getGiaSach());
+        }
 
     }
 
