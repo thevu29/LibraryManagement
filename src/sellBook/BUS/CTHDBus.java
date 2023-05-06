@@ -98,6 +98,10 @@ public class CTHDBus {
         return cthd.thongKeSachBanTheoNam(nam);
     }
 
+    public double layHS(String maSach){
+        return cthd.layHeSo(maSach);
+    }
+
     public int xuatPDF(String maHD){
         int kq = 0;
         Document document = new Document();

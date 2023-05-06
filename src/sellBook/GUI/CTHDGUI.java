@@ -20,7 +20,6 @@ public class CTHDGUI {
     private JPanel main;
     private JButton btnRemove;
     private JButton btnUpdate;
-    private JButton btnFinish;
     private JTable tblCTHD;
     private JButton bookDeleteAllButton;
     private JButton btnFilter;
@@ -186,6 +185,12 @@ public class CTHDGUI {
                     JOptionPane.showMessageDialog(null,"Xuat PDF KHONG thanh cong");
 
                 }
+            }
+        });
+        bookDeleteAllButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showAll();
             }
         });
     }

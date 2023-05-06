@@ -61,6 +61,7 @@ public class ChartCTHD {
                 }
                 else if (selectedOption.equals("THỐNG KÊ SỐ LOẠI ĐƯỢC BÁN")) {
                     pieDataset = bus.thongKeSoLoaiDcBan();
+                    txtYear.setEditable(false);
                     JFreeChart newChart = createPieChart("THỐNG KÊ SỐ LOẠI ĐƯỢC BÁN");
                     chartPanel.setChart(newChart);
                 }

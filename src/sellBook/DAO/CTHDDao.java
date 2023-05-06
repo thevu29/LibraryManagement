@@ -351,6 +351,30 @@ public class CTHDDao extends DefaultConnection {
         return dsCTHD;
     }
 
+    public double layHeSo(String maSach){
+        String sql = "SELECT SUM(book_fault.HE_SO*borrow_book_ticket_fault.SO_LUONG) as tongHS \n" +
+                "FROM `borrow_book_ticket_fault` \n" +
+                "INNER JOIN book_fault on borrow_book_ticket_fault.MA_LOI = book_fault.MA_LOI  \n" +
+                "WHERE MA_SERIES = '"+maSach+"' \n" +
+                "GROUP BY borrow_book_ticket_fault.MA_SERIES";
+        Statement stmt = null;
+        double hs = 0 ;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                hs = rs.getDouble("tongHS");
+                break;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        if(hs>0.5){
+            return 0.5;
+        }
+        return hs;
+    }
+
 
     public static void main(String[] args) {
         CTHDDao t = new CTHDDao();

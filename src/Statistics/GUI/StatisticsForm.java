@@ -14,6 +14,8 @@ public class StatisticsForm {
     private BorrowChart borrow = new BorrowChart();
     private Chart sell_ticket = new Chart();
     private ChartCTHD cthd = new ChartCTHD();
+
+
     public StatisticsForm() {
         membershipPanel.add(membershipStatisticsForm.getMainPanel());
 

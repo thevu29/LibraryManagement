@@ -57,9 +57,7 @@ public class SellTicketBus {
         return hd.getNewMaHD();
     }
 
-    public DefaultCategoryDataset laySoLieuTheoThang(){
-        return hd.laySoLieuTheoThang();
-    }
+
     public DefaultCategoryDataset laySoLieuTheoNam(){
         return hd.laySoLieuTheoNam();
     }

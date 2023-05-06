@@ -178,18 +178,7 @@ public class HoaDonGUI {
                 changeTable(dshd);
             }
         });
-        btnThongKe.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int nam = Year.now().getValue();
-                var tk = new Chart();
-                JFrame frame = new JFrame("Thong Ke");
-                frame.setContentPane(tk.getMain());
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-            }
-        });
+
     }
 
     public JPanel getMain() {
