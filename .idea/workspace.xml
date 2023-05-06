@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="add flatlaf">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix GUI, combobox color">
+      <change afterPath="$PROJECT_DIR$/src/Customer/BUS/MembershipBUS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Customer/DAO/MembershipDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Customer/DTO/Membership.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/AuthorDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/AuthorDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/BookDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GenreDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GenreDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/ImporterDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/ImporterDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/PublisherDataTableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/PublisherDataTableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainForm/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainForm/MainWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Customer/GUI/MembershipStatisticsForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,19 +114,19 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainWindow">
+  <component name="RunManager" selected="Application.CustomerForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="HoaDonGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="sellBook.GUI.HoaDonGUI" />
+    <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Customer.GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="sellBook.GUI.*" />
+          <option name="PATTERN" value="Customer.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -192,6 +188,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CustomerForm" />
         <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.MainWindow (1)" />
@@ -505,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683271597881</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="fix GUI, combobox color">
+      <created>1683353640117</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1683353640117</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -535,7 +539,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Add database, mysql connector." />
     <MESSAGE value="hello" />
     <MESSAGE value="xong hoa don" />
     <MESSAGE value="sửa GUI" />
@@ -560,7 +563,8 @@
     <MESSAGE value="fix logout" />
     <MESSAGE value="fix GUI và thêm các thống kê vô StatisticsForm" />
     <MESSAGE value="add flatlaf" />
-    <option name="LAST_COMMIT_MESSAGE" value="add flatlaf" />
+    <MESSAGE value="fix GUI, combobox color" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix GUI, combobox color" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
