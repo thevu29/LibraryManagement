@@ -461,10 +461,10 @@ public class BorrowDAO extends DefaultConnection {
 //    public  ArrayList<Borrow>
 
     public DefaultCategoryDataset laySoLuongPhieuMuon(int nam){
-        String sql = "SELECT count(borrow_ticket.MA_PHIEU) as slg,month(borrow_ticket.DATE_BORROW) as thang " +
-                "FROM `borrow_ticket` " +
-                "where year(borrow_ticket.DATE_BORROW) = "+nam+" and borrow_ticket.IS_DELETED =0 " +
-                "group by month(borrow_ticket.DATE_BORROW)";
+        String sql = "SELECT count(`BORROW_TICKET`.MA_PHIEU) as slg,month(`BORROW_TICKET`.DATE_BORROW) as thang " +
+                "FROM `BORROW_TICKET` " +
+                "where year(`BORROW_TICKET`.DATE_BORROW) = "+nam+" and `BORROW_TICKET`.IS_DELETED =0 " +
+                "group by month(`BORROW_TICKET`.DATE_BORROW)";
         String rowKey = "";
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         ArrayList<Borrow> dsLoi = new ArrayList<>();
@@ -499,10 +499,10 @@ public class BorrowDAO extends DefaultConnection {
 
 
     public DefaultCategoryDataset laySoLuongSachMuon(int nam){
-        String sql = "SELECT COUNT(borrow_ticket_details.MA_SERIES) as slgSach,month(borrow_ticket.DATE_BORROW) as thang \n" +
-                "FROM `borrow_ticket` \n" +
-                "INNER JOIN borrow_ticket_details on borrow_ticket_details.MA_PHIEU = borrow_ticket.MA_PHIEU \n" +
-                "WHERE year(borrow_ticket.DATE_BORROW) = "+nam+" and borrow_ticket.IS_DELETED =0 \n" +
+        String sql = "SELECT COUNT(`BORROW_TICKET_DETAILS`.MA_SERIES) as slgSach,month(`BORROW_TICKET`.DATE_BORROW) as thang \n" +
+                "FROM `BORROW_TICKET` \n" +
+                "INNER JOIN `BORROW_TICKET_DETAILS` on `BORROW_TICKET_DETAILS`.MA_PHIEU = `BORROW_TICKET`.MA_PHIEU \n" +
+                "WHERE year(`BORROW_TICKET`.DATE_BORROW) = "+nam+" and `BORROW_TICKET`.IS_DELETED =0 \n" +
                 "GROUP BY month(DATE_BORROW)";
         String rowKey = "So Luong Sach";
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -539,12 +539,12 @@ public class BorrowDAO extends DefaultConnection {
 
     public DefaultPieDataset thongKeLoiSach(int nam){
         DefaultPieDataset dataset = new DefaultPieDataset();
-        String sql ="SELECT COUNT(MA_SERIES) as soLoi,book_fault.TEN_LOI as loi \n" +
-                "FROM `borrow_book_ticket_fault` \n" +
-                "INNER JOIN book_fault on book_fault.MA_LOI=borrow_book_ticket_fault.MA_LOI \n" +
-                "INNER JOIN borrow_ticket on borrow_ticket.MA_PHIEU = borrow_book_ticket_fault.MA_PHIEU \n" +
-                "where Year(borrow_ticket.DATE_BORROW) = "+nam+" and borrow_ticket.IS_DELETED =0 \n" +
-                "GROUP BY borrow_book_ticket_fault.MA_LOI";
+        String sql ="SELECT COUNT(MA_SERIES) as soLoi,`BOOK_FAULT`.TEN_LOI as loi \n" +
+                "FROM `BORROW_BOOK_TICKET_FAULT` \n" +
+                "INNER JOIN `BOOK_FAULT` on `BOOK_FAULT`.MA_LOI=`BORROW_BOOK_TICKET_FAULT`.MA_LOI \n" +
+                "INNER JOIN `BORROW_TICKET` on `BORROW_TICKET`.MA_PHIEU = `BORROW_BOOK_TICKET_FAULT`.MA_PHIEU \n" +
+                "where Year(`BORROW_TICKET`.DATE_BORROW) = "+nam+" and `BORROW_TICKET`.IS_DELETED =0 \n" +
+                "GROUP BY `BORROW_BOOK_TICKET_FAULT`.MA_LOI";
         Statement stmt = null;
         try {
             stmt = getConnect().createStatement();

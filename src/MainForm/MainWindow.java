@@ -8,6 +8,7 @@ import Login.GUI.LoginForm;
 import NhanVien.GUI.NhanVienadmin;
 import Statistics.GUI.StatisticsForm;
 import com.formdev.flatlaf.FlatLightLaf;
+import sellBook.BUS.SellTicketBus;
 import sellBook.GUI.HoaDonGUI;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -78,11 +79,13 @@ public class MainWindow {
 
     public void initContentPanel() {
         bookForm = new BookBUS();
+        var sellTicketBus = new SellTicketBus();
+
         customerForm = new CustomerForm();
         employeeForm = new NhanVienadmin();
         sellForm = new HoaDonGUI();
         borrowForm = new BorrowUI();
-        statisticsForm = new StatisticsForm();
+        statisticsForm = new StatisticsForm(bookForm, sellTicketBus);
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());

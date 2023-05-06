@@ -241,9 +241,9 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public DefaultCategoryDataset thongKeSLGSachBanTheoThang(){
-        String sql = "SELECT  COUNT(book.MA_SERIES) as slgSach,YEAR(CREATED_AT) as nam, MONTH(CREATED_AT) as thang \n" +
+        String sql = "SELECT  COUNT(`BOOK`.MA_SERIES) as slgSach,YEAR(CREATED_AT) as nam, MONTH(CREATED_AT) as thang \n" +
                 "FROM `SELL_TICKET_DETAILS`\n" +
-                "INNER JOIN book on book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
+                "INNER JOIN `BOOK` on `BOOK`.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
                 "INNER JOIN SELL_TICKET on SELL_TICKET.MA_PHIEU=SELL_TICKET_DETAILS.MA_PHIEU\n" +
                 "WHERE SELL_TICKET_DETAILS.IS_DELETED =0\n" +
                 "GROUP BY SELL_TICKET_DETAILS.MA_PHIEU,YEAR(SELL_TICKET.CREATED_AT), MONTH(SELL_TICKET.CREATED_AT)\n" +
@@ -270,7 +270,7 @@ public class CTHDDao extends DefaultConnection {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         String sql ="SELECT COUNT(SELL_TICKET_DETAILS.MA_SERIES) as slgSach,Month(SELL_TICKET.CREATED_AT) as thang FROM `SELL_TICKET_DETAILS` \n" +
                 "INNER JOIN SELL_TICKET on SELL_TICKET_DETAILS.MA_PHIEU=SELL_TICKET.MA_PHIEU \n" +
-                "INNER JOIN book on book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES \n" +
+                "INNER JOIN `BOOK` on `BOOK`.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES \n" +
                 "WHERE Year(SELL_TICKET.CREATED_AT) = "+nam+" and SELL_TICKET_DETAILS.IS_DELETED = 0 \n" +
                 "GROUP BY Year(SELL_TICKET.CREATED_AT),thang";
         Statement stmt = null;
@@ -301,14 +301,14 @@ public class CTHDDao extends DefaultConnection {
 
     public DefaultPieDataset thongKeSoLoaiSach(){
         DefaultPieDataset dataset = new DefaultPieDataset();
-        String sql ="SELECT  COUNT(book_genre.MA_SERIES) as slgSach,genre.TEN_TL as tl " +
+        String sql ="SELECT  COUNT(`BOOK_GENRE`.MA_SERIES) as slgSach,`GENRE`.TEN_TL as tl " +
                 "FROM `SELL_TICKET_DETAILS` " +
-                "INNER JOIN book on book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES " +
+                "INNER JOIN `BOOK` on `BOOK`.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES " +
                 "INNER JOIN SELL_TICKET on SELL_TICKET.MA_PHIEU=SELL_TICKET_DETAILS.MA_PHIEU " +
-                "INNER JOIN book_genre on book.MA_SERIES = book_genre.MA_SERIES\n" +
-                "INNER JOIN genre on book_genre.MA_TL = genre.MA_TL " +
+                "INNER JOIN `BOOK_GENRE` on `BOOK`.MA_SERIES = `BOOK_GENRE`.MA_SERIES\n" +
+                "INNER JOIN `GENRE` on `BOOK_GENRE`.MA_TL = `GENRE`.MA_TL " +
                 "WHERE SELL_TICKET_DETAILS.IS_DELETED =0 " +
-                "GROUP BY book_genre.MA_TL";
+                "GROUP BY `BOOK_GENRE`.MA_TL";
         Statement stmt = null;
         try {
             stmt = getConnect().createStatement();
@@ -328,11 +328,11 @@ public class CTHDDao extends DefaultConnection {
 
 
     public List<HDPDF> xuatCTHDPDF(String maHD){
-        String sql = "SELECT ROUND(CAST(BOOK.GIA AS UNSIGNED) *(1.0 - SELL_TICKET_DETAILS.HE_SO),2) as total," +
-                "book.TEN_SACH,book.MA_SERIES,sell_ticket_details.HE_SO " +
-                "FROM `sell_ticket_details` " +
-                "INNER JOIN book on book.MA_SERIES = sell_ticket_details.MA_SERIES " +
-                "WHERE sell_ticket_details.IS_DELETED = 0 and sell_ticket_details.MA_PHIEU = '"+maHD+"'";
+        String sql = "SELECT ROUND(CAST(`BOOK`.GIA AS UNSIGNED) *(1.0 - SELL_TICKET_DETAILS.HE_SO),2) as total," +
+                "`BOOK`.TEN_SACH,`BOOK`.MA_SERIES,`SELL_TICKET_DETAILS`.HE_SO " +
+                "FROM `SELL_TICKET_DETAILS` " +
+                "INNER JOIN `BOOK` on `BOOK`.MA_SERIES = `SELL_TICKET_DETAILS`.MA_SERIES " +
+                "WHERE `SELL_TICKET_DETAILS`.IS_DELETED = 0 and `SELL_TICKET_DETAILS`.MA_PHIEU = '"+maHD+"'";
         List<HDPDF> dsCTHD = new ArrayList<>();
         Statement stmt = null;
         try {
@@ -352,11 +352,11 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public double layHeSo(String maSach){
-        String sql = "SELECT SUM(book_fault.HE_SO*borrow_book_ticket_fault.SO_LUONG) as tongHS \n" +
-                "FROM `borrow_book_ticket_fault` \n" +
-                "INNER JOIN book_fault on borrow_book_ticket_fault.MA_LOI = book_fault.MA_LOI  \n" +
+        String sql = "SELECT SUM(`BOOK_FAULT`.HE_SO*`BORROW_BOOK_TICKET_FAULT`.SO_LUONG) as tongHS \n" +
+                "FROM `BORROW_BOOK_TICKET_FAULT` \n" +
+                "INNER JOIN `BOOK_FAULT` on `BORROW_BOOK_TICKET_FAULT`.MA_LOI = `BOOK_FAULT`.MA_LOI  \n" +
                 "WHERE MA_SERIES = '"+maSach+"' \n" +
-                "GROUP BY borrow_book_ticket_fault.MA_SERIES";
+                "GROUP BY `BORROW_BOOK_TICKET_FAULT`.MA_SERIES";
         Statement stmt = null;
         double hs = 0 ;
         try {

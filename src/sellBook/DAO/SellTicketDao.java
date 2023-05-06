@@ -267,10 +267,10 @@ public class SellTicketDao extends DefaultConnection {
         String sql = "SELECT\n" +
                 "YEAR(CREATED_AT) as nam,\n" +
                 "MONTH(CREATED_AT) as thang,\n" +
-                "SUM(CAST(book.GIA AS SIGNED) * (1 - SELL_TICKET_DETAILS.HE_SO)) as tongTien\n" +
+                "SUM(CAST(`BOOK`.GIA AS SIGNED) * (1 - SELL_TICKET_DETAILS.HE_SO)) as tongTien\n" +
                 "FROM SELL_TICKET\n" +
                 "INNER JOIN SELL_TICKET_DETAILS ON SELL_TICKET_DETAILS.MA_PHIEU = SELL_TICKET.MA_PHIEU\n" +
-                "INNER JOIN BOOK ON book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
+                "INNER JOIN BOOK ON `BOOK`.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
                 "WHERE Year(SELL_TICKET.CREATED_AT) = "+nam+" and SELL_TICKET.IS_DELETED = 0 AND SELL_TICKET_DETAILS.IS_DELETED = 0\n" +
                 "GROUP BY YEAR(CREATED_AT), MONTH(CREATED_AT)\n" +
                 "ORDER BY YEAR(CREATED_AT) ASC, MONTH(CREATED_AT) ASC;";

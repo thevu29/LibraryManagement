@@ -8,7 +8,6 @@ import sellBook.GUI.Chart;
 import sellBook.GUI.ChartCTHD;
 import org.jfree.data.general.DefaultPieDataset;
 import sellBook.BUS.SellTicketBus;
-import sellBook.GUI.SellChart;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -19,33 +18,39 @@ import java.util.ArrayList;
 public class StatisticsForm {
     private MembershipStatisticsForm membershipStatisticsForm;
     private BookChart bookChart;
-    private SellChart sellChart;
+//    private SellChart sellChart;
     private BookBUS bookBUS;
     private SellTicketBus sellTicketBus;
-    private MembershipStatisticsForm membershipStatisticsForm = new MembershipStatisticsForm();
+//    private MembershipStatisticsForm membershipStatisticsForm = new MembershipStatisticsForm();
     private BorrowChart borrow = new BorrowChart();
     private Chart sell_ticket = new Chart();
     private ChartCTHD cthd = new ChartCTHD();
 
 
     public StatisticsForm() {
+        this(new BookBUS(), new SellTicketBus());
+    }
+
+    public StatisticsForm(BookBUS bookBUS, SellTicketBus sellTicketBus) {
+        this.bookBUS = bookBUS;
+        this.sellTicketBus = sellTicketBus;
+
+
         membershipStatisticsForm = new MembershipStatisticsForm();
         membershipPanel.add(membershipStatisticsForm.getMainPanel());
 
-        bookBUS = new BookBUS();
         DefaultPieDataset dataset = bookBUS.thonngKeTinhTrangSach();
         ArrayList<String> dsOpt = new ArrayList<>();
         dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
         bookChart = new BookChart(dataset, dsOpt);
         bookPanel.add(bookChart.getMain());
 
-        sellTicketBus = new SellTicketBus();
         dsOpt.clear();
         dsOpt.add("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM");
         dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
         int nam = Year.now().getValue();
-        sellChart = new SellChart(sellTicketBus.thongKeTheoNam(nam), "Tháng", dsOpt);
-        sellPanel.add(sellChart.getMain());
+//        sellChart = new SellChart(sellTicketBus.thongKeTheoNam(nam), "Tháng", dsOpt);
+//        sellPanel.add(sellChart.getMain());
 
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override
