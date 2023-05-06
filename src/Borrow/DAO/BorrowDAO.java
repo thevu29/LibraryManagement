@@ -3,6 +3,8 @@ package Borrow.DAO;
 import Borrow.DTO.Borrow;
 import Borrow.DTO.Fault;
 import Core.DefaultConnection;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import sellBook.DTO.HoaDon;
 
 import java.sql.*;
@@ -13,6 +15,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class BorrowDAO extends DefaultConnection {
+
 
     public static ArrayList<Borrow> getDanhSach(String sql) {
         ArrayList<Borrow> dsLoi = new ArrayList<>();
@@ -399,9 +402,7 @@ public class BorrowDAO extends DefaultConnection {
 
     public int updateStatusBookBorrow(String maSach, String trangThai) {
         String sql = "UPDATE `BOOK` SET TRANG_THAI = ?   WHERE MA_SERIES = ?";
-
         int smt = 0;
-
         PreparedStatement pst = null;
         try {
             Connection connect = getConnect();
@@ -414,7 +415,6 @@ public class BorrowDAO extends DefaultConnection {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
         return smt;
     }
 
@@ -458,11 +458,114 @@ public class BorrowDAO extends DefaultConnection {
         return smt;
     }
 
+//    public  ArrayList<Borrow>
+
+    public DefaultCategoryDataset laySoLuongPhieuMuon(int nam){
+        String sql = "SELECT count(borrow_ticket.MA_PHIEU) as slg,month(borrow_ticket.DATE_BORROW) as thang " +
+                "FROM `borrow_ticket` " +
+                "where year(borrow_ticket.DATE_BORROW) = "+nam+" and borrow_ticket.IS_DELETED =0 " +
+                "group by month(borrow_ticket.DATE_BORROW)";
+        String rowKey = "";
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        ArrayList<Borrow> dsLoi = new ArrayList<>();
+        Statement stmt = null;
+        int[] slgPM = new int[12];
+        try {
+            Connection connect = getConnect();
+            stmt = connect.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                int slg = rs.getInt("slg");
+                int thang= rs.getInt("thang");
+                slgPM[thang-1] = slg;
+            }
+            for (int i = 0; i < 12; i++) {
+                int thang = i + 1;
+                int slg = slgPM[i];
+                String thangNam = thang+"/"+nam;
+                dataset.setValue(slg,rowKey,thangNam);
+
+            }
+            rs.close();
+            stmt.close();
+            connect.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+
+    }
+
+
+    public DefaultCategoryDataset laySoLuongSachMuon(int nam){
+        String sql = "SELECT COUNT(borrow_ticket_details.MA_SERIES) as slgSach,month(borrow_ticket.DATE_BORROW) as thang \n" +
+                "FROM `borrow_ticket` \n" +
+                "INNER JOIN borrow_ticket_details on borrow_ticket_details.MA_PHIEU = borrow_ticket.MA_PHIEU \n" +
+                "WHERE year(borrow_ticket.DATE_BORROW) = "+nam+" and borrow_ticket.IS_DELETED =0 \n" +
+                "GROUP BY month(DATE_BORROW)";
+        String rowKey = "So Luong Sach";
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        ArrayList<Borrow> dsLoi = new ArrayList<>();
+        Statement stmt = null;
+        int[] slgPM = new int[12];
+        try {
+            Connection connect = getConnect();
+            stmt = connect.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                int slg = rs.getInt("slgSach");
+                int thang= rs.getInt("thang");
+                slgPM[thang-1] = slg;
+            }
+            for (int i = 0; i < 12; i++) {
+                int thang = i + 1;
+                int slg = slgPM[i];
+                String thangNam = thang+"/"+nam;
+                dataset.setValue(slg,rowKey,thangNam);
+            }
+            rs.close();
+            stmt.close();
+            connect.close();
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+
+    }
+
+
+
+    public DefaultPieDataset thongKeLoiSach(int nam){
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        String sql ="SELECT COUNT(MA_SERIES) as soLoi,book_fault.TEN_LOI as loi \n" +
+                "FROM `borrow_book_ticket_fault` \n" +
+                "INNER JOIN book_fault on book_fault.MA_LOI=borrow_book_ticket_fault.MA_LOI \n" +
+                "INNER JOIN borrow_ticket on borrow_ticket.MA_PHIEU = borrow_book_ticket_fault.MA_PHIEU \n" +
+                "where Year(borrow_ticket.DATE_BORROW) = "+nam+" and borrow_ticket.IS_DELETED =0 \n" +
+                "GROUP BY borrow_book_ticket_fault.MA_LOI";
+        Statement stmt = null;
+        try {
+            stmt = getConnect().createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                double slg = rs.getDouble("soLoi");
+                String tl = rs.getString("loi");
+                dataset.setValue(tl,slg);
+            }
+
+        } catch (SQLException | ClassNotFoundException e) {
+            System.out.println(e);
+        }
+        return dataset;
+    }
+
     public static void main(String[] args) {
         BorrowDAO t = new BorrowDAO();
         // System.out.println(Long.parseLong(t.getTongTien("PM1")));
 
-        System.out.println(t.getNewMaPhieuMuon());
+//        System.out.println(t.getNewMaPhieuMuon());
 
         // SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         // Calendar calendar = Calendar.getInstance();
@@ -470,6 +573,18 @@ public class BorrowDAO extends DefaultConnection {
         // calendar.add(Calendar.DATE, -15);
         //// calendar1.add(Calendar.DATE);
         // System.out.println(sdf1.format(calendar.getTime()));
+
+//        DefaultCategoryDataset dataset = t.laySoLuongPhieuMuon(2023);
+//        for (int i = 0; i < dataset.getRowCount(); i++) {
+//            String rowKey = (String) dataset.getRowKey(i);
+//            for (int j = 0; j < dataset.getColumnCount(); j++) {
+//                String columnKey = (String) dataset.getColumnKey(j);
+//                Number value = dataset.getValue(i, j);
+//                System.out.println(rowKey + " \t " + columnKey + " \t " + value);
+//            }
+//        }
+
+
 
     }
 

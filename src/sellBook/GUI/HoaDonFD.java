@@ -36,15 +36,6 @@ public class HoaDonFD extends JDialog {
         //Không cho nhấn nut update hoặc xóa
         btnUpdate.setEnabled(false);
         btnRemove.setEnabled(false);
-
-
-
-        btnRemove.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onOK();
-            }
-        });
-
         btnCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
@@ -122,9 +113,21 @@ public class HoaDonFD extends JDialog {
         txtMaNV.setText(ticket.getMa_nv());
         txtTenKH.setText(ticket.getTenKH());
 
+        btnAdd.setEnabled(false);
+
         btnRemove.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                int dialogResult = JOptionPane.showConfirmDialog(null,"Bạn có muốn xóa không ?","Remove", JOptionPane.YES_NO_OPTION);
+                if(dialogResult == JOptionPane.YES_OPTION){
+                    int smt =bus.remove(maHD);
+                    if(smt>0){
+                        JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
+                        gui.showAll();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                    }
+                }
             }
         });
 
@@ -148,26 +151,7 @@ public class HoaDonFD extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-        btnAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String maPhieu = txtMaPhieu.getText();
-                String maNV = txtMaNV.getText();
-                String maKH = txtMaKH.getText();
-                HoaDon hd =new HoaDon();
-                hd.setMa_KH(maKH);
-                hd.setMa_phieu(maPhieu);
-                hd.setMa_nv(maNV);
-                int smt = bus.insert(hd);
-                if(smt>0){
-                    JOptionPane.showMessageDialog(null,"Them Hoa Don thanh cong");
-                    gui.showAll();
-                }
-                else {
-                    JOptionPane.showMessageDialog(null,"Them Hoa Don KHONG THANH CONG");
-                }
-            }
-        });
+
 
         btnUpdate.addActionListener(new ActionListener() {
             @Override

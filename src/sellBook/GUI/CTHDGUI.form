@@ -50,7 +50,7 @@
               </vspacer>
               <component id="b18fe" class="javax.swing.JButton" binding="btnFinish">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-11107086"/>
@@ -78,12 +78,12 @@
                   <text value="CẬP NHẬT CTHD"/>
                 </properties>
               </component>
-              <component id="b128" class="javax.swing.JButton" binding="XEMTHỐNGKÊButton" default-binding="true">
+              <component id="4ec79" class="javax.swing.JButton" binding="btnXuatPDF">
                 <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="XEM THỐNG KÊ"/>
+                  <text value="XUẤT PDF"/>
                 </properties>
               </component>
             </children>
@@ -182,17 +182,6 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="252d4" class="javax.swing.JButton" binding="btnXoaMaHD">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                              <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-11107086"/>
-                              <foreground color="-1"/>
-                              <text value="Xóa"/>
-                            </properties>
-                          </component>
                           <component id="ef2ef" class="javax.swing.JComboBox" binding="cboMaHD">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -202,7 +191,7 @@
                             </constraints>
                             <properties>
                               <background color="-13382401"/>
-                              <editable value="true"/>
+                              <editable value="false"/>
                             </properties>
                           </component>
                         </children>
@@ -216,17 +205,6 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="dfa19" class="javax.swing.JButton" binding="btnXoaHeSo">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                              <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-11107086"/>
-                              <foreground color="-1"/>
-                              <text value="Xóa"/>
-                            </properties>
-                          </component>
                           <component id="40fd5" class="javax.swing.JComboBox" binding="cboHeSo">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -236,7 +214,8 @@
                             </constraints>
                             <properties>
                               <background color="-13382401"/>
-                              <editable value="true"/>
+                              <editable value="false"/>
+                              <enabled value="true"/>
                             </properties>
                           </component>
                         </children>
@@ -250,17 +229,6 @@
                         </properties>
                         <border type="none"/>
                         <children>
-                          <component id="b21b5" class="javax.swing.JButton" binding="btnXoaMaSeri">
-                            <constraints>
-                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                              <gridbag top="0" left="5" bottom="0" right="0" weightx="1.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-11107086"/>
-                              <foreground color="-1"/>
-                              <text value="Xóa"/>
-                            </properties>
-                          </component>
                           <component id="a061c" class="javax.swing.JComboBox" binding="cboMaSeri">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
@@ -270,7 +238,7 @@
                             </constraints>
                             <properties>
                               <background color="-13382401"/>
-                              <editable value="true"/>
+                              <editable value="false"/>
                               <foreground color="-15000805"/>
                             </properties>
                           </component>

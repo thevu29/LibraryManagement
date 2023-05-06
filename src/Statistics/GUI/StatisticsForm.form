@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <tabbedpane id="d0ba3" binding="tabbedPane1" default-binding="true">
+      <tabbedpane id="d0ba3" binding="tabbedPane1">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="200"/>
@@ -20,6 +20,30 @@
           <grid id="32969" binding="membershipPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <tabbedpane title="Membership"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="f3e5e" binding="pnlPhieuMuon" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Borrow"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="4d80c" binding="pnlHoaDon" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Hóa Đơn"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="72840" binding="pnlCTHD" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Chi Tiết Hóa Đơn"/>
             </constraints>
             <properties/>
             <border type="none"/>

@@ -8,12 +8,13 @@ public class HoaDon {
     private String ma_KH;
     private String tenNV;
     private String tenKH;
-    private Long tongHD;
+    private double tongHD;
+    private Date createdAt;
 
     public HoaDon() {
     }
 
-    public HoaDon(String ma_phieu, String ma_nv, String ma_KH, String tenNV, String tenKH, Long tongHD) {
+    public HoaDon(String ma_phieu, String ma_nv, String ma_KH, String tenNV, String tenKH,double tongHD) {
         this.ma_phieu = ma_phieu;
         this.ma_nv = ma_nv;
         this.ma_KH = ma_KH;
@@ -22,7 +23,24 @@ public class HoaDon {
         this.tongHD = tongHD;
     }
 
-//    public HoaDon(String ma_phieu, String ma_nv, String ma_KH, Long tongHD) {
+    public HoaDon(String ma_phieu, String ma_nv, String ma_KH, String tenNV, String tenKH, double tongHD, Date createdAt) {
+        this.ma_phieu = ma_phieu;
+        this.ma_nv = ma_nv;
+        this.ma_KH = ma_KH;
+        this.tenNV = tenNV;
+        this.tenKH = tenKH;
+        this.tongHD = tongHD;
+        this.createdAt = createdAt;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+    //    public HoaDon(String ma_phieu, String ma_nv, String ma_KH, Long tongHD) {
 //        this.ma_phieu = ma_phieu;
 //        this.ma_nv = ma_nv;
 //        this.ma_KH = ma_KH;
@@ -54,11 +72,11 @@ public class HoaDon {
         this.ma_KH = ma_KH;
     }
 
-    public Long getTongHD() {
+    public double getTongHD() {
         return tongHD;
     }
 
-    public void setTongHD(Long tongHD) {
+    public void setTongHD(double tongHD) {
         this.tongHD = tongHD;
     }
 

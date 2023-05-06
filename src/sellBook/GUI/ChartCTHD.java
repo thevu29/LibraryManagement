@@ -33,17 +33,17 @@ public class ChartCTHD {
     DefaultPieDataset pieDataset = new DefaultPieDataset<>();
     DefaultCategoryDataset categoryDataset  = new DefaultCategoryDataset();
 
-    public ChartCTHD(DefaultCategoryDataset dataset, ArrayList<String> dsOpt){
-        this.categoryDataset = dataset;
+    public ChartCTHD(){
+        int nam = Year.now().getValue();
+        this.categoryDataset = bus.thongKeSachBanTheoNam(nam);
         createBarChart("THỐNG KÊ SỐ SÁCH ĐƯỢC BÁN THEO NĂM");
         JFreeChart newChart = createBarChart("THỐNG KÊ SỐ SÁCH ĐƯỢC BÁN THEO NĂM");
         // update the chart panel with the new chart
         ChartPanel chartPanel = new ChartPanel(newChart);
         chart1.setLayout(new java.awt.BorderLayout());
         chart1.add(chartPanel);
-        for(String t:dsOpt){
-            cboOption.addItem(t);
-        }
+        cboOption.addItem("THỐNG KÊ SỐ SÁCH BÁN THEO NĂM");
+        cboOption.addItem("THỐNG KÊ SỐ LOẠI ĐƯỢC BÁN");
 
         cboOption.addActionListener(new ActionListener() {
             @Override
