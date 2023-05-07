@@ -6,6 +6,7 @@ import DTO.CTHD;
 import java.text.DecimalFormat;
 import javax.swing.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class CTHDFD extends JDialog {
