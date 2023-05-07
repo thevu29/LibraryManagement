@@ -250,11 +250,11 @@ public class HoaDonGUI {
     private void changeTable(List<HoaDon> dshd){
 
         dtm.setRowCount(0);
-        String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
+        String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng", "Ngày mua", "Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
         if(!dshd.isEmpty()){
             for(HoaDon hd:dshd){
-                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(),hd.getTenNV(), hd.getMa_KH(),hd.getTenKH(),hd.getTongHD()};
+                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(),hd.getTenNV(), hd.getMa_KH(),hd.getTenKH(),hd.getCreatedAt(),hd.getTongHD()};
                 dtm.addRow(t);
             }
         }
@@ -262,13 +262,13 @@ public class HoaDonGUI {
         tblCheckOut.setModel(dtm);
     }
     private void initTable(){
-        String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
+        String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng", "Ngày mua","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
 
         dshd =  bus.getAllSellTicket();
         if(!dshd.isEmpty()){
             for(HoaDon hd:dshd){
-                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(),hd.getTenNV(), hd.getMa_KH(),hd.getTenKH(),hd.getTongHD()};
+                Object[] t = {hd.getMa_phieu(), hd.getMa_nv(),hd.getTenNV(), hd.getMa_KH(),hd.getTenKH(),hd.getCreatedAt(),hd.getTongHD()};
                 dtm.addRow(t);
             }
         }

@@ -8,7 +8,7 @@ import java.util.concurrent.RecursiveTask;
 public abstract class DefaultConnection {
     private String url = "jdbc:mysql://localhost:3306";
     private String user = "root";
-    private String pass = "";
+    private String pass = "gg";
 
     public DefaultConnection() {
     }
@@ -20,6 +20,6 @@ public abstract class DefaultConnection {
 
     public static Connection getConnect() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/LIBRARY_MANAGEMENT", "root", "");
+        return DriverManager.getConnection("jdbc:mysql://localhost:3306/LIBRARY_MANAGEMENT", "root", "gg");
     }
 }
