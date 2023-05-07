@@ -25,7 +25,6 @@ public class BindingListener<T> implements DocumentListener {
         this.parent = parent;
         this.model = model;
         this.setFunction = setFunction;
-        System.out.println(validationPattern);
         this.pattern = Pattern.compile(validationPattern);
     }
 
@@ -51,11 +50,8 @@ public class BindingListener<T> implements DocumentListener {
                     e.getDocument().getEndPosition().getOffset() - 1);
             if (text.matches(pattern.pattern())) {
                 setFunction.accept(text);
-                parent.setBackground(new Color(195, 232, 141));
             }
-            else {
-                parent.setBackground(new Color(244, 171, 171));
-            }
+
 
 
         } catch (BadLocationException ex) {
