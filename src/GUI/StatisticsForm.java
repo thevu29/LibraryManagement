@@ -14,11 +14,9 @@ import java.util.ArrayList;
 public class StatisticsForm {
     private MembershipStatisticsForm membershipStatisticsForm;
     private BookChart bookChart;
-//    private SellChart sellChart;
     private BookBUS bookBUS;
     private SellTicketBus sellTicketBus;
     private final BorrowBUS borrowBUS;
-    //    private MembershipStatisticsForm membershipStatisticsForm = new MembershipStatisticsForm();
     private BorrowChart borrow;
     private SellChart sell_ticket;
     private ChartCTHD cthd = new ChartCTHD();
@@ -42,14 +40,11 @@ public class StatisticsForm {
         ArrayList<String> dsOpt = new ArrayList<>();
         dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
         bookChart = new BookChart(dataset, dsOpt);
-        bookPanel.add(bookChart.getMain());
 
         dsOpt.clear();
         dsOpt.add("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM");
         dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
-        int nam = Year.now().getValue();
         sell_ticket = new SellChart(sellTicketBus);
-        pnlHoaDon.add(sell_ticket.getMain());
 
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override
@@ -57,14 +52,16 @@ public class StatisticsForm {
                 if(tabbedPane1.getSelectedIndex() == 0){
                     membershipPanel.add(membershipStatisticsForm.getMainPanel());
                 }
-                else if(tabbedPane1.getSelectedIndex() == 1){
+                else if(tabbedPane1.getSelectedIndex() == 1) {
                     pnlPhieuMuon.add(borrow.getMain());
                 }
-                else if(tabbedPane1.getSelectedIndex() == 2){
+                else if(tabbedPane1.getSelectedIndex() == 2) {
                     pnlHoaDon.add(sell_ticket.getMain());
                 }
-                else if(tabbedPane1.getSelectedIndex() == 3){
+                else if(tabbedPane1.getSelectedIndex() == 3) {
                     pnlCTHD.add(cthd.getMain());
+                } else if (tabbedPane1.getSelectedIndex() == 4) {
+                    bookPanel.add(bookChart.getMain());
                 }
             }
         });
