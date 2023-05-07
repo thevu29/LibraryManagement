@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class BorrowDetailDAO extends DefaultConnection {
@@ -28,7 +29,8 @@ public class BorrowDetailDAO extends DefaultConnection {
                         .parseDouble(rs.getString("TIEN_TAM_TINH") == null ? "0" : rs.getString("TIEN_TAM_TINH"));
                 var tongTien = Double.parseDouble(rs.getString("TIEN_TONG") == null ? "0" : rs.getString("TIEN_TONG"));
 
-                dsMuonCT.add(new BorrowDetail(maPhieu, maSeri, tenSach, tienTamTinh, tongTien));
+                DecimalFormat decimalFormat = new DecimalFormat("#.0");
+                dsMuonCT.add(new BorrowDetail(maPhieu, maSeri, tenSach, Double.parseDouble(decimalFormat.format(tienTamTinh)), Double.parseDouble(decimalFormat.format(tongTien))));
             }
             rs.close();
             stmt.close();
@@ -142,9 +144,6 @@ public class BorrowDetailDAO extends DefaultConnection {
         }
     }
 
-    public double getTienTamTinh(double giaSach, int soNgayMuon) {
-        return giaSach * soNgayMuon * 0.05;
-    }
 
     public int getGiaGiam(String maThe) {
         String sql = "SELECT GIA_GIAM from MEMBERSHIP,MEMBERSHIP_TYPE WHERE  MEMBERSHIP.DANG_THE = MEMBERSHIP_TYPE.DANG_THE"

@@ -17,7 +17,7 @@ public class BorrowDetailBUS {
     }
 
     public double getTienTamTinh(double giaSach, int soNgayMuon){
-        return dao.getTienTamTinh(giaSach,soNgayMuon);
+        return giaSach * soNgayMuon * 0.05;
     }
 
     public int insert(BorrowDetail borrowDetail){

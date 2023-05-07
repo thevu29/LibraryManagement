@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +34,8 @@ public class FaultDetailDAO extends DefaultConnection {
                 int soLuong = rs.getInt("SO_LUONG");
                 double tongTien = soLuong * gia * heSo / 100;
 
-                dsLoiCT.add(new FaultDetail(maPhieu, maSach, tenSach, maLoi, tenLoi, soLuong, tongTien));
+                DecimalFormat decimalFormat = new DecimalFormat("#.0");
+                dsLoiCT.add(new FaultDetail(maPhieu, maSach, tenSach, maLoi, tenLoi, soLuong, Double.parseDouble(decimalFormat.format(tongTien))));
             }
             connect.close();
         } catch (SQLException | ClassNotFoundException e) {
