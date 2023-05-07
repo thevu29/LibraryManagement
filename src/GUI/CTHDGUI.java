@@ -24,8 +24,6 @@ public class CTHDGUI {
     private JButton bookDeleteAllButton;
     private JButton btnFilter;
     private JTabbedPane tab;
-    private JComboBox cboMaCTHD;
-    private JComboBox cboMaHD;
     private JComboBox cboHeSo;
     private JComboBox cboMaSeri;
     private JButton btnAdd;

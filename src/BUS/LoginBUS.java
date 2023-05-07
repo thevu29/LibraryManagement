@@ -11,6 +11,13 @@ public class LoginBUS {
 
     public LoginBUS() {
         nvList = nhanVienDAO.getAllFromDatabase();
+
+        if (findHaveNhanVienQuanLy() == null) {
+            nhanVien nv = new nhanVien("admin", "admin", "0123456789", "2003-01-01", "HCM", "admin@gmail.com", "admin", 1, 1, 1, 1, 30,
+                    5, "012345678912");
+            nhanVienDAO.AddNV(nv);
+            nvList.add(nv);
+        }
     }
 
     public boolean validateEmpty(String username, String password) {
@@ -52,6 +59,15 @@ public class LoginBUS {
 
     public void logout(JFrame frame) {
         frame.dispose();
+    }
+
+    public nhanVien findHaveNhanVienQuanLy() {
+        for (nhanVien nv : nvList) {
+            if (nv.getPosition() == 1) {
+                return nv;
+            }
+        }
+        return null;
     }
 
     public nhanVien findNhanVienById(String id) {

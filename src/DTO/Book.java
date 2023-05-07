@@ -101,7 +101,12 @@ public class Book implements Cloneable {
     }
 
     public void setPrice(String price) {
-        this.price = Long.parseLong(price);
+        try {
+            this.price = Long.parseLong(price);
+        }
+        catch (NumberFormatException ex)  {
+            setPrice(0);
+        }
     }
 
     public EBookStatus getBookStatus() {

@@ -290,7 +290,7 @@ public class BorrowUI {
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
 
                 if (borrowModel.checkBorrow(id)) {
-                    JOptionPane.showMessageDialog(null, "Phiếu đã được xác nhận trả!", "Warning",
+                    JOptionPane.showMessageDialog(null, "Phiếu đã được xác nhận, không thể xóa!", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }

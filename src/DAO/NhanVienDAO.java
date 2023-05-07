@@ -43,7 +43,7 @@ public class NhanVienDAO extends DefaultConnection {
     }
 
     public int AddNV(nhanVien nv) {
-        String sql = "INSERT INTO `EMPLOYEE` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`, `CCCD`, `IS_DELETED`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,0,0)";
+        String sql = "INSERT INTO `EMPLOYEE` (`MA_NV`,`TEN`,`CA`,`CHUC_VU`,`SO_NGAY_LAM_VIEC`,`NOI_LAM_VIEC`,`PASSWORD`,`NGAY_SINH`,`DIA_CHI`,`PHONE`,`GIOI_TINH`,`LUONG`,`EMAIL`, `CCCD`, `IS_DELETED`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)";
         int smt = 0;
         PreparedStatement pst = null;
         try {
@@ -100,12 +100,10 @@ public class NhanVienDAO extends DefaultConnection {
 
         try {
             stmt = getConnection().createStatement();
-//            pst = getConnection().prepareStatement(sql);
             rs = stmt.executeQuery(sql);
-//            smt = pst.executeUpdate();
-            if (rs.next())
+            if (rs.next()) {
                 return rs.getInt(1) + 1;
-
+            }
             return 1;
 
         } catch (SQLException | ClassNotFoundException e) {

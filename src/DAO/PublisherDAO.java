@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PublisherDAO extends DefaultConnection {
     public ArrayList<Publisher> getAllFromDatabase() {
@@ -40,7 +41,11 @@ public class PublisherDAO extends DefaultConnection {
             if (!rs.next()) {
                 return "0";
             }
-            return rs.getString("MA_NXB");
+            var maNxb = rs.getString("MA_NXB");
+            if (Objects.isNull(maNxb)) {
+                return "0";
+            }
+            return maNxb;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }

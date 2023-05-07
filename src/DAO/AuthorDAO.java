@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AuthorDAO extends DefaultConnection {
     public ArrayList<Author> getAllFromDatabase() {
@@ -82,7 +83,11 @@ public class AuthorDAO extends DefaultConnection {
             if (!rs.next()) {
                 return "0";
             }
-            return rs.getString("MA_TG");
+            var maTG = rs.getString("MA_TG");
+            if (Objects.isNull(maTG)) {
+                return "0";
+            }
+            return maTG;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }

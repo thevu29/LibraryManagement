@@ -113,7 +113,9 @@ public class NhanVienadmin {
                 b.pack();
                 b.setLocationRelativeTo(null);
 
-                a.getID().setText("NV"+count);
+                String id = String.format("%03d", count);
+                id = "NV" + id;
+                a.getID().setText(id);
 
                 a.getLưuButton().addActionListener(new ActionListener() {
                     @Override

@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GenreDAO extends DefaultConnection {
     public ArrayList<Genre> getAllFromDatabase() {
@@ -89,7 +90,12 @@ public class GenreDAO extends DefaultConnection {
             if (!rs.next()) {
                 return "0";
             }
-            return rs.getString("MA_TL");
+
+            var maTL = rs.getString("MA_TL");
+            if (Objects.isNull(maTL)) {
+                return "0";
+            }
+            return maTL;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }

@@ -131,7 +131,7 @@ public class BorrowDAO extends DefaultConnection {
 
     //
     public int delete(String id) {
-        String sql = "UPDATE `BORROW_TICKET` SET IS_DELETED=1 WHERE MA_PHIEU=?";
+        String sql = "UPDATE BORROW_TICKET SET `IS_DELETED`=1 WHERE MA_PHIEU=?";
         int smt = 0;
 
         PreparedStatement pst = null;
@@ -139,12 +139,10 @@ public class BorrowDAO extends DefaultConnection {
             Connection connect = getConnect();
             pst = connect.prepareStatement(sql);
             pst.setString(1, id);
-            smt = pst.executeUpdate();
+            pst.executeUpdate();
             pst.close();
             connect.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return smt;

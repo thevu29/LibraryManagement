@@ -41,10 +41,10 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public ArrayList<FaultDetail> getDsLoiCT(String maPhieuMuon) {
-        String sql = "SELECT ma_phieu,book_fault.MA_LOI,book_fault.TEN_LOI,book_fault.HE_SO ,book.MA_SERIES ,book.TEN_SACH,book.GIA,\n" +
-                "borrow_book_ticket_fault.SO_LUONG FROM borrow_book_ticket_fault,book,book_fault\n" +
-                "WHERE borrow_book_ticket_fault.MA_SERIES = book.MA_SERIES \n" +
-                "AND borrow_book_ticket_fault.MA_LOI = book_fault.MA_LOI AND ma_phieu = '"+maPhieuMuon+"'";
+        String sql = "SELECT MA_PHIEU,`BOOK_FAULT`.MA_LOI,`BOOK_FAULT`.TEN_LOI,`BOOK_FAULT`.HE_SO ,`BOOK`.MA_SERIES ,`BOOK`.TEN_SACH,`BOOK`.GIA,\n" +
+                "`BORROW_BOOK_TICKET_FAULT`.SO_LUONG FROM `BORROW_BOOK_TICKET_FAULT`,`BOOK`,`BOOK_FAULT`\n" +
+                "WHERE `BORROW_BOOK_TICKET_FAULT`.MA_SERIES = `BOOK`.MA_SERIES \n" +
+                "AND `BORROW_BOOK_TICKET_FAULT`.MA_LOI = `BOOK_FAULT`.MA_LOI AND ma_phieu = '"+maPhieuMuon+"'";
         return getDanhSach(sql);
     }
 

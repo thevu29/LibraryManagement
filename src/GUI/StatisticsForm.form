@@ -19,7 +19,7 @@
         <children>
           <grid id="32969" binding="membershipPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
-              <tabbedpane title="Khách hàng tành viên"/>
+              <tabbedpane title="Khách hàng thành viên"/>
             </constraints>
             <properties/>
             <border type="none"/>
