@@ -82,8 +82,14 @@ public class BorrowUI {
     private FaultBUS faultBUS = new FaultBUS();
     private BorrowBUS borrowBUS = new BorrowBUS();
 
-    public void showBorrowInfo(String id, String maThe, String tenDocGia, int soNgayMuon, String btnText) {
-        BorrowInfoUI borrowInfoUI = new BorrowInfoUI(new BorrowUI(), id, maThe, tenDocGia, soNgayMuon, btnText);
+    public BorrowUI() {
+
+    }
+
+    public void showBorrowInfo(String id, String maThe, String tenDocGia, int soNgayMuon, String btnText,
+            String login_id) {
+        BorrowInfoUI borrowInfoUI = new BorrowInfoUI(new BorrowUI(), id, maThe, tenDocGia, soNgayMuon, btnText,
+                login_id);
         borrowInfoUI.setContentPane(borrowInfoUI.getContentPane());
         borrowInfoUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         borrowInfoUI.setSize(500, 300);
@@ -118,7 +124,7 @@ public class BorrowUI {
         faultDetailUI.setVisible(true);
     }
 
-    public BorrowUI() {
+    public BorrowUI(String login_id) {
         // xu ly phieu muon
         borrowModel.setEditable(false);
         borrowModel.initModelTable(borrowBUS.getDsMuon());
@@ -162,7 +168,7 @@ public class BorrowUI {
                     } catch (ParseException ex) {
                         System.out.println("Co loi");
                     }
-                    showBorrowInfo(id, maThe, tenDocGia, (int) diff, "Lưu thông tin");
+                    showBorrowInfo(id, maThe, tenDocGia, (int) diff, "Lưu thông tin", login_id);
                 }
 
             }
@@ -218,7 +224,7 @@ public class BorrowUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String maPhieu = borrowBUS.getNewPM();
-                showBorrowInfo(maPhieu, "", "", 0, "Thêm phiếu mượn");
+                showBorrowInfo(maPhieu, "", "", 0, "Thêm phiếu mượn", login_id);
             }
         });
 
@@ -226,13 +232,19 @@ public class BorrowUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowTable.getSelectedRow();
+                String id = borrowTable.getValueAt(selectedRow, 0).toString();
+                if (borrowModel.checkBorrow(id)) {
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
                 if (selectedRow < 0) {
                     JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn sửa thông tin", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                String id = borrowTable.getValueAt(selectedRow, 0).toString();
                 String maThe = borrowTable.getValueAt(selectedRow, 5).toString();
                 String tenDocGia = borrowTable.getValueAt(selectedRow, 6).toString();
                 String ngayMuon = borrowTable.getValueAt(selectedRow, 7).toString();
@@ -248,7 +260,7 @@ public class BorrowUI {
                 } catch (ParseException ex) {
                     System.out.println("Co loi");
                 }
-                showBorrowInfo(id, maThe, tenDocGia, (int) diff, "Lưu thông tin");
+                showBorrowInfo(id, maThe, tenDocGia, (int) diff, "Lưu thông tin", login_id);
             }
         });
         deleteBorrowButton.addActionListener(new ActionListener() {
@@ -269,7 +281,7 @@ public class BorrowUI {
 
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
 
-                if(!borrowModel.checkBorrow(id)){
+                if (!borrowModel.checkBorrow(id)) {
                     JOptionPane.showMessageDialog(null, "Phiếu mượn chưa đc trả", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
@@ -299,8 +311,6 @@ public class BorrowUI {
                     return;
                 }
 
-
-
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
 
                 if (borrowModel.checkBorrow(id)) {
@@ -309,7 +319,7 @@ public class BorrowUI {
                     return;
                 }
 
-                borrowBUS.submitBorrow(id);
+                borrowBUS.submitBorrow(id, login_id);
                 borrowModel.initModelTable(borrowBUS.getDsMuon());
 
                 JOptionPane.showMessageDialog(null, "Xác nhận trả thành công!");
@@ -474,7 +484,6 @@ public class BorrowUI {
             }
 
         });
-
 
     }
 

@@ -28,15 +28,16 @@ public class BorrowDetailUI extends JFrame {
 
     private BorrowUI borrowUI;
 
-
-
-    public BorrowDetailUI(){
+    public BorrowDetailUI() {
 
         borrowDetailTable.addComponentListener(new ComponentAdapter() {
         });
     }
-    public void showBorrowDetailInfo(String maPhieu,String maSach,String tenSach,String maThe,long soNgayMon,String btnText) {
-        BorrowDetailInfo borrowDetailInfo = new BorrowDetailInfo(new BorrowUI(),maPhieu,maSach,tenSach,maThe,soNgayMon, btnText);
+
+    public void showBorrowDetailInfo(String maPhieu, String maSach, String tenSach, String maThe, long soNgayMon,
+            String btnText) {
+        BorrowDetailInfo borrowDetailInfo = new BorrowDetailInfo(new BorrowUI(), maPhieu, maSach, tenSach, maThe,
+                soNgayMon, btnText);
         borrowDetailInfo.setContentPane(borrowDetailInfo.getContentPane());
         borrowDetailInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         borrowDetailInfo.setSize(500, 300);
@@ -52,8 +53,7 @@ public class BorrowDetailUI extends JFrame {
 
     public BorrowBUS borrowBUS = new BorrowBUS();
 
-
-    public BorrowDetailUI(String id,String maThe,long soNgayMuon) {
+    public BorrowDetailUI(String id, String maThe, long soNgayMuon) {
         borrowDetailTable.setModel(borrowDetailModel);
         borrowDetailTable.setDefaultEditor(Object.class, null);
 
@@ -65,82 +65,88 @@ public class BorrowDetailUI extends JFrame {
                 super.mouseClicked(e);
                 if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
                     System.out.println("double clicked fault");
-                    int[] pos = {borrowDetailTable.getSelectedRow(), borrowDetailTable.getSelectedColumn()};
+                    int[] pos = { borrowDetailTable.getSelectedRow(), borrowDetailTable.getSelectedColumn() };
                     System.out.println(pos[0] + " " + pos[1]);
                     int selectedRow = borrowDetailTable.getSelectedRow();
                     if (selectedRow < 0) {
-                        JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning", JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Vui lòng chọn lỗi muốn sửa thông tin", "Warning",
+                                JOptionPane.WARNING_MESSAGE);
                         return;
                     }
 
                     String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
                     String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
                     String tenSach = borrowDetailTable.getValueAt(selectedRow, 2).toString();
-                    showBorrowDetailInfo(id, maSach,tenSach,maThe,soNgayMuon,"Lưu thông tin");
+                    showBorrowDetailInfo(id, maSach, tenSach, maThe, soNgayMuon, "Lưu thông tin");
                 }
             }
         });
 
-
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(borrowModel.checkBorrow(id)){
+                if (borrowModel.checkBorrow(id)) {
                     JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                showBorrowDetailInfo(id,"","",maThe,soNgayMuon,"Thêm sách mượn");
+                showBorrowDetailInfo(id, "", "", maThe, soNgayMuon, "Thêm sách mượn");
             }
         });
         btnUpdate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowDetailTable.getSelectedRow();
-                if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn sửa ", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
 
-                if(borrowModel.checkBorrow(id)){
+                if (borrowModel.checkBorrow(id)) {
                     JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-//
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn sửa ", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                //
                 String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
                 String tenSach = borrowDetailTable.getValueAt(selectedRow, 2).toString();
-                showBorrowDetailInfo(id,maSach,tenSach,maThe,soNgayMuon,"Lưu thông tin");
+                showBorrowDetailInfo(id, maSach, tenSach, maThe, soNgayMuon, "Lưu thông tin");
             }
         });
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowDetailTable.getSelectedRow();
-                if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn sách mượn muốn xóa", "Warning", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-
-                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn chắc muốn xóa?", "Question", JOptionPane.YES_NO_OPTION);
-                if (choice != JOptionPane.YES_OPTION) {
-                    return;
-                }
 
                 String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
-                if(borrowModel.checkBorrow(id)){
+                if (borrowModel.checkBorrow(id)) {
                     JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
-
-                if(borrowDetailBUS.checkContainBookFault(id,maSach)){
-                    JOptionPane.showMessageDialog(null, "Tồn tại lỗi của sách trong phiếu mượn!", "Warning", JOptionPane.WARNING_MESSAGE);
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn sách mượn muốn xóa", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                borrowDetailBUS.delete(id,maSach);
+                int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn chắc muốn xóa?", "Question",
+                        JOptionPane.YES_NO_OPTION);
+                if (choice != JOptionPane.YES_OPTION) {
+                    return;
+                }
+
+                String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
+
+                if (borrowDetailBUS.checkContainBookFault(id, maSach)) {
+                    JOptionPane.showMessageDialog(null, "Tồn tại lỗi của sách trong phiếu mượn!", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                borrowDetailBUS.delete(id, maSach);
                 borrowDetailModel.initModelTable(borrowDetailBUS.getDsMuonCT(id));
                 borrowModel.initModelTable(borrowBUS.getDsMuon());
 
@@ -151,8 +157,8 @@ public class BorrowDetailUI extends JFrame {
 
         borrowDetailTable.getTableHeader().setReorderingAllowed(false);
 
-
-        var maSachCBTF = AutoSuggestComboBox.createWithDeleteBtn(maSachCbx, 1, borrowDetailModel::getColumnValueToString,
+        var maSachCBTF = AutoSuggestComboBox.createWithDeleteBtn(maSachCbx, 1,
+                borrowDetailModel::getColumnValueToString,
                 maSachDelBtn);
         var tenSachCBTF = AutoSuggestComboBox.createWithDeleteBtn(tenSachCbx, 2,
                 borrowDetailModel::getColumnValueToString,
@@ -165,7 +171,6 @@ public class BorrowDetailUI extends JFrame {
 
         borrowDetailModel.setFilterField(1, maSachCBTF);
         borrowDetailModel.setFilterField(2, tenSachCBTF);
-
 
         for (Iterator<TableColumn> it = borrowDetailTable.getColumnModel().getColumns().asIterator(); it.hasNext();) {
             var column = it.next();

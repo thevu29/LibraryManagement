@@ -429,11 +429,11 @@ public class BorrowDAO extends DefaultConnection {
         }
     }
 
-    public int submitBorrow(String id) {
+    public int submitBorrow(String id,String login_id) {
         SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
         String ngayTra = sdf1.format(calendar.getTime());
-        String maNv = "NV1";
+        String maNv = login_id;
         String sql = "UPDATE `BORROW_TICKET` SET MA_NV_TRA = ?, DATE_GIVE_BACK = ? WHERE `MA_PHIEU`=?";
 
         int smt = 0;

@@ -96,9 +96,9 @@ public class FaultDAO extends DefaultConnection {
             pst.setString(3, fault.getId());
             pst.setString(1, fault.getTenLoi());
             pst.setDouble(2, fault.getHeSo());
+            smt = pst.executeUpdate();
             pst.close();
             connect.close();
-            smt = pst.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

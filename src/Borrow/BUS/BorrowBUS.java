@@ -37,8 +37,8 @@ public class BorrowBUS {
         return dao.updateField(id,maThe,soNgayMuon);
     }
 
-    public int submitBorrow(String id){
-        return dao.submitBorrow(id);
+    public int submitBorrow(String id,String login_id){
+        return dao.submitBorrow(id,login_id);
     }
 
 

@@ -2,6 +2,7 @@ package Borrow.DAO;
 
 import Borrow.DTO.BorrowDetail;
 import Borrow.DTO.FaultDetail;
+import Borrow.GUI.FaultDetailUI;
 import Core.DefaultConnection;
 
 import java.sql.Connection;
@@ -24,7 +25,7 @@ public class FaultDetailDAO extends DefaultConnection {
             while (rs.next()) {
                 String maPhieu = rs.getString("MA_PHIEU");
                 String maSach = rs.getString("MA_SERIES");
-                String tenSach = rs.getString("`TEN_SACH`");
+                String tenSach = rs.getString("TEN_SACH");
                 double gia = rs.getDouble("gia");
                 String maLoi = rs.getString("MA_LOI");
                 String tenLoi = rs.getString("ten_loi");
@@ -34,8 +35,6 @@ public class FaultDetailDAO extends DefaultConnection {
 
                 dsLoiCT.add(new FaultDetail(maPhieu, maSach, tenSach, maLoi, tenLoi, soLuong, tongTien));
             }
-            rs.close();
-            stmt.close();
             connect.close();
         } catch (SQLException | ClassNotFoundException e) {
             return dsLoiCT;
@@ -44,10 +43,10 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public ArrayList<FaultDetail> getDsLoiCT(String maPhieuMuon) {
-        String sql = "SELECT MA_PHIEU,`BOOK_FAULT`.*,`BOOK`.`MA_SERIES`,`BOOK`.`TEN_SACH`," +
-                "`BOOK`.GIA,`BORROW_BOOK_TICKET_FAULT`.SO_LUONG FROM `BORROW_BOOK_TICKET_FAULT`,`BOOK`," +
-                "`BOOK_FAULT` WHERE `BORROW_BOOK_TICKET_FAULT`.MA_SERIES = `BOOK`.MA_SERIES " +
-                "AND `BORROW_BOOK_TICKET_FAULT`.MA_LOI = `BOOK_FAULT`.MA_LOI and MA_PHIEU='" + maPhieuMuon + "'";
+        String sql = "SELECT ma_phieu,book_fault.MA_LOI,book_fault.TEN_LOI,book_fault.HE_SO ,book.MA_SERIES ,book.TEN_SACH,book.GIA,\n" +
+                "borrow_book_ticket_fault.SO_LUONG FROM borrow_book_ticket_fault,book,book_fault\n" +
+                "WHERE borrow_book_ticket_fault.MA_SERIES = book.MA_SERIES \n" +
+                "AND borrow_book_ticket_fault.MA_LOI = book_fault.MA_LOI AND ma_phieu = '"+maPhieuMuon+"'";
         return getDanhSach(sql);
     }
 
@@ -274,7 +273,11 @@ public class FaultDetailDAO extends DefaultConnection {
     }
 
     public static void main(String[] args) {
-
-        System.out.println(FaultDetailDAO.getTenLoi("ML001"));
+        FaultDetailDAO dao = new FaultDetailDAO();
+        ArrayList<FaultDetail> ds = dao.getDsLoiCT("PM5");
+        for (FaultDetail fault:
+             ds) {
+            System.out.println(fault.getTenLoi());
+        }
     }
 }
