@@ -35,7 +35,7 @@ public class BorrowChart {
 
         dataset = bus.laySoLieuPhieuMuon(nam);
         cboThongKe.addItem("Thống kê số lượng phiếu mượn");
-        cboThongKe.addItem("Thống kê số lượng sách");
+        cboThongKe.addItem("Thống kê số lượng sách mượn");
         cboThongKe.addItem("Thống kê lỗi");
 
 

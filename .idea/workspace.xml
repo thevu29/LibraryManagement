@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix GUI 2">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="set center for all table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowChart.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +109,7 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainWindow">
+  <component name="RunManager" selected="Application.MainWindow (3)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -147,7 +142,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="MainWindow (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -188,11 +183,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainWindow (3)" />
         <item itemvalue="Application.MainWindow" />
         <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.MainWindow (4)" />
         <item itemvalue="Application.MainWindow (1)" />
-        <item itemvalue="Application.MainWindow (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -537,7 +532,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683431843905</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="set center for all table">
+      <created>1683438206206</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1683438206206</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +569,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="thêm 1 số hàm validate" />
     <MESSAGE value="thêm filter by membership type trong chart" />
     <MESSAGE value="thêm LoginForm" />
     <MESSAGE value="export excel" />
@@ -592,7 +593,8 @@
     <MESSAGE value="fix CustomerGUI" />
     <MESSAGE value="fix GUI" />
     <MESSAGE value="fix GUI 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix GUI 2" />
+    <MESSAGE value="set center for all table" />
+    <option name="LAST_COMMIT_MESSAGE" value="set center for all table" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
