@@ -165,29 +165,6 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <grid id="fe4a0" layout-manager="GridBagLayout">
-                        <constraints>
-                          <tabbedpane title="MÃ HD"/>
-                        </constraints>
-                        <properties>
-                          <foreground color="-5194043"/>
-                        </properties>
-                        <border type="none"/>
-                        <children>
-                          <component id="ef2ef" class="javax.swing.JComboBox" binding="cboMaHD">
-                            <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                                <preferred-size width="150" height="-1"/>
-                              </grid>
-                              <gridbag weightx="3.0" weighty="0.0"/>
-                            </constraints>
-                            <properties>
-                              <background color="-13382401"/>
-                              <editable value="false"/>
-                            </properties>
-                          </component>
-                        </children>
-                      </grid>
                       <grid id="b6c81" layout-manager="GridBagLayout">
                         <constraints>
                           <tabbedpane title="HE SO"/>

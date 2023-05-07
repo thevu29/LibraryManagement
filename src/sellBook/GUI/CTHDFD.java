@@ -6,6 +6,7 @@ import sellBook.DTO.CTHD;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class CTHDFD extends JDialog {
@@ -225,10 +226,12 @@ public class CTHDFD extends JDialog {
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
+                DecimalFormat df = new DecimalFormat("#.#");
                 if(!txtTenSach.getText().isEmpty() && !txtHeSo.getText().isEmpty()){
                     double tien = bus.tienSach(txtMaSeri.getText());
                     double hs = Double.parseDouble(txtHeSo.getText());
-                    txtTongTien.setText(String.valueOf(tien*(1-hs)));
+                    double tongTien = tien*(1-hs);
+                    txtTongTien.setText(df.format(tongTien));
                 }
             }
         });
@@ -241,11 +244,12 @@ public class CTHDFD extends JDialog {
                 super.keyReleased(e);
                 String tenSach = bus.goiYTenSach(txtMaSeri.getText());
                 txtTenSach.setText(tenSach);
+                DecimalFormat df = new DecimalFormat("#.#");
                 if(!tenSach.isEmpty()){
                     double tien = bus.tienSach(txtMaSeri.getText());
                     double hs = Double.parseDouble(txtHeSo.getText());
-                    txtTongTien.setText(String.valueOf(tien*(1-hs)));
-                }
+                    double tongTien = tien*(1-hs);
+                    txtTongTien.setText(df.format(tongTien));                }
             }
         });
     }
