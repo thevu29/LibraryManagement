@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class CustomerForm {
     private CustomerBUS customerBUS = new CustomerBUS();
     private DefaultTableModel tblCustomerModel;
-    private TableRowSorter<DefaultTableModel> customerSorter;
+    private TableRowSorter<DefaultTableModel> customerSorter = new TableRowSorter<>();
     private JTextField txtCusId;
     private JTextField txtCusName;
     private JTextField txtCusEmail;
@@ -49,12 +49,8 @@ public class CustomerForm {
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                if (tabbedPane1.getSelectedIndex() == 0) {
-                    handleCustomer();
-                } else if (tabbedPane1.getSelectedIndex() == 1) {
+                if (tabbedPane1.getSelectedIndex() == 1) {
                     handleMembership();
-                } else if (tabbedPane1.getSelectedIndex() == 2) {
-                    handleMembershipType();
                 }
             }
         });
