@@ -21,6 +21,8 @@ public class MainWindow {
     private StatisticsForm statisticsForm;
     private LoginBUS loginBUS = new LoginBUS();
     private String employeeId;
+    private BorrowBUS borrowBus;
+    private SellTicketBus sellTicketBus;
 
     public MainWindow(String employeeId) {
         this.employeeId = employeeId;
@@ -46,6 +48,8 @@ public class MainWindow {
                 } else if (e.getSource() == lblBorrow) {
                     card.show(contentPanel, "Borrow");
                 } else if (e.getSource() == lblStatistics) {
+                    var statisticsForm = new StatisticsForm(bookForm, sellTicketBus, borrowBus);
+                    contentPanel.add("Statistics", statisticsForm.getMainPanel());
                     card.show(contentPanel, "Statistics");
                 }
             }
@@ -75,21 +79,21 @@ public class MainWindow {
 
     public void initContentPanel() {
         bookForm = new BookBUS();
-        var sellTicketBus = new SellTicketBus();
-        var borrowBus = new BorrowBUS();
+        sellTicketBus = new SellTicketBus();
+        borrowBus = new BorrowBUS();
 
         customerForm = new CustomerForm();
         employeeForm = new NhanVienadmin();
         sellForm = new HoaDonGUI(this.employeeId);
         borrowForm = new BorrowUI(this.employeeId);
-        statisticsForm = new StatisticsForm(bookForm, sellTicketBus, borrowBus);
+//        statisticsForm = new StatisticsForm(bookForm, sellTicketBus, borrowBus);
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
         contentPanel.add("Borrow", borrowForm.getPanel1());
         contentPanel.add("Employee", employeeForm.getMain());
         contentPanel.add("Sell", sellForm.getMain());
-        contentPanel.add("Statistics", statisticsForm.getMainPanel());
+//        contentPanel.add("Statistics", statisticsForm.getMainPanel());
     }
 
     public void hover() {
