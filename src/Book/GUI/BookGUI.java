@@ -7,6 +7,7 @@ import Utils.TableUtils;
 import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
@@ -126,23 +127,7 @@ public class BookGUI {
         setupGenrePane();
         setupPublisherPane();
         setupImporterPane();
-
-        btnThongKe.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultPieDataset dataset = bus.thonngKeTinhTrangSach();
-                ArrayList<String> dsOpt = new ArrayList<>();
-                dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
-                BookChart b = new BookChart(dataset,dsOpt);
-                JFrame frame = new JFrame("Thong Ke");
-                frame.setContentPane(b.getMain());
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-            }
-        });
     }
-
 
     private void setupImporterPane() {
         TableRowSorter<ImporterDataTableModel> sorter
@@ -152,6 +137,11 @@ public class BookGUI {
         importerTB.getTableHeader().setBackground(Color.WHITE);
         importerTB.setModel(importerTableModel);
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < importerTB.getColumnCount(); i++) {
+            importerTB.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         var iIDTF = AutoSuggestComboBox.createWithDeleteBtn(iIDCB, 0, importerTableModel::getColumnValueToString, iIDDelBtn);
         var iNameTF = AutoSuggestComboBox.createWithDeleteBtn(iNameCB, 1, importerTableModel::getColumnValueToString, iNameBtn);
@@ -225,6 +215,11 @@ public class BookGUI {
         publisherTable.getTableHeader().setBackground(Color.WHITE);
         publisherTable.setModel(publisherTableModel);
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < publisherTable.getColumnCount(); i++) {
+            publisherTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         var pIDTF = AutoSuggestComboBox.createWithDeleteBtn(pIDCB, 0, publisherTableModel::getColumnValueToString, pIDDelBtn);
         var pNameTF = AutoSuggestComboBox.createWithDeleteBtn(pNameCB, 1, publisherTableModel::getColumnValueToString, pNameDelBtn);
@@ -290,6 +285,12 @@ public class BookGUI {
         authorTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         authorTable.getTableHeader().setBackground(Color.WHITE);
         authorTable.setModel(authorDataTableModel);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < authorTable.getColumnCount(); i++) {
+            authorTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         var authorIDTF = AutoSuggestComboBox.createWithDeleteBtn(authorIDCB, 0, authorDataTableModel::getColumnValueToString, authorIDBtn);
         var authorNameTF = AutoSuggestComboBox.createWithDeleteBtn(authorNameCB, 1, authorDataTableModel::getColumnValueToString, authorNameDelBtn);
@@ -358,6 +359,12 @@ public class BookGUI {
         genreTable.getTableHeader().setBackground(Color.WHITE);
         genreTable.setModel(genreDataTableModel);
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < genreTable.getColumnCount(); i++) {
+            genreTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
         var genreIDTF = AutoSuggestComboBox.createWithDeleteBtn(genreIDCB, 0, genreDataTableModel::getColumnValueToString, genreIDBtn);
         var genreNameTF = AutoSuggestComboBox.createWithDeleteBtn(genreNameCB, 1, genreDataTableModel::getColumnValueToString, genreNameDel);
         var genreDesTF = AutoSuggestComboBox.createWithDeleteBtn(genreDesCB, 2, genreDataTableModel::getColumnValueToString, genreDesDelBtn);
@@ -422,11 +429,13 @@ public class BookGUI {
         bookTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         bookTable.getTableHeader().setBackground(Color.WHITE);
 
-        addRowButton.addActionListener(e -> bookDataModel.addTestData());
-
-
         bookTable.getTableHeader().setReorderingAllowed(false);
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < bookTable.getColumnCount(); i++) {
+            bookTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         var bookIDTF = AutoSuggestComboBox.createWithDeleteBtn(bookIDComboBox, 0, bookDataModel::getColumnValueToString, bookIDDelBtn);
         var bookNameTF = AutoSuggestComboBox.createWithDeleteBtn(bookNameCB, 1, bookDataModel::getColumnValueToString, bookNameDelBtn);

@@ -40,7 +40,7 @@ public class BorrowDetailUI extends JFrame {
         BorrowDetailInfo borrowDetailInfo = new BorrowDetailInfo(new BorrowUI(),maPhieu,maSach,tenSach,maThe,soNgayMon, btnText);
         borrowDetailInfo.setContentPane(borrowDetailInfo.getContentPane());
         borrowDetailInfo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        borrowDetailInfo.setSize(500, 300);
+        borrowDetailInfo.setSize(500, 500);
         borrowDetailInfo.setLocationRelativeTo(null);
         borrowDetailInfo.setVisible(true);
     }

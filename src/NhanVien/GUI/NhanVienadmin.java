@@ -7,6 +7,7 @@ import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
@@ -56,6 +57,12 @@ public class NhanVienadmin {
         table1.setRowSorter(sorter);
         table1.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         table1.getTableHeader().setBackground(Color.WHITE);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < table1.getColumnCount(); i++) {
+            table1.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         table1.addMouseListener(new MouseAdapter() {
             @Override

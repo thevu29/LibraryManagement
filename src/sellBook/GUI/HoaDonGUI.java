@@ -6,6 +6,7 @@ import sellBook.DTO.HoaDon;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -272,6 +273,12 @@ public class HoaDonGUI {
             }
         }
         tblCheckOut.setModel(dtm);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < tblCheckOut.getColumnCount(); i++) {
+            tblCheckOut.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
     public void showAll(){
         changeTable(bus.getAllSellTicket());
