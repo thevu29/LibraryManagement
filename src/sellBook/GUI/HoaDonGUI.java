@@ -123,12 +123,7 @@ public class HoaDonGUI {
                 dialog.setVisible(true);
             }
         });
-        THÀNHCÔNGButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(1);
-            }
-        });
+
         btnRemove.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -254,7 +249,7 @@ public class HoaDonGUI {
     private void changeTable(List<HoaDon> dshd){
 
         dtm.setRowCount(0);
-        String[] columns = {"Mã hóa đơn", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
+        String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
         if(!dshd.isEmpty()){
             for(HoaDon hd:dshd){
@@ -266,7 +261,7 @@ public class HoaDonGUI {
         tblCheckOut.setModel(dtm);
     }
     private void initTable(){
-        String[] columns = {"Mã hóa đơn", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
+        String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
 
         dshd =  bus.getAllSellTicket();

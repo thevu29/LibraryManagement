@@ -123,9 +123,9 @@ public class ChartCTHD {
 
     public JFreeChart createBarChart(String selectedOption) {
         JFreeChart newChart = ChartFactory.createBarChart(
-                "Hoa Don", // SellChart title
+                "Thống kê số sách bán được", // SellChart title
                 selectedOption, // X-Axis Label
-                "Number of Hoa Don", // Y-Axis Label
+                "Số lượng sách", // Y-Axis Label
                 categoryDataset, // New dataset
                 PlotOrientation.VERTICAL, // Plot orientation
                 false, // Show legend

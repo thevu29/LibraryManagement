@@ -142,7 +142,7 @@
                               <gridbag weightx="1.0" weighty="0.0"/>
                             </constraints>
                             <properties>
-                              <text value="Mã hóa đơn:"/>
+                              <text value="Mã phiếu bán:"/>
                             </properties>
                           </component>
                           <component id="6b436" class="javax.swing.JTextField" binding="txtMaPhieu">

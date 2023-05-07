@@ -15,7 +15,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <grid id="940b6" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="940b6" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="0" column="1" row-span="2" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -31,24 +31,14 @@
                 <properties>
                   <background color="-11107086"/>
                   <foreground color="-1"/>
-                  <text value="Xóa hóa đơn"/>
+                  <text value="Xóa phiếu bán"/>
                 </properties>
               </component>
               <vspacer id="cecd7">
                 <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                 </constraints>
               </vspacer>
-              <component id="be9f7" class="javax.swing.JButton" binding="THÀNHCÔNGButton" default-binding="true">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-11107086"/>
-                  <foreground color="-1"/>
-                  <text value="Thành công"/>
-                </properties>
-              </component>
               <component id="350f9" class="javax.swing.JButton" binding="btnAdd">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -56,7 +46,7 @@
                 <properties>
                   <background color="-11107086"/>
                   <foreground color="-1"/>
-                  <text value="Thêm hóa đơn"/>
+                  <text value="Thêm phiếu bán"/>
                 </properties>
               </component>
               <component id="69d38" class="javax.swing.JButton" binding="btnCapNhat">
@@ -66,7 +56,7 @@
                 <properties>
                   <background color="-11107086"/>
                   <foreground color="-1"/>
-                  <text value="Cập nhật hóa đơn"/>
+                  <text value="Cập nhật phiếu bán"/>
                 </properties>
               </component>
             </children>
@@ -173,7 +163,7 @@
                               <gridbag weightx="3.0" weighty="0.0"/>
                             </constraints>
                             <properties>
-                              <background color="-13382401"/>
+                              <background color="-1"/>
                               <editable value="false"/>
                             </properties>
                           </component>
@@ -196,7 +186,7 @@
                               <gridbag weightx="3.0" weighty="0.0"/>
                             </constraints>
                             <properties>
-                              <background color="-13382401"/>
+                              <background color="-1"/>
                               <editable value="false"/>
                             </properties>
                           </component>

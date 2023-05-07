@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="panel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="951" height="400"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -142,7 +142,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                   <foreground color="-5194043"/>
                                 </properties>
@@ -177,7 +177,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                 </properties>
                               </component>
@@ -211,7 +211,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                 </properties>
                               </component>
@@ -245,7 +245,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                 </properties>
                               </component>
@@ -279,7 +279,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                 </properties>
                               </component>
@@ -313,7 +313,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                 </properties>
                               </component>
@@ -347,7 +347,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                 </properties>
                               </component>
@@ -359,7 +359,7 @@
                   </grid>
                 </children>
               </grid>
-              <grid id="e195c" layout-manager="GridLayoutManager" row-count="8" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="e195c" layout-manager="GridLayoutManager" row-count="7" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -370,7 +370,7 @@
                 <children>
                   <vspacer id="2eda1">
                     <constraints>
-                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
                     </constraints>
                   </vspacer>
                   <component id="7d47b" class="javax.swing.JButton" binding="addBorrowButton">
@@ -443,18 +443,6 @@
                       <font size="14"/>
                       <foreground color="-1"/>
                       <text value="Xác nhận trả sách"/>
-                    </properties>
-                  </component>
-                  <component id="439f" class="javax.swing.JButton" binding="btnThongKe">
-                    <constraints>
-                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                    </constraints>
-                    <properties>
-                      <background color="-11107086"/>
-                      <borderPainted value="true"/>
-                      <font size="14"/>
-                      <foreground color="-1"/>
-                      <text value="Xem Thống Kê"/>
                     </properties>
                   </component>
                 </children>
@@ -586,7 +574,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                   <foreground color="-5194043"/>
                                 </properties>
@@ -621,7 +609,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                 </properties>
                               </component>
@@ -655,7 +643,7 @@
                                   <gridbag weightx="3.0" weighty="0.0"/>
                                 </constraints>
                                 <properties>
-                                  <background color="-13382401"/>
+                                  <background color="-1"/>
                                   <editable value="true"/>
                                   <foreground color="-15000805"/>
                                   <model/>

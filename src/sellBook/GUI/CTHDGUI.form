@@ -14,7 +14,7 @@
         </constraints>
         <properties>
           <font size="26"/>
-          <text value="Chi Tiết Hóa Đơn"/>
+          <text value="Chi Tiết Phiếu Bán"/>
         </properties>
       </component>
       <grid id="b18d3" layout-manager="GridBagLayout">
@@ -40,7 +40,7 @@
                 <properties>
                   <background color="-11107086"/>
                   <foreground color="-1"/>
-                  <text value="XÓA CTHD"/>
+                  <text value="XÓA CTPB"/>
                 </properties>
               </component>
               <vspacer id="63998">
@@ -55,7 +55,7 @@
                 <properties>
                   <background color="-11107086"/>
                   <foreground color="-1"/>
-                  <text value="THÊM CTHD"/>
+                  <text value="THÊM CTPB"/>
                 </properties>
               </component>
               <component id="3eccd" class="javax.swing.JButton" binding="btnUpdate">
@@ -65,7 +65,7 @@
                 <properties>
                   <background color="-11107086"/>
                   <foreground color="-1"/>
-                  <text value="CẬP NHẬT CTHD"/>
+                  <text value="CẬP NHẬT CTPB"/>
                 </properties>
               </component>
               <component id="4ec79" class="javax.swing.JButton" binding="btnXuatPDF">
@@ -167,7 +167,7 @@
                     <children>
                       <grid id="fe4a0" layout-manager="GridBagLayout">
                         <constraints>
-                          <tabbedpane title="Mã hóa đơn"/>
+                          <tabbedpane title="Mã phiếu bán"/>
                         </constraints>
                         <properties>
                           <foreground color="-5194043"/>
@@ -182,7 +182,7 @@
                               <gridbag weightx="3.0" weighty="0.0"/>
                             </constraints>
                             <properties>
-                              <background color="-13382401"/>
+                              <background color="-1"/>
                               <editable value="false"/>
                             </properties>
                           </component>
@@ -205,7 +205,7 @@
                               <gridbag weightx="3.0" weighty="0.0"/>
                             </constraints>
                             <properties>
-                              <background color="-13382401"/>
+                              <background color="-1"/>
                               <editable value="false"/>
                               <enabled value="true"/>
                             </properties>
@@ -214,7 +214,7 @@
                       </grid>
                       <grid id="c187d" layout-manager="GridBagLayout">
                         <constraints>
-                          <tabbedpane title="Mã series"/>
+                          <tabbedpane title="Mã series sách"/>
                         </constraints>
                         <properties>
                           <foreground color="-5194043"/>
@@ -229,7 +229,7 @@
                               <gridbag weightx="3.0" weighty="0.0"/>
                             </constraints>
                             <properties>
-                              <background color="-13382401"/>
+                              <background color="-1"/>
                               <editable value="false"/>
                               <foreground color="-15000805"/>
                             </properties>

@@ -16,7 +16,6 @@ public class BorrowInfoUI extends JFrame {
     private JPanel sachPanel;
     private JButton button1;
 
-
     private JPanel panel1;
     private JTextField txtMaPhieuMuon;
     private JTextField txtSoNgayMuon;
@@ -85,8 +84,6 @@ public class BorrowInfoUI extends JFrame {
             return;
         }
 
-
-
         String id = txtMaPhieuMuon.getText();
         String maThe = cbxMaThe.getItemAt(cbxMaThe.getSelectedIndex()).toString();
         int soNgayMuon = Integer.parseInt(txtSoNgayMuon.getText());
@@ -142,8 +139,6 @@ public class BorrowInfoUI extends JFrame {
         }
         return true;
     }
-
-
 
     public void setInset() {
         Insets inset = new Insets(4, 10, 4, 10);

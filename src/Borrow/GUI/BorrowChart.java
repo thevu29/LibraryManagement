@@ -108,9 +108,9 @@ public class BorrowChart {
 
     public static JFreeChart createBarChart(String selectedOption){
         JFreeChart newChart = ChartFactory.createBarChart(
-                "Hoa Don", // Chart title
+                "Phiếu mượn", // Chart title
                 selectedOption, // X-Axis Label
-                "Number of Phieu Muon", // Y-Axis Label
+                "Số lượng phiếu mượn", // Y-Axis Label
                 dataset, // New dataset
                 PlotOrientation.VERTICAL, // Plot orientation
                 false, // Show legend

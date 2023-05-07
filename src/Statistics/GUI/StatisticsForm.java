@@ -18,10 +18,8 @@ import java.util.ArrayList;
 public class StatisticsForm {
     private MembershipStatisticsForm membershipStatisticsForm;
     private BookChart bookChart;
-//    private SellChart sellChart;
     private BookBUS bookBUS;
     private SellTicketBus sellTicketBus;
-//    private MembershipStatisticsForm membershipStatisticsForm = new MembershipStatisticsForm();
     private BorrowChart borrow = new BorrowChart();
     private Chart sell_ticket = new Chart();
     private ChartCTHD cthd = new ChartCTHD();
@@ -35,7 +33,6 @@ public class StatisticsForm {
         this.bookBUS = bookBUS;
         this.sellTicketBus = sellTicketBus;
 
-
         membershipStatisticsForm = new MembershipStatisticsForm();
         membershipPanel.add(membershipStatisticsForm.getMainPanel());
 
@@ -48,9 +45,6 @@ public class StatisticsForm {
         dsOpt.clear();
         dsOpt.add("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM");
         dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
-        int nam = Year.now().getValue();
-//        sellChart = new SellChart(sellTicketBus.thongKeTheoNam(nam), "Tháng", dsOpt);
-//        sellPanel.add(sellChart.getMain());
 
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override
@@ -61,10 +55,10 @@ public class StatisticsForm {
                 else if(tabbedPane1.getSelectedIndex() == 1){
                     pnlPhieuMuon.add(borrow.getMain());
                 }
-                else if(tabbedPane1.getSelectedIndex()==2){
+                else if(tabbedPane1.getSelectedIndex() == 2){
                     pnlHoaDon.add(sell_ticket.getMain());
                 }
-                else if(tabbedPane1.getSelectedIndex()==3){
+                else if(tabbedPane1.getSelectedIndex() == 3){
                     pnlCTHD.add(cthd.getMain());
                 }
             }
@@ -91,5 +85,4 @@ public class StatisticsForm {
     private JPanel pnlHoaDon;
     private JPanel pnlCTHD;
     private JPanel bookPanel;
-    private JPanel sellPanel;
 }

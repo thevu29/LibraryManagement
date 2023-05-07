@@ -31,7 +31,7 @@ public class Chart {
         int nam = Year.now().getValue();
         this.newDataset = bus.thongKeTheoNam(nam);
 
-        cboOption.addItem("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM");
+        cboOption.addItem("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM");
         cboOption.addItem("THỐNG KÊ THU NHẬP THEO NĂM");
         // create chart
         JFreeChart chart = createBarChart(String.valueOf(cboOption.getSelectedItem()) );
@@ -45,7 +45,7 @@ public class Chart {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedOption = cboOption.getSelectedItem().toString();
-                 if (selectedOption.equals("THỐNG KÊ SỐ LƯỢNG HÓA ĐƠN THEO NĂM")) {
+                 if (selectedOption.equals("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM")) {
                     int nam = Year.now().getValue();
                     if(txtNam.getText().isEmpty()){
                         newDataset = bus.thongKeTheoNam(nam);
@@ -92,9 +92,9 @@ public class Chart {
 
     public JFreeChart createBarChart(String selectedOption){
         JFreeChart newChart = ChartFactory.createBarChart(
-                "Hóa đơn", // SellChart title
+                "Phiếu bán", // SellChart title
                 selectedOption, // X-Axis Label
-                "Số lượng hóa đơn", // Y-Axis Label
+                "Số lượng phiếu bán", // Y-Axis Label
                 newDataset, // New dataset
                 PlotOrientation.VERTICAL, // Plot orientation
                 false, // Show legend

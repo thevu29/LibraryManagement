@@ -4,9 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="thêm login">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix CustomerGUI">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_0_32.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login/GUI/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login/GUI/LoginForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Book/GUI/BookGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Book/GUI/BookGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowChart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowChart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailInfo.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailInfo.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/FaultInfor.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/FaultInfor.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienC.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NhanVien/GUI/NhanVienadmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Statistics/GUI/StatisticsForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDFD.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/Chart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/Chart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/ChartCTHD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/ChiTietHoaDon.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/ChiTietHoaDon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonFD.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +98,7 @@
     "UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH": "300",
     "WebServerToolWindowFactoryState": "false",
     "jdk.selected.JAVA_MODULE": "temurin-18",
-    "last_opened_file_path": "C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/library/xmlbeans-5.1.1.jar",
+    "last_opened_file_path": "C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/library/itextpdf-5.4.0.jar",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,6 +121,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagement\library" />
       <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagementGUI\src\icons" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
@@ -108,19 +137,19 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginForm">
+  <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="MainWindow (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -128,12 +157,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="MainWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -141,12 +170,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="MainWindow (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -154,12 +183,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="MainForm.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -167,25 +196,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="tesst" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Book.GUI.tesst" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MembershipStatisticsForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Customer.GUI.MembershipStatisticsForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Customer.GUI.*" />
+          <option name="PATTERN" value="Book.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -195,11 +211,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LoginForm" />
-        <item itemvalue="Application.LoginForm (4)" />
-        <item itemvalue="Application.LoginForm (3)" />
-        <item itemvalue="Application.LoginForm (2)" />
-        <item itemvalue="Application.LoginForm (1)" />
+        <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.tesst" />
+        <item itemvalue="Application.MainWindow (1)" />
+        <item itemvalue="Application.MainWindow (2)" />
+        <item itemvalue="Application.MainWindow (5)" />
       </list>
     </recent_temporary>
   </component>
@@ -453,7 +469,84 @@
       <option name="project" value="LOCAL" />
       <updated>1683036798390</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fix loginGUI">
+      <created>1683037186614</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1683037186614</updated>
+    </task>
+    <task id="LOCAL-00030" summary="validate customer cccd">
+      <created>1683162457856</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1683162457856</updated>
+    </task>
+    <task id="LOCAL-00031" summary="phân quyền nhân viên">
+      <created>1683163561386</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1683163561386</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fix filter customer">
+      <created>1683164448699</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1683164448699</updated>
+    </task>
+    <task id="LOCAL-00033" summary="thêm logout">
+      <created>1683165187595</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1683165187595</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fix logout">
+      <created>1683166178304</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1683166178304</updated>
+    </task>
+    <task id="LOCAL-00035" summary="fix GUI và thêm các thống kê vô StatisticsForm">
+      <created>1683184787843</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1683184787843</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add flatlaf">
+      <created>1683271597881</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1683271597881</updated>
+    </task>
+    <task id="LOCAL-00037" summary="fix GUI, combobox color">
+      <created>1683353640117</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1683353640117</updated>
+    </task>
+    <task id="LOCAL-00038" summary="thêm Membership gui, bus, dao">
+      <created>1683357840434</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1683357840434</updated>
+    </task>
+    <task id="LOCAL-00039" summary="fix CustomerGUI">
+      <created>1683358837357</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1683358837357</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +563,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="customer" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -483,10 +576,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First Init" />
-    <MESSAGE value="Add database, mysql connector." />
-    <MESSAGE value="hello" />
-    <MESSAGE value="xong hoa don" />
     <MESSAGE value="sửa GUI" />
     <MESSAGE value="test statistics và thêm dữ liệu vào db" />
     <MESSAGE value="thêm 1 số hàm validate" />
@@ -501,7 +590,18 @@
     <MESSAGE value="fix GUI và format chữ" />
     <MESSAGE value="fix GUI NhanVien" />
     <MESSAGE value="thêm login" />
-    <option name="LAST_COMMIT_MESSAGE" value="thêm login" />
+    <MESSAGE value="fix loginGUI" />
+    <MESSAGE value="validate customer cccd" />
+    <MESSAGE value="phân quyền nhân viên" />
+    <MESSAGE value="fix filter customer" />
+    <MESSAGE value="thêm logout" />
+    <MESSAGE value="fix logout" />
+    <MESSAGE value="fix GUI và thêm các thống kê vô StatisticsForm" />
+    <MESSAGE value="add flatlaf" />
+    <MESSAGE value="fix GUI, combobox color" />
+    <MESSAGE value="thêm Membership gui, bus, dao" />
+    <MESSAGE value="fix CustomerGUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix CustomerGUI" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -86,7 +86,7 @@ public class NhanVienadmin {
 
         NVmodel.setFilterField(0,IDNV);
         NVmodel.setFilterField(1,NameNV);
-        NVmodel.setFilterField(4,CVNV);
+        NVmodel.setFilterField(5,CVNV);
 
         for (Iterator<TableColumn> it = table1.getColumnModel().getColumns().asIterator(); it.hasNext(); ) {
             var column = it.next();

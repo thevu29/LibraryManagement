@@ -112,11 +112,11 @@ public class CTHDBus {
         String fontLoc = "Font/calibri.ttf";
 
         try {
-            PdfWriter.getInstance(document,new FileOutputStream("Hello world.pdf"));
+            PdfWriter.getInstance(document,new FileOutputStream("./PDF/PhieuBan.pdf"));
             document.open();
             BaseFont bf = BaseFont.createFont(fontLoc, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font f = new Font(bf, 13);
-            Paragraph paragraph1 = new Paragraph("HOA DON "+dshd.get(0).getMa_phieu(),f);
+            Paragraph paragraph1 = new Paragraph("PHIẾU BÁN "+dshd.get(0).getMa_phieu(),f);
             paragraph1.setIndentationLeft(80);
             paragraph1.setIndentationRight(80);
             paragraph1.setAlignment(Element.ALIGN_CENTER);
@@ -147,11 +147,11 @@ public class CTHDBus {
 
             PdfPTable table = new PdfPTable(5);
             //Khởi tạo 3 ô header
-            PdfPCell maSach = new PdfPCell(new Paragraph("BOOK CODE"));
-            PdfPCell tenSach = new PdfPCell(new Paragraph("BOOK NAME"));
+            PdfPCell maSach = new PdfPCell(new Paragraph("Book Id"));
+            PdfPCell tenSach = new PdfPCell(new Paragraph("Book Name"));
             tenSach.setColspan(2);
-            PdfPCell heSo = new PdfPCell(new Paragraph("FACTOR"));
-            PdfPCell tienSach = new PdfPCell(new Paragraph("BOOK PRICE"));
+            PdfPCell heSo = new PdfPCell(new Paragraph("Factor"));
+            PdfPCell tienSach = new PdfPCell(new Paragraph("Book Price"));
             //Thêm 3 ô header vào table
             table.addCell(maSach);
             table.addCell(tenSach);
@@ -167,7 +167,6 @@ public class CTHDBus {
                 PdfPCell cell4 = new PdfPCell(new Paragraph(String.valueOf(hd.getHeSo()) ));
                 PdfPCell cell5 = new PdfPCell(new Paragraph(String.valueOf(hd.getGiaSach())));
 
-
                 // Thêm các ô vào hàng mới
                 table.addCell(cell2);
                 table.addCell(cell3);
@@ -178,8 +177,7 @@ public class CTHDBus {
                 table.completeRow();
             }
 
-
-            PdfPCell tongTien = new PdfPCell(new Paragraph("TOTAL: "+dshd.get(0).getTongHD()+" VND " ));
+            PdfPCell tongTien = new PdfPCell(new Paragraph("Total: "+dshd.get(0).getTongHD()+" VND " ));
             tongTien.setColspan(5);
             table.addCell(tongTien);
 
