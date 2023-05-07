@@ -1,12 +1,14 @@
 package GUI;
 
 import BUS.BookBUS;
+import BUS.BorrowBUS;
 import org.jfree.data.general.DefaultPieDataset;
 import BUS.SellTicketBus;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.time.Year;
 import java.util.ArrayList;
 
 public class StatisticsForm {
@@ -47,7 +49,7 @@ public class StatisticsForm {
         dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
         int nam = Year.now().getValue();
         sell_ticket = new SellChart(sellTicketBus);
-        sellPanel.add(sell_ticket.getMain());
+        pnlHoaDon.add(sell_ticket.getMain());
 
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override

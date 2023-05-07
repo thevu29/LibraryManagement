@@ -1,6 +1,7 @@
 package GUI;
 
 import BUS.BookBUS;
+import BUS.BorrowBUS;
 import BUS.LoginBUS;
 import com.formdev.flatlaf.FlatLightLaf;
 import BUS.SellTicketBus;
@@ -81,7 +82,7 @@ public class MainWindow {
         employeeForm = new NhanVienadmin();
         sellForm = new HoaDonGUI(this.employeeId);
         borrowForm = new BorrowUI(this.employeeId);
-        statisticsForm = new StatisticsForm(bookForm, sellTicketBus);
+        statisticsForm = new StatisticsForm(bookForm, sellTicketBus, borrowBus);
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
