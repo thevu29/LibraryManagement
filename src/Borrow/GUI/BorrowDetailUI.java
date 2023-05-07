@@ -85,6 +85,11 @@ public class BorrowDetailUI extends JFrame {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(borrowModel.checkBorrow(id)){
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 showBorrowDetailInfo(id,"","",maThe,soNgayMuon,"Thêm sách mượn");
             }
         });
@@ -94,6 +99,12 @@ public class BorrowDetailUI extends JFrame {
                 int selectedRow = borrowDetailTable.getSelectedRow();
                 if (selectedRow < 0) {
                     JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn sửa ", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+
+                if(borrowModel.checkBorrow(id)){
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 //
@@ -117,6 +128,11 @@ public class BorrowDetailUI extends JFrame {
                 }
 
                 String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
+                if(borrowModel.checkBorrow(id)){
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 String maSach = borrowDetailTable.getValueAt(selectedRow, 1).toString();
 
                 if(borrowDetailBUS.checkContainBookFault(id,maSach)){

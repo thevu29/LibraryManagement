@@ -67,6 +67,27 @@ public class HoaDonGUI {
             public void stateChanged(ChangeEvent e) {
                 if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
                     // Clear existing items in maHDComboBox
+
+                    cboMaHD.removeAllItems();
+
+                    // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
+                    List<String> maHDs = bus.getAllMaHD();
+                    for (String maHD : maHDs) {
+                        cboMaHD.addItem(maHD);
+                    }
+                    rmvListenerBtnFilter();
+                    btnFilter.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
+                            changeTable(bus.filterMaHD(selected));
+                        }
+
+                    });
+
+                }
+                else if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
+                    // Clear existing items in maHDComboBox
                     cboMaNV.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
                     List<HoaDon> dshd = bus.getAllSellTicket();
@@ -204,6 +225,27 @@ public class HoaDonGUI {
     }
     private void initTabPane(){
         if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
+            // Clear existing items in maHDComboBox
+
+            cboMaHD.removeAllItems();
+
+            // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
+            List<String> maHDs = bus.getAllMaHD();
+            for (String maHD : maHDs) {
+                cboMaHD.addItem(maHD);
+            }
+            rmvListenerBtnFilter();
+            btnFilter.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
+                    changeTable(bus.filterMaHD(selected));
+                }
+
+            });
+
+        }
+        else if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
             // Clear existing items in maHDComboBox
             cboMaNV.removeAllItems();
             // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox

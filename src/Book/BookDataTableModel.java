@@ -18,7 +18,7 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
     }
 
     public BookDataTableModel() {
-        String[] cols = {"Mã Sách", "Tên Sách", "Tác Giả", "Nhà Phát Hành", "Thể Loại", "Vị Trí", "Giá", "Tình Trạng", "Ngôn ngữ"};
+        String[] cols = {"Mã Series", "Tên Sách", "Tác Giả", "Nhà Phát Hành", "Thể Loại", "Vị Trí", "Giá", "Tình Trạng", "Ngôn ngữ"};
         setCols(cols);
     }
 

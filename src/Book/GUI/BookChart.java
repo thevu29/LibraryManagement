@@ -17,7 +17,6 @@ public class BookChart {
     private JPanel main;
     private JComboBox cboOption;
     private JPanel chart;
-
     private DefaultPieDataset dataset = new DefaultPieDataset();
 
     public BookChart(DefaultPieDataset dataset, ArrayList<String> dsOpt) {
@@ -32,10 +31,9 @@ public class BookChart {
 
     }
 
-
     public JFreeChart createPieChart(String title) {
         JFreeChart chart = ChartFactory.createPieChart3D(
-                title, // Chart title
+                title, // SellChart title
                 dataset, // Dataset
                 true, // Show legend
                 true, // Use tooltips

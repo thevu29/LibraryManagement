@@ -123,11 +123,14 @@ public class SellTicketDao extends DefaultConnection {
         try {
             stmt = getConnection().createStatement();
             var rs = stmt.executeQuery("SELECT MAX(CAST(SUBSTR(MA_PHIEU, 3) AS UNSIGNED)) AS max_num FROM `SELL_TICKET` ");
-            rs.next();
+            if (!rs.next()) {
+                return "HD1";
+            }
             var maHD = rs.getString("max_num");
             if (Objects.isNull(maHD)) {
                 return "HD1";
             }
+
             int ma = Integer.parseInt(maHD)+1;
             String maHDMoi = "HD".concat(String.valueOf(ma));
 
@@ -174,8 +177,6 @@ public class SellTicketDao extends DefaultConnection {
         }
         return smt;
     }
-
-
 
     public int updateHD(HoaDon hd){
         String sql = "UPDATE `SELL_TICKET` SET MA_NV=?,`MA_KH`=? WHERE MA_PHIEU=?";
@@ -266,10 +267,10 @@ public class SellTicketDao extends DefaultConnection {
         String sql = "SELECT\n" +
                 "YEAR(CREATED_AT) as nam,\n" +
                 "MONTH(CREATED_AT) as thang,\n" +
-                "SUM(CAST(book.GIA AS SIGNED) * (1 - SELL_TICKET_DETAILS.HE_SO)) as tongTien\n" +
+                "SUM(CAST(`BOOK`.GIA AS SIGNED) * (1 - SELL_TICKET_DETAILS.HE_SO)) as tongTien\n" +
                 "FROM SELL_TICKET\n" +
                 "INNER JOIN SELL_TICKET_DETAILS ON SELL_TICKET_DETAILS.MA_PHIEU = SELL_TICKET.MA_PHIEU\n" +
-                "INNER JOIN BOOK ON book.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
+                "INNER JOIN BOOK ON `BOOK`.MA_SERIES = SELL_TICKET_DETAILS.MA_SERIES\n" +
                 "WHERE Year(SELL_TICKET.CREATED_AT) = "+nam+" and SELL_TICKET.IS_DELETED = 0 AND SELL_TICKET_DETAILS.IS_DELETED = 0\n" +
                 "GROUP BY YEAR(CREATED_AT), MONTH(CREATED_AT)\n" +
                 "ORDER BY YEAR(CREATED_AT) ASC, MONTH(CREATED_AT) ASC;";

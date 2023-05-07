@@ -6,7 +6,7 @@ import Utils.AbstractTableModelWithFilters;
 public class PublisherDataTableModel extends AbstractTableModelWithFilters<Publisher> {
 
     public PublisherDataTableModel() {
-        String[] cols = {"ID", "Tên", "Email", "SĐT", "Địa chỉ", "Mô tả" };
+        String[] cols = {"Mã NXB", "Tên", "Email", "SĐT", "Địa chỉ", "Mô tả" };
         setCols(cols);
     }
 

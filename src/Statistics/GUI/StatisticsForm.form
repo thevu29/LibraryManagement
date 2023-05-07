@@ -8,7 +8,7 @@
     <properties/>
     <border type="none"/>
     <children>
-      <tabbedpane id="d0ba3" binding="tabbedPane1">
+      <tabbedpane id="d0ba3" binding="tabbedPane1" default-binding="true">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="200"/>
@@ -44,6 +44,22 @@
           <grid id="72840" binding="pnlCTHD" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <tabbedpane title="Sách Bán"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="41aa" binding="bookPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Book"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <grid id="742de" binding="sellPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <tabbedpane title="Phiếu bán"/>
             </constraints>
             <properties/>
             <border type="none"/>

@@ -92,9 +92,9 @@ public class Chart {
 
     public JFreeChart createBarChart(String selectedOption){
         JFreeChart newChart = ChartFactory.createBarChart(
-                "Hoa Don", // Chart title
+                "Hóa đơn", // SellChart title
                 selectedOption, // X-Axis Label
-                "Number of Hoa Don", // Y-Axis Label
+                "Số lượng hóa đơn", // Y-Axis Label
                 newDataset, // New dataset
                 PlotOrientation.VERTICAL, // Plot orientation
                 false, // Show legend

@@ -105,10 +105,10 @@ public class CTHDGUI {
                     if(dialogResult == JOptionPane.YES_OPTION) {
                         int smt = bus.remove(maHD, maSeri);
                         if (smt == 0) {
-                            JOptionPane.showMessageDialog(null, "Xoa CTHD khong thanh cong! :>>");
+                            JOptionPane.showMessageDialog(null, "Xóa CTHD không thành công!");
 
                         } else {
-                            JOptionPane.showMessageDialog(null, "Xoa CTHD THANH CONG");
+                            JOptionPane.showMessageDialog(null, "Xóa CTHD thành công");
                             guiHd.showAll();
                             showAll();
                             bus.updateStatusBook(maSeri, "AVAILABLE");
@@ -116,7 +116,7 @@ public class CTHDGUI {
                     }
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Can chon dong truoc khi xoa");
+                    JOptionPane.showMessageDialog(null,"Chọn CTHD trước khi xóa");
                 }
 
             }
@@ -127,7 +127,7 @@ public class CTHDGUI {
             public void actionPerformed(ActionEvent e) {
 
                 if(tblCTHD.getSelectedRow()==-1){
-                    JOptionPane.showMessageDialog(null,"Can Chon 1 Hang De Cap Nhat");
+                    JOptionPane.showMessageDialog(null,"Chọn CTHD để cập nhật");
                 }
                 else{
                     int[] pos = {tblCTHD.getSelectedRow(), tblCTHD.getSelectedColumn()};
@@ -158,10 +158,10 @@ public class CTHDGUI {
 
                 int i =  bus.xuatPDF(maHD);
                 if(i==1){
-                    JOptionPane.showMessageDialog(null,"Xuat PDF thanh cong");
+                    JOptionPane.showMessageDialog(null,"Xuất PDF thành công");
                 }
                 else{
-                    JOptionPane.showMessageDialog(null,"Xuat PDF KHONG thanh cong");
+                    JOptionPane.showMessageDialog(null,"Xuất PDF thất bại");
 
                 }
             }
@@ -182,7 +182,7 @@ public class CTHDGUI {
 
     private void changeTable(){
         dtm.setRowCount(0);
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Hệ số","Mã series","Tên sách","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
         for (CTHD ct : dsCTHD) {
             Object[] t = { ct.getMa_phieu(), ct.getHe_so(), ct.getMa_series(),ct.getTenSach(),ct.getTienSach()};
@@ -242,7 +242,7 @@ public class CTHDGUI {
     private void initTable(){
         List<CTHD> dsct = bus.getDsCTHD(maHD);
 
-        String[] columns = {"Ma Hoa Don", "He So","Ma Seri","Ten Sach","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Hệ số","Mã series","Tên sách","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
 
         for(CTHD ct:dsct){
