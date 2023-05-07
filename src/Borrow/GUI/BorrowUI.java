@@ -238,15 +238,17 @@ public class BorrowUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowTable.getSelectedRow();
-                String id = borrowTable.getValueAt(selectedRow, 0).toString();
-                if (borrowModel.checkBorrow(id)) {
-                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
+
+
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn sửa thông tin", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
 
-                if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn sửa thông tin", "Warning",
+                String id = borrowTable.getValueAt(selectedRow, 0).toString();
+                if (borrowModel.checkBorrow(id)) {
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -311,12 +313,6 @@ public class BorrowUI {
                     return;
                 }
 
-                int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn xác nhận trả không?", "Question",
-                        JOptionPane.YES_NO_OPTION);
-                if (choice != JOptionPane.YES_OPTION) {
-                    return;
-                }
-
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
 
                 if (borrowModel.checkBorrow(id)) {
@@ -324,6 +320,14 @@ public class BorrowUI {
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
+
+                int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc chắn xác nhận trả không?", "Question",
+                        JOptionPane.YES_NO_OPTION);
+                if (choice != JOptionPane.YES_OPTION) {
+                    return;
+                }
+
+
 
                 borrowBUS.submitBorrow(id, login_id);
                 borrowModel.initModelTable(borrowBUS.getDsMuon());

@@ -105,13 +105,15 @@ public class BorrowDetailUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowDetailTable.getSelectedRow();
 
-                if (borrowModel.checkBorrow(id)) {
-                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
+
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn sửa ", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn thông tin sách muốn sửa ", "Warning",
+
+                if (borrowModel.checkBorrow(id)) {
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -127,14 +129,16 @@ public class BorrowDetailUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowDetailTable.getSelectedRow();
 
-                String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
-                if (borrowModel.checkBorrow(id)) {
-                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
+
+                if (selectedRow < 0) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng chọn sách mượn muốn xóa", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                if (selectedRow < 0) {
-                    JOptionPane.showMessageDialog(null, "Vui lòng chọn sách mượn muốn xóa", "Warning",
+
+                String id = borrowDetailTable.getValueAt(selectedRow, 0).toString();
+                if (borrowModel.checkBorrow(id)) {
+                    JOptionPane.showMessageDialog(null, "Phiếu mượn đã xác nhận trả", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }

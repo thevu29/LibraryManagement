@@ -4,11 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix GUI 3">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="xong hoa don">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/BUS/BorrowDetailBUS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/BUS/BorrowDetailBUS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/BorrowDetailDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/DAO/FaultDetailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/DAO/FaultDetailDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" afterDir="false" />
     </list>
+    <list id="0ac5c50e-b7cb-4284-94c2-55684c3756bf" name="hoa don" comment="hoa don" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,6 +52,38 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BUS/BorrowBUS.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BUS/BorrowDetailBUS.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BUS/FaultDetailBUS.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowDetailModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/BorrowModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DAO/BorrowDAO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DAO/BorrowDetailDAO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DAO/FaultDAO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DAO/FaultDetailDAO.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DTO/Borrow.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DTO/BorrowDetail.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DTO/Fault.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/DTO/FaultDetail.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/FaultDetailModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/FaultModel.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/BorrowChart.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailInfo.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/BorrowDetailUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/BorrowInfoUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/BorrowUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/FaultDetailInfoUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/FaultDetailUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Borrow/GUI/FaultInfor.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/MainForm/MainWindow.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/BUS/CTHDBus.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/DAO/CTHDDao.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/DAO/SellTicketDao.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/GUI/CTHDGUI.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/GUI/HoaDon.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/sellBook/GUI/HoaDonGUI.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -71,7 +108,7 @@
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;300&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/Code/IntelliJ/Project/LibraryManagement/library/itextpdf-5.4.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/2_HK2/Java/LibraryManagementGUI/library/itextpdf-5.4.0.jar&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -94,7 +131,6 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagement\library" />
       <recent name="C:\Users\Acer\Documents\Code\IntelliJ\Project\LibraryManagementGUI\src\icons" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\MainGUI" />
       <recent name="D:\Programming\JetBrainProjects\IDEA\LibraryManagementGUI\src\NhanVien\form" />
@@ -110,19 +146,19 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainWindow">
+  <component name="RunManager" selected="Application.LoginForm">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="MainWindow (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+    <configuration name="BorrowChart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowChart" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MainForm.*" />
+          <option name="PATTERN" value="Borrow.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,12 +166,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+    <configuration name="BorrowDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.DAO.BorrowDAO" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MainForm.*" />
+          <option name="PATTERN" value="Borrow.DAO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -143,12 +179,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainWindow (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+    <configuration name="BorrowUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.GUI.BorrowUI" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MainForm.*" />
+          <option name="PATTERN" value="Borrow.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -156,12 +192,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainWindow (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+    <configuration name="FaultDetailDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Borrow.DAO.FaultDetailDAO" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MainForm.*" />
+          <option name="PATTERN" value="Borrow.DAO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -169,12 +205,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainForm.MainWindow" />
+    <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="MainForm.*" />
+          <option name="PATTERN" value="Login.GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -184,11 +220,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainWindow" />
-        <item itemvalue="Application.MainWindow (4)" />
-        <item itemvalue="Application.MainWindow (1)" />
-        <item itemvalue="Application.MainWindow (2)" />
-        <item itemvalue="Application.MainWindow (3)" />
+        <item itemvalue="Application.LoginForm" />
+        <item itemvalue="Application.BorrowUI" />
+        <item itemvalue="Application.BorrowDAO" />
+        <item itemvalue="Application.BorrowChart" />
+        <item itemvalue="Application.FaultDetailDAO" />
       </list>
     </recent_temporary>
   </component>
@@ -442,112 +478,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683036798390</updated>
     </task>
-    <task id="LOCAL-00029" summary="fix loginGUI">
-      <created>1683037186614</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1683037186614</updated>
-    </task>
-    <task id="LOCAL-00030" summary="validate customer cccd">
-      <created>1683162457856</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1683162457856</updated>
-    </task>
-    <task id="LOCAL-00031" summary="phân quyền nhân viên">
-      <created>1683163561386</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1683163561386</updated>
-    </task>
-    <task id="LOCAL-00032" summary="fix filter customer">
-      <created>1683164448699</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1683164448699</updated>
-    </task>
-    <task id="LOCAL-00033" summary="thêm logout">
-      <created>1683165187595</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1683165187595</updated>
-    </task>
-    <task id="LOCAL-00034" summary="fix logout">
-      <created>1683166178304</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1683166178304</updated>
-    </task>
-    <task id="LOCAL-00035" summary="fix GUI và thêm các thống kê vô StatisticsForm">
-      <created>1683184787843</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1683184787843</updated>
-    </task>
-    <task id="LOCAL-00036" summary="add flatlaf">
-      <created>1683271597881</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1683271597881</updated>
-    </task>
-    <task id="LOCAL-00037" summary="fix GUI, combobox color">
-      <created>1683353640117</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1683353640117</updated>
-    </task>
-    <task id="LOCAL-00038" summary="thêm Membership gui, bus, dao">
-      <created>1683357840434</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1683357840434</updated>
-    </task>
-    <task id="LOCAL-00039" summary="fix CustomerGUI">
-      <created>1683358837357</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1683358837357</updated>
-    </task>
-    <task id="LOCAL-00040" summary="fix GUI">
-      <created>1683429401968</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1683429401968</updated>
-    </task>
-    <task id="LOCAL-00041" summary="fix GUI 2">
-      <created>1683431843905</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1683431843905</updated>
-    </task>
-    <task id="LOCAL-00042" summary="set center for all table">
-      <created>1683438206206</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1683438206206</updated>
-    </task>
-    <task id="LOCAL-00043" summary="fix GUI 3">
-      <created>1683438582353</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1683438582353</updated>
-    </task>
-    <option name="localTasksCounter" value="44" />
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -577,6 +508,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="First Init" />
+    <MESSAGE value="Add database, mysql connector." />
+    <MESSAGE value="hello" />
+    <MESSAGE value="xong hoa don" />
+    <MESSAGE value="sửa GUI" />
+    <MESSAGE value="test statistics và thêm dữ liệu vào db" />
+    <MESSAGE value="thêm 1 số hàm validate" />
+    <MESSAGE value="thêm filter by membership type trong chart" />
     <MESSAGE value="thêm LoginForm" />
     <MESSAGE value="export excel" />
     <MESSAGE value="fix thêm sửa xóa" />
@@ -587,22 +526,7 @@
     <MESSAGE value="fix GUI và format chữ" />
     <MESSAGE value="fix GUI NhanVien" />
     <MESSAGE value="thêm login" />
-    <MESSAGE value="fix loginGUI" />
-    <MESSAGE value="validate customer cccd" />
-    <MESSAGE value="phân quyền nhân viên" />
-    <MESSAGE value="fix filter customer" />
-    <MESSAGE value="thêm logout" />
-    <MESSAGE value="fix logout" />
-    <MESSAGE value="fix GUI và thêm các thống kê vô StatisticsForm" />
-    <MESSAGE value="add flatlaf" />
-    <MESSAGE value="fix GUI, combobox color" />
-    <MESSAGE value="thêm Membership gui, bus, dao" />
-    <MESSAGE value="fix CustomerGUI" />
-    <MESSAGE value="fix GUI" />
-    <MESSAGE value="fix GUI 2" />
-    <MESSAGE value="set center for all table" />
-    <MESSAGE value="fix GUI 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix GUI 3" />
+    <option name="LAST_COMMIT_MESSAGE" value="thêm login" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
@@ -616,14 +540,80 @@
     <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1680852476402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Borrow.*</FILTER>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$MainWindow.ic" NAME="MainWindow Coverage Results" MODIFIED="1683129945057" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>MainForm.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowBookFaultUI.ic" NAME="BorrowBookFaultUI Coverage Results" MODIFIED="1680881584980" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>BookFault.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1680879357459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowInfoUI__1_.ic" NAME="BorrowInfoUI (1) Coverage Results" MODIFIED="1681088889402" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Borrow.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowChart.ic" NAME="BorrowChart Coverage Results" MODIFIED="1683435022551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$MainWindow__2_.ic" NAME="MainWindow (2) Coverage Results" MODIFIED="1681203756773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>MainForm.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__4_.ic" NAME="BorrowUI (4) Coverage Results" MODIFIED="1682475323266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI.ic" NAME="BorrowUI Coverage Results" MODIFIED="1683442664452" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__5_.ic" NAME="BorrowUI (5) Coverage Results" MODIFIED="1682496916252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$Book_FaultUI.ic" NAME="Book.FaultUI Coverage Results" MODIFIED="1681009148570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Book.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDAO.ic" NAME="BorrowDAO Coverage Results" MODIFIED="1683442656525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.DAO.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultDetailInfoUI.ic" NAME="FaultDetailInfoUI Coverage Results" MODIFIED="1681288272989" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>BookFault.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultDAO.ic" NAME="FaultDAO Coverage Results" MODIFIED="1682300454283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.DAO.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__1_.ic" NAME="BorrowUI (1) Coverage Results" MODIFIED="1682518921092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$Book_FaultUI__2_.ic" NAME="Book.FaultUI (2) Coverage Results" MODIFIED="1681011774234" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Book.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$HoaDonGUI.ic" NAME="HoaDonGUI Coverage Results" MODIFIED="1682475713427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>sellBook.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultDetailUI.ic" NAME="FaultDetailUI Coverage Results" MODIFIED="1682562491384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailUI.ic" NAME="BorrowDetailUI Coverage Results" MODIFIED="1682476236443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowDetailDAO.ic" NAME="BorrowDetailDAO Coverage Results" MODIFIED="1682756254833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.DAO.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__2_.ic" NAME="BorrowUI (2) Coverage Results" MODIFIED="1683126256777" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BookGUI.ic" NAME="BookGUI Coverage Results" MODIFIED="1681012002695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Book.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$BorrowUI__3_.ic" NAME="BorrowUI (3) Coverage Results" MODIFIED="1682432632808" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$LoginForm.ic" NAME="LoginForm Coverage Results" MODIFIED="1683440841489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Login.GUI.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultUI.ic" NAME="FaultUI Coverage Results" MODIFIED="1680970803626" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>BookFault.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$MainWindow__1_.ic" NAME="MainWindow (1) Coverage Results" MODIFIED="1682527351624" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>MainForm.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/LibraryManagementGUI$FaultDetailDAO.ic" NAME="FaultDetailDAO Coverage Results" MODIFIED="1683433051681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Borrow.DAO.*</FILTER>
     </SUITE>
   </component>
 </project>

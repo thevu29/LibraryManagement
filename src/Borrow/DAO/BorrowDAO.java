@@ -8,6 +8,7 @@ import org.jfree.data.general.DefaultPieDataset;
 import sellBook.DTO.HoaDon;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -61,8 +62,10 @@ public class BorrowDAO extends DefaultConnection {
 
                 }
 
+                DecimalFormat decimalFormat = new DecimalFormat("#.0");
+
                 dsLoi.add(new Borrow(maPhieu, maNvMuon, tenNvMuon, maNvTra, tenNvTra, maThe, tenDocGia,
-                        ngayMuon, ngayHenTra, ngayTra, tongTienPhat, tongTienMuon));
+                        ngayMuon, ngayHenTra, ngayTra, Double.parseDouble(decimalFormat.format(tongTienPhat)), Double.parseDouble(decimalFormat.format(tongTienMuon))));
             }
             rs.close();
             stmt.close();
@@ -563,6 +566,13 @@ public class BorrowDAO extends DefaultConnection {
 
     public static void main(String[] args) {
         BorrowDAO t = new BorrowDAO();
+        double temp = 44;
+        DecimalFormat decimalFormat = new DecimalFormat("#.0");
+        String roundedNumber = decimalFormat.format(temp);
+
+        System.out.println(roundedNumber);
+
+
         // System.out.println(Long.parseLong(t.getTongTien("PM1")));
 
 //        System.out.println(t.getNewMaPhieuMuon());
