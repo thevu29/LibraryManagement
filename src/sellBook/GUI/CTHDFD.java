@@ -3,7 +3,7 @@ package sellBook.GUI;
 import sellBook.BUS.CTHDBus;
 import sellBook.BUS.SellTicketBus;
 import sellBook.DTO.CTHD;
-
+import java.text.DecimalFormat;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.List;
@@ -117,7 +117,8 @@ public class CTHDFD extends JDialog {
 
         double tien = bus.tienSach(cthd.getMa_series());
         double hs = cthd.getHe_so();
-        txtTongTien.setText(String.valueOf(tien*(1-hs)));
+        DecimalFormat df = new DecimalFormat("#.#");
+        txtTongTien.setText(String.valueOf(df.format(tien*(1-hs))));
 
         btnInsert.setEnabled(false);
 
@@ -225,10 +226,12 @@ public class CTHDFD extends JDialog {
             @Override
             public void keyReleased(KeyEvent e) {
                 super.keyReleased(e);
+                DecimalFormat df = new DecimalFormat("#.#");
                 if(!txtTenSach.getText().isEmpty() && !txtHeSo.getText().isEmpty()){
                     double tien = bus.tienSach(txtMaSeri.getText());
                     double hs = Double.parseDouble(txtHeSo.getText());
-                    txtTongTien.setText(String.valueOf(tien*(1-hs)));
+                    double tongTien = tien*(1-hs);
+                    txtTongTien.setText(df.format(tongTien));
                 }
             }
         });
@@ -241,13 +244,13 @@ public class CTHDFD extends JDialog {
                 super.keyReleased(e);
                 String tenSach = bus.goiYTenSach(txtMaSeri.getText());
                 txtTenSach.setText(tenSach);
+                DecimalFormat df = new DecimalFormat("#.#");
                 if(!tenSach.isEmpty()){
                     double tien = bus.tienSach(txtMaSeri.getText());
                     double hs = Double.parseDouble(txtHeSo.getText());
-                    txtTongTien.setText(String.valueOf(tien*(1-hs)));
-                }
+                    double tongTien = tien*(1-hs);
+                    txtTongTien.setText(df.format(tongTien));                }
             }
         });
     }
-
 }

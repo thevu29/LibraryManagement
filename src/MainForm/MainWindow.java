@@ -83,7 +83,7 @@ public class MainWindow {
 
         customerForm = new CustomerForm();
         employeeForm = new NhanVienadmin();
-        sellForm = new HoaDonGUI();
+        sellForm = new HoaDonGUI(this.employeeId);
         borrowForm = new BorrowUI(this.employeeId);
         statisticsForm = new StatisticsForm(bookForm, sellTicketBus);
 

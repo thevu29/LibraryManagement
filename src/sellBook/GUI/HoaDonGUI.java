@@ -33,12 +33,14 @@ public class HoaDonGUI {
     private JComboBox cboMaNV;
     private JComboBox cboMaKH;
     private JButton btnThongKe;
+    private String employeeId;
 
     DefaultTableModel dtm = new DefaultTableModel();
     public static List<HoaDon> dshd = new ArrayList<>();
     SellTicketBus bus = new SellTicketBus();
 
-    public HoaDonGUI() {
+    public HoaDonGUI(String employeeId) {
+        this.employeeId = employeeId;
         initTable();
         initTabPane();
         tblCheckOut.setDefaultEditor(Object.class, null);
@@ -68,6 +70,27 @@ public class HoaDonGUI {
             public void stateChanged(ChangeEvent e) {
                 if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
                     // Clear existing items in maHDComboBox
+
+                    cboMaHD.removeAllItems();
+
+                    // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
+                    List<String> maHDs = bus.getAllMaHD();
+                    for (String maHD : maHDs) {
+                        cboMaHD.addItem(maHD);
+                    }
+                    rmvListenerBtnFilter();
+                    btnFilter.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
+                            changeTable(bus.filterMaHD(selected));
+                        }
+
+                    });
+
+                }
+                else if (tab.getSelectedIndex() == 1) { // Check if maHD tab is selected
+                    // Clear existing items in maHDComboBox
                     cboMaNV.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
                     List<HoaDon> dshd = bus.getAllSellTicket();
@@ -88,7 +111,7 @@ public class HoaDonGUI {
                         }
                     });
                 }
-                else if (tab.getSelectedIndex() == 1) { // Check if maHD tab is selected
+                else if (tab.getSelectedIndex() == 2) { // Check if maHD tab is selected
                     // Clear existing items in maHDComboBox
                     cboMaKH.removeAllItems();
                     // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
@@ -109,6 +132,8 @@ public class HoaDonGUI {
                             changeTable(bus.filterMaKH(idKH));
                         }
                     });
+
+
                 }
             }
         });
@@ -118,7 +143,7 @@ public class HoaDonGUI {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                var dialog = new HoaDonFD(HoaDonGUI.this);
+                var dialog = new HoaDonFD(HoaDonGUI.this, employeeId);
                 dialog.pack();
                 dialog.setLocationRelativeTo(null);
                 dialog.setVisible(true);
@@ -185,7 +210,7 @@ public class HoaDonGUI {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("HoaDonGUI");
-        frame.setContentPane(new HoaDonGUI().main);
+        frame.setContentPane(new HoaDonGUI("NV001").main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -200,6 +225,27 @@ public class HoaDonGUI {
     }
     private void initTabPane(){
         if (tab.getSelectedIndex() == 0) { // Check if maHD tab is selected
+            // Clear existing items in maHDComboBox
+
+            cboMaHD.removeAllItems();
+
+            // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
+            List<String> maHDs = bus.getAllMaHD();
+            for (String maHD : maHDs) {
+                cboMaHD.addItem(maHD);
+            }
+            rmvListenerBtnFilter();
+            btnFilter.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
+                    changeTable(bus.filterMaHD(selected));
+                }
+
+            });
+
+        }
+        else if (tab.getSelectedIndex() == 1) { // Check if maHD tab is selected
             // Clear existing items in maHDComboBox
             cboMaNV.removeAllItems();
             // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
@@ -221,7 +267,7 @@ public class HoaDonGUI {
                 }
             });
         }
-        else if (tab.getSelectedIndex() == 1) { // Check if maHD tab is selected
+        else if (tab.getSelectedIndex() == 2) { // Check if maHD tab is selected
             // Clear existing items in maHDComboBox
             cboMaKH.removeAllItems();
             // Call getAllMaHD method from SellTicketBus and add the returned values to maHDComboBox
@@ -248,7 +294,6 @@ public class HoaDonGUI {
     }
 
     private void changeTable(List<HoaDon> dshd){
-
         dtm.setRowCount(0);
         String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng", "Ngày mua", "Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
@@ -260,6 +305,12 @@ public class HoaDonGUI {
         }
 
         tblCheckOut.setModel(dtm);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < tblCheckOut.getColumnCount(); i++) {
+            tblCheckOut.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
     private void initTable(){
         String[] columns = {"Mã phiếu bán", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng", "Ngày mua","Tổng tiền"};

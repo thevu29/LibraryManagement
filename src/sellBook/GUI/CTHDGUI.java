@@ -47,25 +47,6 @@ public class CTHDGUI {
             @Override
             public void stateChanged(ChangeEvent e) {
                 if (tab.getSelectedIndex() == 0) {
-                    cboMaHD.removeAllItems();
-                    List<String> maHDs = bus.getAllMaHD(maHD);
-                    for (String maHD : maHDs) {
-                        cboMaHD.addItem(maHD);
-                    }
-                    cboMaHD.setEditable(false);
-                    rmvListerBtnFilter();
-
-                    btnFilter.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                            dsCTHD = bus.getDsCTHD(maHD);
-
-                            changeTable();
-                        }
-                    });
-
-                }
-                else if (tab.getSelectedIndex() == 1) {
                     cboHeSo.removeAllItems();
                     List<Double> heSo = bus.getAllHeSo(maHD);
                     for (Double so : heSo) {
@@ -84,7 +65,7 @@ public class CTHDGUI {
                     });
                 }
 
-                else if (tab.getSelectedIndex() == 2) {
+                else if (tab.getSelectedIndex() == 1) {
                     cboMaSeri.removeAllItems();
                     List<String> maSeries = bus.getAllMaSeries(maHD);
                     for (String seri : maSeries) {
@@ -212,6 +193,11 @@ public class CTHDGUI {
         }
         tblCTHD.setModel(dtm);
 
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < tblCTHD.getColumnCount(); i++) {
+            tblCTHD.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     private void rmvListerBtnFilter(){
@@ -223,25 +209,6 @@ public class CTHDGUI {
     }
     private void initTab(){
         if (tab.getSelectedIndex() == 0) {
-            cboMaHD.removeAllItems();
-            cboMaHD.setEditable(false);
-            cboMaHD.setMaximumRowCount(2);
-            List<String> maHDs = bus.getAllMaHD(maHD);
-            for (String maHD : maHDs) {
-                cboMaHD.addItem(maHD);
-            }
-            btnFilter.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String selected = String.valueOf(cboMaHD.getSelectedItem()) ;
-                    dsCTHD = bus.getDsCTHD(maHD);
-                    changeTable();
-                }
-
-            });
-
-        }
-        else if (tab.getSelectedIndex() == 1) {
             cboHeSo.removeAllItems();
             List<Double> heSo = bus.getAllHeSo(maHD);
             for (Double so : heSo) {
@@ -260,7 +227,7 @@ public class CTHDGUI {
             });
         }
 
-        else if (tab.getSelectedIndex() == 2) {
+        else if (tab.getSelectedIndex() == 1) {
             cboMaSeri.removeAllItems();
             List<String> maSeries = bus.getAllMaSeries(maHD);
             for (String seri : maSeries) {

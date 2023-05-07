@@ -24,13 +24,14 @@ public class HoaDonFD extends JDialog {
     SellTicketBus bus = new SellTicketBus();
 
 
-    public HoaDonFD(HoaDonGUI gui) {
+    public HoaDonFD(HoaDonGUI gui, String employeeId) {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(btnRemove);
         this.gui = gui;
         System.out.println(bus.getNewMaHD());
         txtMaPhieu.setText(bus.getNewMaHD());
+        txtMaNV.setText(employeeId);
 
         //Không cho nhấn nut update hoặc xóa
         btnUpdate.setEnabled(false);
@@ -78,6 +79,7 @@ public class HoaDonFD extends JDialog {
                     JOptionPane.showMessageDialog(null,"Thêm hóa đơn thành công");
                     gui.showAll();
                     txtMaPhieu.setText(bus.getNewMaHD());
+                    dispose();
                 }
                 else {
                     JOptionPane.showMessageDialog(null,"Thêm hóa đơn thất bại");

@@ -188,7 +188,7 @@ public class CTHDDao extends DefaultConnection {
     }
 
     public double tinhTienSach(String maHD,String maSeri){
-        String sql = "SELECT CAST(BOOK.GIA AS UNSIGNED) *(1.0 - SELL_TICKET_DETAILS.HE_SO) as total FROM SELL_TICKET_DETAILS " +
+        String sql = "SELECT  ROUND(CAST(BOOK.GIA AS UNSIGNED) * (1.0 - SELL_TICKET_DETAILS.HE_SO), 2)  as total FROM SELL_TICKET_DETAILS " +
                 "INNER JOIN BOOK on SELL_TICKET_DETAILS.MA_SERIES = BOOK.MA_SERIES " +
                 "WHERE MA_PHIEU = '"+maHD+"' and BOOK.MA_SERIES = '"+maSeri+"'";
         Statement stmt = null;
