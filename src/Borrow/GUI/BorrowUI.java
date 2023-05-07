@@ -289,8 +289,8 @@ public class BorrowUI {
 
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
 
-                if (!borrowModel.checkBorrow(id)) {
-                    JOptionPane.showMessageDialog(null, "Phiếu mượn chưa đc trả", "Warning",
+                if (borrowModel.checkBorrow(id)) {
+                    JOptionPane.showMessageDialog(null, "Phiếu đã được xác nhận trả!", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -316,7 +316,7 @@ public class BorrowUI {
                 String id = borrowTable.getValueAt(selectedRow, 0).toString();
 
                 if (borrowModel.checkBorrow(id)) {
-                    JOptionPane.showMessageDialog(null, "Phiếu đã đươc xác nhận trả!", "Warning",
+                    JOptionPane.showMessageDialog(null, "Phiếu đã được xác nhận trả!", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
