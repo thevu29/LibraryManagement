@@ -27,7 +27,6 @@ public class BookEditorDialog extends JDialog {
     private JTextPane descriptionField;
     private JPanel mainPanel;
     private JComboBox<String> bookNameCB;
-    private JComboBox<String> conditionCB;
     private JComboBox<String> statusCB;
     private JComboBox<String> priceCB;
     private JComboBox<String> authorCB1;

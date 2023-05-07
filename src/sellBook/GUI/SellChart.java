@@ -16,9 +16,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.time.Year;
 
-public class Chart {
+public class SellChart {
 
-    SellTicketBus bus = new SellTicketBus();
+    SellTicketBus bus;
 
     private JPanel main;
     private JPanel chart1;
@@ -27,7 +27,8 @@ public class Chart {
 
     DefaultCategoryDataset newDataset = null;
 
-    public Chart() {
+    public SellChart(SellTicketBus bus) {
+        this.bus = bus;
         int nam = Year.now().getValue();
         this.newDataset = bus.thongKeTheoNam(nam);
 
@@ -106,7 +107,7 @@ public class Chart {
 
     public JFreeChart createPieChart(DefaultPieDataset dataset,String title){
         JFreeChart chart = ChartFactory.createPieChart(
-                title, // Chart title
+                title, // SellChart title
                 dataset, // Dataset
                 true, // Show legend
                 true, // Use tooltips
@@ -127,7 +128,7 @@ public class Chart {
     }
         public static void main(String[] args) {
         JFrame frame = new JFrame("Chart");
-        frame.setContentPane(new Chart().main);
+        frame.setContentPane(new SellChart(new SellTicketBus()).main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

@@ -1,6 +1,7 @@
 package Book.DTO;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import Book.*;
 
@@ -187,7 +188,6 @@ public class Book implements Cloneable {
         this.name = book.name;
         this.authors = book.authors;
         this.publisher = book.publisher;
-        this.genre = book.genre;
         this.location = book.location;
         this.price = book.price;
         this.bookStatus = book.bookStatus;
@@ -197,6 +197,20 @@ public class Book implements Cloneable {
         this.totalPage = book.totalPage;
         this.importer = book.importer;
 
+        cloneGenre(book.genre);
+        cloneAuthor(book.authors);
+    }
+
+    public void cloneGenre(ArrayList<BookGenre> genres) {
+        HashSet<String> seen = new HashSet<>();
+        genres.removeIf(bookGenre -> !seen.add(bookGenre.getId()));
+        this.genre = genres;
+    }
+
+    public void cloneAuthor(ArrayList<BookAuthor> authors) {
+        HashSet<String> seen = new HashSet<>();
+        authors.removeIf(author -> !seen.add(author.getId()));
+        this.authors = authors;
     }
 
     @Override

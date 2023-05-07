@@ -1,10 +1,11 @@
 package Statistics.GUI;
 
+import Borrow.BUS.BorrowBUS;
 import Borrow.GUI.BorrowChart;
 import Book.BUS.BookBUS;
 import Book.GUI.BookChart;
 import Customer.GUI.MembershipStatisticsForm;
-import sellBook.GUI.Chart;
+import sellBook.GUI.SellChart;
 import sellBook.GUI.ChartCTHD;
 import org.jfree.data.general.DefaultPieDataset;
 import sellBook.BUS.SellTicketBus;
@@ -21,20 +22,23 @@ public class StatisticsForm {
 //    private SellChart sellChart;
     private BookBUS bookBUS;
     private SellTicketBus sellTicketBus;
-//    private MembershipStatisticsForm membershipStatisticsForm = new MembershipStatisticsForm();
-    private BorrowChart borrow = new BorrowChart();
-    private Chart sell_ticket = new Chart();
+    private final BorrowBUS borrowBUS;
+    //    private MembershipStatisticsForm membershipStatisticsForm = new MembershipStatisticsForm();
+    private BorrowChart borrow;
+    private SellChart sell_ticket;
     private ChartCTHD cthd = new ChartCTHD();
 
 
     public StatisticsForm() {
-        this(new BookBUS(), new SellTicketBus());
+        this(new BookBUS(), new SellTicketBus(), new BorrowBUS());
     }
 
-    public StatisticsForm(BookBUS bookBUS, SellTicketBus sellTicketBus) {
+    public StatisticsForm(BookBUS bookBUS, SellTicketBus sellTicketBus, BorrowBUS borrowBUS) {
         this.bookBUS = bookBUS;
         this.sellTicketBus = sellTicketBus;
+        this.borrowBUS = borrowBUS;
 
+        borrow = new BorrowChart(borrowBUS);
 
         membershipStatisticsForm = new MembershipStatisticsForm();
         membershipPanel.add(membershipStatisticsForm.getMainPanel());
@@ -49,8 +53,8 @@ public class StatisticsForm {
         dsOpt.add("THỐNG KÊ SỐ LƯỢNG PHIẾU BÁN THEO NĂM");
         dsOpt.add("THỐNG KÊ THU NHẬP THEO NĂM");
         int nam = Year.now().getValue();
-//        sellChart = new SellChart(sellTicketBus.thongKeTheoNam(nam), "Tháng", dsOpt);
-//        sellPanel.add(sellChart.getMain());
+        sell_ticket = new SellChart(sellTicketBus);
+        sellPanel.add(sell_ticket.getMain());
 
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override

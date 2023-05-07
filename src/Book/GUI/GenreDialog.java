@@ -77,7 +77,6 @@ public class GenreDialog extends JDialog {
         int mode = 0;
         if (clonedGenre.getName().trim().equals(genre.getName())) {
             mode = 1;
-            System.out.println("as");
         }
         if (bus.validateGenre(clonedGenre, mode)) {
             genre.cloneFrom(clonedGenre);

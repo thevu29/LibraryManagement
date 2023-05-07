@@ -20,7 +20,6 @@ public class BookGUI {
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
     private JTable bookTable;
-    private JButton addRowButton;
     private JButton bookDeleteAllButton;
     private JButton bookFilterButton;
     private JTabbedPane tabbedPane2;
@@ -104,7 +103,8 @@ public class BookGUI {
     private JComboBox iIDCB;
     private JComboBox iEmailCB;
     private JButton iEmailBtn;
-    private JButton btnThongKe;
+    private JButton delAuthorBtn;
+    private JButton genreDelButton;
 
     private JTextField bookIDTF;
 
@@ -127,20 +127,7 @@ public class BookGUI {
         setupPublisherPane();
         setupImporterPane();
 
-        btnThongKe.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                DefaultPieDataset dataset = bus.thonngKeTinhTrangSach();
-                ArrayList<String> dsOpt = new ArrayList<>();
-                dsOpt.add("THỐNG KÊ TÌNH TRẠNG SÁCH");
-                BookChart b = new BookChart(dataset,dsOpt);
-                JFrame frame = new JFrame("Thong Ke");
-                frame.setContentPane(b.getMain());
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
-            }
-        });
+
     }
 
 
@@ -196,6 +183,15 @@ public class BookGUI {
 
         iAddBtn.addActionListener(e -> {
             bookBUS.openNewImporterDialog();
+        });
+
+        iDeleleBtn.addActionListener(e -> {
+            var rowsSelected = importerTB.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = importerTB.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openImporterDeleteDialog(coords);
+            }
+            bookBUS.updateImporterDataModel();
         });
 
         importerTB.addMouseListener(new MouseAdapter() {
@@ -265,6 +261,15 @@ public class BookGUI {
             bookBUS.openNewPublisherDialog();
         });
 
+        pDelBtn.addActionListener(e -> {
+            var rowsSelected = publisherTable.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = publisherTable.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openPublisherDeleteDialog(coords);
+            }
+            bookBUS.updatePublisherDataModel();
+        });
+
         publisherTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -329,9 +334,20 @@ public class BookGUI {
             }
         });
 
+        delAuthorBtn.addActionListener(e -> {
+            var rowsSelected = authorTable.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = authorTable.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openAuthorDeleteDialog(coords);
+            }
+            bookBUS.updateAuthorDataModel();
+        });
+
         authorAdd.addActionListener(e -> {
             bookBUS.openNewAuthorDialog();
         });
+
+
 
         authorTable.addMouseListener(new MouseAdapter() {
             @Override
@@ -394,6 +410,15 @@ public class BookGUI {
             bookBUS.openNewGenreDialog();
         });
 
+        genreDelButton.addActionListener(e -> {
+            var rowsSelected = genreTable.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = genreTable.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openGenreDeleteDialog(coords);
+            }
+            bookBUS.updateGenreDataModel();
+        });
+
         genreTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -414,7 +439,6 @@ public class BookGUI {
     private void setupBookPane() {
         bookDataModel.setEditable(false);
 
-        bookDataModel.addTestData();
         bookTable.setModel(bookDataModel);
         TableRowSorter<BookDataTableModel> sorter
                 = new TableRowSorter<>(bookDataModel);
@@ -422,7 +446,6 @@ public class BookGUI {
         bookTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         bookTable.getTableHeader().setBackground(Color.WHITE);
 
-        addRowButton.addActionListener(e -> bookDataModel.addTestData());
 
 
         bookTable.getTableHeader().setReorderingAllowed(false);

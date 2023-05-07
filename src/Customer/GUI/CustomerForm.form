@@ -265,7 +265,7 @@
                     <properties>
                       <background color="-11107086"/>
                       <foreground color="-1"/>
-                      <text value="Import Excel"/>
+                      <text value="Nhập Excel"/>
                     </properties>
                   </component>
                   <component id="a7838" class="javax.swing.JButton" binding="btnExportExcel">
@@ -275,7 +275,7 @@
                     <properties>
                       <background color="-11107086"/>
                       <foreground color="-1"/>
-                      <text value="Export Excel"/>
+                      <text value="Xuất Excel"/>
                     </properties>
                   </component>
                   <component id="ac79" class="javax.swing.JButton" binding="btnResetCustomer">

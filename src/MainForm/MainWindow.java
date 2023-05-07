@@ -1,6 +1,7 @@
 package MainForm;
 
 import Book.BUS.BookBUS;
+import Borrow.BUS.BorrowBUS;
 import Borrow.GUI.BorrowUI;
 import Customer.GUI.CustomerForm;
 import Login.BUS.LoginBUS;
@@ -80,12 +81,13 @@ public class MainWindow {
     public void initContentPanel() {
         bookForm = new BookBUS();
         var sellTicketBus = new SellTicketBus();
+        var borrowBus = new BorrowBUS();
 
         customerForm = new CustomerForm();
         employeeForm = new NhanVienadmin();
         sellForm = new HoaDonGUI();
         borrowForm = new BorrowUI();
-        statisticsForm = new StatisticsForm(bookForm, sellTicketBus);
+        statisticsForm = new StatisticsForm(bookForm, sellTicketBus, borrowBus);
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());

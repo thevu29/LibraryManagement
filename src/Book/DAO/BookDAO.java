@@ -63,6 +63,17 @@ public class BookDAO extends DefaultConnection {
     public boolean isIDExist(String id) {
         PreparedStatement stmt = null;
         try {
+            stmt = getConnection().prepareStatement("SELECT MA_SERIES FROM BOOK WHERE MA_SERIES=? AND IS_DELETED = 0");
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    public boolean isIDExistWithDelete(String id) {
+        PreparedStatement stmt = null;
+        try {
             stmt = getConnection().prepareStatement("SELECT MA_SERIES FROM BOOK WHERE MA_SERIES=?");
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
@@ -114,10 +125,10 @@ public class BookDAO extends DefaultConnection {
     public void update(Book book) {
         PreparedStatement stmt = null;
         try {
-            if (isIDExist(book.getId())) {
+            if (isIDExistWithDelete(book.getId())) {
                 stmt = getConnection()
                         .prepareStatement("UPDATE BOOK SET TEN_SACH=?, MO_TA=?, VI_TRI=?, GIA=?, NAM_XUAT_BAN=?, " +
-                                "NGON_NGU=?, TRANG_THAI=?, TONG_SO_TRANG=?, MA_NHA_NHAP=? WHERE MA_SERIES=?");
+                                "NGON_NGU=?, TRANG_THAI=?, TONG_SO_TRANG=?, MA_NHA_NHAP=?, TRANG_THAI=?, IS_DELETED=0 WHERE MA_SERIES=?");
                 stmt.setString(1, book.getName());
                 stmt.setString(2, book.getDescription());
                 stmt.setString(3, book.getLocation());
@@ -127,7 +138,8 @@ public class BookDAO extends DefaultConnection {
                 stmt.setString(7, String.valueOf(book.getBookStatus()));
                 stmt.setInt(8, book.getTotalPage());
                 stmt.setString(9, book.getImporter().getId());
-                stmt.setString(10, book.getId());
+                stmt.setString(10, book.getBookStatus().toString());
+                stmt.setString(11, book.getId());
                 stmt.executeUpdate();
 
                 stmt = getConnection().prepareStatement("DELETE FROM BOOK_AUTHOR WHERE MA_SERIES=?");
