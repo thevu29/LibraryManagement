@@ -43,6 +43,9 @@ public class CustomerForm {
         handleCustomer();
         handleMembership();
         handleMembershipType();
+
+        customerSorter = new TableRowSorter<>(tblCustomerModel);
+        tblCustomers.setRowSorter(customerSorter);
     }
 
     public void handleMembershipType() {
@@ -376,7 +379,7 @@ public class CustomerForm {
     }
 
     public void filterCustomer() {
-        customerSorter = new TableRowSorter<DefaultTableModel>(tblCustomerModel);
+        customerSorter = new TableRowSorter<>(tblCustomerModel);
         tblCustomers.setRowSorter(customerSorter);
 
         String id = txtCusId.getText().toLowerCase();

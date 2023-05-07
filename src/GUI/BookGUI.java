@@ -4,6 +4,7 @@ import BUS.BookBUS;
 import DTO.*;
 import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
+import org.jfree.data.general.DefaultPieDataset;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -11,6 +12,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class BookGUI {
@@ -19,7 +21,6 @@ public class BookGUI {
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
     private JTable bookTable;
-    private JButton addRowButton;
     private JButton bookDeleteAllButton;
     private JButton bookFilterButton;
     private JTabbedPane tabbedPane2;
@@ -103,7 +104,8 @@ public class BookGUI {
     private JComboBox iIDCB;
     private JComboBox iEmailCB;
     private JButton iEmailBtn;
-    private JButton btnThongKe;
+    private JButton delAuthorBtn;
+    private JButton genreDelButton;
 
     private JTextField bookIDTF;
 
@@ -125,6 +127,8 @@ public class BookGUI {
         setupGenrePane();
         setupPublisherPane();
         setupImporterPane();
+
+
     }
 
     private void setupImporterPane() {
@@ -184,6 +188,15 @@ public class BookGUI {
 
         iAddBtn.addActionListener(e -> {
             bookBUS.openNewImporterDialog();
+        });
+
+        iDeleleBtn.addActionListener(e -> {
+            var rowsSelected = importerTB.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = importerTB.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openImporterDeleteDialog(coords);
+            }
+            bookBUS.updateImporterDataModel();
         });
 
         importerTB.addMouseListener(new MouseAdapter() {
@@ -258,6 +271,15 @@ public class BookGUI {
             bookBUS.openNewPublisherDialog();
         });
 
+        pDelBtn.addActionListener(e -> {
+            var rowsSelected = publisherTable.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = publisherTable.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openPublisherDeleteDialog(coords);
+            }
+            bookBUS.updatePublisherDataModel();
+        });
+
         publisherTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -328,9 +350,20 @@ public class BookGUI {
             }
         });
 
+        delAuthorBtn.addActionListener(e -> {
+            var rowsSelected = authorTable.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = authorTable.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openAuthorDeleteDialog(coords);
+            }
+            bookBUS.updateAuthorDataModel();
+        });
+
         authorAdd.addActionListener(e -> {
             bookBUS.openNewAuthorDialog();
         });
+
+
 
         authorTable.addMouseListener(new MouseAdapter() {
             @Override
@@ -399,6 +432,15 @@ public class BookGUI {
             bookBUS.openNewGenreDialog();
         });
 
+        genreDelButton.addActionListener(e -> {
+            var rowsSelected = genreTable.getSelectedRows();
+            for (var row : rowsSelected) {
+                var coords = genreTable.getRowSorter().convertRowIndexToModel(row);
+                bookBUS.openGenreDeleteDialog(coords);
+            }
+            bookBUS.updateGenreDataModel();
+        });
+
         genreTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -419,13 +461,14 @@ public class BookGUI {
     private void setupBookPane() {
         bookDataModel.setEditable(false);
 
-        bookDataModel.addTestData();
         bookTable.setModel(bookDataModel);
         TableRowSorter<BookDataTableModel> sorter
                 = new TableRowSorter<>(bookDataModel);
         bookTable.setRowSorter(sorter);
         bookTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         bookTable.getTableHeader().setBackground(Color.WHITE);
+
+
 
         bookTable.getTableHeader().setReorderingAllowed(false);
 

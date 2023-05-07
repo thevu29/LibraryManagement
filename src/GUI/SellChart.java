@@ -18,7 +18,7 @@ import java.time.Year;
 
 public class SellChart {
 
-    SellTicketBus bus = new SellTicketBus();
+    SellTicketBus bus;
 
     private JPanel main;
     private JPanel chart1;
@@ -27,7 +27,8 @@ public class SellChart {
 
     DefaultCategoryDataset newDataset = null;
 
-    public SellChart() {
+    public SellChart(SellTicketBus bus) {
+        this.bus = bus;
         int nam = Year.now().getValue();
         this.newDataset = bus.thongKeTheoNam(nam);
 
@@ -127,7 +128,7 @@ public class SellChart {
     }
         public static void main(String[] args) {
         JFrame frame = new JFrame("Chart");
-        frame.setContentPane(new SellChart().main);
+        frame.setContentPane(new SellChart(new SellTicketBus()).main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

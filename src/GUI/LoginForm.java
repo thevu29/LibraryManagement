@@ -61,5 +61,5 @@ public class LoginForm {
     private JLabel lblBanner;
     private JPanel bannerPanel;
     private JTextField txtUsername;
-    private JTextField txtPassword;
+    private JPasswordField txtPassword;
 }

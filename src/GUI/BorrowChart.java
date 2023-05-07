@@ -26,11 +26,12 @@ public class BorrowChart {
     private JButton btnThongKe;
     private JComboBox cboThongKe;
 
-    private BorrowBUS bus = new BorrowBUS();
+    private BorrowBUS bus;
     private static DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     private static DefaultPieDataset pieDataset = new DefaultPieDataset();
 
-    public BorrowChart() {
+    public BorrowChart(BorrowBUS bus) {
+        this.bus = bus;
         int nam =  Year.now().getValue();
 
         dataset = bus.laySoLieuPhieuMuon(nam);
@@ -152,7 +153,7 @@ public class BorrowChart {
     }
     public static void main(String[] args) {
         JFrame frame = new JFrame("BorrowChart");
-        frame.setContentPane(new BorrowChart().mainPNL);
+        frame.setContentPane(new BorrowChart(new BorrowBUS()).mainPNL);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1000, 500);
         frame.setLocationRelativeTo(null);

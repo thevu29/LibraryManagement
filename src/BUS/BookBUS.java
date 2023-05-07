@@ -130,23 +130,23 @@ public class BookBUS {
     public void openNewAuthorDialog() {
         var author = Author.createBlankAuthor();
         author.setId(getNewAuthorID());
-        openAuthorEditDialog(author, "Tạo tác giả");
+        openAuthorEditDialog(author, "Tạo tác giả", 0);
     }
     public void openNewAuthorDialog(int coords) {
         var author = authorDataTableModel.get(coords);
-        openAuthorEditDialog(author, "Chỉnh sửa tác giả");
+        openAuthorEditDialog(author, "Chỉnh sửa tác giả", 1);
     }
 
-    private void openAuthorEditDialog(Author author, String title) {
-        var dialog = new AuthorDialog(author, authorDataTableModel, this, title);
+    private void openAuthorEditDialog(Author author, String title, int mode) {
+        var dialog = new AuthorDialog(author, authorDataTableModel, this, title, mode);
         dialog.pack();
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
     }
 
-    public boolean validateAuthor(Author author) {
+    public boolean validateAuthor(Author author, int mode) {
         var message = "";
-        if (authorDAO.isIDExist(author.getId())) {
+        if (authorDAO.isIDExist(author.getId()) && mode == 0) {
             message += "ID trùng\n";
         }
 
@@ -439,5 +439,53 @@ public class BookBUS {
     public void commitBook(Book book) {
         bookDAO.update(book);
         bookDataTableModel.setRows(bookDAO.getAllFromDatabase());
+    }
+
+    public void openAuthorDeleteDialog(int coords) {
+        var author = authorDataTableModel.get(coords);
+        var inp = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa tác giả "+author.getName(), "Xóa tác giả " + author.getName(), JOptionPane.OK_CANCEL_OPTION);
+        if (inp == 0) {
+            authorDAO.delete(author);
+        }
+    }
+
+    public void updateAuthorDataModel() {
+        authorDataTableModel.setRows(authorDAO.getAllFromDatabase());
+    }
+
+    public void openGenreDeleteDialog(int coords) {
+        var genre = genreDataTableModel.get(coords);
+        var inp = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa thể loại "+genre.getName(), "Xóa thể loại " + genre.getName(), JOptionPane.OK_CANCEL_OPTION);
+        if (inp == 0) {
+            genreDAO.delete(genre);
+        }
+    }
+
+    public void updateGenreDataModel() {
+        genreDataTableModel.setRows(genreDAO.getAllFromDatabase());
+    }
+
+    public void openImporterDeleteDialog(int coords) {
+        var importer = importerTableModel.get(coords);
+        var inp = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa nhà nhập "+importer.getName(), "Xóa nhà nhập " + importer.getName(), JOptionPane.OK_CANCEL_OPTION);
+        if (inp == 0) {
+            importerDAO.delete(importer);
+        }
+    }
+
+    public void updateImporterDataModel() {
+        importerTableModel.setRows(importerDAO.getAllFromDatabase());
+    }
+
+    public void openPublisherDeleteDialog(int coords) {
+        var publisher = publisherDataTableModel.get(coords);
+        var inp = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa NXB "+publisher.getName(), "Xóa NXB " + publisher.getName(), JOptionPane.OK_CANCEL_OPTION);
+        if (inp == 0) {
+            publisherDAO.delete(publisher);
+        }
+    }
+
+    public void updatePublisherDataModel() {
+        publisherDataTableModel.setRows(publisherDAO.getAllFromDatabase());
     }
 }

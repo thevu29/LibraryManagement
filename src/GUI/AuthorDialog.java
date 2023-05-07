@@ -15,6 +15,7 @@ public class AuthorDialog extends JDialog {
     private final AuthorDataTableModel model;
     private final BookBUS bus;
     private final Author clonedAuthor;
+    private final int mode;
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
@@ -25,7 +26,8 @@ public class AuthorDialog extends JDialog {
     private JTextPane descriptionField;
     private JLabel titleLabel;
 
-    public AuthorDialog(Author author, AuthorDataTableModel model, BookBUS bus, String title) {
+    public AuthorDialog(Author author, AuthorDataTableModel model, BookBUS bus, String title, int mode) {
+        this.mode = mode;
         this.titleLabel.setText(title);
         this.author = author;
         this.model = model;
@@ -102,7 +104,7 @@ public class AuthorDialog extends JDialog {
     private void onOK() {
         // add your code here
 
-        if (bus.validateAuthor(clonedAuthor)) {
+        if (bus.validateAuthor(clonedAuthor, mode)) {
             author.cloneFrom(clonedAuthor);
             bus.commitAuthor(author);
             dispose();

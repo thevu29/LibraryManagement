@@ -22,10 +22,7 @@ public class BookDataTableModel extends AbstractTableModelWithFilters<Book> {
         fireTableRowsInserted(rows.size()-1, rows.size()-1);
     }
 
-    public void addTestData() {
-        rows.add(Book.createTestBook());
-        fireTableRowsInserted(rows.size()-1, rows.size()-1);
-    }
+
 
 
     @Override
