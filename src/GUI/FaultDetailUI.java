@@ -55,6 +55,7 @@ public class FaultDetailUI extends JFrame {
     }
 
     public FaultDetailUI(String id) {
+        System.out.println(id);
         faultDetailTable.setModel(faultDetailModel);
         faultDetailTable.setDefaultEditor(Object.class, null);
         faultDetailModel.initModelTable(faultDetailBUS.getDsLoiCT(id));

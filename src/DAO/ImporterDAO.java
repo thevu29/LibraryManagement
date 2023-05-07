@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ImporterDAO extends DefaultConnection {
     public ArrayList<Importer> getAllFromDatabase() {
@@ -85,7 +86,12 @@ public class ImporterDAO extends DefaultConnection {
             if (!rs.next()) {
                 return "0";
             }
-            return rs.getString("ID");
+
+            var id = rs.getString("ID");
+            if (Objects.isNull(id)) {
+                return "0";
+            }
+            return id;
         } catch (SQLException | ClassNotFoundException ex) {
             throw new RuntimeException(ex);
         }
