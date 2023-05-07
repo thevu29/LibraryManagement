@@ -108,8 +108,6 @@ public class HoaDonGUI {
                             changeTable(bus.filterMaKH(idKH));
                         }
                     });
-
-
                 }
             }
         });
@@ -136,7 +134,7 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCheckOut.getSelectedRow(), 0};
                 if(pos[0]==-1){
-                    JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
+                    JOptionPane.showMessageDialog(null,"Hãy chọn hóa đơn muốn xóa");
                 }
                 else{
                     int dialogResult = JOptionPane.showConfirmDialog(null,"Bạn có muốn xóa không ?","Remove", JOptionPane.YES_NO_OPTION);
@@ -144,11 +142,11 @@ public class HoaDonGUI {
                         String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0)) ;
                         int smt =bus.remove(maHD);
                         if(smt>0){
-                            JOptionPane.showMessageDialog(null,"Xoa Hoa Don thanh cong");
+                            JOptionPane.showMessageDialog(null,"Xóa hóa đơn thành công");
                             showAll();
                         }
                         else{
-                            JOptionPane.showMessageDialog(null,"Xoa Hoa don KHONG THANH CONG");
+                            JOptionPane.showMessageDialog(null,"Xóa hóa đơn thất bại");
                         }
                     }
                 }
@@ -159,7 +157,7 @@ public class HoaDonGUI {
             public void actionPerformed(ActionEvent e) {
                 int[] pos = {tblCheckOut.getSelectedRow(), tblCheckOut.getSelectedColumn()};
                 if(pos[0]==-1){
-                    JOptionPane.showMessageDialog(null,"Can phai chon 1 hang ");
+                    JOptionPane.showMessageDialog(null,"Hãy chọn hóa đơn muốn cập nhật");
                 }
                 else {
                     String maHD = String.valueOf(tblCheckOut.getValueAt(pos[0],0));
@@ -194,6 +192,7 @@ public class HoaDonGUI {
         frame.setContentPane(new HoaDonGUI().main);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
     private void rmvListenerBtnFilter(){
@@ -255,7 +254,7 @@ public class HoaDonGUI {
     private void changeTable(List<HoaDon> dshd){
 
         dtm.setRowCount(0);
-        String[] columns = {"Mã Phieu", "Ma Nhan Vien","Ten Nhan Vien", "Ma Khach Hang","Ten Khach Hang","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
         if(!dshd.isEmpty()){
             for(HoaDon hd:dshd){
@@ -267,7 +266,7 @@ public class HoaDonGUI {
         tblCheckOut.setModel(dtm);
     }
     private void initTable(){
-        String[] columns = {"Mã Phieu", "Ma Nhan Vien","Ten Nhan Vien", "Ma Khach Hang","Ten Khach Hang","Tong Tien"};
+        String[] columns = {"Mã hóa đơn", "Mã nhân viên","Tên nhân viên", "Mã khách hàng","Tên khách hàng","Tổng tiền"};
         dtm.setColumnIdentifiers(columns);
 
         dshd =  bus.getAllSellTicket();
@@ -283,5 +282,4 @@ public class HoaDonGUI {
         changeTable(bus.getAllSellTicket());
         initTabPane();
     }
-
 }
