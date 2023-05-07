@@ -84,7 +84,7 @@ public class MainWindow {
         customerForm = new CustomerForm();
         employeeForm = new NhanVienadmin();
         sellForm = new HoaDonGUI();
-        borrowForm = new BorrowUI();
+        borrowForm = new BorrowUI(this.employeeId);
         statisticsForm = new StatisticsForm(bookForm, sellTicketBus);
 
         contentPanel.add("Book", bookForm.getPanel());

@@ -36,7 +36,7 @@ public class BorrowInfoUI extends JFrame {
     public BorrowInfoUI(){
     }
 
-    public BorrowInfoUI(BorrowUI borrowUI,String id, String maThe,String tenDocGia,int soNgayMuon, String btnText) {
+    public BorrowInfoUI(BorrowUI borrowUI,String id, String maThe,String tenDocGia,int soNgayMuon, String btnText,String login_id) {
         this.borrowUI = borrowUI;
 
         khoiTaoThe();
@@ -47,9 +47,9 @@ public class BorrowInfoUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (isEditMode) {
-                    editBorrow();
+                    editBorrow(login_id);
                 } else {
-                    addBorrow();
+                    addBorrow(login_id);
                     txtMaPhieuMuon.setEnabled(true);
                 }
             }
@@ -79,7 +79,7 @@ public class BorrowInfoUI extends JFrame {
 
 
 
-    public void addBorrow() {
+    public void addBorrow(String login_id) {
         if (!validateEmpty()) {
             return;
         }
@@ -88,7 +88,7 @@ public class BorrowInfoUI extends JFrame {
         String maThe = cbxMaThe.getItemAt(cbxMaThe.getSelectedIndex()).toString();
         int soNgayMuon = Integer.parseInt(txtSoNgayMuon.getText());
 
-        borrowBUS.add(id,maThe,"NV1",soNgayMuon);
+        borrowBUS.add(id,maThe,login_id,soNgayMuon);
 
         borrowModel.initModelTable(borrowBUS.getDsMuon());
 
@@ -96,7 +96,7 @@ public class BorrowInfoUI extends JFrame {
         dispose();
     }
 
-    public void editBorrow() {
+    public void editBorrow(String login_id) {
         if (!validateEmpty()) {
             return;
         }
