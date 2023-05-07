@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="auto create admin if not exist">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix statistics gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/StatisticsForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StatisticsForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/StatisticsForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StatisticsForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CustomerForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CustomerInfoForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +103,7 @@
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;300&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/2_HK2/Java/LibraryManagementGUI/library/itextpdf-5.4.0.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/File/Java/LibraryManagement&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -140,15 +141,15 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GUI.LoginForm">
+  <component name="RunManager" selected="Application.LoginForm (1)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="GUI.LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
+    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
@@ -160,8 +161,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GUI.LoginForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
+    <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
@@ -186,12 +187,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+    <configuration name="LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -200,11 +201,11 @@
       </method>
     </configuration>
     <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Login.GUI.LoginForm" />
+      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Login.GUI.*" />
+          <option name="PATTERN" value="GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -214,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.GUI.LoginForm" />
-        <item itemvalue="Application.GUI.LoginForm (2)" />
-        <item itemvalue="Application.GUI.LoginForm (1)" />
+        <item itemvalue="Application.LoginForm (1)" />
+        <item itemvalue="Application.CustomerForm (3)" />
+        <item itemvalue="Application.CustomerForm" />
         <item itemvalue="Application.LoginForm" />
-        <item itemvalue="Application.LoginForm (2)" />
+        <item itemvalue="Application.GUI.LoginForm" />
       </list>
     </recent_temporary>
   </component>
@@ -507,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683463421539</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="fix statistics gui">
+      <created>1683464129611</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1683464129611</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -560,7 +568,8 @@
     <MESSAGE value="chia GUI BUS DAO" />
     <MESSAGE value="employee done" />
     <MESSAGE value="auto create admin if not exist" />
-    <option name="LAST_COMMIT_MESSAGE" value="auto create admin if not exist" />
+    <MESSAGE value="fix statistics gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix statistics gui" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

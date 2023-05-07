@@ -24,6 +24,7 @@ public class MainWindow {
     private BorrowBUS borrowBus;
     private SellTicketBus sellTicketBus;
 
+
     public MainWindow(String employeeId) {
         this.employeeId = employeeId;
         setMargin();
