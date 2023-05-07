@@ -9,6 +9,7 @@ import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
@@ -85,7 +86,7 @@ public class BorrowUI {
         BorrowInfoUI borrowInfoUI = new BorrowInfoUI(new BorrowUI(), id, maThe, tenDocGia, soNgayMuon, btnText);
         borrowInfoUI.setContentPane(borrowInfoUI.getContentPane());
         borrowInfoUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        borrowInfoUI.setSize(500, 300);
+        borrowInfoUI.setSize(700, 500);
         borrowInfoUI.setLocationRelativeTo(null);
         borrowInfoUI.setVisible(true);
     }
@@ -94,7 +95,7 @@ public class BorrowUI {
         BorrowDetailUI borrowDetailUI = new BorrowDetailUI(id, maThe, soNgayMuon);
         borrowDetailUI.setContentPane(borrowDetailUI.getContentPane());
         borrowDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        borrowDetailUI.setSize(500, 300);
+        borrowDetailUI.setSize(700, 500);
         borrowDetailUI.setLocationRelativeTo(null);
         borrowDetailUI.setVisible(true);
     }
@@ -103,7 +104,7 @@ public class BorrowUI {
         FaultInfor faultDetailUI = new FaultInfor(this, id, tenLoi, heSo, btnText);
         faultDetailUI.setContentPane(faultDetailUI.getContentPane());
         faultDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        faultDetailUI.setSize(500, 300);
+        faultDetailUI.setSize(700, 500);
         faultDetailUI.setLocationRelativeTo(null);
         faultDetailUI.setVisible(true);
     }
@@ -112,7 +113,7 @@ public class BorrowUI {
         FaultDetailUI faultDetailUI = new FaultDetailUI(id);
         faultDetailUI.setContentPane(faultDetailUI.getContentPane());
         faultDetailUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        faultDetailUI.setSize(600, 800);
+        faultDetailUI.setSize(700, 500);
         faultDetailUI.setLocationRelativeTo(null);
         faultDetailUI.setVisible(true);
     }
@@ -127,6 +128,12 @@ public class BorrowUI {
         borrowTable.setRowSorter(sorter);
         borrowTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         borrowTable.getTableHeader().setBackground(Color.WHITE);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < borrowTable.getColumnCount(); i++) {
+            borrowTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         borrowTable.addMouseListener(new MouseAdapter() {
             @Override
@@ -375,6 +382,11 @@ public class BorrowUI {
         faultTable.setRowSorter(sorterFault);
         faultTable.getTableHeader().setFont(new Font("Time News Roman", Font.PLAIN, 16));
         faultTable.getTableHeader().setBackground(Color.WHITE);
+
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < faultTable.getColumnCount(); i++) {
+            faultTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         faultTable.addMouseListener(new MouseAdapter() {
             @Override

@@ -8,6 +8,7 @@ import Utils.ComboBoxAutoSuggest.AutoSuggestComboBox;
 import Utils.TableUtils;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import java.awt.event.*;
 import java.util.Iterator;
@@ -58,6 +59,12 @@ public class BorrowDetailUI extends JFrame {
         borrowDetailTable.setDefaultEditor(Object.class, null);
 
         borrowDetailModel.initModelTable(borrowDetailBUS.getDsMuonCT(id));
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < borrowDetailTable.getColumnCount(); i++) {
+            borrowDetailTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
 
         borrowDetailTable.addMouseListener(new MouseAdapter() {
             @Override
