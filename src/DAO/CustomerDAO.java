@@ -122,8 +122,8 @@ public class CustomerDAO {
             ptmt.setInt(1, 1);
             ptmt.setString(2, id);
 
-            if (ptmt.executeUpdate() < 1) {
-                return res;
+            if (ptmt.executeUpdate() >= 1) {
+                res = true;
             }
 
             if (isCusHaveMembership(id)) {

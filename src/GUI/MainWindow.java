@@ -24,26 +24,6 @@ public class MainWindow {
     private BorrowBUS borrowBus;
     private SellTicketBus sellTicketBus;
 
-    static class ChayChu extends Thread {
-        private String chuChay = "Ứng dụng quản lý thư viện             ";
-        private Object ob;
-        public ChayChu(Object ob){
-            this.ob = ob;
-        }
-        @Override
-        public  void run(){
-            while(ob!=null){
-                chuChay = chuChay.substring(1)+chuChay.substring(0,1);
-                ((JFrame)ob).setTitle(chuChay);
-                try{
-                    Thread.sleep(150);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
     public MainWindow(String employeeId) {
         this.employeeId = employeeId;
         setMargin();
@@ -106,14 +86,12 @@ public class MainWindow {
         employeeForm = new NhanVienadmin();
         sellForm = new HoaDonGUI(this.employeeId);
         borrowForm = new BorrowUI(this.employeeId);
-//        statisticsForm = new StatisticsForm(bookForm, sellTicketBus, borrowBus);
 
         contentPanel.add("Book", bookForm.getPanel());
         contentPanel.add("Customer", customerForm.getContentPanel());
         contentPanel.add("Borrow", borrowForm.getPanel1());
         contentPanel.add("Employee", employeeForm.getMain());
         contentPanel.add("Sell", sellForm.getMain());
-//        contentPanel.add("Statistics", statisticsForm.getMainPanel());
     }
 
     public void hover() {
@@ -198,6 +176,28 @@ public class MainWindow {
         frame.setSize(1350, 650);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        ChayChu cc = new ChayChu(frame);
+        cc.start();
+    }
+
+    static class ChayChu extends Thread {
+        private String chuChay = "Ứng dụng quản lý thư viện             ";
+        private Object ob;
+        public ChayChu(Object ob){
+            this.ob = ob;
+        }
+        @Override
+        public  void run(){
+            while(ob!=null){
+                chuChay = chuChay.substring(1)+chuChay.substring(0,1);
+                ((JFrame)ob).setTitle(chuChay);
+                try{
+                    Thread.sleep(150);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {

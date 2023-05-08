@@ -275,8 +275,14 @@ public class BorrowUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = borrowTable.getSelectedRow();
+                String id = borrowTable.getValueAt(selectedRow, 0).toString();
                 if (selectedRow < 0) {
                     JOptionPane.showMessageDialog(null, "Vui lòng chọn phiếu mượn muốn xóa", "Warning",
+                            JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                if (!borrowModel.checkBorrow(id)) {
+                    JOptionPane.showMessageDialog(null, "Phiếu chưa được xác nhận, không thể xóa!", "Warning",
                             JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -287,7 +293,7 @@ public class BorrowUI {
                     return;
                 }
 
-                String id = borrowTable.getValueAt(selectedRow, 0).toString();
+
 
                 if (borrowModel.checkBorrow(id)) {
                     JOptionPane.showMessageDialog(null, "Phiếu đã được xác nhận, không thể xóa!", "Warning",
