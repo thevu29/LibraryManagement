@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix statistics gui">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix Customer GUI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/CustomerForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CustomerForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/CustomerInfoForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CustomerInfoForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/CustomerInfoForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/CustomerInfoForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -141,14 +141,14 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginForm (1)">
+  <component name="RunManager" selected="Application.MainWindow (2)">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="CustomerForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -161,7 +161,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CustomerForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.CustomerForm" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
@@ -174,8 +174,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GUI.LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
+    <configuration name="MainWindow (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
@@ -187,8 +187,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
+    <configuration name="MainWindow (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
@@ -200,8 +200,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.MainWindow" />
       <module name="LibraryManagementGUI" />
       <extension name="coverage">
         <pattern>
@@ -215,11 +215,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LoginForm (1)" />
-        <item itemvalue="Application.CustomerForm (3)" />
-        <item itemvalue="Application.CustomerForm" />
-        <item itemvalue="Application.LoginForm" />
-        <item itemvalue="Application.GUI.LoginForm" />
+        <item itemvalue="Application.MainWindow (2)" />
+        <item itemvalue="Application.MainWindow (1)" />
+        <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.CustomerForm (2)" />
+        <item itemvalue="Application.CustomerForm (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -515,7 +515,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683464129611</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="fix Customer GUI">
+      <created>1683469583172</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1683469583172</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -532,7 +539,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="customer" />
+                        <option value="Nep" />
                       </list>
                     </value>
                   </entry>
@@ -569,7 +576,8 @@
     <MESSAGE value="employee done" />
     <MESSAGE value="auto create admin if not exist" />
     <MESSAGE value="fix statistics gui" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix statistics gui" />
+    <MESSAGE value="fix Customer GUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix Customer GUI" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

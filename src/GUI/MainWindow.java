@@ -24,6 +24,25 @@ public class MainWindow {
     private BorrowBUS borrowBus;
     private SellTicketBus sellTicketBus;
 
+    static class ChayChu extends Thread {
+        private String chuChay = "Ứng dụng quản lý thư viện             ";
+        private Object ob;
+        public ChayChu(Object ob){
+            this.ob = ob;
+        }
+        @Override
+        public  void run(){
+            while(ob!=null){
+                chuChay = chuChay.substring(1)+chuChay.substring(0,1);
+                ((JFrame)ob).setTitle(chuChay);
+                try{
+                    Thread.sleep(150);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
     public MainWindow(String employeeId) {
         this.employeeId = employeeId;
@@ -187,12 +206,14 @@ public class MainWindow {
         } catch( Exception ex ) {
             System.err.println( "Failed to initialize LaF" );
         }
-        JFrame frame = new JFrame("MainWindow");
+        JFrame frame = new JFrame();
         frame.setContentPane(new MainWindow("NV002").mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1350, 650);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        ChayChu cc = new ChayChu(frame);
+        cc.start();
     }
 
     private JPanel mainPanel;

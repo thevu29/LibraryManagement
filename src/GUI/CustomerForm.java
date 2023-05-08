@@ -21,7 +21,7 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class CustomerForm {
-    private CustomerBUS customerBUS = new CustomerBUS();
+    private CustomerBUS customerBUS;
     private DefaultTableModel tblCustomerModel;
     private TableRowSorter<DefaultTableModel> customerSorter;
     private JTextField txtCusId;
@@ -29,14 +29,14 @@ public class CustomerForm {
     private JTextField txtCusEmail;
     private JTextField txtCusMembership;
 
-    private MembershipBUS membershipBUS = new MembershipBUS();
+    private MembershipBUS membershipBUS;
     private DefaultTableModel tblMembershipModel;
     private TableRowSorter<DefaultTableModel> membershipSorter;
     private JTextField txtMembershipId;
     private JTextField txtCustomerId;
     private JTextField txtTypeId;
 
-    private MembershipTypeBUS membershipTypeBUS = new MembershipTypeBUS();
+    private MembershipTypeBUS membershipTypeBUS;
     private DefaultTableModel tblMembershipTypeModel;
     private TableRowSorter<DefaultTableModel> membershipTypeSorter;
     private JTextField txtMembershipTypeName;
@@ -44,23 +44,20 @@ public class CustomerForm {
     public CustomerForm() {
         handleCustomer();
 //        handleMembership();
-//        handleMembershipType();
+        handleMembershipType();
 
         tabbedPane1.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                if (tabbedPane1.getSelectedIndex() == 0) {
-                    handleCustomer();
-                } else if (tabbedPane1.getSelectedIndex() == 1) {
-                    handleMembership();
-                } else if (tabbedPane1.getSelectedIndex() == 2) {
-                    handleMembershipType();
+                if (tabbedPane1.getSelectedIndex() == 1) {
+                    handleMembership();;
                 }
             }
         });
     }
 
     public void handleMembershipType() {
+        membershipTypeBUS = new MembershipTypeBUS();
         initMembershipTypeTable();
         membershipTypeBUS.renderToTable(tblMembershipTypeModel);
 
@@ -191,6 +188,7 @@ public class CustomerForm {
     }
 
     public void handleMembership() {
+        membershipBUS = new MembershipBUS();
         initMembershipTable();
         membershipBUS.renderToTable(tblMembershipModel);
 
@@ -280,6 +278,7 @@ public class CustomerForm {
     }
 
     public void handleCustomer() {
+        customerBUS = new CustomerBUS();
         initCustomerTable();
         customerBUS.renderToTable(tblCustomerModel);
 
@@ -302,6 +301,7 @@ public class CustomerForm {
 
                 int choice = JOptionPane.showConfirmDialog(null, "Bạn có muốn xóa khách hàng này không?", "Question", JOptionPane.YES_NO_OPTION);
                 if (choice != JOptionPane.YES_OPTION) {
+                    System.out.println("out");
                     return;
                 }
 

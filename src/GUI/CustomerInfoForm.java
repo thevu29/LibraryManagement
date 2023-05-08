@@ -96,7 +96,8 @@ public class CustomerInfoForm extends JFrame {
 
         Customer customer = new Customer(id, name, dob, address, cccd, email, phone, gender, membership, registrationDate, expirationDate, false);
         if (cusBus.validateUpdate(customer)) {
-            dispose();
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(jpanel1);
+            frame.dispose();
             customerForm.getCustomerBUS().renderToTable(customerForm.getTblCustomerModel());
         }
     }
