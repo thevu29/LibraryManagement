@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class CustomerForm {
     private CustomerBUS customerBUS;
     private DefaultTableModel tblCustomerModel;
-    private TableRowSorter<DefaultTableModel> customerSorter;
+    private TableRowSorter<DefaultTableModel> customerSorter = new TableRowSorter<>();
     private JTextField txtCusId;
     private JTextField txtCusName;
     private JTextField txtCusEmail;

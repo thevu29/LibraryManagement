@@ -122,11 +122,33 @@ public class CustomerDAO {
             ptmt.setInt(1, 1);
             ptmt.setString(2, id);
 
-            if (ptmt.executeUpdate() >= 1) {
+            if (ptmt.executeUpdate() < 1) {
+                return res;
+            }
+
+            if (isCusHaveMembership(id)) {
                 if (deleteMembership(id)) {
                     res = true;
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+    public boolean isCusHaveMembership(String customerID) {
+        boolean res = false;
+        try {
+            Connection conn = DefaultConnection.getConnect();
+
+            String query = "SELECT MA_KH FROM MEMBERSHIP WHERE MA_KH=?";
+            PreparedStatement ptmt = conn.prepareStatement(query);
+
+            ptmt.setString(1, customerID);
+
+            var rs = ptmt.executeQuery();
+            res = rs.next();
         } catch (Exception e) {
             e.printStackTrace();
         }
