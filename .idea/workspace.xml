@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="fix Customer GUI">
+    <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Excel/customer.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Excel/customer.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDF/PhieuBan.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/PDF/PhieuBan.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/BorrowUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/BorrowUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Nep" />
+        <entry key="$PROJECT_DIR$" value="customer" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -105,7 +102,7 @@
     &quot;UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH&quot;: &quot;300&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;temurin-18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/File/Java/LibraryManagement&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Acer/Documents/Code/IntelliJ/Exercise&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -143,38 +140,12 @@
       <recent name="sellBook" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginForm (4)">
+  <component name="RunManager" selected="Application.MainWindow">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
-    </configuration>
-    <configuration name="LoginForm (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginForm (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
-      <module name="LibraryManagementGUI" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="GUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="LoginForm (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
@@ -202,6 +173,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="LoginForm (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoginForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.LoginForm" />
       <module name="LibraryManagementGUI" />
@@ -215,13 +199,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainWindow" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.MainWindow" />
+      <module name="LibraryManagementGUI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GUI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainWindow" />
+        <item itemvalue="Application.LoginForm" />
+        <item itemvalue="Application.LoginForm (5)" />
         <item itemvalue="Application.LoginForm (4)" />
         <item itemvalue="Application.LoginForm (3)" />
-        <item itemvalue="Application.LoginForm (2)" />
-        <item itemvalue="Application.LoginForm" />
-        <item itemvalue="Application.LoginForm (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -538,7 +535,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683504964671</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="done">
+      <created>1683528821861</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1683528821861</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,12 +554,17 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Nep" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -568,7 +577,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First Init" />
     <MESSAGE value="Add database, mysql connector." />
     <MESSAGE value="hello" />
     <MESSAGE value="xong hoa don" />
@@ -593,7 +601,8 @@
     <MESSAGE value="auto create admin if not exist" />
     <MESSAGE value="fix statistics gui" />
     <MESSAGE value="fix Customer GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix Customer GUI" />
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

@@ -176,28 +176,6 @@ public class MainWindow {
         frame.setSize(1350, 650);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        ChayChu cc = new ChayChu(frame);
-        cc.start();
-    }
-
-    static class ChayChu extends Thread {
-        private String chuChay = "Ứng dụng quản lý thư viện             ";
-        private Object ob;
-        public ChayChu(Object ob){
-            this.ob = ob;
-        }
-        @Override
-        public  void run(){
-            while(ob!=null){
-                chuChay = chuChay.substring(1)+chuChay.substring(0,1);
-                ((JFrame)ob).setTitle(chuChay);
-                try{
-                    Thread.sleep(150);
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-            }
-        }
     }
 
     public static void main(String[] args) {
@@ -212,8 +190,6 @@ public class MainWindow {
         frame.setSize(1350, 650);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-        ChayChu cc = new ChayChu(frame);
-        cc.start();
     }
 
     private JPanel mainPanel;
