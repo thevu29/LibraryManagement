@@ -3,6 +3,8 @@ package DAO;
 import Core.DefaultConnection;
 import BUS.CustomerBUS;
 import DTO.Customer;
+
+import java.lang.reflect.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +13,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class CustomerDAO {
+    private MembershipDAO membershipDAO = new MembershipDAO();
+
     public ArrayList<Customer> getCustomerAll() {
         ArrayList<Customer> list = new ArrayList<>();
         try {
@@ -71,38 +75,10 @@ public class CustomerDAO {
 
             if (ptmt.executeUpdate() == 1); {
                 if (!customer.getMembership().equals("Bình thường")) {
-                    if(addMembership(customer)) {
+                    if(membershipDAO.addMembership(customer)) {
                         res = true;
                     }
                 }
-                res = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return res;
-    }
-
-    public boolean addMembership(Customer customer) {
-        boolean res = false;
-        try {
-            Connection conn = DefaultConnection.getConnect();
-
-            String query = "insert into `MEMBERSHIP` values (?, ?, ?, ?, ?, ?)";
-            PreparedStatement ptmt = conn.prepareStatement(query);
-
-            int length = getMembershipLength() + 1;
-            String id = String.format("%03d", length);
-            String memId = "MEM" + id;
-
-            ptmt.setString(1, memId);
-            ptmt.setString(2, customer.getCustomerId());
-            ptmt.setString(3, customer.getMembership());
-            ptmt.setString(4, customer.getRegistrationDate());
-            ptmt.setString(5, customer.getExpirationDate());
-            ptmt.setInt(6, 0);
-
-            if (ptmt.executeUpdate() >= 1) {
                 res = true;
             }
         } catch (Exception e) {
@@ -127,7 +103,7 @@ public class CustomerDAO {
             }
 
             if (isCusHaveMembership(id)) {
-                if (deleteMembership(id)) {
+                if (membershipDAO.deleteMembership(id)) {
                     res = true;
                 }
             }
@@ -149,45 +125,6 @@ public class CustomerDAO {
 
             var rs = ptmt.executeQuery();
             res = rs.next();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return res;
-    }
-
-    public boolean deleteMembership(String customerId) {
-        boolean res = false;
-        try {
-            Connection conn = DefaultConnection.getConnect();
-
-            String query = "update `MEMBERSHIP` set IS_DELETED = ? " + "where MA_KH = ?";
-            PreparedStatement ptmt = conn.prepareStatement(query);
-
-            ptmt.setInt(1, 1);
-            ptmt.setString(2, customerId);
-
-            if (ptmt.executeUpdate() >= 1) {
-                res = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return res;
-    }
-
-    public boolean deleteDirectlyMembership(String customerId) {
-        boolean res = false;
-        try {
-            Connection conn = DefaultConnection.getConnect();
-
-            String query = "delete from `MEMBERSHIP` where MA_KH = ?";
-            PreparedStatement ptmt = conn.prepareStatement(query);
-
-            ptmt.setString(1, customerId);
-
-            if (ptmt.executeUpdate() >= 1) {
-                res = true;
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -229,7 +166,7 @@ public class CustomerDAO {
             Connection conn = DefaultConnection.getConnect();
 
             if (customer.getMembership().equals("Bình thường")) {
-                if (deleteDirectlyMembership(customer.getCustomerId())) {
+                if (membershipDAO.deleteDirectlyMembership(customer.getCustomerId())) {
                     res = true;
                 }
             } else {
@@ -248,7 +185,7 @@ public class CustomerDAO {
                         res = true;
                     }
                 } else {
-                    if (addMembership(customer)) {
+                    if (membershipDAO.addMembership(customer)) {
                         res = true;
                     }
                 }
@@ -257,22 +194,5 @@ public class CustomerDAO {
             e.printStackTrace();
         }
         return res;
-    }
-
-    public int getMembershipLength() {
-        int cnt = 0;
-        try {
-            Connection conn = DefaultConnection.getConnect();
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select count(*) as Length from `MEMBERSHIP`");
-
-            if (rs.next()) {
-                cnt = rs.getInt("Length");
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return cnt;
     }
 }
