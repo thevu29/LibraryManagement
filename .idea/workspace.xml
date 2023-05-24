@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1021a47e-2efd-4ce8-bb3d-b93d3b36810e" name="Changes" comment="done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Core/DefaultConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Core/DefaultConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DAO/MembershipDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/MembershipDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -542,7 +542,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683528821861</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="done">
+      <created>1684810178147</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1684810178147</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +571,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="HEAD" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
